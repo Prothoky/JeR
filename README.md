@@ -3,7 +3,7 @@ Trabajo para la asignatura Juegos en Red
 
 **Título:** Atrapa la Bandera
 
-**Temática: **
+**Temática:** Juego de lucha en scroll 2D al que gana el que llegue a su base con la bandera.
 
 **Integrantes:**
 
@@ -77,7 +77,7 @@ Este es el documento de diseño del juego titulado “Atrapa la bandera”. La w
 Este escrito tiene como objetivo principal plasmar los elementos que debe incluir Atrapa la bandera y servir de carta de presentación en caso de buscar colaboradores en un futuro.
 
 ### 2.1. Concepto del juego
-	Atrapa la bandera es un juego en el que controlaremos cada jugador a un guerrero con una espada. Ambos guerreros deberán coger la bandera situada en el centro del mapa y llevarla a su lado de la base. Si un guerrero coge la bandera, el contrario deberá matarlo para quitársela. El primero que entregue la bandera en su base gana.
+   Atrapa la bandera es un juego en el que controlaremos cada jugador a un guerrero con una espada. Ambos guerreros deberán coger la bandera situada en el centro del mapa y llevarla a su lado de la base. Si un guerrero coge la bandera, el contrario deberá matarlo para quitársela. El primero que entregue la bandera en su base gana.
 
 ### 2.2. Características principales
 El juego se basa en los siguiente pilares:  
@@ -120,7 +120,6 @@ El único contra que tiene arrojar la espada es que después el jugador tendrá 
 ### 3.3. Movimiento y físicas 
   
   __1. Interacción entre elementos__  
-    
     El único elemento del mapa con el que se podrá interactuar será la bandera. Al comienzo y cada vez que uno de los jugadores muera (si la había recogido previamente), aparecerá una bandera que al pasar sobre ella será recogida.
 Por otro lado, la espada será otro elemento con el que interactuar si esta ha sido arrojada anteriormente. Al igual que con la bandera, si la espada está en el suelo, el jugador podrá pasar sobre ella para recogerla.
   
@@ -132,7 +131,7 @@ Por otro lado, la espada será otro elemento con el que interactuar si esta ha s
 
 
 ## 4. Interfaz
-	La interfaz tendrá un estilo minimalista. Esto quiere decir que una vez los controles se hayan mostrados, no tendrás más referencia de equipamiento y movimiento que lo visual.
+   La interfaz tendrá un estilo minimalista. Esto quiere decir que una vez los controles se hayan mostrados, no tendrás más referencia de equipamiento y movimiento que lo visual.
 
 
 ## 5. Diagrama de flujo 
