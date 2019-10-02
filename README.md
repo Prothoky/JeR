@@ -1,5 +1,5 @@
 # Juegos-en-Red
-Trabajo para la asignatura Juegos en Red
+Práctica para la asignatura Juegos en Red
 
 **Título:** Atrapa la Bandera
 
