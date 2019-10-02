@@ -108,7 +108,7 @@ El objetivo principal es desarrollar un sistema de juego sólido al que poder ir
 
 ## 3. Mecánicas de juego
 ### 3.1. Flujo de juego 
-	Como la mecánica y la historia, el flujo de juego también es simple.   
+   Como la mecánica y la historia, el flujo de juego también es simple.   
   * __Modo de juego:__ El jugador deberá elegir si quiere jugar en modo online o en modo offline.   
   * __Mapa:__ Tras esto deberá elegir el mapa, la única diferencia que supondrá será de forma estética con algún que otro obstáculo colocado de forma diferente.  
   * __Gameplay:__ Por último se accede al mapa de juego, y con una simple cuenta atrás de 3 a 0, comienza la partida.
