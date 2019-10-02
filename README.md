@@ -3,7 +3,7 @@ Trabajo para la asignatura Juegos en Red
 
 **Título:** Atrapa la Bandera
 
-**Temática:** Juego de lucha en scroll 2D al que gana el que llegue a su base con la bandera.
+**Temática:** Scroll 2D de lucha en el que gana el que llegue a su base con la bandera.
 
 **Integrantes:**
 
