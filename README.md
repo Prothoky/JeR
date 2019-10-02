@@ -10,7 +10,7 @@ Trabajo para la asignatura Juegos en Red
 Paula Calzada Toledo      paulacalzada014@gmail.com       p.calzada.2017@alumnos.urjc.es  
 Diego Pérez Pérez         d.perezp.2017@alumnos.urjc.es   diegoperezp2@gmail.com  
 Eusebiu Costinel Delcea   ec.delcea.2017@alumnos.urjc.es  deusebiu98@yahoo.es  
-Rodrigo Martínez Sánchez  
+Rodrigo Martínez Sánchez  r.martinezsa.2016@alumnos.urjc.es prothoky@gmail.com
 
 **Game Design Document**  
 
