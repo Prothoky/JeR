@@ -15,10 +15,7 @@ Diego Pérez Pérez         d.perezp.2017@alumnos.urjc.es   diegoperezp2@gmail.c
 **Game Design Document**  
 
 # ATRAPA LA BANDERA  
-  
-  
-## GAME DESIGN DOCUMENT  
-  
+    
     
 ##### 29 de septiembre de 2019  
   
