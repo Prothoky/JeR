@@ -5,7 +5,7 @@ Práctica para la asignatura Juegos en Red
 
 **Temática:** Scroll 2D de lucha en el que gana el que llegue a su base con la bandera.
 
-**Integrantes:**
+**Integrantes grupo A:**
 
 Paula Calzada Toledo      p.calzada.2017@alumnos.urjc.es  paulacalzada014@gmail.com        
 Eusebiu Costinel Delcea   ec.delcea.2017@alumnos.urjc.es  deusebiu98@yahoo.es  
@@ -28,14 +28,6 @@ Diego Pérez Pérez         d.perezp.2017@alumnos.urjc.es   diegoperezp2@gmail.c
   
     
       
-        
-##### GRUPO A 
-
-Paula Calzada Toledo  
-Costinel Delcea Eusebiu  
-Rodrigo Martínez Sánchez  
-Diego Pérez Pérez    
-  
 ## Índice  
   
 1. Cambios  
