@@ -1,0 +1,19 @@
+{
+  "name": "atrapa_la_bandera",
+  "version": "1.0.0",
+  "description": "1vs1 game with swords and modern stickmans as a characters",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "C:\\Users\\Proth\\Documents\\Juegos en Red\\ATRAPA LA BANDERA\\ATRAPA_LA_BANDERA"
+  },
+  "author": "Grupo A",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^3.20.1",
+    "tern": "^0.24.2"
+  }
+}
