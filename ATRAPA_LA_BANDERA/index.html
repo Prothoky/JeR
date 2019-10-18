@@ -3,59 +3,51 @@
 <head>
     <title>ATRAPA LA BANDERA</title>
     <link rel="shortcut icon" href="./assets/icons/icon.png" type="image/png" />
-    <script src="phaser.js"></script>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <script src="htttps://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="htttps://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modemizr.min.js"></script>
+    <script src="./js/phaser.min.js"></script>
+    <script src="./js/css.js"></script>
+    <script src="./js/main.js"></script>
 </head>
+<header>
+  <nav>
+    <ul class="topnav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contac</a></li>
+    </ul>
+  </nav>
+</header>
 <body>
-
-    <script>
-    var config = {
-        type: Phaser.AUTO,
-        width: 960,
-        height: 540,
-        physics: {
-            default: 'arcade',
-            arcade: {
-                gravity: { y: 9.8 }
-            }
-        },
-        scene: {
-            preload: preload,
-            create: create
-        }
-    };
-
-    var game = new Phaser.Game(config);
-
-    function preload ()
-    {
-        this.load.setBaseURL('http://labs.phaser.io');
-
-        this.load.image('sky', 'assets/skies/space3.png');
-        this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-        this.load.image('red', 'assets/particles/red.png');
-    }
-
-    function create ()
-    {
-        this.add.image(960, 540, 'sky');
-
-        var particles = this.add.particles('red');
-
-        var emitter = particles.createEmitter({
-            speed: 100,
-            scale: { start: 1, end: 0 },
-            blendMode: 'ADD'
-        });
-
-        var logo = this.physics.add.image(400, 100, 'logo');
-
-        logo.setVelocity(100, 200);
-        logo.setBounce(1, 1);
-        logo.setCollideWorldBounds(true);
-
-        emitter.startFollow(logo);
-    }
-    </script>
-
+<aside>
+  <table>
+  <th>
+    <h1>Introduce el nombre del jugador 1:</h1>
+    <label for="NickName">NickName</label>
+    <input id="NickName" type="text" placeholder="Nick">
+    <form> <button type="submit"> Guardar </button></form>
+  </th>
+  <th>
+  </th>
+  <th>
+    <h1>Introduce el nombre del jugador 2:</h1>
+    <label for="NickName">NickName</label>
+    <input id="NickName" type="text" placeholder="Nick">
+    <form> <button type="submit"> Guardar </button></form>
+  </th>
+</table>
+  </aside>
+<aside class="gamespace">
+  <canvas id="canvas" width="1080" height="720"></canvas>
+</aside>
 </body>
+<footer>
+  <div class="creators">
+    <em href="#">Paula Calzada Toledo<em>
+    <em href="#">Eusebiu Costinel Delcea</em>
+    <em href="#">Rodrigo Martínez Sánchez</em>
+    <em href="#">Diego Pérez Pérez</em>
+  </div>
+</footer>
 </html>

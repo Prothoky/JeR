@@ -1,0 +1,104 @@
+@import "compass/css"
+.header {
+    background-image: url(../assets/img/asus01.png);
+    text-align: center;
+    padding:  0;
+}
+
+/* The navbar container */
+.topnav {
+  list-style: none;
+  margin:0;
+  background: red;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+/* Navbar links */
+.topnav a {
+  text-decoration: none;
+  padding: 1em;
+  display: block;
+  color: white;
+  left: 10px;
+  right: 10px;
+}
+
+/* Links - change color on hover */
+.topnav a:hover {
+  background: darken(black,50);
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media all and (max-width: 600px) {
+  .topnav {
+    -webkit-flex-flow: colum wrap;
+    flex-flow:colum wrap;
+    flex-direction: colum;
+    padding: 0;
+    justify-content: space-around;
+    border-top: 2px solid rgba(255,255,255,0.5);
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+    width: 100%;
+  }
+  .topnav a{
+    border-left: 1px solid rgba(255,255,255,0.5);
+    border-right: 1px solid rgba(0,0,0,0.5);
+    text-align: center;
+    padding:10px;
+    width: 100%;
+  }
+}
+
+.column {
+  float: left;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+}
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+}
+
+.footer {
+  background-color: #F1F1F1;
+  text-align: center;
+  padding: 10px;
+}
+
+.creators em{
+  margin: 15px;
+  list-style: none;
+  -webkit-flex-flow: wrap;
+  flex-direction: wrap;
+  flex-flow: wrap;
+}
+
+.canvas {
+  background-color: black;
+}
+
+aside {
+  color:white;
+  background-image: url(../assets/img/asus01.png);
+}
+body > table{
+  border-radius: 1px;
+}
+h1{
+  style
+  color:white;
+}
+label{
+  color:white;
+}
