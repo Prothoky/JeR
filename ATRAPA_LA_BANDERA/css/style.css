@@ -1,8 +1,9 @@
-@import "compass/css"
+@import "compass/css";
+
 .header {
     background-image: url(../assets/img/asus01.png);
     text-align: center;
-    padding:  0;
+    padding: 0;
 }
 
 /* The navbar container */
@@ -10,13 +11,7 @@
   list-style: none;
   margin:0;
   background: red;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
-
-  -webkit-flex-flow: row wrap;
   justify-content: flex-start;
 }
 
@@ -32,15 +27,12 @@
 
 /* Links - change color on hover */
 .topnav a:hover {
-  background: darken(black,50);
+  background: #C00000;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media all and (max-width: 600px) {
   .topnav {
-    -webkit-flex-flow: colum wrap;
-    flex-flow:colum wrap;
-    flex-direction: colum;
     padding: 0;
     justify-content: space-around;
     border-top: 2px solid rgba(255,255,255,0.5);
@@ -48,55 +40,68 @@
     width: 100%;
   }
   .topnav a{
-    border-left: 1px solid rgba(255,255,255,0.5);
-    border-right: 1px solid rgba(0,0,0,0.5);
     text-align: center;
     padding:10px;
     width: 100%;
   }
 }
 
-.column {
-  float: left;
-}
-
-/* Left and right column */
-.column.side {
-  width: 25%;
-}
-
-/* Middle column */
-.column.middle {
-  width: 50%;
-}
-
-.footer {
-  background-color: #F1F1F1;
-  text-align: center;
-  padding: 10px;
+.creators{
+  display: flex;
+  justify-content: flex-end;
 }
 
 .creators em{
-  margin: 15px;
-  list-style: none;
-  -webkit-flex-flow: wrap;
-  flex-direction: wrap;
-  flex-flow: wrap;
+  color: white;
+  line-height: 25px;
+  margin: 25px;
 }
 
-.canvas {
-  background-color: black;
+.info{
+  padding: 25px;
+  padding-top: 1px;
+  padding-bottom: 50px;
+  background-image: url(../assets/img/asus01.png);
+  text-align: center;
+  size: 480px,720px;
+}
+
+.info em {
+  font-size: 200%;
+  font-style: bold;
+  color: white;
+}
+
+.info h3{
+  font-size: 300%;
+  font-style: normal;
+  color: white;
+}
+
+.back {
+  padding-bottom: 50px;
+  padding-top: 35px;
+  text-align: center;
+}
+.back a{
+  padding: 2px;
+  text-decoration: none;
+  font-size: 3em;
+  font-style: normal;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  background-color: darkgray;
 }
 
 aside {
   color:white;
   background-image: url(../assets/img/asus01.png);
 }
-body > table{
-  border-radius: 1px;
+body {
+  background-color: black;
 }
 h1{
-  style
   color:white;
 }
 label{
