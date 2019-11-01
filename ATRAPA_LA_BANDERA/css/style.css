@@ -105,3 +105,7 @@ h1{
 label{
   color:white;
 }
+canvas{
+  display: block;
+  margin: 0 auto;
+}

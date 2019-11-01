@@ -1,37 +1,38 @@
-"use strict"
-
-var fondo;
-
-
-var playState = {
-  init: function () {
-    //Se llama cuando se inicia el estado
+const config={
+  type: Phaser.CANVAS,
+  width: 1600,
+  height:720,
+  parent:'game',
+  scenes:{
+    preload: 'preload',
   },
-  preload: function () {
-    fondo = this.game.add.image()
-    //Se cargan Imagenes y archivos de recurso
-  },
-  create: function () {
-    this.game.physics.startSystem(Phaser.Physics.ARCADE);
-    //Se crea el personaje, los enemigos, los sonidos, el fondo del juego, etc
-  },
-  update: function () {
-    //Logica del Juego como los movimientos, las colisiones, el movimiento del personaje, etc
-  },
-  render: function () {
-    //Depurar lo que se renderiza
-    //this.game.debug.body(this.player);
-  },
-  pause: function () {
-    //Cuando el juego es pausado
-  },
-  shutdown: function () {
-    //Cuando se sale del estado
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 500 },
+      debug: false
+    }
   }
-};
-//(Ancho, Alto, Renderer WebGL/Canvas/Auto, id elemento donde se creara el lienzo del juego)
-var game = new Phaser.Game(1280, 720, Phaser.AUTO, 'game');
-//Se pueden crear tantos estados del juego como tu quieras
-game.state.add('play', playState);
-//Se inicia un estado del juego
-game.state.start('play');
+}
+
+var game= new Phaser.Game(config);
+
+game.state.add('Precarga', Pantalla.PrecargaInfo);
+game.state.add('MenuPrincipal', Pantalla.MenuPrincipal);
+game.state.add('MenuPausa', Pantalla.MenuPausa);
+game.state.add('ControlesPrinc', Pantalla.ControlesPrinc);
+game.state.add('ControlesPaus', Pantalla.ControlesPaus);
+game.state.add('OpcionesPrinc', Pantalla.OpcionesPrinc);
+game.state.add('OpcionesPaus', Pantalla.OpcionesPaus);
+game.state.add('SeleccionMapa', Pantalla.SeleccionMapa);
+game.state.add('Juego', Pantalla.Juego);
+game.state.add('FinNivel', Pantalla.FinNivel);
+
+game.state.start('Precarga');
+
+function preload(){
+  this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+  //this.scale.pageAlignHorizontally = true;
+  this.scale.pageAlignVertically = true;
+  this.scale.setScreenSize( true );
+}
