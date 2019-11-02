@@ -25,14 +25,16 @@ game.state.add('ControlesPaus', Pantalla.ControlesPaus);
 game.state.add('OpcionesPrinc', Pantalla.OpcionesPrinc);
 game.state.add('OpcionesPaus', Pantalla.OpcionesPaus);
 game.state.add('SeleccionMapa', Pantalla.SeleccionMapa);
-game.state.add('Juego', Pantalla.Juego);
+game.state.add('Jugar', Pantalla.Juego);
 game.state.add('FinNivel', Pantalla.FinNivel);
 
 game.state.start('Precarga');
 
 function preload(){
+
   this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
   //this.scale.pageAlignHorizontally = true;
   this.scale.pageAlignVertically = true;
   this.scale.setScreenSize( true );
+
 }
