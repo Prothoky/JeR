@@ -62,7 +62,7 @@ Pantalla.MenuPrincipal.prototype = {
 
 	iniciarJuego: function() {
 		//una vez hecho esto, vamo a las instrucciones
-		this.game.state.start('Jugar');
+		this.game.state.start('Juego');
 	},
 
 	verControles: function(){
