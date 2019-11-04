@@ -25,7 +25,7 @@ game.state.add('ControlesPaus', Pantalla.ControlesPaus);
 game.state.add('OpcionesPrinc', Pantalla.OpcionesPrinc);
 game.state.add('OpcionesPaus', Pantalla.OpcionesPaus);
 game.state.add('SeleccionMapa', Pantalla.SeleccionMapa);
-game.state.add('Jugar', Pantalla.Juego);
+game.state.add('Juego', Pantalla.Juego);
 game.state.add('FinNivel', Pantalla.FinNivel);
 
 game.state.start('Precarga');
