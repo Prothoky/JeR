@@ -1,8 +1,12 @@
-Pantalla.ControlesPaus = function (game){};
+class ControlesPaus extends Phaser.Scene {
 
-Pantalla.ControlesPaus.prototype = {
+	constructor(){
 
-	create: function(){
+		super ({key: "ControlesPaus"});
+
+	}
+
+	create(){
 
 		this.add.sprite (80, 40, 'fondoControles');
 
@@ -13,10 +17,9 @@ Pantalla.ControlesPaus.prototype = {
 
 	},
 
-	volver: function() {
+	volver() {
 
 		//una vez hecho esto, vamo a las instrucciones
 		this.game.state.start('MenuPausa');
 	}
-
-};
+}
