@@ -6,6 +6,7 @@
   scenes:{
     preload: 'preload',
   },
+  scene: [Precarga],
   physics: {
     default: 'arcade',
     arcade: {
@@ -15,19 +16,19 @@
   }
 }
 
-var game= new Phaser.Game(config);
+var game = new Phaser.Game(config);
 
-game.state.add('Precarga', Pantalla.PrecargaInfo);
-game.state.add('MenuPrincipal', Pantalla.MenuPrincipal);
-game.state.add('MenuPausa', Pantalla.MenuPausa);
-game.state.add('ControlesPrinc', Pantalla.ControlesPrinc);
-game.state.add('ControlesPaus', Pantalla.ControlesPaus);
-game.state.add('OpcionesPrinc', Pantalla.OpcionesPrinc);
-game.state.add('OpcionesPaus', Pantalla.OpcionesPaus);
-game.state.add('SeleccionMapa', Pantalla.SeleccionMapa);
-game.state.add('Juego', Pantalla.Juego);
-game.state.add('FinNivel', Pantalla.FinNivel);
-game.state.start('Precarga');
+game.scene.add('Precarga', Pantalla.PrecargaInfo);
+game.scene.add('MenuPrincipal', Pantalla.MenuPrincipal);
+game.scene.add('MenuPausa', Pantalla.MenuPausa);
+game.scene.add('ControlesPrinc', Pantalla.ControlesPrinc);
+game.scene.add('ControlesPaus', Pantalla.ControlesPaus);
+game.scene.add('OpcionesPrinc', Pantalla.OpcionesPrinc);
+game.scene.add('OpcionesPaus', Pantalla.OpcionesPaus);
+game.scene.add('SeleccionMapa', Pantalla.SeleccionMapa);
+game.scene.add('Juego', Pantalla.Juego);
+game.scene.add('FinNivel', Pantalla.FinNivel);
+game.scene.start('Precarga');
 
 function preload(){
 
