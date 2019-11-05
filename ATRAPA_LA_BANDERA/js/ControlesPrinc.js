@@ -1,4 +1,4 @@
-class ControlesPinc extends Phaser.Scene {
+class ControlesPrinc extends Phaser.Scene {
 
 	constructor(){
 
