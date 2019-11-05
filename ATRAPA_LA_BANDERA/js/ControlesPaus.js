@@ -15,7 +15,7 @@ class ControlesPaus extends Phaser.Scene {
 		//this.botonVolver.anchor.set(-2.5,-3);
 		this.botonVolver.input.useHandCursor = true;
 
-	},
+	}
 
 	volver() {
 

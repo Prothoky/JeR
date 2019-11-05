@@ -42,7 +42,7 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	}
 
-	quitar:(){
+	quitar(){
 
 	}
 

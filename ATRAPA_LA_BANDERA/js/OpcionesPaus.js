@@ -42,7 +42,7 @@ class OpcionesPaus extends Phaser.Scene {
 
 	}
 
-	quitar:(){
+	quitar(){
 
 	}
 
