@@ -1,14 +1,17 @@
-Pantalla.OpcionesPaus = function (game){};
+class OpcionesPaus extends Phaser.Scene {
 
-Pantalla.OpcionesPaus.prototype = {
+	constructor(){
 
-	create: function(){
+		super({key: "OpcionesPaus"});
 
+	}
+
+	create(){
 		this.add.sprite (80, 40, 'fondoOpciones');
 		this.add.sprite(566, 77, 'opciones');
 		this.add.sprite (312, 212.5, 'cuadroVolumen');
 		this.add.sprite(710, 232.5, 'volumen');
-				
+
 		//BOTONES DE VOLUMEN
 		this.botonSubir = this.add.button(417.665, 307.5, 'subirVolumen', this.subir, this, 2, 0, 1);
 		this.botonSubir.input.useHandCursor = true;
@@ -23,25 +26,24 @@ Pantalla.OpcionesPaus.prototype = {
 		this.botonVolver = this.add.button(612.5, 540, 'volverOpciones', this.volver, this, 2, 0, 1);
 		//this.botonVolver.anchor.set(-2.5,-3);
 		this.botonVolver.input.useHandCursor = true;
+	}
 
-	},
-
-	volver: function() {
+	volver() {
 
 		//una vez hecho esto, vamo a las instrucciones
 		this.game.state.start('MenuPausa');
-	}, 
+	}
 
-	subir: function(){
-
-	}, 
-
-	bajar: function(){
-
-	},
-
-	quitar: function(){
+	subir(){
 
 	}
 
-};
+	bajar(){
+
+	}
+
+	quitar:(){
+
+	}
+
+}
