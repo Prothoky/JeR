@@ -1,4 +1,4 @@
-const config={
+var config={
   type: Phaser.CANVAS,
   width: 1600,
   height:720,

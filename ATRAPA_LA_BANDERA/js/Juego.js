@@ -1,6 +1,9 @@
 
 Pantalla.Juego = function(game) {};
 
+var player1;
+var player2;
+
 Pantalla.Juego.prototype = {
 
   preload: function(){
