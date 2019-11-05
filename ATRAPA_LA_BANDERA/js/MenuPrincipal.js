@@ -1,7 +1,9 @@
-	class MenuPrincipal extends Phaser.Scene{
+class MenuPrincipal extends Phaser.Scene{
 
 	constructor(){
+
 		super ({key: "MenuPrincipal"});
+
 	}
 
 	preload(){

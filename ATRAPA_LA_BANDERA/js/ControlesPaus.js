@@ -16,7 +16,7 @@ class ControlesPaus extends Phaser.Scene {
 		this.botonVolver.input.useHandCursor = true;
 
 	}
-	
+
 	volver() {
 
 		//una vez hecho esto, vamo a las instrucciones

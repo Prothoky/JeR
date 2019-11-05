@@ -1,4 +1,5 @@
 class Precarga extends Phaser.Scene{
+
 	constructor(){
 		super({key: "Precarga"});
 		var Pantalla = {
