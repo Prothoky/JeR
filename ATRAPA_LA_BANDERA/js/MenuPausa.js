@@ -1,13 +1,17 @@
-Pantalla.MenuPausa = function (game){};
+class MenuPausa extends Phaser.Scene{
 
-Pantalla.MenuPausa.prototype = {
+	constructor(){
 
-	create: function(){
+		super ({key: "MenuPausa"});
+
+	}
+
+	create(){
 
 		this.add.sprite (80, 40, 'fondoPausa');
 		this.add.sprite(387.5, 77, 'menuPausa');
-		
-				
+
+
 		//BOTONES DE OPCIONES
 		this.botonReanudar = this.add.button(566.5, 252.87, 'reanudar', this.reanudar, this, 2, 0, 1);
 		this.botonReanudar.input.useHandCursor = true;
@@ -24,26 +28,25 @@ Pantalla.MenuPausa.prototype = {
 
 	},
 
-	reanudar: function() {
+	reanudar() {
 
 		//una vez hecho esto, vamo a las instrucciones
 		this.game.state.start('Juego');
-	}, 
+	},
 
-	opciones: function(){
+	opciones(){
 
 		this.game.state.start('OpcionesPaus');
-	}, 
+	},
 
-	controles: function(){
+	controles(){
 
 		this.game.state.start('ControlesPaus');
 	},
 
-	abandonar: function(){
+	abandonar(){
 
 			this.game.state.start('MenuPrincipal');
 
 	}
-
-};
+}
