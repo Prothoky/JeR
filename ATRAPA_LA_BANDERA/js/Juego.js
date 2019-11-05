@@ -1,13 +1,12 @@
+class Juego extends Phaser.Scene{
+	constructor(){
+		super({key: "Juego"});
+    var player1;
+    var player2;
+    var bandera;
+	}
 
-Pantalla.Juego = function(game) {};
-
-var player1;
-var player2;
-var bandera;
-
-Pantalla.Juego.prototype = {
-
-  preload: function(){
+  preload(){
 
       //Sprite del fondo
       this.load.image("fondo","assets/img/Fondo.jpg");
@@ -29,9 +28,9 @@ Pantalla.Juego.prototype = {
       this.load.spritesheet('salto','assets/animations/salto.png',{frameHeight: 192, frameWidth:140});
 
 //investiga a ver y si no, las quitamos y a ver si con eso funciona
-},
+}
 
-  create: function(){
+  create(){
 
     // load the map
     map = this.make.tilemap({key: 'map'});

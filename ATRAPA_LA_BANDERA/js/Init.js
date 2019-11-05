@@ -6,7 +6,7 @@
   scenes:{
     preload: 'preload',
   },
-  scene: [Precarga],
+  scene: [Precarga,MenuPrincipal,MenuPausa,ControlesPrinc,ControlesPaus,OpcionesPrinc,OpcionesPaus,SeleccionMapa,Juego,FinNivel],
   physics: {
     default: 'arcade',
     arcade: {
@@ -18,7 +18,7 @@
 
 var game = new Phaser.Game(config);
 
-game.scene.add('Precarga', Pantalla.PrecargaInfo);
+game.scene.add('Precarga', Pantalla.Precarga);
 game.scene.add('MenuPrincipal', Pantalla.MenuPrincipal);
 game.scene.add('MenuPausa', Pantalla.MenuPausa);
 game.scene.add('ControlesPrinc', Pantalla.ControlesPrinc);
