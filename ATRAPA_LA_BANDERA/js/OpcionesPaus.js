@@ -6,6 +6,19 @@ class OpcionesPaus extends Phaser.Scene {
 
 	}
 
+	preload(){
+
+		//MENU PAUSA
+		this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
+		this.load.image('menuPausa', 'assets/img/MenuPausa/menuPausa.png');
+
+		this.load.image('reanudar', 'assets/img/MenuPausa/reanudar.png');
+		this.load.image('opetions', 'assets/img/MenuPausa/opciones.png');
+		this.load.image('controles', 'assets/img/MenuPausa/controles.png');
+		this.load.image('abandonar', 'assets/img/MenuPausa/abandonar.png');
+
+	}
+
 	create(){
 		this.add.sprite (80, 40, 'fondoOpciones');
 		this.add.sprite(566, 77, 'opciones');

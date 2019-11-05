@@ -1,63 +1,39 @@
 class Juego extends Phaser.Scene{
 	constructor(){
 		super({key: "Juego"});
-    var player1;
-    var player2;
-    var bandera;
 	}
 
   preload(){
 
-      //Sprite del fondo
-      this.load.image("fondo","assets/img/Fondo.jpg");
+		      //Sprite del fondo
+		      this.load.image("fondo","../assets/img/Fondo.jpg");
 
-      //Sprite del muñeco para pruebas
-      this.load.image("quieto","../assets/icons/Jugador-rojo.png");
+		      //Sprite del muñeco para pruebas
+		      this.load.image("quieto","../assets/icons/Jugador-rojo.png");
 
-      //Plataforma
-      this.load.image("pltf","assets/icons/plt.png");
+		      //Plataforma
+		      this.load.image("pltf","../assets/icons/plt.png");
 
-      //Sprite de BANDERA
-      this.load.image("bandera","assets/icons/bandera_temporal.png")
+		      //Sprite de BANDERA
+		      this.load.image("bandera","../assets/icons/bandera_temporal.png")
 
-      //sprites de movimientos
-			this.load.spritesheet('correr','assets/correr.png',{frameHeight: 240, frameWidth:250})
-	    this.load.spritesheet('ap_ab','assets/ap_ab.png',{frameHeight: 240, frameWidth:250})
-	    this.load.spritesheet('ap_arr','assets/ap_arr.png',{frameHeight: 240, frameWidth:250})
-	    this.load.spritesheet('quieto','assets/quieto.png',{frameHeight: 240, frameWidth:250})
-	    this.load.spritesheet('salto','assets/salto.png',{frameHeight: 240, frameWidth:250})
-	    this.load.spritesheet('golpe_arr','assets/gol_arr.png',{frameHeight: 240, frameWidth:250})
-
-//investiga a ver y si no, las quitamos y a ver si con eso funciona
+		      //sprites de movimientos
+					this.load.spritesheet('correr','../assets/animations/correr.png',{frameHeight: 240, frameWidth:250})
+			    this.load.spritesheet('ap_ab','../assets/animations/ap_ab.png',{frameHeight: 240, frameWidth:250})
+			    this.load.spritesheet('ap_arr','../assets/animations/ap_arr.png',{frameHeight: 240, frameWidth:250})
+			    this.load.spritesheet('quieto','../assets/animations/quieto.png',{frameHeight: 240, frameWidth:250})
+			    this.load.spritesheet('salto','../assets/animations/salto.png',{frameHeight: 240, frameWidth:250})
+			    this.load.spritesheet('golpe_arr','../assets/animations/gol_arr.png',{frameHeight: 240, frameWidth:250})
 }
 
   create(){
-
-    // load the map
-    map = this.make.tilemap({key: 'map'});
-
-    // tiles for the ground layer
-    var groundTiles = map.addTilesetImage('tiles');
-    // create the ground layer
-    groundLayer = map.createDynamicLayer('World', groundTiles, 0, 0);
-
-    // set the boundaries of our game world
-    this.physics.world.bounds.width = groundLayer.width;
-    this.physics.world.bounds.height = groundLayer.height;
-
-      this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-      // make the camera follow the player
-      this.cameras.main.startFollow(player1);
-
-      // set background color, so the sky is not black
-      this.cameras.main.setBackgroundColor('#ccccff');
 
       //Centro del canvas
       const cW= this.sys.game.config.width/2;
       const cH= this.sys.game.config.height/2;
 
       //Creación del fondo del juego
-      fondo = this.add.image(cW,cH,"fondo");
+      var fondo = this.add.image(cW,cH,"fondo");
       fondo.setScale(0.5);
       fondo.setOrigin(0.5,0.5)
 
@@ -66,7 +42,7 @@ class Juego extends Phaser.Scene{
       platforms.create(450, 400, 'pltf').setScale(2,1).refreshBody();
 
       //Crear bandera
-      bandera = this.physics.add.image();
+      var bandera = this.physics.add.image();
       bandera = this.physics.add.sprite(350, 150, 'bandera');
       bandera.setBounce(0.2);
       bandera.setCollideWorldBounds(true);
@@ -74,19 +50,27 @@ class Juego extends Phaser.Scene{
       //Creacion de los jugadores
 
       //Jugador 1
-      player1 = this.physics.add.sprite(250,150,'cizq',2);
+      var player1 = this.physics.add.sprite(250,150,'cizq',2);
       player1.flipX=true;
       player1.setCollideWorldBounds(true);
       player1.setBounce(0.3);
       player1.setOrigin(0.5,1)
 
       //Jugador 2
-      player2 = this.physics.add.sprite(450,150,'cizq',2);
+      var player2 = this.physics.add.sprite(450,150,'cizq',2);
       player2.flipX=false;
       player2.setCollideWorldBounds(true);
       player2.setBounce(0.3);
       player2.setOrigin(0.5,1)
 
+
+
+      this.cameras.main.setBounds(0, 0, window.widthInPixels, window.heightInPixels);
+      // make the camera follow the player
+      this.cameras.main.startFollow(player1);
+
+      // set background color, so the sky is not black
+      this.cameras.main.setBackgroundColor('#ccccff');
 			//Creacion de animaciones
 
 			    //Anim correr
@@ -144,9 +128,6 @@ class Juego extends Phaser.Scene{
           frameRate:6
       });
 
-
-      console.log('Se cargó game.js')
-
       //Colision con plataforma
       this.physics.add.collider(player1, platforms);
       this.physics.add.collider(player2, platforms);
@@ -156,15 +137,15 @@ class Juego extends Phaser.Scene{
       this.physics.add.overlap(player2, bandera, collectBandera, null, this);
 
       //Controles por teclado
-      cursor=this.input.keyboard.createCursorKeys()
-      A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-      D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-      W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-      P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
-      O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
-			L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L)
+      var cursor=this.input.keyboard.createCursorKeys()
+      var A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+      var D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+      var W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+      var P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+      var O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+			var L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L)
 
-      game.camera.follow(player1);
+      game.camera.startFollow(player1);
 
   }
   update(time, delta){
@@ -243,7 +224,7 @@ class Juego extends Phaser.Scene{
 
 }
 
-function colletBandera (player, bandera)
+function collectBandera (player, bandera)
 {
     bandera.disableBody(true, true);
     player.ownBandera = true;

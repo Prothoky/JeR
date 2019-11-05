@@ -5,6 +5,18 @@ class OpcionesPrinc extends Phaser.Scene {
 		super({key: "OpcionesPrinc"});
 
 	}
+	preload(){
+		//MENU OPCIONES
+		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/fondoOpciones.png'); //FONDO
+		this.load.image('cuadroVolumen', 'assets/img/MenuOpciones/cuadroVolumen.png');//CUADRO VOLUMEN
+		this.load.image('opciones', 'assets/img/MenuOpciones/opciones.png'); //titulo opciones
+		this.load.image('volumen', 'assets/img/MenuOpciones/volumen.png'); //titulo volumen
+
+		this.load.image('bajarVolumen', 'assets/img/MenuOpciones/bajarVolumen.png');
+		this.load.image('subirVolumen', 'assets/img/MenuOpciones/subirVolumen.png');
+		this.load.image('quitarVolumen', 'assets/img/MenuOpciones/quitarVolumen.png');
+		this.load.image('volverOpciones', 'assets/img/MenuOpciones/volver.png');
+	}
 
 	create(){
 		this.add.sprite (80, 40, 'fondoOpciones');

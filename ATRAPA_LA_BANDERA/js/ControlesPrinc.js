@@ -6,6 +6,11 @@ class ControlesPrinc extends Phaser.Scene {
 
 	}
 
+	preload(){
+		//MENU CONTROLES
+		this.load.image('fondoControles', 'assets/img/MenuControles/fondoControles.png'); //FONDO
+		this.load.image('volverControles', 'assets/img/MenuControles/volver.png'); //BOTON VOLVER
+	}
 	create(){
 
 		this.add.sprite (80, 40, 'fondoControles');

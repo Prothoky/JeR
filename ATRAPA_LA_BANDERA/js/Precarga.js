@@ -2,17 +2,13 @@ class Precarga extends Phaser.Scene{
 
 	constructor(){
 		super({key: "Precarga"});
-		var Pantalla = {
-			_WIDTH: 320,
-			_HEIGHT: 480
-		};
+
 	}
 
 		preload(){
 
 			//cargamos el fondo generico
 			this.load.image('fondoTotal', 'assets/img/fondoMenus.png');
-
 
 			//MENU PRINCIPAL
 			this.load.image('fondoMenuPrinc', 'assets/img/MenuPrincipal/fondoMP.jpg'); //FONDO
@@ -47,13 +43,10 @@ class Precarga extends Phaser.Scene{
 			this.load.spritesheet('opciones', 'assets/img/MenuPausa/opciones.png');
 			this.load.spritesheet('controles', 'assets/img/MenuPausa/controles.png');
 			this.load.spritesheet('abandonar', 'assets/img/MenuPausa/abandonar.png');
-
 		}
 
 		create(){
-
 			//Cuando se haya cargado todo, iremos al Menu Principal
-			this.game.state.start('MenuPrincipal');
-
+			this.scene.add('MenuPrincipal');
 		}
 }
