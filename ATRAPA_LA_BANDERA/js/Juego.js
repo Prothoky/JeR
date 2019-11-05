@@ -21,11 +21,12 @@ class Juego extends Phaser.Scene{
       this.load.image("bandera","assets/icons/bandera_temporal.png")
 
       //sprites de movimientos
-      this.load.spritesheet('cizq','assets/animations/animacion_correr.png',{frameHeight: 250, frameWidth:250});
-      this.load.spritesheet('ap_ab','assets/animations/ap_ab.png',{frameHeight: 192, frameWidth:140});
-      this.load.spritesheet('ap_arr','assets/animations/ap_arr.png',{frameHeight: 192, frameWidth:155});
-      this.load.spritesheet('quieto','assets/icons/Jugador-rojo.png',{frameHeight: 250, frameWidth:250});
-      this.load.spritesheet('salto','assets/animations/salto.png',{frameHeight: 192, frameWidth:140});
+			this.load.spritesheet('correr','assets/correr.png',{frameHeight: 240, frameWidth:250})
+	    this.load.spritesheet('ap_ab','assets/ap_ab.png',{frameHeight: 240, frameWidth:250})
+	    this.load.spritesheet('ap_arr','assets/ap_arr.png',{frameHeight: 240, frameWidth:250})
+	    this.load.spritesheet('quieto','assets/quieto.png',{frameHeight: 240, frameWidth:250})
+	    this.load.spritesheet('salto','assets/salto.png',{frameHeight: 240, frameWidth:250})
+	    this.load.spritesheet('golpe_arr','assets/gol_arr.png',{frameHeight: 240, frameWidth:250})
 
 //investiga a ver y si no, las quitamos y a ver si con eso funciona
 }
@@ -86,44 +87,53 @@ class Juego extends Phaser.Scene{
       player2.setBounce(0.3);
       player2.setOrigin(0.5,1)
 
-      //Creacion de animaciones
+			//Creacion de animaciones
 
-      //Anim correr
-      this.anims.create({
-          key: 'correr_izq',
-          frames: this.anims.generateFrameNumbers('cizq',{
-              frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-          }),
-          repeat:-1,
-          frameRate:24
-      })
-      //Anim parado
-      this.anims.create({
-          key: 'quieto',
-          frames: this.anims.generateFrameNumbers('quieto',{
-              frames: [0]
-          }),
-          repeat:1,
-          frameRate:24
-      });
-      //Anim apuntando arriba
-      this.anims.create({
-          key: 'ap_ab',
-          frames: this.anims.generateFrameNumbers('ap_ab',{
-              frames: [0,1,2,3,4,5,6,7,8,9,10,11]
-          }),
-          repeat:1,
-          frameRate:24
-      });
-      //Anim apuntando arriba
-      this.anims.create({
-          key: 'ap_arr',
-          frames: this.anims.generateFrameNumbers('ap_arr',{
-              frames: [0,1,2,3,4,5,6,7,8,9,10,11]
-          }),
-          repeat:1,
-          frameRate:24
-      });
+			    //Anim correr
+			    this.anims.create({
+			        key: 'correr',
+			        frames: this.anims.generateFrameNumbers('correr',{
+			            frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+			        }),
+			        repeat:-1,
+			        frameRate:24
+			    })
+			    //Anim parado
+			    this.anims.create({
+			        key: 'quieto',
+			        frames: this.anims.generateFrameNumbers('quieto',{
+			            frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+			        }),
+			        repeat:1,
+			        frameRate:24
+			    });
+			    //Anim apuntando arriba
+			    this.anims.create({
+			        key: 'ap_ab',
+			        frames: this.anims.generateFrameNumbers('ap_ab',{
+			            frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+			        }),
+			        repeat:0,
+			        frameRate:24
+			    });
+			    //Anim apuntando arriba
+			    this.anims.create({
+			        key: 'ap_arr',
+			        frames: this.anims.generateFrameNumbers('ap_arr',{
+			            frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+			        }),
+			        repeat:0,
+			        frameRate:24
+			    });
+			    //Anim golpe arriba
+			    this.anims.create({
+			        key: 'golpe_arr',
+			        frames: this.anims.generateFrameNumbers('golpe_arr',{
+			            frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+			        }),
+			        repeat:0,
+			        frameRate:24
+			    });
       //Anim salto (no funciona)
       this.anims.create({
           key: 'salto',
@@ -152,6 +162,7 @@ class Juego extends Phaser.Scene{
       W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
       P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
       O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+			L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L)
 
       game.camera.follow(player1);
 
@@ -166,12 +177,12 @@ class Juego extends Phaser.Scene{
       if(cursor.right.isDown){
           player1.setVelocityX(350)
           player1.flipX=true;
-          player1.anims.play('correr_izq',true);
+          player1.anims.play('correr',true);
       }else if(cursor.left.isDown){
           player1.setVelocityX(-350)
           //player1.x=player1.x-8;
           player1.flipX=false;
-          player1.anims.play('correr_izq',true);
+          player1.anims.play('correr',true);
           //player1.body.velocity.x=-120
       }else if (cursor.up.isDown && player1.body.touching.down)
       {
@@ -180,13 +191,15 @@ class Juego extends Phaser.Scene{
       }
       else
       {
-          player1.setVelocityX(0);
-          if(P.isDown){
-              player1.anims.play('ap_ab',true);
-          }else if(O.isDown){
-              player1.anims.play('ap_arr',true);
-          }else
-          player1.anims.play('quieto',true);
+					player1.setVelocityX(0);
+					if(P.isDown){
+						player1.anims.play('ap_ab',true);
+					}else if(O.isDown){
+						player1.anims.play('ap_arr',true);
+					}else if(L.isDown){
+						player1.anims.play('golpe_arr',true);
+					}else
+						player1.anims.play('quieto',true);
       }
 
 
