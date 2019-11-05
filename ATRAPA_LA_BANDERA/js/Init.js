@@ -1,4 +1,4 @@
-var config={
+  var config={
   type: Phaser.CANVAS,
   width: 1600,
   height:720,
@@ -27,7 +27,6 @@ game.state.add('OpcionesPaus', Pantalla.OpcionesPaus);
 game.state.add('SeleccionMapa', Pantalla.SeleccionMapa);
 game.state.add('Juego', Pantalla.Juego);
 game.state.add('FinNivel', Pantalla.FinNivel);
-
 game.state.start('Precarga');
 
 function preload(){

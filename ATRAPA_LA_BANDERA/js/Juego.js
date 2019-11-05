@@ -143,6 +143,9 @@ Pantalla.Juego.prototype = {
       this.physics.add.collider(player2, platforms);
       this.physics.add.collider(bandera, platforms);
 
+      this.physics.add.overlap(player1, bandera, collectBandera, null, this);
+      this.physics.add.overlap(player2, bandera, collectBandera, null, this);
+
       //Controles por teclado
       cursor=this.input.keyboard.createCursorKeys()
       A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -226,4 +229,10 @@ Pantalla.Juego.prototype = {
 
   }
 
+}
+
+function colletBandera (player, bandera)
+{
+    bandera.disableBody(true, true);
+    player.ownBandera = true;
 }
