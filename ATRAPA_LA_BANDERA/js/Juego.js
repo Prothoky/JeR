@@ -3,6 +3,7 @@ Pantalla.Juego = function(game) {};
 
 var player1;
 var player2;
+var bandera;
 
 Pantalla.Juego.prototype = {
 
@@ -12,10 +13,13 @@ Pantalla.Juego.prototype = {
       this.load.image("fondo","assets/img/Fondo.jpg");
 
       //Sprite del muñeco para pruebas
-      this.load.image("player1","assets/img/Jugador-rojo.png");
+      this.load.image("quieto","../assets/icons/Jugador-rojo.png");
 
       //Plataforma
       this.load.image("pltf","assets/icons/plt.png");
+
+      //Sprite de BANDERA
+      this.load.image("bandera","assets/icons/bandera_temporal.png")
 
       //sprites de movimientos
       this.load.spritesheet('cizq','assets/animations/animacion_correr.png',{frameHeight: 250, frameWidth:250});
@@ -24,7 +28,8 @@ Pantalla.Juego.prototype = {
       this.load.spritesheet('quieto','assets/icons/Jugador-rojo.png',{frameHeight: 250, frameWidth:250});
       this.load.spritesheet('salto','assets/animations/salto.png',{frameHeight: 192, frameWidth:140});
 
-  },
+//investiga a ver y si no, las quitamos y a ver si con eso funciona
+},
 
   create: function(){
 
@@ -59,6 +64,12 @@ Pantalla.Juego.prototype = {
       //Crear plataforma
       var platforms = this.physics.add.staticGroup();
       platforms.create(450, 400, 'pltf').setScale(2,1).refreshBody();
+
+      //Crear bandera
+      bandera = this.physics.add.image();
+      bandera = this.physics.add.sprite(350, 150, 'bandera');
+      bandera.setBounce(0.2);
+      bandera.setCollideWorldBounds(true);
 
       //Creacion de los jugadores
 
@@ -130,7 +141,7 @@ Pantalla.Juego.prototype = {
       //Colision con plataforma
       this.physics.add.collider(player1, platforms);
       this.physics.add.collider(player2, platforms);
-
+      this.physics.add.collider(bandera, platforms);
 
       //Controles por teclado
       cursor=this.input.keyboard.createCursorKeys()
@@ -146,8 +157,8 @@ Pantalla.Juego.prototype = {
   update: function (time, delta){
 
       //Para calcular la distancia entre los jugadores
-      var dis = Math.abs(player2.x-player1.x)
-      console.log(dis)
+      var dis = Math.abs(player2.x - player1.x);
+      console.log(dis);
 
       //Movimiento J1
       if(cursor.right.isDown){

@@ -35,6 +35,13 @@
 
 <body>
   <div id='game'><script type="text/javascript" src="./js/Init.js"></script></div>
+  <script>
+    function draw() {
+      var ctx = (document.getElementById('game'));
+      ctx.canvas.width  = window.innerWidth;
+      ctx.canvas.height = window.innerHeight;
+    }
+  </script>
 </body>
 
 <footer>
