@@ -155,7 +155,7 @@ class Juego extends Phaser.Scene{
 
       game.camera.follow(player1);
 
-  },
+  }
   update: function (time, delta){
 
       //Para calcular la distancia entre los jugadores
