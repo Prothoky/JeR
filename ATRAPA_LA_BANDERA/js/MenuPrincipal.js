@@ -25,11 +25,11 @@ Pantalla.MenuPrincipal.prototype = {
 		//BitmapText(game, x, y, font, text, size, align)
 
 		//añadimos el texto donde pone el nickname 1 con atari smoth
-		this.nickName1 = this.add.bitmapText(400, 320, 'atari-smooth', 'NICKNAME 1:', 21);
+		this.nickName1 = this.add.bitmapText(400, 320, 'atari-smooth', 'JUGADOR 1:', 21);
 		//aqui deberiamos poner el cuadro a rellenar con el nickname
 
 		//añadimos el texto donde pone el nickname 1 con atari smoth
-		this.nickName2 = this.add.bitmapText(1000, 320, 'atari-smooth', 'NICKNAME 2:', 21);
+		this.nickName2 = this.add.bitmapText(1000, 320, 'atari-smooth', 'JUGADOR 2:', 21);
 		//aqui deberiamos poner el cuadro a rellenar con el nickname
 
 
