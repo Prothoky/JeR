@@ -211,3 +211,5 @@ Pantalla.Juego.prototype = {
       game.camera.follow(player1);
 
   }
+
+}
