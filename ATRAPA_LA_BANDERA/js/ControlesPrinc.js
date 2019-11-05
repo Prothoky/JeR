@@ -1,8 +1,12 @@
-Pantalla.ControlesPrinc = function (game){};
+class ControlesPinc extends Phaser.Scene {
 
-Pantalla.ControlesPrinc.prototype = {
+	constructor(){
 
-	create: function(){
+		super ({key: "ControlesPinc"});
+
+	}
+
+	create(){
 
 		this.add.sprite (80, 40, 'fondoControles');
 
@@ -13,10 +17,9 @@ Pantalla.ControlesPrinc.prototype = {
 
 	},
 
-	volver: function() {
+	volver() {
 
 		//una vez hecho esto, vamo a las instrucciones
 		this.game.state.start('MenuPrincipal');
 	}
-
-};
+}
