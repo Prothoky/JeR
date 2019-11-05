@@ -1,8 +1,8 @@
-class ControlesPinc extends Phaser.Scene {
+class ControlesPrinc extends Phaser.Scene {
 
 	constructor(){
 
-		super ({key: "ControlesPinc"});
+		super ({key: "ControlesPrinc"});
 
 	}
 
@@ -15,7 +15,7 @@ class ControlesPinc extends Phaser.Scene {
 		//this.botonVolver.anchor.set(-2.5,-3);
 		this.botonVolver.input.useHandCursor = true;
 
-	},
+	}ç
 
 	volver() {
 

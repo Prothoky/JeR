@@ -26,23 +26,23 @@ class MenuPausa extends Phaser.Scene{
 		this.botonAbandonar = this.add.button(566.5, 552.87, 'abandonar', this.abandonar, this, 2, 0, 1);
 		this.botonAbandonar.input.useHandCursor = true;
 
-	},
+	}
 
 	reanudar() {
 
 		//una vez hecho esto, vamo a las instrucciones
 		this.game.state.start('Juego');
-	},
+	}
 
 	opciones(){
 
 		this.game.state.start('OpcionesPaus');
-	},
+	}
 
 	controles(){
 
 		this.game.state.start('ControlesPaus');
-	},
+	}
 
 	abandonar(){
 

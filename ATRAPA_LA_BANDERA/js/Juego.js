@@ -155,8 +155,8 @@ class Juego extends Phaser.Scene{
 
       game.camera.follow(player1);
 
-  },
-  update: function (time, delta){
+  }
+  update(time, delta){
 
       //Para calcular la distancia entre los jugadores
       var dis = Math.abs(player2.x - player1.x);
@@ -218,9 +218,9 @@ class Juego extends Phaser.Scene{
           player2.x=player2.x+100
       }
 
-  },
+  }
 
-  render: function() {
+  render() {
 
       game.debug.cameraInfo(game.camera, 32, 32);
       game.debug.spriteCoords(player1, 32, 500);

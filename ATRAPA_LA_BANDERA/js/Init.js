@@ -18,16 +18,6 @@
 
 var game = new Phaser.Game(config);
 
-game.scene.add('Precarga', Pantalla.Precarga);
-game.scene.add('MenuPrincipal', Pantalla.MenuPrincipal);
-game.scene.add('MenuPausa', Pantalla.MenuPausa);
-game.scene.add('ControlesPrinc', Pantalla.ControlesPrinc);
-game.scene.add('ControlesPaus', Pantalla.ControlesPaus);
-game.scene.add('OpcionesPrinc', Pantalla.OpcionesPrinc);
-game.scene.add('OpcionesPaus', Pantalla.OpcionesPaus);
-game.scene.add('SeleccionMapa', Pantalla.SeleccionMapa);
-game.scene.add('Juego', Pantalla.Juego);
-game.scene.add('FinNivel', Pantalla.FinNivel);
 game.scene.start('Precarga');
 
 function preload(){
