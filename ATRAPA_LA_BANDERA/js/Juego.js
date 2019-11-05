@@ -12,7 +12,7 @@ Pantalla.Juego.prototype = {
       this.load.image("fondo","assets/img/Fondo.jpg");
 
       //Sprite del muñeco para pruebas
-      this.load.image("player1","assets/img/Jugador-rojo.png");
+      this.load.image("quieto","../assets/icons/Jugador-rojo.png");
 
       //Plataforma
       this.load.image("pltf","assets/icons/plt.png");
