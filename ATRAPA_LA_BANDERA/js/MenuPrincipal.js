@@ -1,16 +1,18 @@
+class MenuPrincipal extends Phaser.Scene{
 
-Pantalla.MenuPrincipal = function(game) {};
+	constructor(){
+		super ({key: "MenuPrincipal"});
+	}
 
-Pantalla.MenuPrincipal.prototype = {
+	Pantalla.MenuPrincipal = function(game) {};
 
-	preload: function(){
-
+	preload(){
 		//añadimos el tipo de letra atari-smooth
 		this.load.bitmapFont('atari-smooth', 'assets/fonts/bitmap/atari-smooth.png', 'assets/fonts/bitmap/atari-smooth.xml');
-	},
 
-	create: function(){
+	}
 
+	create(){
 		this.add.sprite (0, 0, 'fondoMenuPrinc');
 
 		//añadimos el sprite del titulo
@@ -56,26 +58,21 @@ Pantalla.MenuPrincipal.prototype = {
 		this.botonSalir = this.add.button(930, 610, 'botonSalir', this.salir, this, 2, 0, 1);
 		//this.botonSalir.anchor.set(-4.3, -10);
 		this.botonSalir.input.useHandCursor = true;
+	}
 
-
-	},
-
-	iniciarJuego: function() {
-		//una vez hecho esto, vamo a las instrucciones
+	iniciarJuego(){
 		this.game.state.start('Juego');
-	},
+	}
 
-	verControles: function(){
-
+	verControles(){
 		this.game.state.start('ControlesPrinc');
-	},
+	}
 
-	verOpciones: function(){
-
+	verOpciones(){
 		this.game.state.start('OpcionesPrinc');
-	},
+	}
 
-	salir: function(){
+	salir(){
 
 	}
-};
+}
