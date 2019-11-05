@@ -1,10 +1,8 @@
-class MenuPrincipal extends Phaser.Scene{
+	class MenuPrincipal extends Phaser.Scene{
 
 	constructor(){
 		super ({key: "MenuPrincipal"});
 	}
-
-	Pantalla.MenuPrincipal = function(game) {};
 
 	preload(){
 		//añadimos el tipo de letra atari-smooth
