@@ -187,14 +187,22 @@
 				frameRate:24
 			});
 			//Anim salto (no funciona)
-			// 	this.anims.create({
-			// 		key: 'JUMP',
-			// 		frames: this.anims.generateFrameNumbers('salto',{
-			// 			frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-			// 		}),
-			// 		repeat:1,
-			// 		frameRate:6
-			// });
+			 this.anims.create({
+			 		key: 'JUMP',
+			 		frames: this.anims.generateFrameNumbers('J1JUMP',{
+			 			frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+			 		}),
+			 		repeat:1,
+			 		frameRate:13
+			 });
+			 this.anims.create({
+			 		key: 'JUMP2',
+			 		frames: this.anims.generateFrameNumbers('J2JUMP',{
+			 			frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+			 		}),
+			 		repeat:1,
+			 		frameRate:13
+			 });
 
 			if(game.onfase==0){
 
@@ -562,8 +570,8 @@
 				var dis = Math.abs(game.player2.x - game.player1.x);
 
 				//Movimiento J1 (faltan movimientos de apuntar)
-
-				if (this.W.isDown && game.player1.body.touching.down)
+				if(game.player1.body.touching.down){
+				if (this.W.isDown)
 				{
 					game.player1.setVelocityY(-550);
 				}
@@ -590,6 +598,19 @@
 					}else
 					game.player1.anims.play('IDLE',true);
 				}
+			}else{
+				if(this.A.isDown){
+					game.player1.setVelocityX(-550);
+					game.player1.flipX=false;
+					game.player1.anims.play('JUMP',true);
+				}else if(this.D.isDown){
+					game.player1.setVelocityX(550);
+					game.player1.flipX=true;
+					game.player1.anims.play('JUMP',true);
+				}else{
+					game.player1.anims.play('JUMP',true);
+				}
+			}
 
 /*
 				//Condicionantes del ataque (prueba)
@@ -602,8 +623,8 @@
 */
 
 				//Movimiento J2
-
-				if (this.cursor.up.isDown && game.player2.body.touching.down)
+				if(game.player2.body.touching.down){
+				if (this.cursor.up.isDown )
 				{
 					game.player2.setVelocityY(-550);
 				}
@@ -630,6 +651,21 @@
 					}else
 					game.player2.anims.play('IDLE2',true);
 				}
+			}else{
+
+				if(this.cursor.left.isDown){
+					game.player2.setVelocityX(-550);
+					game.player2.flipX=false;
+					game.player2.anims.play('JUMP2',true);
+				}else if(this.cursor.right.isDown){
+					game.player2.setVelocityX(550);
+					game.player2.flipX=true;
+					game.player2.anims.play('JUMP2',true);
+				}else{
+					game.player2.anims.play('JUMP2',true);
+				}
+
+			}
 				if(!game.player2.body.touching.down && game.player2.y > 800){
 					respawn(game.player2);
 				}
