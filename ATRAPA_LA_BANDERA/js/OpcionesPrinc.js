@@ -40,11 +40,11 @@ class OpcionesPrinc extends Phaser.Scene {
 		var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.5);
 
 		//BOTONES DE VOLUMEN
-		this.subirVolumen = this.add.image(x*4/8, y*9/8, 'subirVolumen').setScale(0.5);
+		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
 		this.subirVolumen.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.subir());
 
-		this.bajarVolumen = this.add.image(x*12/8, y*9/8, 'bajarVolumen').setScale(0.5);
+		this.bajarVolumen = this.add.image(x*10/8, y*9/8, 'bajarVolumen').setScale(0.5);
 		this.bajarVolumen.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.bajar());
 
