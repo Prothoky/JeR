@@ -81,7 +81,7 @@
 			//Anim correr(funciona)
 			this.anims.create({
 				key: 'RUN',
-				frames: this.anims.generateFrameNumbers('RUN',{
+				frames: this.anims.generateFrameNumbers('J1RUN',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 				}),
 				repeat:-1,
@@ -90,7 +90,7 @@
 			//Anim parado (funciona)
 			this.anims.create({
 				key: 'IDLE',
-				frames: this.anims.generateFrameNumbers('IDLE',{
+				frames: this.anims.generateFrameNumbers('J1IDLE',{
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -99,7 +99,7 @@
 			//Anim apuntando arriba
 			this.anims.create({
 				key: 'SCOPE_DOWN',
-				frames: this.anims.generateFrameNumbers('IDLE_SCOPE_DOWN',{
+				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_DOWN',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -108,7 +108,7 @@
 			//Anim apuntando arriba
 			this.anims.create({
 				key: 'SCOPE_UP',
-				frames: this.anims.generateFrameNumbers('IDLE_SCOPE_UP',{
+				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_UP',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -117,7 +117,7 @@
 			//Anim golpe arriba (funciona)
 			this.anims.create({
 				key: 'HIT_UP',
-				frames: this.anims.generateFrameNumbers('HIT_UP',{
+				frames: this.anims.generateFrameNumbers('J1HIT_UP',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
 				repeat:0,
