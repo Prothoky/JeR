@@ -1,18 +1,31 @@
-class Fase1_Left extends Phaser.Scene{
+class Fase2_Rigth extends Phaser.Scene{
 	constructor(){
-		super({key: "Fase1_Left"});
+		super({key: "Fase2_Rigth"});
+	}
+
+	initialize(){
+		var bandera;
+		var player1;
+		var player2;
+		var cursor;
+		var A;
+		var D;
+		var W;
+		var P;
+		var O;
+		var L;
 	}
 
   preload(){
 		this.fase=0;
   	//Sprite del fondo
-		this.load.image("fondo1left","../assets/map/Izquierda1/Fondo1.jpg");
-		this.load.image("sobrefondo1left","../assets/map/Izquierda1/SobreFondo1.png");
+		this.load.image("fondo2rigth","../assets/map/Derecha2/Fondo2.jpg");
+		this.load.image("sobrefondo2rigth","../assets/map/Deracha2/SobreFondo2.png");
 
   	//Sprite del muñeco para pruebas
   	this.load.image("maniqui","../assets/icons/Jugador-rojo.png");
 
-  	//orma
+  	//Plataforma
   	this.load.image("pltf","../assets/icons/plt.png");
 
   	//Sprite de BANDERA
@@ -45,18 +58,9 @@ class Fase1_Left extends Phaser.Scene{
     const cW= this.sys.game.config.width/2;
     const cH= 720/2;
 
-		//Crear plataforma
-		var platforms = this.physics.add.staticGroup();
-		platforms.create(1500, 575, 'pltf').setScale(3.5,0.5).refreshBody();
-		platforms.create(475, 440, 'pltf').setScale(0.25,0.5).refreshBody();
-		platforms.create(105, 335, 'pltf').setScale(0.25,0.5).refreshBody();
-		platforms.create(-275, 270, 'pltf').setScale(0.45,0.5).refreshBody();
-		platforms.create(-850, 325, 'pltf').setScale(1.05,0.5).refreshBody();
-		platforms.create(-1325, 260, 'pltf').setScale(0.001,0.5).refreshBody();
-		platforms.create(-1900, 375, 'pltf').setScale(1.35,0.5).refreshBody();
 
     //Creación del fondo del juego
-		var fondo = this.add.image(0,cH,"fondo1left");
+		var fondo = this.add.image(0,cH,"fondo2rigth");
 		//set the width of the sprite
 		fondo.displayHeigth = cH*2;
 		//scale evenly
@@ -72,7 +76,7 @@ class Fase1_Left extends Phaser.Scene{
     //Creacion de los jugadores
 
     //Jugador 1
-    this.player1 = this.physics.add.sprite(2240,450,'maniqui',2);
+    this.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
     this.player1.flipX=true;
     this.player1.setCollideWorldBounds(false);
 		this.player1.setBounce(0.3);
@@ -80,19 +84,22 @@ class Fase1_Left extends Phaser.Scene{
 		this.player1.ownBandera=false;
 
     //Jugador 2
-    this.player2 = this.physics.add.sprite(2000,450,'maniqui',2);
+    this.player2 = this.physics.add.sprite(420,450,'maniqui',2);
     this.player2.flipX=false;
     this.player2.setCollideWorldBounds(false);
     this.player2.setBounce(0.3);
     this.player2.setOrigin(0.5,1);
 		this.player2.ownBandera=false;
-		this.player2.setTint(0x0000ff);
 
-
-		var sobrefondo = this.add.image(0,cH,"sobrefondo1left");
+		var sobrefondo = this.add.image(0,cH,"sobrefondo2rigth");
 		sobrefondo.displayHeigth = cH*2;
 		sobrefondo.scaleX = fondo.scaleY;
 
+		//Crear plataforma
+		var platforms = this.physics.add.staticGroup();
+		platforms.create(0, 575, 'pltf').setScale(0.525,0.5).refreshBody();
+		platforms.create(-1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
+		platforms.create(1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
 
 		this.cameras.main.startFollow(this.bandera,false,1,1,0,200);
 
@@ -158,18 +165,16 @@ class Fase1_Left extends Phaser.Scene{
 		this.physics.add.collider(this.player2, platforms);
 		this.physics.add.collider(this.bandera, platforms);
 
+		//this.scene.add('Fase2_Rigth', new Fase2_Rigth);
+		//this.scene.add('Fase2_Left', new Fase2_Left);
 
 	}
 
   update(time, delta){
 
 		if(this.p1posx != this.player1.x){
-			console.log("Player1 X pos: " + this.player1.x);
+			console.log("Player1 pos: " + this.player1.x);
 			this.p1posx = this.player1.x;
-		}
-		if(this.p1posy != this.player1.y){
-			console.log("Player1 Y pos: " + this.player1.y);
-			this.p1posy = this.player1.y;
 		}
 		if(this.p2posx != this.player2.x){
 			console.log("Player2 pos: " + this.player2.x);
@@ -184,7 +189,7 @@ class Fase1_Left extends Phaser.Scene{
 
 			if (this.cursor.up.isDown && this.player1.body.touching.down)
 			{
-					this.player1.setVelocityY(-450);
+					this.player1.setVelocityY(-330);
 					//this.player1.anims.play('JUMP',true);
 			}
 			else if(this.cursor.left.isDown){
@@ -218,7 +223,7 @@ class Fase1_Left extends Phaser.Scene{
 
       if (this.W.isDown && this.player2.body.touching.down)
       {
-          this.player2.setVelocityY(-450);
+          this.player2.setVelocityY(-330);
           //this.player2.anims.play('JUMP',true);
       }
       else if(this.A.isDown){
@@ -241,7 +246,6 @@ class Fase1_Left extends Phaser.Scene{
       if(this.P.isDown && dis<50 || this.O.isDown && dis<50 ){
           this.player2.x=this.player2.x+100
       }
-
 			if(!this.player2.body.touching.down && this.player2.y > 800){
 				respawn(this.player2);
 			}
@@ -253,13 +257,13 @@ class Fase1_Left extends Phaser.Scene{
 			if(hasTheFlag(this.player1)){
 					this.cameras.main.startFollow(this.player1,false,1,1,0,200);
 					if(this.player1.x < -2040){
-						this.scene.start('Fase2_Left');
+						this.scene.start('Fase1_Rigth');
 					}
 				}
 			else if(hasTheFlag(this.player2)){
 				this.cameras.main.startFollow(this.player2,false,1,1,0,200);
 				if(this.player2.x > 2040){
-					this.scene.start('Fase1_Rigth');
+					this.scene.start('FinNivel');
 				}
 
 			}

@@ -1,13 +1,12 @@
-class Fase1_Left extends Phaser.Scene{
+class Fase2_Left extends Phaser.Scene{
 	constructor(){
-		super({key: "Fase1_Left"});
+		super({key: "Fase2_Left"});
 	}
 
-  preload(){
-		this.fase=0;
+	preload(){
   	//Sprite del fondo
-		this.load.image("fondo1left","../assets/map/Izquierda1/Fondo1.jpg");
-		this.load.image("sobrefondo1left","../assets/map/Izquierda1/SobreFondo1.png");
+		this.load.image("fondo2letf","../assets/map/Izquierda2/Fondo2.jpg");
+		this.load.image("sobrefondo2left","../assets/map/Izquierda2/SobreFondo2.png");
 
   	//Sprite del muñeco para pruebas
   	this.load.image("maniqui","../assets/icons/Jugador-rojo.png");
@@ -56,7 +55,7 @@ class Fase1_Left extends Phaser.Scene{
 		platforms.create(-1900, 375, 'pltf').setScale(1.35,0.5).refreshBody();
 
     //Creación del fondo del juego
-		var fondo = this.add.image(0,cH,"fondo1left");
+		var fondo = this.add.image(0,cH,"fondo1");
 		//set the width of the sprite
 		fondo.displayHeigth = cH*2;
 		//scale evenly
@@ -89,7 +88,7 @@ class Fase1_Left extends Phaser.Scene{
 		this.player2.setTint(0x0000ff);
 
 
-		var sobrefondo = this.add.image(0,cH,"sobrefondo1left");
+		var sobrefondo = this.add.image(0,cH,"sobrefondo1");
 		sobrefondo.displayHeigth = cH*2;
 		sobrefondo.scaleX = fondo.scaleY;
 
@@ -253,7 +252,7 @@ class Fase1_Left extends Phaser.Scene{
 			if(hasTheFlag(this.player1)){
 					this.cameras.main.startFollow(this.player1,false,1,1,0,200);
 					if(this.player1.x < -2040){
-						this.scene.start('Fase2_Left');
+						this.scene.start('Fase1_Left');
 					}
 				}
 			else if(hasTheFlag(this.player2)){

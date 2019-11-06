@@ -263,7 +263,7 @@ class Fase1_Rigth extends Phaser.Scene{
 			else if(hasTheFlag(this.player2)){
 				this.cameras.main.startFollow(this.player2,false,1,1,0,200);
 				if(this.player2.x > 2040){
-					this.scene.start('Fase1_Rigth');
+					this.scene.start('Fase2_Rigth');
 				}
 
 			}
