@@ -9,22 +9,39 @@ class ControlesPrinc extends Phaser.Scene {
 	preload(){
 		//MENU CONTROLES
 		this.load.image('fondoControles', 'assets/img/MenuControles/fondoControles.png'); //FONDO
-		this.load.image('volverControles', 'assets/img/MenuControles/volver.png'); //BOTON VOLVER
+		this.load.image('volverControles', 'assets/img/MenuControles/volver.png', {frameHeight:347,frameWidth: 295}); //BOTON VOLVER
 	}
 	create(){
 
-		this.add.sprite (80, 40, 'fondoControles');
+		var height = game.config.height;
+		var width = game.config.width;
+
+		//get center of the canvas
+		var x = width/2 ;
+		var y = height/2;
+
+		var fondoControlesPaus = this.add.sprite(x, y, "fondoControles");
+
+		//set the width of the sprite
+		fondoControlesPaus.displayWidth = width;
+		//scale evenly
+		fondoControlesPaus.scaleX = fondoControlesPaus.scaleY;
+
+		var tituloControles = this.tituloControles = this.add.image(x, y*2/8, 'opciones').setScale(0.5);
+		//var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen').setScale(0.5);
+		//var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.5);
+
 
 		//BOTON VOLVER
-		this.botonVolver = this.add.button(612.5, 510, 'volverControles', this.volver, this, 2, 0, 1);
-		//this.botonVolver.anchor.set(-2.5,-3);
-		this.botonVolver.input.useHandCursor = true;
+		this.volverControles = this.add.image(x, y*14/8, 'volverControles').setScale(0.4);
+		this.volverControles.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.volver());
 
 	}
 
 	volver() {
 
 		//una vez hecho esto, vamo a las instrucciones
-		this.game.state.start('MenuPrincipal');
+		this.scene.start('MenuPrincipal');
 	}
 }
