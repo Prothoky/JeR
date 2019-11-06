@@ -536,29 +536,29 @@
 
 				//Movimiento J1 (faltan movimientos de apuntar)
 
-				if (game.W.isDown && game.player1.body.touching.down)
+				if (this.W.isDown && game.player1.body.touching.down)
 				{
 					game.player1.setVelocityY(-350);
 					//game.player2.anims.play('JUMP',true);
 				}
-				else if(game.A.isDown){
+				else if(this.A.isDown){
 					game.player1.setVelocityX(-550);
 					game.player1.flipX=false;
 					game.player1.anims.play('RUN',true);
-				}else if(game.D.isDown){
+				}else if(this.D.isDown){
 					game.player1.setVelocityX(550);
 					game.player1.flipX=true;
 					game.player1.anims.play('RUN',true);
 				}else
 				{
 					game.player1.setVelocityX(0);
-					if(game.Y.isDown){
+					if(this.Y.isDown){
 						console.log("Apuntar abajo");
 						game.player1.anims.play('SCOPE_DOWN',true);
-					}else if(game.T.isDown){
+					}else if(this.T.isDown){
 						console.log("Apuntar abajo");
 						game.player1.anims.play('SCOPE_UP',true);
-					}else if(game.G.isDown){
+					}else if(this.G.isDown){
 						console.log("Golpe arriba");
 						game.player1.anims.play('HIT_UP',true);
 					}else
@@ -577,29 +577,29 @@
 
 				//Movimiento J2
 
-				if (game.cursor.up.isDown && game.player2.body.touching.down)
+				if (this.cursor.up.isDown && game.player2.body.touching.down)
 				{
 					game.player2.setVelocityY(-350);
 					//game.player1.anims.play('JUMP',true);
 				}
-				else if(game.cursor.left.isDown){
+				else if(this.cursor.left.isDown){
 					game.player2.setVelocityX(-550)
 					game.player2.flipX=false;
 					game.player2.anims.play('RUN2',true);
-				}else if(game.cursor.right.isDown){
+				}else if(this.cursor.right.isDown){
 					game.player2.setVelocityX(550)
 					game.player2.flipX=true;
 					game.player2.anims.play('RUN2',true);
 				}else
 				{
 					game.player2.setVelocityX(0);
-					if(game.P.isDown){
+					if(this.P.isDown){
 						console.log("Apuntar abajo");
 						game.player2.anims.play('SCOPE_DOWN2',true);
-					}else if(game.O.isDown){
+					}else if(this.O.isDown){
 						console.log("Apuntar abajo");
 						game.player2.anims.play('SCOPE_UP2',true);
-					}else if(game.K.isDown){
+					}else if(this.K.isDown){
 						console.log("Golpe arriba");
 						game.player2.anims.play('HIT_UP2',true);
 					}else
