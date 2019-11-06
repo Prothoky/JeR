@@ -60,9 +60,13 @@
 			this.load.spritesheet('J2IDLE_SCOPE_UP','../assets/animations/JAAnimations/PARADO_APUNTADO_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE_SCOPE_DOWN','../assets/animations/JAAnimations/PARADO_APUNTADO_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2JUMP','../assets/animations/JAAnimations/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
+
+			//Musica del juego
+			this.load.audio('musica', '../assets/music/musicaJuego.mp3');
 }
 
 		create(){
+<<<<<<< HEAD
 		//Controles por teclado
 
 		//Controles J1(rojo)
@@ -83,6 +87,37 @@
 		this.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
 		this.K = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
 
+=======
+
+			//Musica
+			this.sound.pauseOnBlur=false;
+			var mj = this.sound.add('musica');
+			if(!game.playing){
+				mj.play();
+				game.playing=true;
+			}
+			this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
+
+
+			//Controles por teclado
+			//Controles J1(Rojo)
+			this.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+			this.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+			this.W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+			//Defensa y ataque J1
+			this.T = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
+			this.Y = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Y);
+			this.G = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.G);
+			this.H = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H);
+
+			//Controles J2(Azul)
+			this.cursor = this.input.keyboard.createCursorKeys();
+			//Defensa y ataque J2
+			this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+			this.P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+			this.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+			this.K = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+>>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 
 			//Centro del canvas
 			this.cW= this.sys.game.config.width/2;
@@ -113,6 +148,17 @@
 			this.anims.create({
 				key: 'IDLE',
 				frames: this.anims.generateFrameNumbers('J1IDLE',{
+<<<<<<< HEAD
+=======
+					frames: [0,1,2,3,4,5,6,7,8,9]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'IDLE2',
+				frames: this.anims.generateFrameNumbers('J2IDLE',{
+>>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -132,6 +178,17 @@
 			this.anims.create({
 				key: 'SCOPE_DOWN',
 				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_DOWN',{
+<<<<<<< HEAD
+=======
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'SCOPE_DOWN2',
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
+>>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -186,14 +243,22 @@
 
 
 			//Anim salto (no funciona)
-			// 	this.anims.create({
-			// 		key: 'JUMP',
-			// 		frames: this.anims.generateFrameNumbers('salto',{
-			// 			frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-			// 		}),
-			// 		repeat:1,
-			// 		frameRate:6
-			// });
+			 this.anims.create({
+			 		key: 'JUMP',
+			 		frames: this.anims.generateFrameNumbers('J1JUMP',{
+			 			frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+			 		}),
+			 		repeat:1,
+			 		frameRate:13
+			 });
+			 this.anims.create({
+			 		key: 'JUMP2',
+			 		frames: this.anims.generateFrameNumbers('J2JUMP',{
+			 			frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+			 		}),
+			 		repeat:1,
+			 		frameRate:13
+			 });
 
 			if(game.onfase==0){
 
@@ -422,7 +487,7 @@
 
 				//Jugador 1
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
-				game.player1.flipX=true;
+				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
 				game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
@@ -430,7 +495,7 @@
 
 				//Jugador 2
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
-				game.player2.flipX=false;
+				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
 				game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
@@ -482,7 +547,7 @@
 
 				//Jugador 1
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
-				game.player1.flipX=true;
+				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
 				game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
@@ -490,7 +555,7 @@
 
 				//Jugador 2
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
-				game.player2.flipX=false;
+				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
 				game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
@@ -526,6 +591,7 @@
 		}
 
 		update(time, delta){
+
 			if(!game.loaded){
 
 			}
@@ -540,10 +606,27 @@
 				}
 
 
+				//Musica
+				if(this.M.isDown && !game.MPulsed){
+					if(game.sound.mute){
+						game.sound.mute=false;
+						game.MPulsed=true;
+					}
+					else if(!game.sound.mute){
+						game.sound.mute=true;
+						game.MPulsed=true;
+					}
+				}
+				if(this.M.isUp){
+					game.MPulsed=false;
+				}
+
+
 				//Para calcular la distancia entre los jugadores
 				var dis = Math.abs(game.player2.x - game.player1.x);
 
 				//Movimiento J1 (faltan movimientos de apuntar)
+<<<<<<< HEAD
 
 				if (game.W.isDown && game.player1.body.touching.down)
 				{
@@ -555,15 +638,65 @@
 					game.player1.flipX=false;
 					game.player1.anims.play('RUN2',true);
 				}else if(game.D.isDown){
+=======
+				if(game.player1.body.touching.down){
+				if (this.W.isDown)
+				{
+					game.player1.setVelocityY(-450);
+				}
+				else if(this.A.isDown){
+					game.player1.setVelocityX(-550);
+					game.player1.flipX=false;
+					game.player1.anims.play('RUN',true);
+				}else if(this.D.isDown){
+>>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 					game.player1.setVelocityX(550);
 					game.player1.flipX=true;
 					game.player1.anims.play('RUN2',true);
 				}else
 				{
 					game.player1.setVelocityX(0);
+<<<<<<< HEAD
 					game.player1.anims.play('IDLE2',true);
+=======
+					if(this.Y.isDown){
+						console.log("Apuntar abajo");
+						game.player1.anims.play('SCOPE_DOWN',true);
+					}else if(this.T.isDown){
+						console.log("Apuntar abajo");
+						game.player1.anims.play('SCOPE_UP',true);
+					}else if(this.G.isDown){
+						console.log("Golpe arriba");
+						game.player1.anims.play('HIT_UP',true);
+					}else
+					game.player1.anims.play('IDLE',true);
 				}
+			}else{
+				if(this.A.isDown){
+					game.player1.setVelocityX(-550);
+					game.player1.flipX=false;
+					game.player1.anims.play('JUMP',true);
+				}else if(this.D.isDown){
+					game.player1.setVelocityX(550);
+					game.player1.flipX=true;
+					game.player1.anims.play('JUMP',true);
+				}else{
+					game.player1.anims.play('JUMP',true);
+				}
+			}
 
+/*
+				//Condicionantes del ataque (prueba)
+				if(game.P.isDown && dis<50 || game.O.isDown && dis<50 ){
+					game.player1.x=game.player1.x+100;
+				}
+				if(!game.player1.body.touching.down && game.player1.y > 800){
+					respawn(game.player1);
+>>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
+				}
+*/
+
+<<<<<<< HEAD
 
 /*
 				//Condicionantes del ataque (prueba)
@@ -586,12 +719,26 @@
 					game.player2.flipX=false;
 					game.player2.anims.play('RUN2',true);
 				}else if(game.cursor.right.isDown){
+=======
+				//Movimiento J2
+				if(game.player2.body.touching.down){
+				if (this.cursor.up.isDown )
+				{
+					game.player2.setVelocityY(-450);
+				}
+				else if(this.cursor.left.isDown){
+					game.player2.setVelocityX(-550)
+					game.player2.flipX=false;
+					game.player2.anims.play('RUN2',true);
+				}else if(this.cursor.right.isDown){
+>>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 					game.player2.setVelocityX(550)
 					game.player2.flipX=true;
 					game.player2.anims.play('RUN2',true);
 				}else
 				{
 					game.player2.setVelocityX(0);
+<<<<<<< HEAD
 					if(game.O.isDown){
 						console.log("Apuntar abajo");
 						game.player2.anims.play('SCOPE_DOWN2',true);
@@ -599,14 +746,42 @@
 						console.log("Apuntar abajo");
 						game.player2.anims.play('SCOPE_UP2',true);
 					}else if(game.K.isDown){
+=======
+					if(this.P.isDown){
+						console.log("Apuntar abajo");
+						game.player2.anims.play('SCOPE_DOWN2',true);
+					}else if(this.O.isDown){
+						console.log("Apuntar abajo");
+						game.player2.anims.play('SCOPE_UP2',true);
+					}else if(this.K.isDown){
+>>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 						console.log("Golpe arriba");
 						game.player2.anims.play('HIT_UP2',true);
 					}else
 					game.player2.anims.play('IDLE2',true);
+<<<<<<< HEAD
+=======
 				}
+			}else{
+
+				if(this.cursor.left.isDown){
+					game.player2.setVelocityX(-550);
+					game.player2.flipX=false;
+					game.player2.anims.play('JUMP2',true);
+				}else if(this.cursor.right.isDown){
+					game.player2.setVelocityX(550);
+					game.player2.flipX=true;
+					game.player2.anims.play('JUMP2',true);
+				}else{
+					game.player2.anims.play('JUMP2',true);
+>>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
+				}
+
+			}
 				if(!game.player2.body.touching.down && game.player2.y > 800){
 					respawn(game.player2);
 				}
+
 
 				//Personaje coje la bandera
 				this.physics.add.overlap([game.player1,game.player2], game.bandera, collectBandera, null, this);
@@ -636,10 +811,12 @@
 		}
 	}
 
-	function collectBandera (player, bandera)
+	function collectBandera (player)
 	{
-		bandera.disableBody(true, true);
+		game.bandera.disableBody(true,true);
 		player.ownBandera = true;
+		player.showBandera = this.add.image(player.x ,150, 'bandera');
+		player.showBandera.setScale(0.5,0.5);
 	}
 
 	function hasTheFlag(player){
@@ -664,6 +841,10 @@
 	function respawn(player){
 		player.y = 150;
 		player.setVelocityY(120);
+		player.ownBandera = false;
+		game.bandera.refreshBody();
+		game.bandera.x = game.player1.x-game.player2.x;
+		game.bandera.y = game.player1.y-game.player.y;
 	}
 
 
