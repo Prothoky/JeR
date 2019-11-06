@@ -64,7 +64,6 @@
 
 		create(){
 		//Controles por teclado
-		//Arreglados los controlesss
 
 		//Controles J1(rojo)
 		this.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
