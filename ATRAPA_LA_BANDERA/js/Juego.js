@@ -247,8 +247,6 @@ class Juego extends Phaser.Scene{
       if(this.P.isDown && dis<50 || this.O.isDown && dis<50 ){
           this.player2.x=this.player2.x+100
       }
-			console.log(this.player2.body.touching.down);
-			console.log(this.player2.y);
 			if(!this.player2.body.touching.down && this.player2.y > 800){
 				respawn(this.player2);
 			}

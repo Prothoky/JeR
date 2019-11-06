@@ -25,9 +25,10 @@ preload(){
     fondoGenerico.scaleY = fondoGenerico.scaleX;
 
     this.scene.add("MenuPrincipal", new MenuPrincipal);
-    //this.scene.add("Juego", new Juego);
+    // this.scene.add("Fase2_Left", new Fase2_Left);
     this.scene.start("MenuPrincipal");
-    //this.scene.start("Juego");
+    // this.scene.start("Fase2_Left");
+
   }
 
 }

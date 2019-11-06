@@ -58,11 +58,6 @@ class Fase1_Rigth extends Phaser.Scene{
     const cW= this.sys.game.config.width/2;
     const cH= 720/2;
 
-		//Crear plataforma
-		var platforms = this.physics.add.staticGroup();
-		platforms.create(0, 575, 'pltf').setScale(0.525,0.5).refreshBody();
-		platforms.create(-1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
-		platforms.create(1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
 
     //Creación del fondo del juego
 		var fondo = this.add.image(0,cH,"fondo1");
@@ -96,10 +91,15 @@ class Fase1_Rigth extends Phaser.Scene{
     this.player2.setOrigin(0.5,1);
 		this.player2.ownBandera=false;
 
-
 		var sobrefondo = this.add.image(0,cH,"sobrefondo1");
 		sobrefondo.displayHeigth = cH*2;
 		sobrefondo.scaleX = fondo.scaleY;
+
+		//Crear plataforma
+		var platforms = this.physics.add.staticGroup();
+		platforms.create(0, 575, 'pltf').setScale(0.525,0.5).refreshBody();
+		platforms.create(-1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
+		platforms.create(1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
 
 		this.cameras.main.startFollow(this.bandera,false,1,1,0,200);
 
@@ -246,8 +246,6 @@ class Fase1_Rigth extends Phaser.Scene{
       if(this.P.isDown && dis<50 || this.O.isDown && dis<50 ){
           this.player2.x=this.player2.x+100
       }
-			console.log(this.player2.body.touching.down);
-			console.log(this.player2.y);
 			if(!this.player2.body.touching.down && this.player2.y > 800){
 				respawn(this.player2);
 			}
@@ -265,7 +263,7 @@ class Fase1_Rigth extends Phaser.Scene{
 			else if(hasTheFlag(this.player2)){
 				this.cameras.main.startFollow(this.player2,false,1,1,0,200);
 				if(this.player2.x > 2040){
-					this.scene.start('Fase1_Rigth');
+					this.scene.start('Fase2_Rigth');
 				}
 
 			}
