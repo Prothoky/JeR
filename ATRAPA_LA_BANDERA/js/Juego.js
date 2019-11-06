@@ -182,7 +182,7 @@
 				}
 			}
 
-			if(game.onfase==-1){
+			if(game.onfase == -1){
 
 				//Crear plataforma
 				game.platforms = this.physics.add.staticGroup();
@@ -320,7 +320,7 @@
 
 			}
 
-			if(game.onfase==1){
+			if(game.onfase == 1){
 				//Crear plataforma
 				game.platforms = this.physics.add.staticGroup();
 				game.platforms.create(1900, 375, 'pltf').setScale(1.35,0.5).refreshBody();
@@ -382,7 +382,6 @@
 				}
 
 			}
-
 
 			if(game.onfase == 2){
 
