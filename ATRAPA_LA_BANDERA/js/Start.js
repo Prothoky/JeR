@@ -24,10 +24,13 @@ preload(){
     //scale evenly
     fondoGenerico.scaleY = fondoGenerico.scaleX;
 
-    this.scene.add("MenuPrincipal", new MenuPrincipal);
-    // this.scene.add("Fase2_Left", new Fase2_Left);
-    this.scene.start("MenuPrincipal");
-    // this.scene.start("Fase2_Left");
+    game.loaded=false;
+    game.onfase=-0;
+    game.fasebefore=null;
+    // this.scene.add("MenuPrincipal", new MenuPrincipal);
+    this.scene.add("Juego", new Juego);
+    // this.scene.start("MenuPrincipal");
+    this.scene.start("Juego");
 
   }
 
