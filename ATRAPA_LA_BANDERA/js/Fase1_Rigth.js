@@ -1,13 +1,12 @@
-class Juego extends Phaser.Scene{
+class Fase1_Rigth extends Phaser.Scene{
 	constructor(){
-		super({key: "Juego"});
+		super({key: "Fase1_Rigth"});
 	}
 
 	initialize(){
 		var bandera;
 		var player1;
 		var player2;
-		var fase;
 		var cursor;
 		var A;
 		var D;
@@ -20,8 +19,8 @@ class Juego extends Phaser.Scene{
   preload(){
 		this.fase=0;
   	//Sprite del fondo
-		this.load.image("fondo","../assets/map/Centro/Fondo0.jpg");
-		this.load.image("sobrefondo","../assets/map/Centro/SobreFondo0.png");
+		this.load.image("fondo1","../assets/map/Derecha1/Fondo1.jpg");
+		this.load.image("sobrefondo1","../assets/map/Deracha2/SobreFondo1.png");
 
   	//Sprite del muñeco para pruebas
   	this.load.image("maniqui","../assets/icons/Jugador-rojo.png");
@@ -66,7 +65,7 @@ class Juego extends Phaser.Scene{
 		platforms.create(1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
 
     //Creación del fondo del juego
-		var fondo = this.add.image(0,cH,"fondo");
+		var fondo = this.add.image(0,cH,"fondo1");
 		//set the width of the sprite
 		fondo.displayHeigth = cH*2;
 		//scale evenly
@@ -74,7 +73,7 @@ class Juego extends Phaser.Scene{
 
     //Crear bandera
     this.bandera = this.physics.add.image();
-    this.bandera = this.physics.add.sprite(0, 450, 'bandera');
+    this.bandera = this.physics.add.sprite(2240, 450, 'bandera');
     this.bandera.setBounce(0.2);
     this.bandera.setCollideWorldBounds(false);
 		this.bandera.setScale(0.75,0.75);
@@ -98,7 +97,7 @@ class Juego extends Phaser.Scene{
 		this.player2.ownBandera=false;
 
 
-		var sobrefondo = this.add.image(0,cH,"sobrefondo");
+		var sobrefondo = this.add.image(0,cH,"sobrefondo1");
 		sobrefondo.displayHeigth = cH*2;
 		sobrefondo.scaleX = fondo.scaleY;
 
@@ -166,8 +165,8 @@ class Juego extends Phaser.Scene{
 		this.physics.add.collider(this.player2, platforms);
 		this.physics.add.collider(this.bandera, platforms);
 
-		this.scene.add('Fase1_Rigth', new Fase1_Rigth);
-		this.scene.add('Fase1_Left', new Fase1_Left);
+		//this.scene.add('Fase2_Rigth', new Fase2_Rigth);
+		//this.scene.add('Fase2_Left', new Fase2_Left);
 
 	}
 
