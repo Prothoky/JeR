@@ -182,7 +182,6 @@
 				}
 			}
 
-<<<<<<< HEAD
 			if(game.onfase==-1){
 
 				//Crear plataforma
@@ -417,14 +416,6 @@
 				game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
-=======
-		if(this.p1posx != this.player1.x){
-			//console.log("Player1 pos: " + this.player1.x);
-			this.p1posx = this.player1.x;
-		}
-		if(this.p2posx != this.player2.x){
-			//console.log("Player2 pos: " + this.player2.x);
->>>>>>> 5871cf3da14c9a8d04fe22f28d939db7bbb198d5
 
 				//Jugador 2
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
