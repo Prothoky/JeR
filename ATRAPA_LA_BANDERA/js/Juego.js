@@ -33,8 +33,8 @@ class Juego extends Phaser.Scene{
   	this.load.image("bandera","../assets/icons/bandera.png")
 
   	//sprites de movimientos
-		this.load.spritesheet('SCOPE_DOWN','../assets/animations/APUNTAR_ABAJO.png',{frameHeight: 240, frameWidth:250})
-		this.load.spritesheet('SCOPE_UP','../assets/animations/APUNTAR_ARRIBA.png',{frameHeight: 240, frameWidth:250})
+		//this.load.spritesheet('SCOPE_DOWN','../assets/animations/APUNTAR_ABAJO.png',{frameHeight: 240, frameWidth:250})
+		//this.load.spritesheet('SCOPE_UP','../assets/animations/APUNTAR_ARRIBA.png',{frameHeight: 240, frameWidth:250})
 		this.load.spritesheet('RUN','../assets/animations/correr.png',{frameHeight: 240, frameWidth:250})
 		this.load.spritesheet('HIT_UP','../assets/animations/GOLPE_ARRIBA.png',{frameHeight: 240, frameWidth:250})
 		//this.load.spritesheet('HIT_DOWN','../assets/animations/golpe_abajo.png',{frameHeight: 240, frameWidth:250})
@@ -127,7 +127,7 @@ class Juego extends Phaser.Scene{
 		//Anim apuntando arriba
 		this.anims.create({
 			key: 'SCOPE_DOWN',
-			frames: this.anims.generateFrameNumbers('SCOPE_DOWN',{
+			frames: this.anims.generateFrameNumbers('IDLE_SCOPE_DOWN',{
 				frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 			}),
 			repeat:1,
@@ -136,7 +136,7 @@ class Juego extends Phaser.Scene{
 		//Anim apuntando arriba
 		this.anims.create({
 			key: 'SCOPE_UP',
-			frames: this.anims.generateFrameNumbers('SCOPE_UP',{
+			frames: this.anims.generateFrameNumbers('IDLE_SCOPE_UP',{
 				frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 			}),
 			repeat:1,

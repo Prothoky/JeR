@@ -24,10 +24,10 @@ preload(){
     //scale evenly
     fondoGenerico.scaleY = fondoGenerico.scaleX;
 
-    //this.scene.add("MenuPrincipal", new MenuPrincipal);
-    this.scene.add("Juego", new Juego);
-    //this.scene.start("MenuPrincipal");
-    this.scene.start("Juego");
+    this.scene.add("MenuPrincipal", new MenuPrincipal);
+    //this.scene.add("Juego", new Juego);
+    this.scene.start("MenuPrincipal");
+    //this.scene.start("Juego");
   }
 
 }
