@@ -72,6 +72,7 @@
 			var mj = this.sound.add('musica');
 			if(!game.playing){
 				mj.play();
+				//game.sound.mute=true;
 				game.playing=true;
 			}
 			this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
@@ -522,6 +523,12 @@
 
 			}
 
+			game.HUDbandera = this.physics.add.image();
+			game.HUDbandera = this.physics.add.sprite(0, 0, 'bandera');
+			game.HUDbandera.setCollideWorldBounds(false);
+			game.HUDbandera.setScale(0.5,0.5);
+
+
 			this.cameras.main.startFollow(game.bandera,false,1,1,0,200);
 
 			//Colision con plataforma
@@ -678,6 +685,7 @@
 				//Camara sigue a la bandera
 				if(hasTheFlag(game.player1)){
 					this.cameras.main.startFollow(game.player1,false,1,1,0,200);
+					game.HUDbandera.enableBody(true,game.player1.x-350,100,true,true);
 					if(game.player1.x < -2040){
 						game.loaded=false;
 						cHangeFaseLeft();
@@ -686,6 +694,7 @@
 				}
 				else if(hasTheFlag(game.player2)){
 					this.cameras.main.startFollow(game.player2,false,1,1,0,200);
+					game.HUDbandera.enableBody(true,game.player2.x+350,100,true,true);
 					if(game.player2.x > 2040){
 						game.loaded=false;
 						cHangeFaseRight();
@@ -695,6 +704,7 @@
 				}
 				else{
 					this.cameras.main.startFollow(game.bandera,false,1,1,0,200);
+					game.HUDbandera.disableBody(true,true);
 				}
 			}
 		}
@@ -704,8 +714,15 @@
 	{
 		game.bandera.disableBody(true,true);
 		player.ownBandera = true;
-		player.showBandera = this.add.image(player.x ,150, 'bandera');
-		player.showBandera.setScale(0.5,0.5);
+	}
+
+	function respawn(player){
+		player.y = 150;
+		player.setVelocityY(120);
+		player.ownBandera = false;
+		game.bandera.refreshBody();
+		game.bandera.x = game.player1.x-game.player2.x;
+		game.bandera.y = game.player1.y-game.player.y;
 	}
 
 	function hasTheFlag(player){
@@ -719,24 +736,11 @@
 		game.fasebefore=game.onfase;
 		game.onfase++;
 	}
+
 	function cHangeFaseLeft(){
 		game.player1.destroy(true);
 		game.player2.destroy(true);
 		game.bandera.destroy(true);
 		game.fasebefore=game.onfase;
 		game.onfase--;
-	}
-
-	function respawn(player){
-		player.y = 150;
-		player.setVelocityY(120);
-		player.ownBandera = false;
-		game.bandera.refreshBody();
-		game.bandera.x = game.player1.x-game.player2.x;
-		game.bandera.y = game.player1.y-game.player.y;
-	}
-
-
-	function crearplataformas(){
-
 	}
