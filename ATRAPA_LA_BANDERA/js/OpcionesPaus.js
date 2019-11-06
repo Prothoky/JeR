@@ -30,12 +30,12 @@ class OpcionesPaus extends Phaser.Scene {
 		var x = width/2 ;
 		var y = height/2;
 
-		var fondoOpcionesPrinc = this.add.sprite(x, y, "fondoOpciones");
+		var fondoOpcionesPaus = this.add.sprite(x, y, "fondoOpciones");
 
 		//set the width of the sprite
-		fondoOpcionesPrinc.displayWidth = width;
+		fondoOpcionesPaus.displayWidth = width;
 		//scale evenly
-		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
+		fondoOpcionesPaus.scaleX = fondoOpcionesPaus.scaleY;
 
 		var tituloOpciones = this.tituloOpciones = this.add.image(x, y*2/8, 'opciones').setScale(0.5);
 		var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen').setScale(0.5);
