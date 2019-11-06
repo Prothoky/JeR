@@ -63,16 +63,26 @@
 }
 
 		create(){
-			//Probandoo
+
 
 			//Controles por teclado
-			game.cursor = this.input.keyboard.createCursorKeys();
-			game.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-			game.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-			game.W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-			game.P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
-			game.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
-			game.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+			//Controles J1(Rojo)
+			this.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+			this.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+			this.W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+			//Defensa y ataque J1
+			this.T = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
+			this.Y = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Y);
+			this.G = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.G);
+			this.H = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H);
+
+			//Controles J2(Azul)
+			this.cursor = this.input.keyboard.createCursorKeys();
+			//Defensa y ataque J2
+			this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+			this.P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+			this.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+			this.K = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
 
 			//Centro del canvas
 			this.cW= this.sys.game.config.width/2;
@@ -84,6 +94,14 @@
 			this.anims.create({
 				key: 'RUN',
 				frames: this.anims.generateFrameNumbers('J1RUN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+				}),
+				repeat:-1,
+				frameRate:24
+			})
+			this.anims.create({
+				key: 'RUN2',
+				frames: this.anims.generateFrameNumbers('J2RUN',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 				}),
 				repeat:-1,
