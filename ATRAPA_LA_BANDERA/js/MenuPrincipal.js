@@ -36,15 +36,16 @@ class MenuPrincipal extends Phaser.Scene{
 		//añadimos el sprite del titulo
 
 		this.MenuPrincipal_Layout = this.add.image(x, y*4/8, 'logo');
-		//coloca el punto de ancla respecto del centro de la imagen
-		//en plan, en un inicio el punto de ancla esta en el (0,0) pues ahora estaría en el (0.5, 0)
-		//this.logoJuego.anchor.set(-1.7,-0.7);
 
 		//BOTON JUGAR
-		//add.button(pos abs sup, pos abs izq, nombre imagen, funcion que se ejecutara, contexto de ejecucion, cuadro cuando se situa el raton, cuadro para dentro/fuera del boton, cuadro para el click)
 		this.botonJugar = this.add.image(x, y*7	/6, 'botonJugar');
 		this.botonJugar.setInteractive({ useHandCursor: true  } )
+		//on CLICK
 		.on('pointerdown', () => this.iniciarJuego());
+		//on HOVER
+		//.on('pointerover', () => this.enterButtonHoverState() )
+		//on RELEASE
+		//.on('pointerout', () => this.enterButtonRestState() );
 
 		//BOTON CONTROLES
 		this.botonControles = this.add.image(x*3/9, y*5/3, 'botonControles');
