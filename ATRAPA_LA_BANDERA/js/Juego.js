@@ -32,12 +32,12 @@ class Juego extends Phaser.Scene{
   	this.load.image("bandera","../assets/icons/bandera.png")
 
   	//sprites de movimientos
-		this.load.spritesheet('SCOPE_DOWN','../assets/animations/apuntar_abajo.png',{frameHeight: 240, frameWidth:250})
-		this.load.spritesheet('SCOPE_UP','../assets/animations/apuntar_arriba.png',{frameHeight: 240, frameWidth:250})
+		this.load.spritesheet('SCOPE_DOWN','../assets/animations/APUNTAR_ABAJO.png',{frameHeight: 240, frameWidth:250})
+		this.load.spritesheet('SCOPE_UP','../assets/animations/APUNTAR_ARRIBA.png',{frameHeight: 240, frameWidth:250})
 		this.load.spritesheet('RUN','../assets/animations/correr.png',{frameHeight: 240, frameWidth:250})
-		this.load.spritesheet('HIT_UP','../assets/animations/golpe_arriba.png',{frameHeight: 240, frameWidth:250})
+		this.load.spritesheet('HIT_UP','../assets/animations/GOLPE_ARRIBA.png',{frameHeight: 240, frameWidth:250})
 		//this.load.spritesheet('HIT_DOWN','../assets/animations/golpe_abajo.png',{frameHeight: 240, frameWidth:250})
-  	this.load.spritesheet('IDLE','../assets/animations/parado.png',{frameHeight: 240, frameWidth:250})
+  	this.load.spritesheet('IDLE','../assets/animations/PARADO.png',{frameHeight: 240, frameWidth:250})
   	this.load.spritesheet('IDLE_SCOPE_UP','../assets/animations/PARADO_APUNTADO_ARRIBA.png',{frameHeight: 240, frameWidth:250})
 		this.load.spritesheet('IDLE_SCOPE_DOWN','../assets/animations/PARADO_APUNTADO_ABAJO.png',{frameHeight: 240, frameWidth:250})
 		//this.load.spritesheet('JUMP','../assets/animations/saltar.png',{frameHeight: 240, frameWidth:250})
