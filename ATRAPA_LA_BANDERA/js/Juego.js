@@ -481,68 +481,69 @@
 				//Para calcular la distancia entre los jugadores
 				var dis = Math.abs(game.player2.x - game.player1.x);
 
-				//Movimiento J1
+				//Movimiento J1 (faltan movimientos de apuntar)
 
-				if (game.cursor.up.isDown && game.player1.body.touching.down)
+				if (game.W.isDown && game.player1.body.touching.down)
 				{
 					game.player1.setVelocityY(-350);
-					//game.player1.anims.play('JUMP',true);
+					//game.player2.anims.play('JUMP',true);
 				}
-				else if(game.cursor.left.isDown){
-					game.player1.setVelocityX(-550)
+				else if(game.A.isDown){
+					game.player1.setVelocityX(-550);
 					game.player1.flipX=false;
 					game.player1.anims.play('RUN',true);
-				}else if(game.cursor.right.isDown){
-					game.player1.setVelocityX(550)
+				}else if(game.D.isDown){
+					game.player1.setVelocityX(550);
 					game.player1.flipX=true;
 					game.player1.anims.play('RUN',true);
 				}else
 				{
 					game.player1.setVelocityX(0);
-					if(game.P.isDown){
-						console.log("Apuntar abajo");
-						game.player1.anims.play('SCOPE_DOWN',true);
-					}else if(game.O.isDown){
-						console.log("Apuntar abajo");
-						game.player1.anims.play('SCOPE_UP',true);
-					}else if(game.L.isDown){
-						console.log("Golpe arriba");
-						game.player1.anims.play('HIT_UP',true);
-					}else
 					game.player1.anims.play('IDLE',true);
+				}
+
+				//Condicionantes del ataque (prueba)
+				if(game.P.isDown && dis<50 || game.O.isDown && dis<50 ){
+					game.player1.x=game.player1.x+100;
 				}
 				if(!game.player1.body.touching.down && game.player1.y > 800){
 					respawn(game.player1);
 				}
+				
+				//Movimiento J2
 
-				//Movimiento J2 (faltan movimientos de apuntar)
-
-				if (game.W.isDown && game.player2.body.touching.down)
+				if (game.cursor.up.isDown && game.player2.body.touching.down)
 				{
 					game.player2.setVelocityY(-350);
-					//game.player2.anims.play('JUMP',true);
+					//game.player1.anims.play('JUMP',true);
 				}
-				else if(game.A.isDown){
-					game.player2.setVelocityX(-550);
+				else if(game.cursor.left.isDown){
+					game.player2.setVelocityX(-550)
 					game.player2.flipX=false;
 					game.player2.anims.play('RUN',true);
-				}else if(game.D.isDown){
-					game.player2.setVelocityX(550);
+				}else if(game.cursor.right.isDown){
+					game.player2.setVelocityX(550)
 					game.player2.flipX=true;
 					game.player2.anims.play('RUN',true);
 				}else
 				{
 					game.player2.setVelocityX(0);
+					if(game.P.isDown){
+						console.log("Apuntar abajo");
+						game.player2.anims.play('SCOPE_DOWN',true);
+					}else if(game.O.isDown){
+						console.log("Apuntar abajo");
+						game.player2.anims.play('SCOPE_UP',true);
+					}else if(game.L.isDown){
+						console.log("Golpe arriba");
+						game.player2.anims.play('HIT_UP',true);
+					}else
 					game.player2.anims.play('IDLE',true);
-				}
-
-				//Condicionantes del ataque (prueba)
-				if(game.P.isDown && dis<50 || game.O.isDown && dis<50 ){
-					game.player2.x=game.player2.x+100;
 				}
 				if(!game.player2.body.touching.down && game.player2.y > 800){
 					respawn(game.player2);
 				}
+
 
 				//Personaje coje la bandera
 				this.physics.add.overlap([game.player1,game.player2], game.bandera, collectBandera, null, this);
