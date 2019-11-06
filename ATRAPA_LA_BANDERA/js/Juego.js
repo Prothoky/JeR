@@ -540,10 +540,18 @@
 
 
 				//Musica
-				if(this.M.isDown){
-					game.sound.mute=true;
-					console.log("Muteado")
-
+				if(this.M.isDown && !game.MPulsed){
+					if(game.sound.mute){
+						game.sound.mute=false;
+						game.MPulsed=true;
+					}
+					else if(!game.sound.mute){
+						game.sound.mute=true;
+						game.MPulsed=true;
+					}
+				}
+				if(this.M.isUp){
+					game.MPulsed=false;
 				}
 
 
