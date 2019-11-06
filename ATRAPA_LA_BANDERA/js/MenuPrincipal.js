@@ -47,10 +47,15 @@ class MenuPrincipal extends Phaser.Scene{
 		//on RELEASE
 		//.on('pointerout', () => this.enterButtonRestState() );
 
+		key1 = game.input.keyboard.addKey(Phaser.Keyboard.BACKSPACE);
+		key1.onDown.iniciarJuego();
+
 		//BOTON CONTROLES
 		this.botonControles = this.add.image(x*3/9, y*5/3, 'botonControles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verControles());
+
+
 
 		//BOTON OPCIONES
 
