@@ -4,7 +4,7 @@ class Fase1_Left extends Phaser.Scene{
 	}
 
   preload(){
-		this.fase=0;
+		this.fase=-1;
   	//Sprite del fondo
 		this.load.image("fondo1left","../assets/map/Izquierda1/Fondo1.jpg");
 		this.load.image("sobrefondo1left","../assets/map/Izquierda1/SobreFondo1.png");
@@ -27,7 +27,8 @@ class Fase1_Left extends Phaser.Scene{
   	this.load.spritesheet('IDLE','../assets/animations/PARADO.png',{frameHeight: 240, frameWidth:250})
   	this.load.spritesheet('IDLE_SCOPE_UP','../assets/animations/PARADO_APUNTADO_ARRIBA.png',{frameHeight: 240, frameWidth:250})
 		this.load.spritesheet('IDLE_SCOPE_DOWN','../assets/animations/PARADO_APUNTADO_ABAJO.png',{frameHeight: 240, frameWidth:250})
-		//this.load.spritesheet('JUMP','../assets/animations/saltar.png',{frameHeight: 240, frameWidth:250})
+		//this.load.spritesheet('JUMP','../assets/animations/saltar.png',{frameHeight: 240, frameWidth:250
+		this.scene.add('Fase2_Left', new Fase2_Left);
 	}
 
   create(){

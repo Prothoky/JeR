@@ -27,6 +27,7 @@ class Fase2_Left extends Phaser.Scene{
   	this.load.spritesheet('IDLE_SCOPE_UP','../assets/animations/PARADO_APUNTADO_ARRIBA.png',{frameHeight: 240, frameWidth:250})
 		this.load.spritesheet('IDLE_SCOPE_DOWN','../assets/animations/PARADO_APUNTADO_ABAJO.png',{frameHeight: 240, frameWidth:250})
 		//this.load.spritesheet('JUMP','../assets/animations/saltar.png',{frameHeight: 240, frameWidth:250})
+		console.log("fase2 preloaded");
 	}
 
   create(){
@@ -46,16 +47,10 @@ class Fase2_Left extends Phaser.Scene{
 
 		//Crear plataforma
 		var platforms = this.physics.add.staticGroup();
-		platforms.create(1500, 575, 'pltf').setScale(3.5,0.5).refreshBody();
-		platforms.create(475, 440, 'pltf').setScale(0.25,0.5).refreshBody();
-		platforms.create(105, 335, 'pltf').setScale(0.25,0.5).refreshBody();
-		platforms.create(-275, 270, 'pltf').setScale(0.45,0.5).refreshBody();
-		platforms.create(-850, 325, 'pltf').setScale(1.05,0.5).refreshBody();
-		platforms.create(-1325, 260, 'pltf').setScale(0.001,0.5).refreshBody();
-		platforms.create(-1900, 375, 'pltf').setScale(1.35,0.5).refreshBody();
+		platforms.create(1500, 385, 'pltf').setScale(3.5,0.5).refreshBody();
 
     //Creación del fondo del juego
-		var fondo = this.add.image(0,cH,"fondo1");
+		var fondo = this.add.image(0,cH,"fondo2letf");
 		//set the width of the sprite
 		fondo.displayHeigth = cH*2;
 		//scale evenly
@@ -63,7 +58,7 @@ class Fase2_Left extends Phaser.Scene{
 
     //Crear bandera
     this.bandera = this.physics.add.image();
-    this.bandera = this.physics.add.sprite(2240, 450, 'bandera');
+    this.bandera = this.physics.add.sprite(2240, 350, 'bandera');
     this.bandera.setBounce(0.2);
     this.bandera.setCollideWorldBounds(false);
 		this.bandera.setScale(0.75,0.75);
@@ -71,7 +66,7 @@ class Fase2_Left extends Phaser.Scene{
     //Creacion de los jugadores
 
     //Jugador 1
-    this.player1 = this.physics.add.sprite(2240,450,'maniqui',2);
+    this.player1 = this.physics.add.sprite(2240,350,'maniqui',2);
     this.player1.flipX=true;
     this.player1.setCollideWorldBounds(false);
 		this.player1.setBounce(0.3);
@@ -79,7 +74,7 @@ class Fase2_Left extends Phaser.Scene{
 		this.player1.ownBandera=false;
 
     //Jugador 2
-    this.player2 = this.physics.add.sprite(2000,450,'maniqui',2);
+    this.player2 = this.physics.add.sprite(2000,350,'maniqui',2);
     this.player2.flipX=false;
     this.player2.setCollideWorldBounds(false);
     this.player2.setBounce(0.3);
@@ -88,7 +83,7 @@ class Fase2_Left extends Phaser.Scene{
 		this.player2.setTint(0x0000ff);
 
 
-		var sobrefondo = this.add.image(0,cH,"sobrefondo1");
+		var sobrefondo = this.add.image(0,cH,"sobrefondo2left");
 		sobrefondo.displayHeigth = cH*2;
 		sobrefondo.scaleX = fondo.scaleY;
 
