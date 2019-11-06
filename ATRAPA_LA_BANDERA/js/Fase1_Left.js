@@ -25,7 +25,7 @@ class Fase1_Left extends Phaser.Scene{
   	//Sprite del muñeco para pruebas
   	this.load.image("maniqui","../assets/icons/Jugador-rojo.png");
 
-  	//Plataforma
+  	//orma
   	this.load.image("pltf","../assets/icons/plt.png");
 
   	//Sprite de BANDERA
@@ -60,9 +60,13 @@ class Fase1_Left extends Phaser.Scene{
 
 		//Crear plataforma
 		var platforms = this.physics.add.staticGroup();
-		platforms.create(0, 575, 'pltf').setScale(0.525,0.5).refreshBody();
-		platforms.create(-1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
-		platforms.create(1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
+		platforms.create(1500, 575, 'pltf').setScale(3.5,0.5).refreshBody();
+		platforms.create(475, 440, 'pltf').setScale(0.25,0.5).refreshBody();
+		platforms.create(105, 335, 'pltf').setScale(0.25,0.5).refreshBody();
+		platforms.create(-275, 270, 'pltf').setScale(0.45,0.5).refreshBody();
+		platforms.create(-850, 325, 'pltf').setScale(1.05,0.5).refreshBody();
+		platforms.create(-1325, 260, 'pltf').setScale(0.001,0.5).refreshBody();
+		platforms.create(-1900, 375, 'pltf').setScale(1.35,0.5).refreshBody();
 
     //Creación del fondo del juego
 		var fondo = this.add.image(0,cH,"fondo1");
@@ -101,6 +105,7 @@ class Fase1_Left extends Phaser.Scene{
 		var sobrefondo = this.add.image(0,cH,"sobrefondo1");
 		sobrefondo.displayHeigth = cH*2;
 		sobrefondo.scaleX = fondo.scaleY;
+
 
 		this.cameras.main.startFollow(this.bandera,false,1,1,0,200);
 
@@ -172,8 +177,12 @@ class Fase1_Left extends Phaser.Scene{
   update(time, delta){
 
 		if(this.p1posx != this.player1.x){
-			console.log("Player1 pos: " + this.player1.x);
+			console.log("Player1 X pos: " + this.player1.x);
 			this.p1posx = this.player1.x;
+		}
+		if(this.p1posy != this.player1.y){
+			console.log("Player1 Y pos: " + this.player1.y);
+			this.p1posy = this.player1.y;
 		}
 		if(this.p2posx != this.player2.x){
 			console.log("Player2 pos: " + this.player2.x);
@@ -188,7 +197,7 @@ class Fase1_Left extends Phaser.Scene{
 
 			if (this.cursor.up.isDown && this.player1.body.touching.down)
 			{
-					this.player1.setVelocityY(-330);
+					this.player1.setVelocityY(-450);
 					//this.player1.anims.play('JUMP',true);
 			}
 			else if(this.cursor.left.isDown){
@@ -222,7 +231,7 @@ class Fase1_Left extends Phaser.Scene{
 
       if (this.W.isDown && this.player2.body.touching.down)
       {
-          this.player2.setVelocityY(-330);
+          this.player2.setVelocityY(-450);
           //this.player2.anims.play('JUMP',true);
       }
       else if(this.A.isDown){
@@ -245,8 +254,7 @@ class Fase1_Left extends Phaser.Scene{
       if(this.P.isDown && dis<50 || this.O.isDown && dis<50 ){
           this.player2.x=this.player2.x+100
       }
-			console.log(this.player2.body.touching.down);
-			console.log(this.player2.y);
+
 			if(!this.player2.body.touching.down && this.player2.y > 800){
 				respawn(this.player2);
 			}
