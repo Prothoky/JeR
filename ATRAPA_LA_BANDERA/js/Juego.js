@@ -476,6 +476,7 @@
 					//console.log("Player1 pos: " + game.player1.x);
 					this.p2posx = game.player2.x;
 				}
+				//hola
 
 
 				//Para calcular la distancia entre los jugadores
@@ -509,7 +510,7 @@
 				if(!game.player1.body.touching.down && game.player1.y > 800){
 					respawn(game.player1);
 				}
-				
+
 				//Movimiento J2
 
 				if (game.cursor.up.isDown && game.player2.body.touching.down)
