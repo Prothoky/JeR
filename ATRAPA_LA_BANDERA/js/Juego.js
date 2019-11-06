@@ -174,11 +174,11 @@ class Juego extends Phaser.Scene{
   update(time, delta){
 
 		if(this.p1posx != this.player1.x){
-			console.log("Player1 pos: " + this.player1.x);
+			//console.log("Player1 pos: " + this.player1.x);
 			this.p1posx = this.player1.x;
 		}
 		if(this.p2posx != this.player2.x){
-			console.log("Player2 pos: " + this.player2.x);
+			//console.log("Player2 pos: " + this.player2.x);
 
 			this.p2posx = this.player2.x;
 
