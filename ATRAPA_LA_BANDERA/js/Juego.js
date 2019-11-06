@@ -63,14 +63,27 @@
 }
 
 		create(){
-			//Controles por teclado
-			game.cursor = this.input.keyboard.createCursorKeys();
-			game.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-			game.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-			game.W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-			game.P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
-			game.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
-			game.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+		//Controles por teclado
+
+
+		//Controles J1(rojo)
+		this.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+		this.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+		this.W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+		//Defensa y ataque J1
+		this.T = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
+		this.Y = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Y);
+		this.G = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.G);
+		this.H = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H);
+
+		//Controles J2(azul)
+		this.cursor = this.input.keyboard.createCursorKeys();
+		//Defensa y ataque J2
+		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+		this.P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+		this.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+		this.K = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+
 
 			//Centro del canvas
 			this.cW= this.sys.game.config.width/2;
@@ -87,6 +100,16 @@
 				repeat:-1,
 				frameRate:24
 			})
+			this.anims.create({
+				key: 'RUN2',
+				frames: this.anims.generateFrameNumbers('J2RUN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+				}),
+				repeat:-1,
+				frameRate:24
+			})
+
+
 			//Anim parado (funciona)
 			this.anims.create({
 				key: 'IDLE',
@@ -96,6 +119,16 @@
 				repeat:1,
 				frameRate:24
 			});
+			this.anims.create({
+				key: 'IDLE2',
+				frames: this.anims.generateFrameNumbers('J2IDLE',{
+					frames: [0,1,2,3,4,5,6,7,8,9]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+
+
 			//Anim apuntando arriba
 			this.anims.create({
 				key: 'SCOPE_DOWN',
@@ -105,6 +138,16 @@
 				repeat:1,
 				frameRate:24
 			});
+			this.anims.create({
+				key: 'SCOPE_DOWN2',
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+
+
 			//Anim apuntando arriba
 			this.anims.create({
 				key: 'SCOPE_UP',
@@ -114,6 +157,16 @@
 				repeat:1,
 				frameRate:24
 			});
+			this.anims.create({
+				key: 'SCOPE_UP2',
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_UP',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+
+
 			//Anim golpe arriba (funciona)
 			this.anims.create({
 				key: 'HIT_UP',
@@ -123,6 +176,16 @@
 				repeat:0,
 				frameRate:24
 			});
+			this.anims.create({
+				key: 'HIT_UP2',
+				frames: this.anims.generateFrameNumbers('J2HIT_UP',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+				}),
+				repeat:0,
+				frameRate:24
+			});
+
+
 			//Anim salto (no funciona)
 			// 	this.anims.create({
 			// 		key: 'JUMP',
@@ -481,64 +544,66 @@
 				//Para calcular la distancia entre los jugadores
 				var dis = Math.abs(game.player2.x - game.player1.x);
 
-				//Movimiento J1
+				//Movimiento J1 (faltan movimientos de apuntar)
 
-				if (game.cursor.up.isDown && game.player1.body.touching.down)
-				{
-					game.player1.setVelocityY(-350);
-					//game.player1.anims.play('JUMP',true);
-				}
-				else if(game.cursor.left.isDown){
-					game.player1.setVelocityX(-550)
-					game.player1.flipX=false;
-					game.player1.anims.play('RUN',true);
-				}else if(game.cursor.right.isDown){
-					game.player1.setVelocityX(550)
-					game.player1.flipX=true;
-					game.player1.anims.play('RUN',true);
-				}else
-				{
-					game.player1.setVelocityX(0);
-					if(game.P.isDown){
-						console.log("Apuntar abajo");
-						game.player1.anims.play('SCOPE_DOWN',true);
-					}else if(game.O.isDown){
-						console.log("Apuntar abajo");
-						game.player1.anims.play('SCOPE_UP',true);
-					}else if(game.L.isDown){
-						console.log("Golpe arriba");
-						game.player1.anims.play('HIT_UP',true);
-					}else
-					game.player1.anims.play('IDLE',true);
-				}
-				if(!game.player1.body.touching.down && game.player1.y > 800){
-					respawn(game.player1);
-				}
-
-				//Movimiento J2 (faltan movimientos de apuntar)
-
-				if (game.W.isDown && game.player2.body.touching.down)
+				if (game.W.isDown && game.player1.body.touching.down)
 				{
 					game.player2.setVelocityY(-350);
 					//game.player2.anims.play('JUMP',true);
 				}
 				else if(game.A.isDown){
-					game.player2.setVelocityX(-550);
-					game.player2.flipX=false;
-					game.player2.anims.play('RUN',true);
+					game.player1.setVelocityX(-550);
+					game.player1.flipX=false;
+					game.player1.anims.play('RUN2',true);
 				}else if(game.D.isDown){
-					game.player2.setVelocityX(550);
+					game.player1.setVelocityX(550);
+					game.player1.flipX=true;
+					game.player1.anims.play('RUN2',true);
+				}else
+				{
+					game.player1.setVelocityX(0);
+					game.player1.anims.play('IDLE2',true);
+				}
+
+
+/*
+				//Condicionantes del ataque (prueba)
+				if(game.P.isDown && dis<50 || game.O.isDown && dis<50 ){
+					game.player1.x=game.player1.x+100;
+				}
+				if(!game.player2.body.touching.down && game.player2.y > 800){
+					respawn(game.player2);
+				}
+*/
+				//Movimiento J2
+
+				if (game.cursor.up.isDown && game.player2.body.touching.down)
+				{
+					game.player2.setVelocityY(-350);
+					//game.player1.anims.play('JUMP',true);
+				}
+				else if(game.cursor.left.isDown){
+					game.player2.setVelocityX(-550)
+					game.player2.flipX=false;
+					game.player2.anims.play('RUN2',true);
+				}else if(game.cursor.right.isDown){
+					game.player2.setVelocityX(550)
 					game.player2.flipX=true;
-					game.player2.anims.play('RUN',true);
+					game.player2.anims.play('RUN2',true);
 				}else
 				{
 					game.player2.setVelocityX(0);
-					game.player2.anims.play('IDLE',true);
-				}
-
-				//Condicionantes del ataque (prueba)
-				if(game.P.isDown && dis<50 || game.O.isDown && dis<50 ){
-					game.player2.x=game.player2.x+100;
+					if(game.O.isDown){
+						console.log("Apuntar abajo");
+						game.player2.anims.play('SCOPE_DOWN2',true);
+					}else if(game.P.isDown){
+						console.log("Apuntar abajo");
+						game.player2.anims.play('SCOPE_UP2',true);
+					}else if(game.K.isDown){
+						console.log("Golpe arriba");
+						game.player2.anims.play('HIT_UP2',true);
+					}else
+					game.player2.anims.play('IDLE2',true);
 				}
 				if(!game.player2.body.touching.down && game.player2.y > 800){
 					respawn(game.player2);
