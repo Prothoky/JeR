@@ -60,9 +60,7 @@
 			this.load.spritesheet('J2IDLE_SCOPE_UP','../assets/animations/JaAniamtions/PARADO_APUNTADO_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE_SCOPE_DOWN','../assets/animations/JaAniamtions/PARADO_APUNTADO_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2JUMP','../assets/animations/JaAniamtions/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
-
-
-		}
+}
 
 		create(){
 			//Controles por teclado
