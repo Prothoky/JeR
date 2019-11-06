@@ -2,14 +2,14 @@ class MenuPausa extends Phaser.Scene{
 
 	constructor(){
 
-		super ({key: "MenuPausa"});
+		super ({key: "MenuPausa", active:true});
 
 	}
 
-preload(){
+	preload(){
 
-	console.log("estamos en el kitkat");
-	
+	//console.log("estamos en el kitkat");
+
 	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
 	this.load.image('menuPausa', 'assets/img/MenuPausa/menuPausa.png');
 
@@ -18,14 +18,13 @@ preload(){
 	this.load.image('controles', 'assets/img/MenuPausa/controles.png');
 	this.load.image('abandonar', 'assets/img/MenuPausa/abandonar.png');
 
-}
+	}
 
 	create(){
 
 		var height = game.config.height;
 		var width = game.config.width;
 
-		//get center of the canvas
 		var x = width/2 ;
 		var y = height/2;
 
