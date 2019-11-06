@@ -64,7 +64,7 @@ class OpcionesPaus extends Phaser.Scene {
 	volver() {
 
 		//una vez hecho esto, vamo a las instrucciones
-		this.game.state.start('MenuPausa');
+		this.scene.start('MenuPausa');
 	}
 
 	subir(){

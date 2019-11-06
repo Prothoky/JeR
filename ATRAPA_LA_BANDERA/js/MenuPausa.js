@@ -8,15 +8,18 @@ class MenuPausa extends Phaser.Scene{
 
 preload(){
 
+	console.log("estamos en el kitkat");
+	
 	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
 	this.load.image('menuPausa', 'assets/img/MenuPausa/menuPausa.png');
 
-	this.load.spritesheet('reanudar', 'assets/img/MenuPausa/reanudar.png');
-	this.load.spritesheet('opciones', 'assets/img/MenuPausa/opciones.png');
-	this.load.spritesheet('controles', 'assets/img/MenuPausa/controles.png');
-	this.load.spritesheet('abandonar', 'assets/img/MenuPausa/abandonar.png');
+	this.load.image('reanudar', 'assets/img/MenuPausa/reanudar.png');
+	this.load.image('opciones', 'assets/img/MenuPausa/opciones.png');
+	this.load.image('controles', 'assets/img/MenuPausa/controles.png');
+	this.load.image('abandonar', 'assets/img/MenuPausa/abandonar.png');
 
 }
+
 	create(){
 
 		var height = game.config.height;
@@ -26,7 +29,7 @@ preload(){
 		var x = width/2 ;
 		var y = height/2;
 
-		var fondoPausa = this.add.sprite (80, 40, 'fondoPausa');
+		var fondoPausa = this.add.sprite (x, y, 'fondoPausa');
 
 		fondoPausa.displayWidth = width;
 		fondoPausa.scaleX = fondoPausa.scaleY;
@@ -34,41 +37,51 @@ preload(){
 		this.titMenuPausa = this.add.image(x, y*4/8, 'menuPausa');
 
 		//BOTONES DE OPCIONES
-		this.botonReanudar = this.add.image(x*566.5/1600, y*252.87/720, 'reanudar');
+		this.botonReanudar = this.add.image(x, y*6/8, 'reanudar');
 		this.botonReanudar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.reanudar());
 
-		this.botonOpciones = this.add.button(566.5, 352.87, 'opciones', this.opciones, this, 2, 0, 1);
-		this.botonOpciones.input.useHandCursor = true;
+		this.botonOpciones = this.add.image(x, y, 'opciones');
+		this.botonOpciones.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.opciones());
 
-		this.botonControles = this.add.button(566.5, 452.87, 'controles', this.controles, this, 2, 0, 1);
-		this.botonControles.input.useHandCursor = true;
+
+		this.botonControles = this.add.image(x, y*10/8, 'controles');
+		this.botonControles.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.controles());
 
 		//BOTON VOLVER
-		this.botonAbandonar = this.add.button(566.5, 552.87, 'abandonar', this.abandonar, this, 2, 0, 1);
-		this.botonAbandonar.input.useHandCursor = true;
+		this.botonAbandonar = this.add.image(x, y*12/8, 'abandonar');
+		this.botonAbandonar.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.abandonar());
 
 	}
 
 	reanudar() {
 
 		//una vez hecho esto, vamo a las instrucciones
-		this.game.state.start('Juego');
+		this.scene.add('Juego', new Juego);
+		this.scene.start('Juego');
 	}
 
 	opciones(){
 
-		this.game.state.start('OpcionesPaus');
+		this.scene.start('OpcionesPaus');
+		this.scene.add('OpcionesPaus', new OpcionesPaus);
 	}
 
 	controles(){
 
-		this.game.state.start('ControlesPaus');
+		this.scene.add('ControlesPaus', new ControlesPaus);
+		this.scene.start('ControlesPaus');
+
 	}
 
 	abandonar(){
 
-			this.game.state.start('MenuPrincipal');
+			this.scene.add('MenuPrincipal', new MenuPrincipal);
+			this.scene.start('MenuPrincipal');
+
 
 	}
 }
