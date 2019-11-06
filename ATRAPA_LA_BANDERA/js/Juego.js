@@ -63,6 +63,8 @@
 }
 
 		create(){
+			//Probandooo
+			
 			//Controles por teclado
 			game.cursor = this.input.keyboard.createCursorKeys();
 			game.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
