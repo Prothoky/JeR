@@ -43,23 +43,23 @@
 			//sprites de movimientos
 			//this.load.spritesheet('J1SCOPE_DOWN','../assets/animations/JRAniamtions/APUNTAR_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			//this.load.spritesheet('J1SCOPE_UP','../assets/animations/JRAniamtions/APUNTAR_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J1RUN','../assets/animations/JRAniamtions/CORRER_ROJO.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J1HIT_UP','../assets/animations/JRAniamtions/GOLPE_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1RUN','../assets/animations/JRAnimations/CORRER_ROJO.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1HIT_UP','../assets/animations/JRAnimations/GOLPE_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
 			//this.load.spritesheet('J1HIT_DOWN','../assets/animations/JRAniamtions/GOLPE_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J1IDLE','../assets/animations/JRAniamtions/PARADO_ROJO.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J1IDLE_SCOPE_UP','../assets/animations/JRAniamtions/PARADO_APUNTADO_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J1IDLE_SCOPE_DOWN','../assets/animations/JRAniamtions/PARADO_APUNTADO_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J1JUMP','../assets/animations/JRAniamtions/SALTO_ROJO.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1IDLE','../assets/animations/JRAnimations/PARADO_ROJO.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1IDLE_SCOPE_UP','../assets/animations/JRAnimations/PARADO_APUNTADO_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1IDLE_SCOPE_DOWN','../assets/animations/JRAnimations/PARADO_APUNTADO_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1JUMP','../assets/animations/JRAnimations/SALTO_ROJO.png',{frameHeight: 240, frameWidth:250});
 
-			this.load.spritesheet('J2SCOPE_DOWN','../assets/animations/JaAniamtions/APUNTAR_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J2SCOPE_UP','../assets/animations/JaAniamtions/APUNTAR_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J2RUN','../assets/animations/JaAniamtions/CORRER_AZUL.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J2HIT_UP','../assets/animations/JaAniamtions/GOLPE_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J2HIT_DOWN','../assets/animations/JaAniamtions/GOLPE_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J2IDLE','../assets/animations/JaAniamtions/PARADO_AZUL.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J2IDLE_SCOPE_UP','../assets/animations/JaAniamtions/PARADO_APUNTADO_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J2IDLE_SCOPE_DOWN','../assets/animations/JaAniamtions/PARADO_APUNTADO_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
-			this.load.spritesheet('J2JUMP','../assets/animations/JaAniamtions/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
+			//this.load.spritesheet('J2SCOPE_DOWN','../assets/animations/JAAnimations/APUNTAR_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
+			//this.load.spritesheet('J2SCOPE_UP','../assets/animations/JAAnimations/APUNTAR_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2RUN','../assets/animations/JAAnimations/CORRER_AZUL.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2HIT_UP','../assets/animations/JAAnimations/GOLPE_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
+			//this.load.spritesheet('J2HIT_DOWN','../assets/animations/JAAnimations/GOLPE_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2IDLE','../assets/animations/JAAnimations/PARADO_AZUL.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2IDLE_SCOPE_UP','../assets/animations/JAAnimations/PARADO_APUNTADO_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2IDLE_SCOPE_DOWN','../assets/animations/JAAnimations/PARADO_APUNTADO_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2JUMP','../assets/animations/JAAnimations/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
 }
 
 		create(){
