@@ -35,9 +35,9 @@ class OpcionesPrinc extends Phaser.Scene {
 		//scale evenly
 		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
 
-		var tituloOpciones = this.tituloOpciones = this.add.image(x, y*2/8, 'opciones').setScale(0.5);
-		var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen').setScale(0.5);
-		var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.5);
+		var tituloOpciones = this.tituloOpciones = this.add.image(x, y*3/8, 'opciones').setScale(0.5);
+		var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen');
+		var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.8);
 
 		//BOTONES DE VOLUMEN
 		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
