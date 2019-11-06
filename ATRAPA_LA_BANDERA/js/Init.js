@@ -1,7 +1,7 @@
 var config={
 type: Phaser.GAME,
 width: window.innerWidth-300,
-height: window.innerHeight-300,
+height: 720,
 parent:'game',
 
 scene: [Start],
