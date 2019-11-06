@@ -60,9 +60,17 @@
 			this.load.spritesheet('J2IDLE_SCOPE_UP','../assets/animations/JAAnimations/PARADO_APUNTADO_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE_SCOPE_DOWN','../assets/animations/JAAnimations/PARADO_APUNTADO_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2JUMP','../assets/animations/JAAnimations/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
+
+			this.load.audio('musica', '../assets/music/musicaJuego.mp3');
 }
 
 		create(){
+
+			//Musica
+			this.sound.pauseOnBlur=false;
+			var mj = this.sound.add('musica');
+			mj.play();
+			this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
 
 
 			//Controles por teclado
@@ -516,6 +524,7 @@
 		}
 
 		update(time, delta){
+
 			if(!game.loaded){
 
 			}
@@ -528,7 +537,14 @@
 					//console.log("Player1 pos: " + game.player1.x);
 					this.p2posx = game.player2.x;
 				}
-				//hola
+
+
+				//Musica
+				if(this.M.isDown){
+					game.sound.mute=true;
+					console.log("Muteado")
+
+				}
 
 
 				//Para calcular la distancia entre los jugadores
