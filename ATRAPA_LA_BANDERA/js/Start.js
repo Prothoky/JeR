@@ -28,6 +28,7 @@ preload(){
     this.scene.add("Fase1_Left", new Fase1_Left);
     //this.scene.start("MenuPrincipal");
     this.scene.start("Fase1_Left");
+
   }
 
 }

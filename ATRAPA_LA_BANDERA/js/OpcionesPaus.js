@@ -43,11 +43,11 @@ class OpcionesPaus extends Phaser.Scene {
 
 
 		//BOTONES DE VOLUMEN
-		this.subirVolumen = this.add.image(x*4/8, y*9/8, 'subirVolumen').setScale(0.5);
+		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
 		this.subirVolumen.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.subir());
 
-		this.bajarVolumen = this.add.image(x*12/8, y*9/8, 'bajarVolumen').setScale(0.5);
+		this.bajarVolumen = this.add.image(x*10/8, y*9/8, 'bajarVolumen').setScale(0.5);
 		this.bajarVolumen.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.bajar());
 
