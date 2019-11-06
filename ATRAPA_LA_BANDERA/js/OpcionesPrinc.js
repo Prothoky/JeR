@@ -5,6 +5,7 @@ class OpcionesPrinc extends Phaser.Scene {
 		super({key: "OpcionesPrinc"});
 
 	}
+
 	preload(){
 		//MENU OPCIONES
 		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/fondoOpciones.png'); //FONDO
@@ -19,31 +20,49 @@ class OpcionesPrinc extends Phaser.Scene {
 	}
 
 	create(){
-		this.add.sprite (80, 40, 'fondoOpciones');
-		this.add.sprite(566, 77, 'opciones');
-		this.add.sprite (312, 212.5, 'cuadroVolumen');
-		this.add.sprite(710, 232.5, 'volumen');
+
+		var height = game.config.height;
+		var width = game.config.width;
+
+		//get center of the canvas
+		var x = width/2 ;
+		var y = height/2;
+
+		var fondoOpcionesPrinc = this.add.sprite(x, y, "fondoOpciones");
+
+		//set the width of the sprite
+		fondoOpcionesPrinc.displayWidth = width;
+		//scale evenly
+		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
+
+		var tituloOpciones = this.tituloOpciones = this.add.image(x, y*2/8, 'opciones').setScale(0.5);
+		var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen').setScale(0.5);
+		var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.5);
 
 		//BOTONES DE VOLUMEN
-		this.botonSubir = this.add.button(417.665, 307.5, 'subirVolumen', this.subir, this, 2, 0, 1);
-		this.botonSubir.input.useHandCursor = true;
+		this.subirVolumen = this.add.image(x*4/8, y*9/8, 'subirVolumen').setScale(0.5);
+		this.subirVolumen.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.subir());
 
-		this.botonBajar = this.add.button(700.325, 307.5, 'bajarVolumen', this.bajar, this, 2, 0, 1);
-		this.botonBajar.input.useHandCursor = true;
+		this.bajarVolumen = this.add.image(x*12/8, y*9/8, 'bajarVolumen').setScale(0.5);
+		this.bajarVolumen.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.bajar());
 
-		this.botonQuitar = this.add.button(982.985, 307.5, 'quitarVolumen', this.quitar, this, 2, 0, 1);
-		this.botonQuitar.input.useHandCursor = true;
+		this.quitarVolumen = this.add.image(x, y*9/8, 'quitarVolumen').setScale(0.5);
+		this.quitarVolumen.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.quitar());
 
-		//BOTON VOLVER
-		this.botonVolver = this.add.button(612.5, 540, 'volverOpciones', this.volver, this, 2, 0, 1);
-		//this.botonVolver.anchor.set(-2.5,-3);
-		this.botonVolver.input.useHandCursor = true;
+				//BOTON VOLVER
+		this.volverOpciones = this.add.image(x, y*14/8, 'volverOpciones').setScale(0.4);
+		this.volverOpciones.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.volver());
 	}
 
 	volver() {
 
 		//una vez hecho esto, vamo a las instrucciones
-		this.game.state.start('MenuPrincipal');
+		this.scene.start('MenuPrincipal');
+
 	}
 
 	subir(){
