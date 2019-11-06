@@ -431,7 +431,7 @@
 
 				//Jugador 1
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
-				game.player1.flipX=true;
+				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
 				game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
@@ -439,7 +439,7 @@
 
 				//Jugador 2
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
-				game.player2.flipX=false;
+				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
 				game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
@@ -491,7 +491,7 @@
 
 				//Jugador 1
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
-				game.player1.flipX=true;
+				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
 				game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
@@ -499,7 +499,7 @@
 
 				//Jugador 2
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
-				game.player2.flipX=false;
+				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
 				game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
@@ -573,7 +573,7 @@
 				if(game.player1.body.touching.down){
 				if (this.W.isDown)
 				{
-					game.player1.setVelocityY(-550);
+					game.player1.setVelocityY(-450);
 				}
 				else if(this.A.isDown){
 					game.player1.setVelocityX(-550);
@@ -626,7 +626,7 @@
 				if(game.player2.body.touching.down){
 				if (this.cursor.up.isDown )
 				{
-					game.player2.setVelocityY(-550);
+					game.player2.setVelocityY(-450);
 				}
 				else if(this.cursor.left.isDown){
 					game.player2.setVelocityX(-550)
