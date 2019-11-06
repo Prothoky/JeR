@@ -69,7 +69,10 @@
 			//Musica
 			this.sound.pauseOnBlur=false;
 			var mj = this.sound.add('musica');
-			mj.play();
+			if(!game.playing){
+				mj.play();
+				game.playing=true;
+			}
 			this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
 
 
@@ -562,8 +565,7 @@
 
 				if (this.W.isDown && game.player1.body.touching.down)
 				{
-					game.player1.setVelocityY(-350);
-					//game.player2.anims.play('JUMP',true);
+					game.player1.setVelocityY(-550);
 				}
 				else if(this.A.isDown){
 					game.player1.setVelocityX(-550);
@@ -603,8 +605,7 @@
 
 				if (this.cursor.up.isDown && game.player2.body.touching.down)
 				{
-					game.player2.setVelocityY(-350);
-					//game.player1.anims.play('JUMP',true);
+					game.player2.setVelocityY(-550);
 				}
 				else if(this.cursor.left.isDown){
 					game.player2.setVelocityX(-550)
@@ -662,10 +663,12 @@
 		}
 	}
 
-	function collectBandera (player, bandera)
+	function collectBandera (player)
 	{
-		bandera.disableBody(true, true);
+		game.bandera.disableBody(true,true);
 		player.ownBandera = true;
+		player.showBandera = this.add.image(player.x ,150, 'bandera');
+		player.showBandera.setScale(0.5,0.5);
 	}
 
 	function hasTheFlag(player){
@@ -690,6 +693,10 @@
 	function respawn(player){
 		player.y = 150;
 		player.setVelocityY(120);
+		player.ownBandera = false;
+		game.bandera.refreshBody();
+		game.bandera.x = game.player1.x-game.player2.x;
+		game.bandera.y = game.player1.y-game.player.y;
 	}
 
 
