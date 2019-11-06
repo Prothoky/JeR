@@ -61,6 +61,7 @@
 			this.load.spritesheet('J2IDLE_SCOPE_DOWN','../assets/animations/JAAnimations/PARADO_APUNTADO_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2JUMP','../assets/animations/JAAnimations/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
 
+			//Musica del juego
 			this.load.audio('musica', '../assets/music/musicaJuego.mp3');
 }
 
