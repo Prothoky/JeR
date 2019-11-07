@@ -84,9 +84,9 @@
 
 			//Musica
 			this.sound.pauseOnBlur=false;
-			var mj = this.sound.add('musica',{loop: true});
+			this.mj = this.sound.add('musica',{loop: true});
 			if(!game.playing){
-				mj.play();
+				this.mj.play();
 				game.sound.mute=false;
 				game.playing=true;
 			}
@@ -590,6 +590,8 @@
 				this.scene.sendToBack('Juego');
 				this.scene.stop('Juego');
 				this.scene.resume('MenuPrincipal');
+				this.mj.stop();
+				game.playing=false;
 			}
 			else{
 				if(this.p1posx != game.player1.x){
