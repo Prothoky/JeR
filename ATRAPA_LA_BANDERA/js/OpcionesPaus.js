@@ -9,15 +9,15 @@ class OpcionesPaus extends Phaser.Scene {
 	preload(){
 
 		//MENU PAUSA
-		this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
-		this.load.image('menuPausa', 'assets/img/MenuPausa/menuPausa.png');
+		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/fondoOpciones.png'); //FONDO
+		this.load.image('cuadroVolumen', 'assets/img/MenuOpciones/cuadroVolumen.png');//CUADRO VOLUMEN
 		this.load.image('opciones', 'assets/img/MenuOpciones/opciones.png'); //titulo opciones
-		this.load.image('volumen', 'assets/img/MenuOpciones/volumen.png');
+		this.load.image('volumen', 'assets/img/MenuOpciones/volumen.png'); //titulo volumen
 
-		this.load.image('reanudar', 'assets/img/MenuPausa/reanudar.png');
-		this.load.image('opetions', 'assets/img/MenuPausa/opciones.png');
-		this.load.image('controles', 'assets/img/MenuPausa/controles.png');
-		this.load.image('abandonar', 'assets/img/MenuPausa/abandonar.png');
+		this.load.image('bajarVolumen', 'assets/img/MenuOpciones/bajarVolumen.png');
+		this.load.image('subirVolumen', 'assets/img/MenuOpciones/subirVolumen.png');
+		this.load.image('quitarVolumen', 'assets/img/MenuOpciones/quitarVolumen.png');
+		this.load.image('volverOpciones', 'assets/img/MenuOpciones/volver.png');
 
 	}
 
