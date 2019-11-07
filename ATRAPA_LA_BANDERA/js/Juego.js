@@ -74,6 +74,7 @@
 			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 			this.scene.add('MenuPausa', new MenuPausa); //el false es para que no se ejecute directamente
 			this.scene.sendToBack('MenuPausa');
+			this.scene.stop('MenuPausa');
 			//Musica
 			this.sound.pauseOnBlur=false;
 			var mj = this.sound.add('musica');
@@ -605,7 +606,7 @@
 
 				//Menu de Pausa
 				if(this.ESC.isDown){
-
+					this.scene.run('MenuPausa');
 					this.scene.bringToTop('MenuPausa');
 
 				}
@@ -714,18 +715,6 @@
 				}
 
 			}
-			if(game.player1.x < this.cameras.main.x-this.cW){
-				reenter(game.player1,this.cameras.main.x);
-			}
-			if(game.player1.x > this.cameras.main.x+this.cW){
-				reenter(game.player1,this.cameras.main.x);
-			}
-			if(game.player2.x < this.cameras.main.x-this.cW){
-				reenter(game.player2,this.cameras.main.x);
-			}
-			if(game.player2.x > this.cameras.main.x+this.cW){
-				reenter(game.player2,this.cameras.main.x);
-			}
 			if(!game.player1.body.touching.down && game.player1.y > 800){
 				respawn(game.player1);
 			}
@@ -766,7 +755,21 @@
 					game.HUDbandera.disableBody(true,true);
 				}
 			}
+			console.log(this.cameras.main.scrollX);
+			if(game.player1.x < this.cameras.main.x-this.cW){
+				reenter(game.player1,this.cameras.main.scrollX);
+			}
+			if(game.player1.x > this.cameras.main.x+this.cW){
+				reenter(game.player1,this.cameras.main.scrollX);
+			}
+			if(game.player2.x < this.cameras.main.x-this.cW){
+				reenter(game.player2,this.cameras.main.scrollX);
+			}
+			if(game.player2.x > this.cameras.main.x+this.cW){
+				reenter(game.player2,this.cameras.main.scrollX);
+			}
 		}
+
 	}
 
 	function collectBandera (player)
@@ -787,7 +790,7 @@
 	}
 
 	function reenter(player,x){
-		player.x = 0;
+		player.x = x;
 	}
 
 	function hasTheFlag(player){

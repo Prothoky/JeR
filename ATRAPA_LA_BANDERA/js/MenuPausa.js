@@ -12,7 +12,6 @@ class MenuPausa extends Phaser.Scene{
 
 	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
 	this.load.image('menuPausa', 'assets/img/MenuPausa/menuPausa.png');
-
 	this.load.image('reanudar', 'assets/img/MenuPausa/reanudar.png');
 	this.load.image('opciones', 'assets/img/MenuPausa/opciones.png');
 	this.load.image('controles', 'assets/img/MenuPausa/controles.png');
@@ -58,26 +57,21 @@ class MenuPausa extends Phaser.Scene{
 
 	reanudar() {
 		this.scene.sendToBack('MenuPausa');
+		this.scene.stop('MenuPausa');
 	}
 
 	opciones(){
-
 		this.scene.start('OpcionesPaus');
 		this.scene.add('OpcionesPaus', new OpcionesPaus);
 	}
 
 	controles(){
-
 		this.scene.add('ControlesPaus', new ControlesPaus);
 		this.scene.start('ControlesPaus');
-
 	}
 
 	abandonar(){
-
 			this.scene.add('MenuPrincipal', new MenuPrincipal);
 			this.scene.start('MenuPrincipal');
-
-
 	}
 }
