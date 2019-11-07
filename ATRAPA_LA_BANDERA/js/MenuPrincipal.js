@@ -73,13 +73,13 @@ class MenuPrincipal extends Phaser.Scene{
 		//.on('pointerout', () => this.enterButtonRestState() );
 
 		//BOTON CONTROLES
-		this.botonControles = this.add.image(x*6/9, y*5/3, 'botonControles');
+		this.botonControles = this.add.image(x, y*12/8, 'botonControles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verControles());
 
 		//BOTON OPCIONES
 
-		this.botonOpciones = this.add.image(x*12/9, y*5/3, 'botonOpciones');
+		this.botonOpciones = this.add.image(x, y*11/8, 'botonOpciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
 
