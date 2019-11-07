@@ -16,7 +16,7 @@ class MenuPausa extends Phaser.Scene{
 	this.load.image('controles', 'assets/img/MenuPausa/controles.png');
 	this.load.image('abandonar', 'assets/img/MenuPausa/abandonar.png');
 
-	
+
 }
 
 
@@ -34,11 +34,6 @@ class MenuPausa extends Phaser.Scene{
 
 		}
 
-		if (this.MenuPrincipalCreado == undefined){
-
-			this.MenuPrincipalCreado = this.scene.add('MenuPrincipal',new MenuPrincipal, false);
-
-		}
 
 		var height = game.config.height;
 		var width = game.config.width;
@@ -68,6 +63,7 @@ class MenuPausa extends Phaser.Scene{
 		.on('pointerdown', () => this.controles());
 
 		//BOTON VOLVER
+
 		this.botonAbandonar = this.add.image(x, y*12/8, 'abandonar');
 		this.botonAbandonar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.abandonar());
