@@ -21,11 +21,7 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	create(){
 
-		/*if (this.MPrincCreado == undefined){
-
-			this.MPrincCreado = this.scene.add('MenuPrincipal', new MenuPrincipal, false);
-
-		}*/
+		this.ZERO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
 
 		var height = game.config.height;
 		var width = game.config.width;
@@ -64,6 +60,14 @@ class OpcionesPrinc extends Phaser.Scene {
 		.on('pointerdown', () => this.volver());
 	}
 
+	update(time, delta){
+
+		if(this.ZERO.isDown){
+			this.volver();
+		}
+
+	}
+	
 	volver() {
 
 		//una vez hecho esto, vamo a las instrucciones
