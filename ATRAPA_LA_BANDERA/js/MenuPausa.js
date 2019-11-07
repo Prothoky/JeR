@@ -34,7 +34,6 @@ class MenuPausa extends Phaser.Scene{
 
 		}
 
-
 		var height = game.config.height;
 		var width = game.config.width;
 
@@ -72,7 +71,9 @@ class MenuPausa extends Phaser.Scene{
 
 	reanudar() {
 
-		this.scene.resume('Juego');
+		this.scene.start('Juego');
+		this.scene.remove('MenuPausa');
+
 	}
 
 	opciones(){
@@ -88,7 +89,7 @@ class MenuPausa extends Phaser.Scene{
 
 	abandonar(){
 
-		this.scene.start('MenuPrincipal');
+		this.scene.run('MenuPrincipal');
 
 	}
 }

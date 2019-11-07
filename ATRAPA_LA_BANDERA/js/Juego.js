@@ -628,10 +628,9 @@
 				//Menu de Pausa
 				if(this.ESC.isDown){
 
-					console.log("vamos al kitkat");
 
+					this.scene.launch('MenuPausa');
 					this.scene.pause('Juego');
-					this.scene.start('MenuPausa');
 
 				}
 
