@@ -1,5 +1,7 @@
 class MenuPrincipal extends Phaser.Scene{
+
 	constructor(){
+
 		super ({key: "MenuPrincipal"});
 	}
 
@@ -7,23 +9,24 @@ class MenuPrincipal extends Phaser.Scene{
 
     //MENU PRINCIPAL
     this.load.image('fondoMenuPrinc', 'assets/img/MenuPrincipal/fondoMP.jpg'); //FONDO
-
-
     this.load.image('botonJugar', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
-
     this.load.image('botonControles', 'assets/img/MenuPrincipal/botonControles.png'); //BOTON CONTROLES
     this.load.image('botonOpciones', 'assets/img/MenuPrincipal/botonOpciones.png'); //BOTON OPCIONES
     this.load.image('botonSalir', 'assets/img/MenuPrincipal/botonSalir.png'); //BOTON SALIR
 	}
 
 	create(){
-		this.cameras.main.setBackgroundColor(0x000000);
 
+		//declaramos las variables para controlar los botones por teclado
+		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+		this.C = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
+		this.J = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+
+		this.cameras.main.setBackgroundColor(0x000000);
 
 		this.scene.add('ControlesPrinc', new ControlesPrinc);
 		this.scene.sendToBack('ControlesPrinc');
 		this.scene.stop('ControlesPrinc');
-
 
 		this.scene.add('OpcionesPrinc',new OpcionesPrinc);
 		this.scene.sendToBack('OpcionesPrinc');
@@ -42,21 +45,15 @@ class MenuPrincipal extends Phaser.Scene{
 
 		var fondoMenuPrinc = this.add.sprite(x, y, "fondoMenuPrinc");
 
-		//set the width of the sprite
-		fondoMenuPrinc.displayWidth = width;
-		//scale evenly
-		fondoMenuPrinc.scaleX = fondoMenuPrinc.scaleY;
 
+		fondoMenuPrinc.displayWidth = width;
+
+		fondoMenuPrinc.scaleX = fondoMenuPrinc.scaleY;
 
 		//BOTON JUGAR
 		this.botonJugar = this.add.image(x, y, 'botonJugar');
 		this.botonJugar.setInteractive({ useHandCursor: true  } )
-		//on CLICK
 		.on('pointerdown', () => this.iniciarJuego());
-		//on HOVER
-		//.on('pointerover', () => this.enterButtonHoverState() )
-		//on RELEASE
-		//.on('pointerout', () => this.enterButtonRestState() );
 
 		//BOTON CONTROLES
 		this.botonControles = this.add.image(x, y*10/8, 'botonControles');
@@ -64,14 +61,10 @@ class MenuPrincipal extends Phaser.Scene{
 		.on('pointerdown', () => this.verControles());
 
 		//BOTON OPCIONES
-
 		this.botonOpciones = this.add.image(x, y*11/8, 'botonOpciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
 
-		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
-		this.C = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
-		this.J = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
 	}
 
 	update (time, delta){
