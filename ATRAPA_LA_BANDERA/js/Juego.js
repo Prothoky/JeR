@@ -81,16 +81,14 @@
 			}
 
 			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-<<<<<<< HEAD
+/*
 			if(!this.sceneload){
 				this.scene.add('MenuPausa', new MenuPausa);
 				this.sceneload=true;
 			}
 			this.scene.sendToBack('MenuPausa');
-			this.scene.stop('MenuPausa');
-=======
+			this.scene.stop('MenuPausa');*/
 
->>>>>>> 086d77a4f5ef81f135b340ec5b7f5eaa6f87d126
 			//Musica
 			this.sound.pauseOnBlur=false;
 			var mj = this.sound.add('musica');
