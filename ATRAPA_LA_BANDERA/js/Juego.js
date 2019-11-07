@@ -66,7 +66,7 @@
 			this.load.audio('musica', '../assets/music/musicaJuego.mp3');
 
 			//Cargamos el menu de PAUSA
-			this.load.script('MenuPausa', "./js/MenuPausa.js");
+		//	this.load.script('MenuPausa', "./js/MenuPausa.js");
 }
 
 		create(){
