@@ -63,7 +63,7 @@ class MenuPrincipal extends Phaser.Scene{
 
 
 		//BOTON JUGAR
-		this.botonJugar = this.add.image(x, y*7	/6, 'botonJugar');
+		this.botonJugar = this.add.image(x, y, 'botonJugar');
 		this.botonJugar.setInteractive({ useHandCursor: true  } )
 		//on CLICK
 		.on('pointerdown', () => this.iniciarJuego());
@@ -73,7 +73,7 @@ class MenuPrincipal extends Phaser.Scene{
 		//.on('pointerout', () => this.enterButtonRestState() );
 
 		//BOTON CONTROLES
-		this.botonControles = this.add.image(x, y*12/8, 'botonControles');
+		this.botonControles = this.add.image(x, y*10/8, 'botonControles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verControles());
 
