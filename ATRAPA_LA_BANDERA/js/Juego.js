@@ -45,6 +45,7 @@
 			//this.load.spritesheet('J1SCOPE_UP','../assets/animations/JRAniamtions/APUNTAR_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1RUN','../assets/animations/JRAnimations/CORRER_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1HIT_UP','../assets/animations/JRAnimations/GOLPE_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1HIT_DOWN','../assets/animations/JRAnimations/GOLPE_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			//this.load.spritesheet('J1HIT_DOWN','../assets/animations/JRAniamtions/GOLPE_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1IDLE','../assets/animations/JRAnimations/PARADO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1IDLE_SCOPE_UP','../assets/animations/JRAnimations/PARADO_APUNTADO_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
@@ -55,6 +56,7 @@
 			//this.load.spritesheet('J2SCOPE_UP','../assets/animations/JAAnimations/APUNTAR_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2RUN','../assets/animations/JAAnimations/CORRER_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2HIT_UP','../assets/animations/JAAnimations/GOLPE_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2HIT_DOWN','../assets/animations/JAAnimations/GOLPE_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			//this.load.spritesheet('J2HIT_DOWN','../assets/animations/JAAnimations/GOLPE_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE','../assets/animations/JAAnimations/PARADO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE_SCOPE_UP','../assets/animations/JAAnimations/PARADO_APUNTADO_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
@@ -217,6 +219,23 @@
 				frameRate:24
 			});
 
+			//Anim golpe abajo (funciona)
+			this.anims.create({
+				key: 'HIT_DOWN',
+				frames: this.anims.generateFrameNumbers('J1HIT_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+				}),
+				repeat:0,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'HIT_DOWN2',
+				frames: this.anims.generateFrameNumbers('J2HIT_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+				}),
+				repeat:0,
+				frameRate:24
+			});
 
 			//Anim salto (no funciona)
 			 this.anims.create({
@@ -649,6 +668,9 @@
 					}else if(this.G.isDown){
 						console.log("Golpe arriba");
 						game.player1.anims.play('HIT_UP',true);
+					}else if(this.H.isDown){
+						console.log("Golpe abajo");
+						game.player1.anims.play('HIT_DOWN',true);
 					}else
 					game.player1.anims.play('IDLE',true);
 				}
@@ -702,6 +724,9 @@
 					}else if(this.K.isDown){
 						console.log("Golpe arriba");
 						game.player2.anims.play('HIT_UP2',true);
+					}else if(this.L.isDown){
+						console.log("Golpe arriba");
+						game.player2.anims.play('HIT_DOWN2',true);
 					}else
 					game.player2.anims.play('IDLE2',true);
 				}
