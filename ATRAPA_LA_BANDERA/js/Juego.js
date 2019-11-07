@@ -4,9 +4,11 @@
 		}
 
 		preload(){
+
 			game.loaded=false;
 			game.exit=false;
 			game.paused=false;
+
 			if(game.onfase==0){
 				//Sprite del fondo
 				this.load.image("fondo","../assets/map/Centro/Fondo0.jpg");
@@ -84,9 +86,9 @@
 
 			//Musica
 			this.sound.pauseOnBlur=false;
-			this.mj = this.sound.add('musica',{loop: true});
+			var mj = this.sound.add('musica',{loop: true, volume : 0.5});
 			if(!game.playing){
-				this.mj.play();
+				mj.play();
 				game.sound.mute=false;
 				game.playing=true;
 			}
@@ -590,10 +592,17 @@
 				this.scene.sendToBack('Juego');
 				this.scene.stop('Juego');
 				this.scene.resume('MenuPrincipal');
-				this.mj.stop();
-				game.playing=false;
 			}
 			else{
+				if(this.p1posx != game.player1.x){
+					//console.log("Player1 pos: " + game.player1.x);
+					this.p1posx = game.player1.x;
+				}
+				if(this.p2posx != game.player2.x){
+					//console.log("Player1 pos: " + game.player1.x);
+					this.p2posx = game.player2.x;
+				}
+
 
 				//Musica
 				if(this.M.isDown && !game.MPulsed){
@@ -619,7 +628,7 @@
 				}
 
 				//Para calcular la distancia entre los jugadores
-				game.dis = Math.abs(game.player2.x - game.player1.x);
+				var dis = Math.abs(game.player2.x - game.player1.x);
 
 				//Movimiento J1
 				if(game.player1.body.touching.down){
@@ -739,12 +748,6 @@
 					game.bandera.y = 150;
 					game.bandera.x += 100;
 				}
-				if(game.player1.y < 200){
-					game.player1.y = 250;
-				}
-				if(game.player2.y < 200){
-					game.player2.y = 250;
-				}
 
 				if(game.player2.x< -2040){
 					game.player2.x = -2000;
@@ -768,12 +771,12 @@
 
 				//Personaje coje la bandera
 				this.physics.add.overlap([game.player1,game.player2], game.bandera, collectBandera, null, this);
-
+				console.log('antes')
 				this.physics.add.overlap(game.player1, game.player2, checkatacks, null, this);
-
+				console.log('despues')
 				//Camara sigue a la bandera
 				if(hasTheFlag(game.player1)){
-
+					console.log(1);
 					this.cameras.main.startFollow(game.player1,true,1,1,0,200);
 					game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
 					if(game.player1.x < -2000){
@@ -789,7 +792,7 @@
 					}
 				}
 				else if(hasTheFlag(game.player2)){
-
+					console.log(2);
 					this.cameras.main.startFollow(game.player2,true,1,1,0,200);
 					game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
 					if(game.player2.x > 2000){
@@ -807,7 +810,7 @@
 				}
 
 				else{
-
+					console.log(3);
 					this.cameras.main.startFollow(game.bandera,true,1,1,0,200);
 					game.HUDbandera.disableBody(true,true);
 				}
@@ -835,12 +838,12 @@
 	}
 
 	function respawn(player){
-		player.y = 250;
+		player.y = 150;
 		player.x += 100;
 		player.setVelocityY(0);
 		if(player.ownBandera){
 			player.ownBandera = false;
-			game.bandera.enableBody(player.x+-500,250,true,true);
+			game.bandera.enableBody(game.player1.x-game.player2.x,game.player1.y-game.player2.y,true,true);
 			game.bandera.visible=true;
 		}
 	}
@@ -869,22 +872,20 @@
 		game.onfase--;
 	}
 
-function checkpulsed(key){
-	if(key.isDown)key.pulsed=true;
-	if(key.isUp)key.pulsed=false;
-}
-
 function checkatacks(){
-	if(this.L.isDown && !(this.T.isDown|| this.H.isDown) && game.dis <30){
-		respawn(game.player2,game.player1.x);
+console.log('CHECK');
+console.log(game.player1.status);
+console.log(game.player2.status);
+	if(game.player1.status == "HIT_UP" && !(game.player2.status == "SCOPE_UP" || game.player2.status == "HIT_UP")){
+		respawn(player2,player1.x);
 	}
-	else if(this.H.isDown && !(this.O.isDown|| this.L.isDown)&& game.dis <30){
-		respawn(game.player1,game.player2.x);
+	else if(game.player2.status == "HIT_UP" && !(game.player1.status == "SCOPE_UP" || game.player1.status == "HIT_UP")){
+		respawn(player1,player2.x);
 	}
-	else if(this.K.isDown&& !(this.Y.isDown || this.G.isDown)&& game.dis <30){
-		respawn(game.player2,game.player1.x);
+	else if(game.player1.status == "HIT_DOWN" && !(game.player2.status == "SCOPE_DOWN" || game.player2.status == "HIT_DOWN")){
+		respawn(player2,player1.x);
 	}
-	else if(this.G.isDown && !(this.P.isDown || this.K.isDown)&& game.dis <30){
-		respawn(game.player1,game.player2.x);
+	else if(game.player2.status == "HIT_DOWN" && !(game.player1.status == "SCOPE_DOWN" || game.player1.status == "HIT_DOWN")){
+		respawn(player1,player2.x);
 	}
 }
