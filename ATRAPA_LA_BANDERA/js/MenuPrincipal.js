@@ -15,8 +15,8 @@ class MenuPrincipal extends Phaser.Scene{
     this.load.image('botonOpciones', 'assets/img/MenuPrincipal/botonOpciones.png'); //BOTON OPCIONES
     this.load.image('botonSalir', 'assets/img/MenuPrincipal/botonSalir.png'); //BOTON SALIR
 
-		this.load.script('ControlesPrinc', "./js/ControlesPrinc.js");
-		this.load.script('OpcionesPrinc', "./js/OpcionesPrinc.js");
+		//this.load.script('ControlesPrinc', "./js/ControlesPrinc.js");
+		//this.load.script('OpcionesPrinc', "./js/OpcionesPrinc.js");
 
 
 	}
