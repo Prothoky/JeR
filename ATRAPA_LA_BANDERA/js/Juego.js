@@ -221,7 +221,7 @@
 			 			frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
 			 		}),
 			 		repeat:1,
-			 		frameRate:13
+			 		frameRate:11
 			 });
 			 this.anims.create({
 			 		key: 'JUMP2',
@@ -229,7 +229,7 @@
 			 			frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
 			 		}),
 			 		repeat:1,
-			 		frameRate:13
+			 		frameRate:11
 			 });
 
 			if(game.onfase==0){
@@ -261,7 +261,7 @@
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
 				game.player1.flipX=true;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
@@ -269,7 +269,7 @@
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
 				game.player2.flipX=false;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -324,7 +324,7 @@
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
 				game.player1.flipX=true;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
@@ -332,7 +332,7 @@
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
 				game.player2.flipX=false;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -401,7 +401,7 @@
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
 				game.player1.flipX=true;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
@@ -409,7 +409,7 @@
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
 				game.player2.flipX=false;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -461,7 +461,7 @@
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
 				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
@@ -469,7 +469,7 @@
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
 				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -521,7 +521,7 @@
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
 				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
@@ -529,7 +529,7 @@
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
 				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
