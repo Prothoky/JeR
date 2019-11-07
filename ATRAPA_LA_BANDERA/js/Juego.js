@@ -663,7 +663,7 @@
 						console.log("Apuntar abajo");
 						game.player1.anims.play('SCOPE_DOWN',true);
 					}else if(this.T.isDown){
-						console.log("Apuntar abajo");
+						console.log("Apuntar arriba");
 						game.player1.anims.play('SCOPE_UP',true);
 					}else if(this.G.isDown){
 						console.log("Golpe arriba");
@@ -719,13 +719,13 @@
 						console.log("Apuntar abajo");
 						game.player2.anims.play('SCOPE_DOWN2',true);
 					}else if(this.O.isDown){
-						console.log("Apuntar abajo");
+						console.log("Apuntar arriba");
 						game.player2.anims.play('SCOPE_UP2',true);
 					}else if(this.K.isDown){
 						console.log("Golpe arriba");
 						game.player2.anims.play('HIT_UP2',true);
 					}else if(this.L.isDown){
-						console.log("Golpe arriba");
+						console.log("Golpe abajo");
 						game.player2.anims.play('HIT_DOWN2',true);
 					}else
 					game.player2.anims.play('IDLE2',true);
