@@ -5,7 +5,6 @@
 
 
 		preload(){
-
 			if(game.onfase==0){
 				//Sprite del fondo
 				this.load.image("fondo","../assets/map/Centro/Fondo0.jpg");
@@ -62,10 +61,8 @@
 			this.load.spritesheet('J2IDLE_SCOPE_DOWN','../assets/animations/JAAnimations/PARADO_APUNTADO_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2JUMP','../assets/animations/JAAnimations/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
 
+			//Musica del juego
 			this.load.audio('musica', '../assets/music/musicaJuego.mp3');
-
-
-			//scene.load.script("MenuPausa", './js/MenuPausa.js');
 }
 
 		create(){
@@ -73,16 +70,17 @@
 			//MENU de PAUSA
 			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 			this.scene.add('MenuPausa', config, false); //el false es poara que no se ejecute directamente
-
+			
 			//Musica
 			this.sound.pauseOnBlur=false;
 			var mj = this.sound.add('musica');
 			if(!game.playing){
 				mj.play();
-				game.sound.mute=true;
+				//game.sound.mute=true;
 				game.playing=true;
 			}
 			this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
+
 
 			//Controles por teclado
 			//Controles J1(Rojo)
@@ -126,6 +124,8 @@
 				repeat:-1,
 				frameRate:24
 			})
+
+
 			//Anim parado (funciona)
 			this.anims.create({
 				key: 'IDLE',
@@ -143,6 +143,16 @@
 				repeat:1,
 				frameRate:24
 			});
+			this.anims.create({
+				key: 'IDLE2',
+				frames: this.anims.generateFrameNumbers('J2IDLE',{
+					frames: [0,1,2,3,4,5,6,7,8,9]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+
+
 			//Anim apuntando arriba
 			this.anims.create({
 				key: 'SCOPE_DOWN',
@@ -160,6 +170,16 @@
 				repeat:1,
 				frameRate:24
 			});
+			this.anims.create({
+				key: 'SCOPE_DOWN2',
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+
+
 			//Anim apuntando arriba
 			this.anims.create({
 				key: 'SCOPE_UP',
@@ -177,6 +197,8 @@
 				repeat:1,
 				frameRate:24
 			});
+
+
 			//Anim golpe arriba (funciona)
 			this.anims.create({
 				key: 'HIT_UP',
@@ -194,6 +216,8 @@
 				repeat:0,
 				frameRate:24
 			});
+
+
 			//Anim salto (no funciona)
 			 this.anims.create({
 			 		key: 'JUMP',
@@ -201,7 +225,7 @@
 			 			frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
 			 		}),
 			 		repeat:1,
-			 		frameRate:13
+			 		frameRate:11
 			 });
 			 this.anims.create({
 			 		key: 'JUMP2',
@@ -209,7 +233,7 @@
 			 			frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
 			 		}),
 			 		repeat:1,
-			 		frameRate:13
+			 		frameRate:11
 			 });
 
 			if(game.onfase==0){
@@ -241,7 +265,7 @@
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
 				game.player1.flipX=true;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
@@ -249,7 +273,7 @@
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
 				game.player2.flipX=false;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -304,7 +328,7 @@
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
 				game.player1.flipX=true;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
@@ -312,7 +336,7 @@
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
 				game.player2.flipX=false;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -381,7 +405,7 @@
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
 				game.player1.flipX=true;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
@@ -389,7 +413,7 @@
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
 				game.player2.flipX=false;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -439,17 +463,17 @@
 
 				//Jugador 1
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
-				game.player1.flipX=true;
+				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
 				//Jugador 2
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
-				game.player2.flipX=false;
+				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -499,17 +523,17 @@
 
 				//Jugador 1
 				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
-				game.player1.flipX=true;
+				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
-				game.player1.setBounce(0.3);
+				//game.player1.setBounce(0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
 				//Jugador 2
 				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
-				game.player2.flipX=false;
+				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
-				game.player2.setBounce(0.3);
+				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -528,6 +552,12 @@
 				game.player1.y = 350;
 
 			}
+
+			game.HUDbandera = this.physics.add.image();
+			game.HUDbandera = this.physics.add.sprite(0, 0, 'bandera');
+			game.HUDbandera.setCollideWorldBounds(false);
+			game.HUDbandera.setScale(0.5,0.5);
+
 
 			this.cameras.main.startFollow(game.bandera,false,1,1,0,200);
 
@@ -557,6 +587,7 @@
 					this.p2posx = game.player2.x;
 				}
 
+
 				//Musica
 				if(this.M.isDown && !game.MPulsed){
 					if(game.sound.mute){
@@ -571,6 +602,7 @@
 				if(this.M.isUp){
 					game.MPulsed=false;
 				}
+
 
 				//Menu de Pausa
 				if(this.ESC.isDown){
@@ -588,7 +620,6 @@
 
 				}
 
-
 				//Para calcular la distancia entre los jugadores
 				var dis = Math.abs(game.player2.x - game.player1.x);
 
@@ -596,7 +627,7 @@
 				if(game.player1.body.touching.down){
 				if (this.W.isDown)
 				{
-					game.player1.setVelocityY(-550);
+					game.player1.setVelocityY(-450);
 				}
 				else if(this.A.isDown){
 					game.player1.setVelocityX(-550);
@@ -649,7 +680,7 @@
 				if(game.player2.body.touching.down){
 				if (this.cursor.up.isDown )
 				{
-					game.player2.setVelocityY(-550);
+					game.player2.setVelocityY(-450);
 				}
 				else if(this.cursor.left.isDown){
 					game.player2.setVelocityX(-550)
@@ -700,6 +731,7 @@
 				//Camara sigue a la bandera
 				if(hasTheFlag(game.player1)){
 					this.cameras.main.startFollow(game.player1,false,1,1,0,200);
+					game.HUDbandera.enableBody(true,game.player1.x-350,100,true,true);
 					if(game.player1.x < -2040){
 						game.loaded=false;
 						cHangeFaseLeft();
@@ -708,6 +740,7 @@
 				}
 				else if(hasTheFlag(game.player2)){
 					this.cameras.main.startFollow(game.player2,false,1,1,0,200);
+					game.HUDbandera.enableBody(true,game.player2.x+350,100,true,true);
 					if(game.player2.x > 2040){
 						game.loaded=false;
 						cHangeFaseRight();
@@ -717,6 +750,7 @@
 				}
 				else{
 					this.cameras.main.startFollow(game.bandera,false,1,1,0,200);
+					game.HUDbandera.disableBody(true,true);
 				}
 			}
 		}
@@ -726,8 +760,15 @@
 	{
 		game.bandera.disableBody(true,true);
 		player.ownBandera = true;
-		player.showBandera = this.add.image(player.x ,150, 'bandera');
-		player.showBandera.setScale(0.5,0.5);
+	}
+
+	function respawn(player){
+		player.y = 150;
+		player.setVelocityY(120);
+		player.ownBandera = false;
+		game.bandera.refreshBody();
+		game.bandera.x = game.player1.x-game.player2.x;
+		game.bandera.y = game.player1.y-game.player.y;
 	}
 
 	function hasTheFlag(player){
@@ -741,24 +782,11 @@
 		game.fasebefore=game.onfase;
 		game.onfase++;
 	}
+
 	function cHangeFaseLeft(){
 		game.player1.destroy(true);
 		game.player2.destroy(true);
 		game.bandera.destroy(true);
 		game.fasebefore=game.onfase;
 		game.onfase--;
-	}
-
-	function respawn(player){
-		player.y = 150;
-		player.setVelocityY(120);
-		player.ownBandera = false;
-		game.bandera.refreshBody();
-		game.bandera.x = game.player1.x-game.player2.x;
-		game.bandera.y = game.player1.y-game.player.y;
-	}
-
-
-	function crearplataformas(){
-
 	}
