@@ -875,16 +875,16 @@ function checkpulsed(key){
 }
 
 function checkatacks(){
-	if(this.L.isDown && !(this.T.isDown|| this.H.isDown) && game.dis <30){
+	if(this.O.isDown && !(this.T.isDown|| this.Y.isDown) && game.dis <30){
 		respawn(game.player2,game.player1.x);
 	}
-	else if(this.H.isDown && !(this.O.isDown|| this.L.isDown)&& game.dis <30){
+	else if(this.K.isDown && !(this.G.isDown|| this.H.isDown)&& game.dis <30){
 		respawn(game.player1,game.player2.x);
 	}
-	else if(this.K.isDown&& !(this.Y.isDown || this.G.isDown)&& game.dis <30){
+	else if(this.Y.isDown&& !(this.T.isDown || this.O.isDown)&& game.dis <30){
 		respawn(game.player2,game.player1.x);
 	}
-	else if(this.G.isDown && !(this.P.isDown || this.K.isDown)&& game.dis <30){
+	else if(this.H.isDown && !(this.G.isDown || this.K.isDown)&& game.dis <30){
 		respawn(game.player1,game.player2.x);
 	}
 }
