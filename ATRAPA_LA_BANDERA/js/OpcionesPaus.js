@@ -17,6 +17,8 @@ class OpcionesPaus extends Phaser.Scene {
 		this.load.image('subirVolumen', 'assets/img/MenuOpciones/subirVolumen.png');
 		this.load.image('quitarVolumen', 'assets/img/MenuOpciones/quitarVolumen.png');
 		this.load.image('volverOpciones', 'assets/img/MenuOpciones/volver.png');
+
+		this.load.audio('musica', './js/Juego.js');
 	}
 
 	create(){
@@ -39,6 +41,8 @@ class OpcionesPaus extends Phaser.Scene {
 		var tituloOpciones = this.tituloOpciones = this.add.image(x, y*3/8, 'options').setScale(0.5);
 		var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen');
 		var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.8);
+
+		this.volumenText = this.add.text(x, y*7/8, '0.5', { fontSize: '32px', fill: '#000' });
 
 		//BOTONES DE VOLUMEN
 		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
@@ -76,13 +80,22 @@ class OpcionesPaus extends Phaser.Scene {
 
 	subir(){
 
+		game.sound.setVolume(1);
+		this.volumenText.setText('1');
+
 	}
 
 	bajar(){
 
+		game.sound.setVolume(0);
+		this.volumenText.setText('0');
+
 	}
 
 	quitar(){
+
+		game.sound.mute = true;
+		game.sound.setVolume(0);
 
 	}
 
