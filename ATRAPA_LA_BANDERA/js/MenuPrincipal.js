@@ -7,7 +7,7 @@ class MenuPrincipal extends Phaser.Scene{
 
     //MENU PRINCIPAL
     this.load.image('fondoMenuPrinc', 'assets/img/MenuPrincipal/fondoMP.jpg'); //FONDO
-    this.load.image('logo', 'assets/img/MenuPrincipal/logo.png');
+
 
     this.load.image('botonJugar', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
 
@@ -61,9 +61,6 @@ class MenuPrincipal extends Phaser.Scene{
 		//scale evenly
 		fondoMenuPrinc.scaleX = fondoMenuPrinc.scaleY;
 
-		//añadimos el sprite del titulo
-
-		this.MenuPrincipal_Layout = this.add.image(x, y*4/8, 'logo');
 
 		//BOTON JUGAR
 		this.botonJugar = this.add.image(x, y*7	/6, 'botonJugar');
