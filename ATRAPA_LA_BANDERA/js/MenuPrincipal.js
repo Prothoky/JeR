@@ -69,20 +69,22 @@ class MenuPrincipal extends Phaser.Scene{
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
 
-
+		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+		this.C = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
+		this.J = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
 	}
 
 	update (time, delta){
 
-		// if(this.O.isDown){
-		// 	this.verOpciones();
-		// }
-		// if(this.C.isDown){
-		// 	this.verControles();
-		// }
-		// if(this.J.isDown){
-		// 	this.iniciarJuego();
-		// }
+		 if(this.O.isDown){
+		 	this.verOpciones();
+		 }
+		 if(this.C.isDown){
+		 	this.verControles();
+		 }
+		 if(this.J.isDown){
+		 	this.iniciarJuego();
+		 }
 
 	}
 
