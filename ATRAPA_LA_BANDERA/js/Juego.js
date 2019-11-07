@@ -44,6 +44,7 @@
 			//this.load.spritesheet('J1SCOPE_UP','../assets/animations/JRAniamtions/APUNTAR_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1RUN','../assets/animations/JRAnimations/CORRER_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1HIT_UP','../assets/animations/JRAnimations/GOLPE_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1HIT_DOWN','../assets/animations/JRAnimations/GOLPE_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			//this.load.spritesheet('J1HIT_DOWN','../assets/animations/JRAniamtions/GOLPE_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1IDLE','../assets/animations/JRAnimations/PARADO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1IDLE_SCOPE_UP','../assets/animations/JRAnimations/PARADO_APUNTADO_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
@@ -54,6 +55,7 @@
 			//this.load.spritesheet('J2SCOPE_UP','../assets/animations/JAAnimations/APUNTAR_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2RUN','../assets/animations/JAAnimations/CORRER_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2HIT_UP','../assets/animations/JAAnimations/GOLPE_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2HIT_DOWN','../assets/animations/JAAnimations/GOLPE_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			//this.load.spritesheet('J2HIT_DOWN','../assets/animations/JAAnimations/GOLPE_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE','../assets/animations/JAAnimations/PARADO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE_SCOPE_UP','../assets/animations/JAAnimations/PARADO_APUNTADO_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
@@ -65,6 +67,10 @@
 }
 
 		create(){
+
+			//MENU de PAUSA
+			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+			this.scene.add('MenuPausa', config, false); //el false es para que no se ejecute directamente
 
 			//Musica
 			this.sound.pauseOnBlur=false;
@@ -164,14 +170,6 @@
 				repeat:1,
 				frameRate:24
 			});
-			this.anims.create({
-				key: 'SCOPE_DOWN2',
-				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
-					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
-				}),
-				repeat:1,
-				frameRate:24
-			});
 
 			//Anim apuntando arriba
 			this.anims.create({
@@ -209,6 +207,27 @@
 				frameRate:24
 			});
 
+<<<<<<< HEAD
+=======
+			//Anim golpe abajo (funciona)
+			this.anims.create({
+				key: 'HIT_DOWN',
+				frames: this.anims.generateFrameNumbers('J1HIT_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+				}),
+				repeat:0,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'HIT_DOWN2',
+				frames: this.anims.generateFrameNumbers('J2HIT_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+				}),
+				repeat:0,
+				frameRate:24
+			});
+
+>>>>>>> 2c66d4c1c15dbd21efe35341aa538782d5832758
 			//Anim salto (no funciona)
 			 this.anims.create({
 			 		key: 'JUMP',
@@ -585,6 +604,22 @@
 				}
 
 
+				//Menu de Pausa
+				if(this.ESC.isDown){
+
+					console.log("vamos al kitkat");
+					//this.scene.add("MenuPausa", new MenuPausa);
+					//this.scene.add("MenuPausa", new MenuPausa);
+					//this.scene.add('MenuPausa', config, true);
+					this.scene.start('MenuPausa');
+
+				/*	if ( this.menuPausaVar == null) {
+						this.menuPausaVar = this.scene.add("MenuPausa1", new MenuPausa);
+						this.scene.start("MenuPausa1");
+					}*/
+
+				}
+
 				//Para calcular la distancia entre los jugadores
 				var dis = Math.abs(game.player2.x - game.player1.x);
 
@@ -609,11 +644,14 @@
 						console.log("Apuntar abajo");
 						game.player1.anims.play('SCOPE_DOWN',true);
 					}else if(this.T.isDown){
-						console.log("Apuntar abajo");
+						console.log("Apuntar arriba");
 						game.player1.anims.play('SCOPE_UP',true);
 					}else if(this.G.isDown){
 						console.log("Golpe arriba");
 						game.player1.anims.play('HIT_UP',true);
+					}else if(this.H.isDown){
+						console.log("Golpe abajo");
+						game.player1.anims.play('HIT_DOWN',true);
 					}else
 					game.player1.anims.play('IDLE',true);
 				}
@@ -660,11 +698,14 @@
 						console.log("Apuntar abajo");
 						game.player2.anims.play('SCOPE_DOWN2',true);
 					}else if(this.O.isDown){
-						console.log("Apuntar abajo");
+						console.log("Apuntar arriba");
 						game.player2.anims.play('SCOPE_UP2',true);
 					}else if(this.K.isDown){
 						console.log("Golpe arriba");
 						game.player2.anims.play('HIT_UP2',true);
+					}else if(this.L.isDown){
+						console.log("Golpe abajo");
+						game.player2.anims.play('HIT_DOWN2',true);
 					}else
 					game.player2.anims.play('IDLE2',true);
 				}
