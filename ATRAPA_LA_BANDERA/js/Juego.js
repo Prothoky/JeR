@@ -616,7 +616,7 @@
 				}else if(this.D.isDown){
 					game.player1.setVelocityX(550);
 					game.player1.flipX=true;
-					game.player1.anims.play('RUN2',true);
+					game.player1.anims.play('RUN',true);
 				}else
 				{
 					game.player1.setVelocityX(0);
