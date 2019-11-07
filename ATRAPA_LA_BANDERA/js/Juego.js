@@ -70,8 +70,8 @@
 
 			//MENU de PAUSA
 			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-			this.scene.add('MenuPausa', config, false); //el false es para que no se ejecute directamente
-
+			this.scene.add('MenuPausa', new MenuPausa); //el false es para que no se ejecute directamente
+			this.scene.sendToBack('MenuPausa');
 			//Musica
 			this.sound.pauseOnBlur=false;
 			var mj = this.sound.add('musica');
@@ -272,7 +272,7 @@
 				game.player1 = this.physics.add.sprite(420,450,'maniqui',2);
 				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
-				//game.player1.setBounce(0.3);
+				game.player1.setBounce(-0.3);
 				game.player1.setOrigin(0.5,1);
 				game.player1.ownBandera=false;
 
@@ -280,7 +280,7 @@
 				game.player2 = this.physics.add.sprite(-420,450,'maniqui',2);
 				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
-				//game.player2.setBounce(0.3);
+				game.player2.setBounce(-0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
 				game.player2.setTint(0x4400ff);
@@ -604,16 +604,7 @@
 				//Menu de Pausa
 				if(this.ESC.isDown){
 
-					console.log("vamos al kitkat");
-					//this.scene.add("MenuPausa", new MenuPausa);
-					//this.scene.add("MenuPausa", new MenuPausa);
-					//this.scene.add('MenuPausa', config, true);
-					this.scene.start('MenuPausa');
-
-				/*	if ( this.menuPausaVar == null) {
-						this.menuPausaVar = this.scene.add("MenuPausa1", new MenuPausa);
-						this.scene.start("MenuPausa1");
-					}*/
+					this.scene.bringToTop('MenuPausa');
 
 				}
 
@@ -721,6 +712,12 @@
 				}
 
 			}
+			if(game.player1.x < this.cameras.main.x-this.cW/2){
+				reenter(game.player1,this.cameras.main.x);
+			}
+			if(game.player1.x > this.cameras.main.x+this.cW/2){
+				reenter(game.player1,this.cameras.main.x);
+			}
 			if(!game.player1.body.touching.down && game.player1.y > 800){
 				respawn(game.player1);
 			}
@@ -772,12 +769,17 @@
 
 	function respawn(player){
 		player.y = 150;
+		player.x += 100;
 		player.setVelocityY(0);
 		if(player.ownBandera){
 			player.ownBandera = false;
 			game.bandera.enableBody(game.player1.x-game.player2.x,game.player1.y-game.player2.y,true,true);
 			game.bandera.visible=true;
 		}
+	}
+
+	function reenter(player,x){
+		player.x = x;
 	}
 
 	function hasTheFlag(player){

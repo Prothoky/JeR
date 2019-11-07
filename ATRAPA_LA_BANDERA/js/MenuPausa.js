@@ -2,7 +2,7 @@ class MenuPausa extends Phaser.Scene{
 
 	constructor(){
 
-		super ({key: "MenuPausa", active:true});
+		super ({key: "MenuPausa",active: true});
 
 	}
 
@@ -57,10 +57,7 @@ class MenuPausa extends Phaser.Scene{
 	}
 
 	reanudar() {
-
-		//una vez hecho esto, vamo a las instrucciones
-		this.scene.add('Juego', new Juego);
-		this.scene.start('Juego');
+		this.scene.sendToBack('MenuPausa');
 	}
 
 	opciones(){
