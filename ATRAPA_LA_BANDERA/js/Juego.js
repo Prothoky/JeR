@@ -66,28 +66,6 @@
 }
 
 		create(){
-<<<<<<< HEAD
-		//Controles por teclado
-
-		//Controles J1(rojo)
-		this.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-		this.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-		this.W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-		//Defensa y ataque J1
-		this.T = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
-		this.Y = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Y);
-		this.G = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.G);
-		this.H = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H);
-
-		//Controles J2(azul)
-		this.cursor = this.input.keyboard.createCursorKeys();
-		//Defensa y ataque J2
-		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
-		this.P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
-		this.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
-		this.K = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
-
-=======
 
 			//Musica
 			this.sound.pauseOnBlur=false;
@@ -118,7 +96,6 @@
 			this.P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
 			this.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
 			this.K = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
->>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 
 			//Centro del canvas
 			this.cW= this.sys.game.config.width/2;
@@ -149,8 +126,6 @@
 			this.anims.create({
 				key: 'IDLE',
 				frames: this.anims.generateFrameNumbers('J1IDLE',{
-<<<<<<< HEAD
-=======
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -159,7 +134,6 @@
 			this.anims.create({
 				key: 'IDLE2',
 				frames: this.anims.generateFrameNumbers('J2IDLE',{
->>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -179,8 +153,6 @@
 			this.anims.create({
 				key: 'SCOPE_DOWN',
 				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_DOWN',{
-<<<<<<< HEAD
-=======
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -189,7 +161,6 @@
 			this.anims.create({
 				key: 'SCOPE_DOWN2',
 				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
->>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -633,19 +604,6 @@
 				var dis = Math.abs(game.player2.x - game.player1.x);
 
 				//Movimiento J1 (faltan movimientos de apuntar)
-<<<<<<< HEAD
-
-				if (game.W.isDown && game.player1.body.touching.down)
-				{
-					game.player2.setVelocityY(-350);
-					//game.player2.anims.play('JUMP',true);
-				}
-				else if(game.A.isDown){
-					game.player1.setVelocityX(-550);
-					game.player1.flipX=false;
-					game.player1.anims.play('RUN2',true);
-				}else if(game.D.isDown){
-=======
 				if(game.player1.body.touching.down){
 				if (this.W.isDown)
 				{
@@ -656,16 +614,12 @@
 					game.player1.flipX=false;
 					game.player1.anims.play('RUN',true);
 				}else if(this.D.isDown){
->>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 					game.player1.setVelocityX(550);
 					game.player1.flipX=true;
 					game.player1.anims.play('RUN2',true);
 				}else
 				{
 					game.player1.setVelocityX(0);
-<<<<<<< HEAD
-					game.player1.anims.play('IDLE2',true);
-=======
 					if(this.Y.isDown){
 						console.log("Apuntar abajo");
 						game.player1.anims.play('SCOPE_DOWN',true);
@@ -699,34 +653,9 @@
 				}
 				if(!game.player1.body.touching.down && game.player1.y > 800){
 					respawn(game.player1);
->>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 				}
 */
 
-<<<<<<< HEAD
-
-/*
-				//Condicionantes del ataque (prueba)
-				if(game.P.isDown && dis<50 || game.O.isDown && dis<50 ){
-					game.player1.x=game.player1.x+100;
-				}
-				if(!game.player2.body.touching.down && game.player2.y > 800){
-					respawn(game.player2);
-				}
-*/
-				//Movimiento J2
-
-				if (game.cursor.up.isDown && game.player2.body.touching.down)
-				{
-					game.player2.setVelocityY(-350);
-					//game.player1.anims.play('JUMP',true);
-				}
-				else if(game.cursor.left.isDown){
-					game.player2.setVelocityX(-550)
-					game.player2.flipX=false;
-					game.player2.anims.play('RUN2',true);
-				}else if(game.cursor.right.isDown){
-=======
 				//Movimiento J2
 				if(game.player2.body.touching.down){
 				if (this.cursor.up.isDown )
@@ -738,22 +667,12 @@
 					game.player2.flipX=false;
 					game.player2.anims.play('RUN2',true);
 				}else if(this.cursor.right.isDown){
->>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 					game.player2.setVelocityX(550)
 					game.player2.flipX=true;
 					game.player2.anims.play('RUN2',true);
 				}else
 				{
 					game.player2.setVelocityX(0);
-<<<<<<< HEAD
-					if(game.O.isDown){
-						console.log("Apuntar abajo");
-						game.player2.anims.play('SCOPE_DOWN2',true);
-					}else if(game.P.isDown){
-						console.log("Apuntar abajo");
-						game.player2.anims.play('SCOPE_UP2',true);
-					}else if(game.K.isDown){
-=======
 					if(this.P.isDown){
 						console.log("Apuntar abajo");
 						game.player2.anims.play('SCOPE_DOWN2',true);
@@ -761,13 +680,10 @@
 						console.log("Apuntar abajo");
 						game.player2.anims.play('SCOPE_UP2',true);
 					}else if(this.K.isDown){
->>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 						console.log("Golpe arriba");
 						game.player2.anims.play('HIT_UP2',true);
 					}else
 					game.player2.anims.play('IDLE2',true);
-<<<<<<< HEAD
-=======
 				}
 			}else{
 
@@ -781,7 +697,6 @@
 					game.player2.anims.play('JUMP2',true);
 				}else{
 					game.player2.anims.play('JUMP2',true);
->>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 				}
 
 			}
