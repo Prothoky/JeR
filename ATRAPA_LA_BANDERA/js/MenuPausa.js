@@ -6,7 +6,6 @@ class MenuPausa extends Phaser.Scene{
 	preload(){
 
 	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
-	this.load.image('menuPausa', 'assets/img/MenuPausa/menuPausa.png');
 
 	this.load.image('reanudar', 'assets/img/MenuPausa/reanudar.png');
 	this.load.image('opciones', 'assets/img/MenuPausa/opciones.png');
@@ -33,8 +32,7 @@ class MenuPausa extends Phaser.Scene{
 		fondoPausa.displayWidth = width;
 		fondoPausa.scaleX = fondoPausa.scaleY;
 
-		this.titMenuPausa = this.add.image(x, y*4/8, 'menuPausa');
-
+		
 		//BOTONES DE OPCIONES
 		this.botonReanudar = this.add.image(x, y*6/8, 'reanudar');
 		this.botonReanudar.setInteractive({ useHandCursor: true  } )
