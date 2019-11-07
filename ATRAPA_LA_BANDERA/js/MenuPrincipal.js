@@ -23,6 +23,11 @@ class MenuPrincipal extends Phaser.Scene{
 
 	create(){
 
+		//CONTROLES POR TECLADO
+		this.C = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
+		this.J = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+
 		if (this.controlesCreados == undefined){
 
 			this.controlesCreados = this.scene.add('ControlesPrinc', new ControlesPrinc, false);
@@ -84,8 +89,22 @@ class MenuPrincipal extends Phaser.Scene{
 
 	}
 
+	update (time, delta){
+
+		if(this.O.isDown){
+			this.verOpciones();
+		}
+		if(this.C.isDown){
+			this.verControles();
+		}
+		if(this.J.isDown){
+			this.iniciarJuego();
+		}
+
+	}
+
 	iniciarJuego(){
-		
+
 		this.scene.sleep('MenuPrincipal');
 		this.scene.start('Juego');
 	}
