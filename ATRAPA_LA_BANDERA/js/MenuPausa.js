@@ -88,7 +88,9 @@ class MenuPausa extends Phaser.Scene{
 
 	abandonar(){
 
-		this.scene.run('MenuPrincipal');
+		this.scene.sleep('MenuPausa');
+		this.scene.remove('Juego');
+		this.scene.start('MenuPrincipal');
 
 	}
 }

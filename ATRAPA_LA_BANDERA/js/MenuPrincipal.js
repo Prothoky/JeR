@@ -85,6 +85,8 @@ class MenuPrincipal extends Phaser.Scene{
 	}
 
 	iniciarJuego(){
+		
+		this.scene.sleep('MenuPrincipal');
 		this.scene.start('Juego');
 	}
 
