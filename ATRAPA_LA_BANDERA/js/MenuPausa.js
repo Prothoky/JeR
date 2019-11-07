@@ -8,8 +8,6 @@ class MenuPausa extends Phaser.Scene{
 
 	preload(){
 
-	//console.log("estamos en el kitkat");
-
 	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
 	this.load.image('menuPausa', 'assets/img/MenuPausa/menuPausa.png');
 
@@ -20,6 +18,8 @@ class MenuPausa extends Phaser.Scene{
 
 	this.load.script('ControlesPaus', "./js/ControlesPaus.js");
 	this.load.script('OpcionesPaus', "./js/OpcionesPaus.js");
+	this.load.script('JuegoPaus', "./js/Juego.js");
+
 	//this.load.script('MenuPrincipal', "./js/MenuPrincipal.js");
 
 }
@@ -44,6 +44,7 @@ class MenuPausa extends Phaser.Scene{
 			this.juegoCreado = this.scene.add('Juego',new Juego, false);
 
 		}
+
 		if (this.MenuPrincipalCreado == undefined){
 
 			this.MenuPrincipalCreado = this.scene.add('MenuPrincipal',new MenuPrincipal, false);
@@ -86,7 +87,7 @@ class MenuPausa extends Phaser.Scene{
 
 	reanudar() {
 
-		this.scene.start('Juego');
+		this.scene.resume('Juego');
 	}
 
 	opciones(){
@@ -102,7 +103,7 @@ class MenuPausa extends Phaser.Scene{
 
 	abandonar(){
 
-			this.scene.start('MenuPrincipal');
+		this.scene.start('MenuPrincipal');
 
 	}
 }
