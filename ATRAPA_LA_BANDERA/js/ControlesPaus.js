@@ -15,6 +15,8 @@ class ControlesPaus extends Phaser.Scene {
 
 	create(){
 
+		this.ZERO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
+
 		var height = game.config.height;
 		var width = game.config.width;
 
@@ -38,6 +40,14 @@ class ControlesPaus extends Phaser.Scene {
 		this.volverControles = this.add.image(x, y*14/8, 'volverControles').setScale(0.4);
 		this.volverControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.volver());
+
+	}
+
+	update(time, delta){
+
+		if(this.ZERO.isDown){
+			this.volver();
+		}
 
 	}
 
