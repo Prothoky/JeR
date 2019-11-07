@@ -2,7 +2,7 @@ class MenuPausa extends Phaser.Scene{
 
 	constructor(){
 
-		super ({key: "MenuPausa", active:true});
+		super ({key: "MenuPausa"});
 
 	}
 
@@ -18,9 +18,37 @@ class MenuPausa extends Phaser.Scene{
 	this.load.image('controles', 'assets/img/MenuPausa/controles.png');
 	this.load.image('abandonar', 'assets/img/MenuPausa/abandonar.png');
 
-	}
+	this.load.script('ControlesPaus', "./js/ControlesPaus.js");
+	this.load.script('OpcionesPaus', "./js/OpcionesPaus.js");
+	//this.load.script('MenuPrincipal', "./js/MenuPrincipal.js");
+
+}
+
 
 	create(){
+
+		if (this.controlesCreados == undefined){
+
+			this.controlesCreados = this.scene.add('ControlesPaus', new ControlesPaus, false);
+
+		}
+
+		if (this.opcionesCreadas == undefined){
+
+			this.opcionesCreadas = this.scene.add('OpcionesPaus',new OpcionesPaus, false);
+
+		}
+
+		if (this.juegoCreado == undefined){
+
+			this.juegoCreado = this.scene.add('Juego',new Juego, false);
+
+		}
+		if (this.MenuPrincipalCreado == undefined){
+
+			this.MenuPrincipalCreado = this.scene.add('MenuPrincipal',new MenuPrincipal, false);
+
+		}
 
 		var height = game.config.height;
 		var width = game.config.width;
@@ -58,29 +86,23 @@ class MenuPausa extends Phaser.Scene{
 
 	reanudar() {
 
-		//una vez hecho esto, vamo a las instrucciones
-		this.scene.add('Juego', new Juego);
 		this.scene.start('Juego');
 	}
 
 	opciones(){
 
-		this.scene.start('OpcionesPaus');
 		this.scene.add('OpcionesPaus', new OpcionesPaus);
 	}
 
 	controles(){
 
-		this.scene.add('ControlesPaus', new ControlesPaus);
 		this.scene.start('ControlesPaus');
 
 	}
 
 	abandonar(){
 
-			this.scene.add('MenuPrincipal', new MenuPrincipal);
 			this.scene.start('MenuPrincipal');
-
 
 	}
 }

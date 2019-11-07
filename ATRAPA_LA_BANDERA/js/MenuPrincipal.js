@@ -15,9 +15,35 @@ class MenuPrincipal extends Phaser.Scene{
     this.load.image('botonOpciones', 'assets/img/MenuPrincipal/botonOpciones.png'); //BOTON OPCIONES
     this.load.image('botonSalir', 'assets/img/MenuPrincipal/botonSalir.png'); //BOTON SALIR
 
+		this.load.script('ControlesPrinc', "./js/ControlesPrinc.js");
+		this.load.script('OpcionesPrinc', "./js/OpcionesPrinc.js");
+
+
 	}
 
 	create(){
+
+		if (this.controlesCreados == undefined){
+
+			this.controlesCreados = this.scene.add('ControlesPrinc', new ControlesPrinc, false);
+
+		}
+
+		if (this.opcionesCreadas == undefined){
+
+			this.opcionesCreadas = this.scene.add('OpcionesPrinc',new OpcionesPrinc, false);
+
+		}
+
+		if (this.juegoCreado == undefined){
+
+			this.juegoCreado = this.scene.add('Juego',new Juego, false);
+
+		}
+
+
+
+
 
 		var height = game.config.height;
 		var width = game.config.width;
@@ -52,8 +78,6 @@ class MenuPrincipal extends Phaser.Scene{
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verControles());
 
-
-
 		//BOTON OPCIONES
 
 		this.botonOpciones = this.add.image(x, y*5/3, 'botonOpciones');
@@ -67,17 +91,14 @@ class MenuPrincipal extends Phaser.Scene{
 	}
 
 	iniciarJuego(){
-		this.scene.add('Juego',new Juego);
 		this.scene.start('Juego');
 	}
 
 	verControles(){
-		this.scene.add('ControlesPrinc',new ControlesPrinc);
 		this.scene.start('ControlesPrinc');
 	}
 
 	verOpciones(){
-		this.scene.add('OpcionesPrinc',new OpcionesPrinc);
 		this.scene.start('OpcionesPrinc');
 	}
 
