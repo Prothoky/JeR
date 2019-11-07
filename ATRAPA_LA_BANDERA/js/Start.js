@@ -1,6 +1,6 @@
 class Start extends Phaser.Scene{
   constructor(){
-    super({key: 'Start',active: true})
+    super({key: 'Start'})
   }
 
 preload(){
@@ -29,12 +29,16 @@ preload(){
     game.fasebefore=null;
 
 
+    if (this.MenuPrincCreado == undefined){
 
-    //this.scene.add('MenuPrincipal', new MenuPrincipal, false);
+			this.MenuPrincCreado = this.scene.add('MenuPrincipal', new MenuPrincipal, false);
 
-    this.scene.add("Juego", new Juego);
-    //this.scene.start("MenuPrincipal");
-    this.scene.start("Juego");
+		}
+
+
+    //this.scene.add("Juego", new Juego);
+    this.scene.start("MenuPrincipal");
+    //this.scene.start("Juego");
 
     //this.scene.add("MenuPausa", new MenuPausa);
     //this.scene.start("MenuPausa");
