@@ -1,8 +1,8 @@
-class FinNivel extends Phaser.Scene {
 
+class FinNivelW2 extends Phaser.Scene {
 	constructor(){
 
-		super ({key: "FinNivel"});
+		super ({key: "FinNivelW2"});
 
 	}
 
@@ -48,7 +48,9 @@ class FinNivel extends Phaser.Scene {
 	}
 
 	salir (){
-		this.scene.start('MenuPrincipal');
+		this.scene.sendToBack('FinNivelW2');
+		this.scene.stop('FinNivelW2');
+		this.scene.resume('MenuPrincipal');
 	}
 
 }

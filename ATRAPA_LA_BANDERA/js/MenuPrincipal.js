@@ -17,8 +17,8 @@ class MenuPrincipal extends Phaser.Scene{
 	}
 
 	create(){
+		game.onfase=0;
 		this.cameras.main.setBackgroundColor(0x000000);
-
 
 		this.scene.add('ControlesPrinc', new ControlesPrinc);
 		this.scene.sendToBack('ControlesPrinc');

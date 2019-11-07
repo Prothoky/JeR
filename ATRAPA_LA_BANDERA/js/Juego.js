@@ -749,6 +749,12 @@
 					this.cameras.main.startFollow(game.player2,true,1,1,0,200);
 					game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
 					if(game.player2.x > 2040){
+						if(game.onfase==2){
+							this.scene.add('FinNivelW2',FinNivelW2);
+							this.scene.sendToBack('Juego');
+							this.scene.stop('Juego');
+							this.scene.start('FinNivelW2');
+						}
 						game.loaded=false;
 						cHangeFaseRight();
 						this.scene.restart();
@@ -816,6 +822,3 @@
 		game.fasebefore=game.onfase;
 		game.onfase--;
 	}
-
-function exit(){
-}
