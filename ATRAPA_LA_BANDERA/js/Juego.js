@@ -594,15 +594,6 @@
 				game.playing=false;
 			}
 			else{
-				if(this.p1posx != game.player1.x){
-					//console.log("Player1 pos: " + game.player1.x);
-					this.p1posx = game.player1.x;
-				}
-				if(this.p2posx != game.player2.x){
-					//console.log("Player1 pos: " + game.player1.x);
-					this.p2posx = game.player2.x;
-				}
-
 
 				//Musica
 				if(this.M.isDown && !game.MPulsed){
@@ -628,7 +619,7 @@
 				}
 
 				//Para calcular la distancia entre los jugadores
-				var dis = Math.abs(game.player2.x - game.player1.x);
+				game.dis = Math.abs(game.player2.x - game.player1.x);
 
 				//Movimiento J1
 				if(game.player1.body.touching.down){
@@ -748,6 +739,12 @@
 					game.bandera.y = 150;
 					game.bandera.x += 100;
 				}
+				if(game.player1.y < 200){
+					game.player1.y = 250;
+				}
+				if(game.player2.y < 200){
+					game.player2.y = 250;
+				}
 
 				if(game.player2.x< -2040){
 					game.player2.x = -2000;
@@ -838,7 +835,7 @@
 	}
 
 	function respawn(player){
-		player.y = 150;
+		player.y = 250;
 		player.x += 100;
 		player.setVelocityY(0);
 		if(player.ownBandera){
@@ -878,16 +875,17 @@ function checkpulsed(key){
 }
 
 function checkatacks(){
-	if(this.L.isDown && !(this.T.isDown|| this.H.isDown)){
+console.log(game.dis)
+	if(this.L.isDown && !(this.T.isDown|| this.H.isDown) && game.dis <25){
 		respawn(game.player2,game.player1.x);
 	}
-	else if(this.H.isDown && !(this.O.isDown|| this.L.isDown)){
+	else if(this.H.isDown && !(this.O.isDown|| this.L.isDown)&& game.dis <25){
 		respawn(game.player1,game.player2.x);
 	}
-	else if(this.K.isDown&& !(this.Y.isDown || this.G.isDown)){
+	else if(this.K.isDown&& !(this.Y.isDown || this.G.isDown)&& game.dis <25){
 		respawn(game.player2,game.player1.x);
 	}
-	else if(this.G.isDown && !(this.P.isDown || this.K.isDown)){
+	else if(this.G.isDown && !(this.P.isDown || this.K.isDown)&& game.dis <25){
 		respawn(game.player1,game.player2.x);
 	}
 }
