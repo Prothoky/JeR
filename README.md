@@ -66,19 +66,19 @@ __JUGADOR 1__
 * __tecla izq:__ Mover Jugador 1 a la izquierda.
 * __tecla dcha:__ Mover Jugador 1 a la derecha.
 * __tecla arriba:__ Salto Jugador 1.
-* __P:__ Jugador 1 apunta abajo.
-* __O:__ Jugador 1 apunta arriba.
-* __L:__ Jugador 1 golpe abajo.
-* __K:__ Jugador 1 golpe arriba.
+* __L:__ Jugador 1 defensa  abajo.
+* __P:__ Jugador 1 defensa  arriba.
+* __K:__ Jugador 1 ataque  abajo.
+* __O:__ Jugador 1 ataque  arriba.
 
 __JUGADOR 2__
 * __A:__ Mover Jugador 2 a la izquierda.
 * __D:__ Mover Jugador 2 a la derecha.
 * __W:__ Salto Jugador 2.
-* __T:__ Jugador 2 apunta abajo.
-* __Y:__ Jugador 2 apunta arriba.
-* __G:__ Jugador 2 golpe abajo.
-* __H:__ Jugador 2 golpe arriba.
+* __G:__ Jugador 2 defensa  abajo.
+* __T:__ Jugador 2 defensa  arriba.
+* __H:__ Jugador 2 golpe abajo.
+* __Y:__ Jugador 2 golpe arriba.
 
 __MENÚ PRINCIPAL__
 * __O:__ Opciones
@@ -97,6 +97,9 @@ __JUEGO__
 
 __CONTROLES y OPCIONES__
 * __0:__ Volver
+* __7:__ Bajar Volumen
+* __8:__ Quitar Volumen
+* __9:__ Subir Volumen
 
 
 ## 2. Introducción
