@@ -91,6 +91,7 @@ class OpcionesPrinc extends Phaser.Scene {
 
 		game.sound.mute = true;
 		game.sound.setVolume(0);
+		this.volumenText.setText('0');
 
 	}
 
