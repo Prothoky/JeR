@@ -74,15 +74,15 @@ class MenuPrincipal extends Phaser.Scene{
 
 	update (time, delta){
 
-		if(this.O.isDown){
-			this.verOpciones();
-		}
-		if(this.C.isDown){
-			this.verControles();
-		}
-		if(this.J.isDown){
-			this.iniciarJuego();
-		}
+		// if(this.O.isDown){
+		// 	this.verOpciones();
+		// }
+		// if(this.C.isDown){
+		// 	this.verControles();
+		// }
+		// if(this.J.isDown){
+		// 	this.iniciarJuego();
+		// }
 
 	}
 

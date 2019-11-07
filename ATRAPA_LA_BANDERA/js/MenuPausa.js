@@ -22,18 +22,6 @@ class MenuPausa extends Phaser.Scene{
 		this.THREE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
 		this.FOUR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR);
 
-		if (this.controlesCreados == undefined){
-
-			this.controlesCreados = this.scene.add('ControlesPaus', new ControlesPaus, false);
-
-		}
-
-		if (this.opcionesCreadas == undefined){
-
-			this.opcionesCreadas = this.scene.add('OpcionesPaus',new OpcionesPaus, false);
-
-		}
-
 		var height = game.config.height;
 		var width = game.config.width;
 

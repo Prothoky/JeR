@@ -258,7 +258,7 @@
 
 				//Crear plataforma
 				game.platforms = this.physics.add.staticGroup();
-				game.platforms.create(0, 575, 'pltf').setScale(0.525,0.5).refreshBody();
+				game.platforms.create(0, 575, 'pltf').setScale(0.5,0.5).refreshBody();
 				game.platforms.create(-1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
 				game.platforms.create(1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
 
