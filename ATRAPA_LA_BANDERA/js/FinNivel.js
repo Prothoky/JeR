@@ -48,9 +48,7 @@ class FinNivel extends Phaser.Scene {
 	}
 
 	salir (){
-
 		this.scene.start('MenuPrincipal');
-
 	}
 
 }

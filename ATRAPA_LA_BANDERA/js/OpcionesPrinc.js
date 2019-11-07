@@ -2,7 +2,7 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	constructor(){
 
-		super({key: "OpcionesPrinc"});
+		super({key: "OpcionesPrinc", active:true});
 
 	}
 
@@ -67,11 +67,11 @@ class OpcionesPrinc extends Phaser.Scene {
 		}
 
 	}
-	
-	volver() {
 
-		//una vez hecho esto, vamo a las instrucciones
-		this.scene.start('MenuPrincipal');
+	volver() {
+		this.scene.sendToBack('OpcionesPrinc');
+		this.scene.stop('OpcionesPrinc');
+		this.scene.resume('MenuPrincipal');
 
 	}
 

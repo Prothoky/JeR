@@ -2,13 +2,12 @@ class OpcionesPaus extends Phaser.Scene {
 
 	constructor(){
 
-		super({key: "OpcionesPaus"});
+		super({key: "OpcionesPaus", active: true});
 
 	}
 
 	preload(){
-
-		//MENU PAUSA
+		//MENU OPCIONES
 		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/fondoOpciones.png'); //FONDO
 		this.load.image('cuadroVolumen', 'assets/img/MenuOpciones/cuadroVolumen.png');//CUADRO VOLUMEN
 		this.load.image('options', 'assets/img/MenuOpciones/options.png'); //titulo opciones
@@ -18,7 +17,6 @@ class OpcionesPaus extends Phaser.Scene {
 		this.load.image('subirVolumen', 'assets/img/MenuOpciones/subirVolumen.png');
 		this.load.image('quitarVolumen', 'assets/img/MenuOpciones/quitarVolumen.png');
 		this.load.image('volverOpciones', 'assets/img/MenuOpciones/volver.png');
-
 	}
 
 	create(){
@@ -31,17 +29,16 @@ class OpcionesPaus extends Phaser.Scene {
 		var x = width/2 ;
 		var y = height/2;
 
-		var fondoOpcionesPaus = this.add.sprite(x, y, "fondoOpciones");
+		var fondoOpcionesPrinc = this.add.sprite(x, y, "fondoOpciones");
 
 		//set the width of the sprite
-		fondoOpcionesPaus.displayWidth = width;
+		fondoOpcionesPrinc.displayWidth = width;
 		//scale evenly
-		fondoOpcionesPaus.scaleX = fondoOpcionesPaus.scaleY;
+		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
 
 		var tituloOpciones = this.tituloOpciones = this.add.image(x, y*3/8, 'options').setScale(0.5);
 		var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen');
 		var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.8);
-
 
 		//BOTONES DE VOLUMEN
 		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
@@ -67,13 +64,14 @@ class OpcionesPaus extends Phaser.Scene {
 		if(this.ZERO.isDown){
 			this.volver();
 		}
-		
+
 	}
 
 	volver() {
+		this.scene.sendToBack('OpcionesPaus');
+		this.scene.stop('OpcionesPaus');
+		this.scene.resume('MenuPausa');
 
-		//una vez hecho esto, vamo a las instrucciones
-		this.scene.start('MenuPausa');
 	}
 
 	subir(){
