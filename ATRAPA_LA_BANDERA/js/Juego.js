@@ -638,44 +638,44 @@
 				//Para calcular la distancia entre los jugadores
 				var dis = Math.abs(game.player2.x - game.player1.x);
 
-				//Movimiento J1 (faltan movimientos de apuntar)
+				//Movimiento J1
 				if(game.player1.body.touching.down){
-				if (this.W.isDown)
+				if (this.cursor.up.isDown)
 				{
 					game.player1.setVelocityY(-450);
 				}
-				else if(this.A.isDown){
+				else if(this.cursor.left.isDown){
 					game.player1.setVelocityX(-550);
 					game.player1.flipX=false;
 					game.player1.anims.play('RUN',true);
-				}else if(this.D.isDown){
+				}else if(this.cursor.right.isDown){
 					game.player1.setVelocityX(550);
 					game.player1.flipX=true;
 					game.player1.anims.play('RUN',true);
 				}else
 				{
 					game.player1.setVelocityX(0);
-					if(this.Y.isDown){
+					if(this.P.isDown){
 						console.log("Apuntar abajo");
 						game.player1.anims.play('SCOPE_DOWN',true);
-					}else if(this.T.isDown){
+					}else if(this.O.isDown){
 						console.log("Apuntar arriba");
 						game.player1.anims.play('SCOPE_UP',true);
-					}else if(this.G.isDown){
+					}else if(this.L.isDown){
 						console.log("Golpe arriba");
 						game.player1.anims.play('HIT_UP',true);
-					}else if(this.H.isDown){
+					}else if(this.K.isDown){
 						console.log("Golpe abajo");
 						game.player1.anims.play('HIT_DOWN',true);
 					}else
 					game.player1.anims.play('IDLE',true);
 				}
 			}else{
-				if(this.A.isDown){
+				if(this.cursor.left.isDown){
 					game.player1.setVelocityX(-550);
 					game.player1.flipX=false;
 					game.player1.anims.play('JUMP',true);
-				}else if(this.D.isDown){
+				}else if(this.cursor.right.isDown){
 					game.player1.setVelocityX(550);
 					game.player1.flipX=true;
 					game.player1.anims.play('JUMP',true);
@@ -694,31 +694,31 @@
 
 				//Movimiento J2
 				if(game.player2.body.touching.down){
-				if (this.cursor.up.isDown )
+				if (this.W.isDown )
 				{
 					game.player2.setVelocityY(-450);
 				}
-				else if(this.cursor.left.isDown){
+				else if(this.A.isDown){
 					game.player2.setVelocityX(-550)
 					game.player2.flipX=false;
 					game.player2.anims.play('RUN2',true);
-				}else if(this.cursor.right.isDown){
+				}else if(this.D.isDown){
 					game.player2.setVelocityX(550)
 					game.player2.flipX=true;
 					game.player2.anims.play('RUN2',true);
 				}else
 				{
 					game.player2.setVelocityX(0);
-					if(this.P.isDown){
+					if(this.Y.isDown){
 						console.log("Apuntar abajo");
 						game.player2.anims.play('SCOPE_DOWN2',true);
-					}else if(this.O.isDown){
+					}else if(this.T.isDown){
 						console.log("Apuntar arriba");
 						game.player2.anims.play('SCOPE_UP2',true);
-					}else if(this.K.isDown){
+					}else if(this.H.isDown){
 						console.log("Golpe arriba");
 						game.player2.anims.play('HIT_UP2',true);
-					}else if(this.L.isDown){
+					}else if(this.G.isDown){
 						console.log("Golpe abajo");
 						game.player2.anims.play('HIT_DOWN2',true);
 					}else
@@ -726,11 +726,11 @@
 				}
 			}else{
 
-				if(this.cursor.left.isDown){
+				if(this.A.isDown){
 					game.player2.setVelocityX(-550);
 					game.player2.flipX=false;
 					game.player2.anims.play('JUMP2',true);
-				}else if(this.cursor.right.isDown){
+				}else if(this.D.isDown){
 					game.player2.setVelocityX(550);
 					game.player2.flipX=true;
 					game.player2.anims.play('JUMP2',true);
