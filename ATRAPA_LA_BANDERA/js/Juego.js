@@ -771,12 +771,12 @@
 
 				//Personaje coje la bandera
 				this.physics.add.overlap([game.player1,game.player2], game.bandera, collectBandera, null, this);
-				console.log('antes')
+
 				this.physics.add.overlap(game.player1, game.player2, checkatacks, null, this);
-				console.log('despues')
+
 				//Camara sigue a la bandera
 				if(hasTheFlag(game.player1)){
-					console.log(1);
+
 					this.cameras.main.startFollow(game.player1,true,1,1,0,200);
 					game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
 					if(game.player1.x < -2000){
@@ -792,7 +792,7 @@
 					}
 				}
 				else if(hasTheFlag(game.player2)){
-					console.log(2);
+
 					this.cameras.main.startFollow(game.player2,true,1,1,0,200);
 					game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
 					if(game.player2.x > 2000){
@@ -810,7 +810,7 @@
 				}
 
 				else{
-					console.log(3);
+
 					this.cameras.main.startFollow(game.bandera,true,1,1,0,200);
 					game.HUDbandera.disableBody(true,true);
 				}
@@ -843,7 +843,7 @@
 		player.setVelocityY(0);
 		if(player.ownBandera){
 			player.ownBandera = false;
-			game.bandera.enableBody(game.player1.x-game.player2.x,game.player1.y-game.player2.y,true,true);
+			game.bandera.enableBody(player.x+-500,250,true,true);
 			game.bandera.visible=true;
 		}
 	}
@@ -872,20 +872,22 @@
 		game.onfase--;
 	}
 
+function checkpulsed(key){
+	if(key.isDown)key.pulsed=true;
+	if(key.isUp)key.pulsed=false;
+}
+
 function checkatacks(){
-console.log('CHECK');
-console.log(game.player1.status);
-console.log(game.player2.status);
-	if(game.player1.status == "HIT_UP" && !(game.player2.status == "SCOPE_UP" || game.player2.status == "HIT_UP")){
-		respawn(player2,player1.x);
+	if(this.L.isDown && !(this.T.isDown|| this.H.isDown)){
+		respawn(game.player2,game.player1.x);
 	}
-	else if(game.player2.status == "HIT_UP" && !(game.player1.status == "SCOPE_UP" || game.player1.status == "HIT_UP")){
-		respawn(player1,player2.x);
+	else if(this.H.isDown && !(this.O.isDown|| this.L.isDown)){
+		respawn(game.player1,game.player2.x);
 	}
-	else if(game.player1.status == "HIT_DOWN" && !(game.player2.status == "SCOPE_DOWN" || game.player2.status == "HIT_DOWN")){
-		respawn(player2,player1.x);
+	else if(this.K.isDown&& !(this.Y.isDown || this.G.isDown)){
+		respawn(game.player2,game.player1.x);
 	}
-	else if(game.player2.status == "HIT_DOWN" && !(game.player1.status == "SCOPE_DOWN" || game.player1.status == "HIT_DOWN")){
-		respawn(player1,player2.x);
+	else if(this.G.isDown && !(this.P.isDown || this.K.isDown)){
+		respawn(game.player1,game.player2.x);
 	}
 }
