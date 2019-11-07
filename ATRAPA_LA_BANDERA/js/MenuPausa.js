@@ -6,7 +6,6 @@ class MenuPausa extends Phaser.Scene{
 	preload(){
 
 	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
-	this.load.image('menuPausa', 'assets/img/MenuPausa/menuPausa.png');
 
 	this.load.image('reanudar', 'assets/img/MenuPausa/reanudar.png');
 	this.load.image('opciones', 'assets/img/MenuPausa/opciones.png');
@@ -33,27 +32,26 @@ class MenuPausa extends Phaser.Scene{
 		fondoPausa.displayWidth = width;
 		fondoPausa.scaleX = fondoPausa.scaleY;
 
-		this.titMenuPausa = this.add.image(x, y*4/8, 'menuPausa');
 
 		//BOTONES DE OPCIONES
-		this.botonReanudar = this.add.image(x, y*6/8, 'reanudar');
+		this.botonReanudar = this.add.image(x, y*7/8, 'reanudar');
 		this.botonReanudar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.reanudar());
 
-		this.botonOpciones = this.add.image(x, y, 'opciones');
+		this.botonOpciones = this.add.image(x, y*9/8, 'opciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.opciones());
 
 
-		this.botonControles = this.add.image(x, y*10/8, 'controles');
+		this.botonControles = this.add.image(x, y*11/8, 'controles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.controles());
 
 		//BOTON VOLVER
-
-		this.botonAbandonar = this.add.image(x, y*12/8, 'abandonar');
+		this.botonAbandonar = this.add.image(x, y*13/8, 'abandonar');
 		this.botonAbandonar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.abandonar());
+
 		if(!this.controlpaus){
 			this.scene.add('ControlesPaus', new ControlesPaus);
 			this.scene.add('OpcionesPaus',new OpcionesPaus);
@@ -92,13 +90,13 @@ class MenuPausa extends Phaser.Scene{
 	opciones(){
 		this.scene.run('OpcionesPaus');
 		this.scene.bringToTop('OpcionesPaus');
-		this.scene.pause('MenuPausa');
+		//this.scene.pause('MenuPausa');
 	}
 
 	controles(){
 			this.scene.run('ControlesPaus');
 			this.scene.bringToTop('ControlesPaus');
-			this.scene.pause('MenuPausa');
+			//this.scene.pause('MenuPausa');
 	}
 
 	abandonar(){

@@ -99,9 +99,6 @@ __CONTROLES y OPCIONES__
 * __0:__ Volver
 
 
-
-
-
 ## 2. Introducción
 Este es el documento de diseño del juego titulado “Atrapa la bandera”. La wiki en español sobre el desarrollo de videojuegos en 3D utilizando ‘X’ como motor de renderizado.
 Este escrito tiene como objetivo principal plasmar los elementos que debe incluir Atrapa la bandera y servir de carta de presentación en caso de buscar colaboradores en un futuro.
