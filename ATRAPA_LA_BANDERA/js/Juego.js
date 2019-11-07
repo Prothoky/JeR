@@ -172,14 +172,6 @@
 				repeat:1,
 				frameRate:24
 			});
-			this.anims.create({
-				key: 'SCOPE_DOWN2',
-				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
-					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
-				}),
-				repeat:1,
-				frameRate:24
-			});
 
 
 			//Anim apuntando arriba
