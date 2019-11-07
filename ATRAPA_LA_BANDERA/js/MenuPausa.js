@@ -32,26 +32,26 @@ class MenuPausa extends Phaser.Scene{
 		fondoPausa.displayWidth = width;
 		fondoPausa.scaleX = fondoPausa.scaleY;
 
-		
+
 		//BOTONES DE OPCIONES
-		this.botonReanudar = this.add.image(x, y*6/8, 'reanudar');
+		this.botonReanudar = this.add.image(x, y*7/8, 'reanudar');
 		this.botonReanudar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.reanudar());
 
-		this.botonOpciones = this.add.image(x, y, 'opciones');
+		this.botonOpciones = this.add.image(x, y*9/8, 'opciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.opciones());
 
 
-		this.botonControles = this.add.image(x, y*10/8, 'controles');
+		this.botonControles = this.add.image(x, y*11/8, 'controles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.controles());
 
 		//BOTON VOLVER
-
-		this.botonAbandonar = this.add.image(x, y*12/8, 'abandonar');
+		this.botonAbandonar = this.add.image(x, y*13/8, 'abandonar');
 		this.botonAbandonar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.abandonar());
+		
 		if(!this.controlpaus){
 			this.scene.add('ControlesPaus', new ControlesPaus);
 			this.scene.add('OpcionesPaus',new OpcionesPaus);
