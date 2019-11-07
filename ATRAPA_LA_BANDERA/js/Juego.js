@@ -65,7 +65,7 @@
 			this.load.spritesheet('J2JUMP','../assets/animations/JAAnimations/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
 
 			//Musica del juego
-			this.load.audio('musica', '../assets/music/musicaJuego.mp3');
+			this.load.audio('musica', '../assets/music/Spread the Wings (Rock Howard) - Garou Mark of the Wolves - OST.mp3');
 
 }
 
@@ -83,10 +83,10 @@
 
 			//Musica
 			this.sound.pauseOnBlur=false;
-			var mj = this.sound.add('musica');
+			var mj = this.sound.add('musica',{loop: true});
 			if(!game.playing){
 				mj.play();
-				game.sound.mute=true;
+				game.sound.mute=false;
 				game.playing=true;
 			}
 			this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);

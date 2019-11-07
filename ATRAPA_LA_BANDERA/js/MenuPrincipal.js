@@ -7,7 +7,7 @@ class MenuPrincipal extends Phaser.Scene{
 
     //MENU PRINCIPAL
     this.load.image('fondoMenuPrinc', 'assets/img/MenuPrincipal/fondoMP.jpg'); //FONDO
-    this.load.image('logo', 'assets/img/MenuPrincipal/logo.png');
+
 
     this.load.image('botonJugar', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
 
@@ -47,9 +47,6 @@ class MenuPrincipal extends Phaser.Scene{
 		//scale evenly
 		fondoMenuPrinc.scaleX = fondoMenuPrinc.scaleY;
 
-		//añadimos el sprite del titulo
-
-		this.MenuPrincipal_Layout = this.add.image(x, y*4/8, 'logo');
 
 		//BOTON JUGAR
 		this.botonJugar = this.add.image(x, y*7	/6, 'botonJugar');
@@ -62,16 +59,30 @@ class MenuPrincipal extends Phaser.Scene{
 		//.on('pointerout', () => this.enterButtonRestState() );
 
 		//BOTON CONTROLES
-		this.botonControles = this.add.image(x*6/9, y*5/3, 'botonControles');
+		this.botonControles = this.add.image(x, y*12/8, 'botonControles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verControles());
 
 		//BOTON OPCIONES
 
-		this.botonOpciones = this.add.image(x*12/9, y*5/3, 'botonOpciones');
+		this.botonOpciones = this.add.image(x, y*11/8, 'botonOpciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
 
+
+	}
+
+	update (time, delta){
+
+		if(this.O.isDown){
+			this.verOpciones();
+		}
+		if(this.C.isDown){
+			this.verControles();
+		}
+		if(this.J.isDown){
+			this.iniciarJuego();
+		}
 
 	}
 

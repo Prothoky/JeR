@@ -17,6 +17,23 @@ class MenuPausa extends Phaser.Scene{
 
 	create(){
 
+		this.ONE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
+		this.TWO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO);
+		this.THREE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
+		this.FOUR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR);
+
+		if (this.controlesCreados == undefined){
+
+			this.controlesCreados = this.scene.add('ControlesPaus', new ControlesPaus, false);
+
+		}
+
+		if (this.opcionesCreadas == undefined){
+
+			this.opcionesCreadas = this.scene.add('OpcionesPaus',new OpcionesPaus, false);
+
+		}
+
 		var height = game.config.height;
 		var width = game.config.width;
 
@@ -58,6 +75,23 @@ class MenuPausa extends Phaser.Scene{
 			this.scene.stop('OpcionesPaus');
 			this.controlpaus=true;
 		}
+	}
+
+	update (time, delta){
+
+		if(this.ONE.isDown){
+			this.reanudar();
+		}
+		if(this.TWO.isDown){
+			this.opciones();
+		}
+		if(this.THREE.isDown){
+			this.controles();
+		}
+		if(this.FOUR.isDown){
+			this.abandonar();
+		}
+
 	}
 
 	reanudar() {
