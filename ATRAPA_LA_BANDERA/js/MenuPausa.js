@@ -22,6 +22,11 @@ class MenuPausa extends Phaser.Scene{
 
 	create(){
 
+		this.ONE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
+		this.TWO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO);
+		this.THREE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
+		this.FOUR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR);
+
 		if (this.controlesCreados == undefined){
 
 			this.controlesCreados = this.scene.add('ControlesPaus', new ControlesPaus, false);
@@ -66,6 +71,23 @@ class MenuPausa extends Phaser.Scene{
 		this.botonAbandonar = this.add.image(x, y*12/8, 'abandonar');
 		this.botonAbandonar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.abandonar());
+
+	}
+
+	update (time, delta){
+
+		if(this.ONE.isDown){
+			this.reanudar();
+		}
+		if(this.TWO.isDown){
+			this.opciones();
+		}
+		if(this.THREE.isDown){
+			this.controles();
+		}
+		if(this.FOUR.isDown){
+			this.abandonar();
+		}
 
 	}
 
