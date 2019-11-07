@@ -21,6 +21,9 @@ class OpcionesPaus extends Phaser.Scene {
 	create(){
 
 		this.ZERO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
+		this.SEVEN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SEVEN);
+		this.EIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.EIGHT);
+		this.NINE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NINE);
 
 		var height = game.config.height;
 		var width = game.config.width;
@@ -61,6 +64,18 @@ class OpcionesPaus extends Phaser.Scene {
 
 		if(this.ZERO.isDown){
 			this.volver();
+		}
+
+		if(this.SEVEN.isDown){
+			this.subir();
+		}
+
+		if(this.EIGHT.isDown){
+			this.quitar();
+		}
+
+		if(this.NINE.isDown){
+			this.bajar();
 		}
 
 	}
