@@ -18,8 +18,6 @@ class MenuPrincipal extends Phaser.Scene{
 	create(){
 
 		//declaramos las variables para controlar los botones por teclado
-		game.onfase=0;
-
 		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
 		this.C = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
 		this.J = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
