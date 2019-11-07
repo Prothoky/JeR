@@ -69,8 +69,8 @@
 
 			//MENU de PAUSA
 			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-			this.scene.add('MenuPausa', config, false); //el false es poara que no se ejecute directamente
-			
+			this.scene.add('MenuPausa', config, false); //el false es para que no se ejecute directamente
+
 			//Musica
 			this.sound.pauseOnBlur=false;
 			var mj = this.sound.add('musica');
