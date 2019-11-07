@@ -640,15 +640,15 @@
 					}else
 					{
 						game.player1.setVelocityX(0);
-						if(this.P.isDown){
+						if(this.L.isDown){
 							console.log("Apuntar abajo");
 							game.player1.anims.play('SCOPE_DOWN',true);
 							game.player1.status = "SCOPE_DOWN";
-						}else if(this.O.isDown){
+						}else if(this.P.isDown){
 							console.log("Apuntar arriba");
 							game.player1.anims.play('SCOPE_UP',true);
 							game.player1.status = "SCOPE_UP";
-						}else if(this.L.isDown){
+						}else if(this.O.isDown){
 							console.log("Golpe arriba");
 							game.player1.anims.play('HIT_UP',true);
 							game.player1.status = "HIT_UP";
@@ -696,7 +696,7 @@
 					}else
 					{
 						game.player2.setVelocityX(0);
-						if(this.Y.isDown){
+						if(this.G.isDown){
 							console.log("Apuntar abajo");
 							game.player2.anims.play('SCOPE_DOWN2',true);
 							game.player2.status="SCOPE_DOWN";
@@ -704,11 +704,11 @@
 							console.log("Apuntar arriba");
 							game.player2.anims.play('SCOPE_UP2',true);
 							game.player2.status="SCOPE_UP";
-						}else if(this.H.isDown){
+						}else if(this.Y.isDown){
 							console.log("Golpe arriba");
 							game.player2.anims.play('HIT_UP2',true);
 							game.player2.status="HIT_UP";
-						}else if(this.G.isDown){
+						}else if(this.H.isDown){
 							console.log("Golpe abajo");
 							game.player2.anims.play('HIT_DOWN2',true);
 							game.player2.status="HIT_DOWN";
