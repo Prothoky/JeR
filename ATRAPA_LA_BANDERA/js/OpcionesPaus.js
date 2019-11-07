@@ -21,6 +21,7 @@ class OpcionesPaus extends Phaser.Scene {
 	create(){
 
 		this.ZERO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
+
 		var height = game.config.height;
 		var width = game.config.width;
 
