@@ -628,9 +628,8 @@
 				//Menu de Pausa
 				if(this.ESC.isDown){
 
-
 					this.scene.launch('MenuPausa');
-					this.scene.pause('Juego');
+				//	this.scene.pause('Juego');
 
 				}
 
