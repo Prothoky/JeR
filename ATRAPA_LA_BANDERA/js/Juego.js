@@ -66,6 +66,28 @@
 }
 
 		create(){
+<<<<<<< HEAD
+		//Controles por teclado
+
+		//Controles J1(rojo)
+		this.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+		this.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+		this.W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+		//Defensa y ataque J1
+		this.T = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
+		this.Y = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Y);
+		this.G = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.G);
+		this.H = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H);
+
+		//Controles J2(azul)
+		this.cursor = this.input.keyboard.createCursorKeys();
+		//Defensa y ataque J2
+		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+		this.P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+		this.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+		this.K = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+
+=======
 
 			//Musica
 			this.sound.pauseOnBlur=false;
@@ -96,6 +118,7 @@
 			this.P = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
 			this.L = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
 			this.K = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+>>>>>>> 960d0c2ff1e4d3fe8f0e1465e0780e619d48bf7e
 
 			//Centro del canvas
 			this.cW= this.sys.game.config.width/2;
