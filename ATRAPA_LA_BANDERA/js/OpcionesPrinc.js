@@ -21,11 +21,11 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	create(){
 
-		if (this.MPrincCreado == undefined){
+		/*if (this.MPrincCreado == undefined){
 
 			this.MPrincCreado = this.scene.add('MenuPrincipal', new MenuPrincipal, false);
 
-		}
+		}*/
 
 		var height = game.config.height;
 		var width = game.config.width;
