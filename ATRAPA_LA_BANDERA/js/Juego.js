@@ -72,7 +72,10 @@
 
 			//MENU de PAUSA
 			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-			this.scene.add('MenuPausa', new MenuPausa); //el false es para que no se ejecute directamente
+			if(!this.sceneload){
+				this.scene.add('MenuPausa', new MenuPausa);
+				this.sceneload=true;
+			}
 			this.scene.sendToBack('MenuPausa');
 			this.scene.stop('MenuPausa');
 			//Musica
@@ -263,8 +266,8 @@
 
 				//Crear bandera
 
-				game.bandera = this.physics.add.image();
-				game.bandera = this.physics.add.sprite(0, 450, 'bandera');
+				game.bandera = this.physics.add.image(0,450,'bandera');
+				//game.bandera = this.physics.add.sprite(0, 450, 'bandera');
 				game.bandera.setBounce(0.2);
 				game.bandera.setCollideWorldBounds(false);
 				game.bandera.setScale(0.75,0.75);
@@ -559,7 +562,7 @@
 			game.HUDbandera.setScale(0.5,0.5);
 
 
-			this.cameras.main.startFollow(game.bandera,false,1,1,0,200);
+			this.cameras.main.startFollow(game.bandera,true,0,0,0,200);
 
 			//Colision con plataforma
 
@@ -732,7 +735,7 @@
 
 				//Camara sigue a la bandera
 				if(hasTheFlag(game.player1)){
-					this.cameras.main.startFollow(game.player1,false,1,1,0,200);
+					this.cameras.main.startFollow(game.player1,true,1,1,0,200);
 					game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
 					if(game.player1.x < -2040){
 						game.loaded=false;
@@ -741,7 +744,7 @@
 					}
 				}
 				else if(hasTheFlag(game.player2)){
-					this.cameras.main.startFollow(game.player2,false,1,1,0,200);
+					this.cameras.main.startFollow(game.player2,true,1,1,0,200);
 					game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
 					if(game.player2.x > 2040){
 						game.loaded=false;
@@ -751,22 +754,21 @@
 
 				}
 				else{
-					this.cameras.main.startFollow(game.bandera,false,1,1,0,200);
+					this.cameras.main.startFollow(game.bandera,true,1,1,0,200);
 					game.HUDbandera.disableBody(true,true);
 				}
 			}
-			console.log(this.cameras.main.scrollX);
-			if(game.player1.x < this.cameras.main.x-this.cW){
-				reenter(game.player1,this.cameras.main.scrollX);
+			if(game.player1.x < (this.cameras.main.scrollX-this.cW+600)){
+				reenter(game.player1,this.cameras.main.scrollX+this.cW*2);
 			}
-			if(game.player1.x > this.cameras.main.x+this.cW){
-				reenter(game.player1,this.cameras.main.scrollX);
+			if(game.player1.x > (this.cameras.main.scrollX+this.cW+600)){
+				reenter(game.player1,this.cameras.main.scrollX+50);
 			}
-			if(game.player2.x < this.cameras.main.x-this.cW){
-				reenter(game.player2,this.cameras.main.scrollX);
+			if(game.player2.x < (this.cameras.main.scrollX-this.cW+600)){
+				reenter(game.player2,this.cameras.main.scrollX+this.cW*2);
 			}
-			if(game.player2.x > this.cameras.main.x+this.cW){
-				reenter(game.player2,this.cameras.main.scrollX);
+			if(game.player2.x > (this.cameras.main.scrollX+this.cW+600)){
+				reenter(game.player2,this.cameras.main.scrollX+50);
 			}
 		}
 
