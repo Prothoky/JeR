@@ -40,11 +40,11 @@ class FinNivel extends Phaser.Scene {
 		.on('pointerdown', () => this.salir());
 */
 
-		if(j1 == winner){
+		/*if(j1 == winner){
 			texto.setText('Ganador: JUGADOR 1\n Perdedor:JUGADOR 2');
 		}else{
 			texto.setText('Ganador: JUGADOR 2\n Perdedor:JUGADOR 1');
-		}
+		}*/
 	}
 
 	salir (){
