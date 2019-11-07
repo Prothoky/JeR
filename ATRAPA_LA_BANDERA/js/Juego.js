@@ -624,7 +624,7 @@
 					console.log("vamos al kitkat");
 
 					this.scene.pause('Juego');
-					this.scene.launch('MenuPausa');
+					this.scene.start('MenuPausa');
 
 				}
 

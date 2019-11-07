@@ -42,9 +42,6 @@ class MenuPrincipal extends Phaser.Scene{
 		}
 
 
-
-
-
 		var height = game.config.height;
 		var width = game.config.width;
 
@@ -74,20 +71,17 @@ class MenuPrincipal extends Phaser.Scene{
 		//.on('pointerout', () => this.enterButtonRestState() );
 
 		//BOTON CONTROLES
-		this.botonControles = this.add.image(x*3/9, y*5/3, 'botonControles');
+		this.botonControles = this.add.image(x*6/9, y*5/3, 'botonControles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verControles());
 
 		//BOTON OPCIONES
 
-		this.botonOpciones = this.add.image(x, y*5/3, 'botonOpciones');
+		this.botonOpciones = this.add.image(x*12/9, y*5/3, 'botonOpciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
 
-		//BOTON SALIR
-		this.botonSalir = this.add.image(x*15/9, y*5/3, 'botonSalir');
-		this.botonSalir.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => this.salir());
+
 	}
 
 	iniciarJuego(){
@@ -102,7 +96,5 @@ class MenuPrincipal extends Phaser.Scene{
 		this.scene.start('OpcionesPrinc');
 	}
 
-	salir(){
-		setTimeout("location.href='about.html#'", 0);
-	}
+
 }

@@ -16,11 +16,7 @@ class MenuPausa extends Phaser.Scene{
 	this.load.image('controles', 'assets/img/MenuPausa/controles.png');
 	this.load.image('abandonar', 'assets/img/MenuPausa/abandonar.png');
 
-	//this.load.script('ControlesPaus', "./js/ControlesPaus.js");
-	//this.load.script('OpcionesPaus', "./js/OpcionesPaus.js");
-	//this.load.script('JuegoPaus', "./js/Juego.js");
-	//this.load.script('MenuPrincipal', "./js/MenuPrincipal.js");
-
+	
 }
 
 
@@ -37,12 +33,6 @@ class MenuPausa extends Phaser.Scene{
 			this.opcionesCreadas = this.scene.add('OpcionesPaus',new OpcionesPaus, false);
 
 		}
-
-		/*if (this.juegoCreado == undefined){
-
-			this.juegoCreado = this.scene.add('Juego',new Juego, false);
-
-		}*/
 
 		if (this.MenuPrincipalCreado == undefined){
 
