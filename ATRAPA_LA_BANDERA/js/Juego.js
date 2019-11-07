@@ -64,6 +64,9 @@
 
 			//Musica del juego
 			this.load.audio('musica', '../assets/music/musicaJuego.mp3');
+
+			//Cargamos el menu de PAUSA
+		//	this.load.script('MenuPausa', "./js/MenuPausa.js");
 }
 
 		create(){
@@ -71,13 +74,23 @@
 			this.cameras.main.setBackgroundColor(0x000000);
 
 			//MENU de PAUSA
+			if (this.menuPausaCreado == undefined){
+
+				this.menuPausaCreado = this.scene.add('MenuPausa', new MenuPausa, false);
+
+			}
+
 			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+<<<<<<< HEAD
 			if(!this.sceneload){
 				this.scene.add('MenuPausa', new MenuPausa);
 				this.sceneload=true;
 			}
 			this.scene.sendToBack('MenuPausa');
 			this.scene.stop('MenuPausa');
+=======
+
+>>>>>>> 086d77a4f5ef81f135b340ec5b7f5eaa6f87d126
 			//Musica
 			this.sound.pauseOnBlur=false;
 			var mj = this.sound.add('musica');
@@ -607,10 +620,20 @@
 				}
 
 
-				//Menu de Pausa
+				/*//Menu de Pausa
 				if(this.ESC.isDown){
 					this.scene.run('MenuPausa');
 					this.scene.bringToTop('MenuPausa');
+
+				}*/
+
+				//Menu de Pausa
+				if(this.ESC.isDown){
+
+					console.log("vamos al kitkat");
+
+					this.scene.pause('Juego');
+					this.scene.start('MenuPausa');
 
 				}
 

@@ -15,9 +15,32 @@ class MenuPrincipal extends Phaser.Scene{
     this.load.image('botonOpciones', 'assets/img/MenuPrincipal/botonOpciones.png'); //BOTON OPCIONES
     this.load.image('botonSalir', 'assets/img/MenuPrincipal/botonSalir.png'); //BOTON SALIR
 
+		//this.load.script('ControlesPrinc', "./js/ControlesPrinc.js");
+		//this.load.script('OpcionesPrinc', "./js/OpcionesPrinc.js");
+
+
 	}
 
 	create(){
+
+		if (this.controlesCreados == undefined){
+
+			this.controlesCreados = this.scene.add('ControlesPrinc', new ControlesPrinc, false);
+
+		}
+
+		if (this.opcionesCreadas == undefined){
+
+			this.opcionesCreadas = this.scene.add('OpcionesPrinc',new OpcionesPrinc, false);
+
+		}
+
+		if (this.juegoCreado == undefined){
+
+			this.juegoCreado = this.scene.add('Juego',new Juego, false);
+
+		}
+
 
 		var height = game.config.height;
 		var width = game.config.width;
@@ -48,40 +71,30 @@ class MenuPrincipal extends Phaser.Scene{
 		//.on('pointerout', () => this.enterButtonRestState() );
 
 		//BOTON CONTROLES
-		this.botonControles = this.add.image(x*3/9, y*5/3, 'botonControles');
+		this.botonControles = this.add.image(x*6/9, y*5/3, 'botonControles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verControles());
 
-
-
 		//BOTON OPCIONES
 
-		this.botonOpciones = this.add.image(x, y*5/3, 'botonOpciones');
+		this.botonOpciones = this.add.image(x*12/9, y*5/3, 'botonOpciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
 
-		//BOTON SALIR
-		this.botonSalir = this.add.image(x*15/9, y*5/3, 'botonSalir');
-		this.botonSalir.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => this.salir());
+
 	}
 
 	iniciarJuego(){
-		this.scene.add('Juego',new Juego);
 		this.scene.start('Juego');
 	}
 
 	verControles(){
-		this.scene.add('ControlesPrinc',new ControlesPrinc);
 		this.scene.start('ControlesPrinc');
 	}
 
 	verOpciones(){
-		this.scene.add('OpcionesPrinc',new OpcionesPrinc);
 		this.scene.start('OpcionesPrinc');
 	}
 
-	salir(){
-		setTimeout("location.href='about.html#'", 0);
-	}
+
 }

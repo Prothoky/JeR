@@ -2,24 +2,38 @@ class MenuPausa extends Phaser.Scene{
 
 	constructor(){
 
-		super ({key: "MenuPausa",active: true});
+		super ({key: "MenuPausa"});
 
 	}
 
 	preload(){
 
-	//console.log("estamos en el kitkat");
-
 	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
 	this.load.image('menuPausa', 'assets/img/MenuPausa/menuPausa.png');
+
 	this.load.image('reanudar', 'assets/img/MenuPausa/reanudar.png');
 	this.load.image('opciones', 'assets/img/MenuPausa/opciones.png');
 	this.load.image('controles', 'assets/img/MenuPausa/controles.png');
 	this.load.image('abandonar', 'assets/img/MenuPausa/abandonar.png');
 
-	}
+
+}
+
 
 	create(){
+
+		if (this.controlesCreados == undefined){
+
+			this.controlesCreados = this.scene.add('ControlesPaus', new ControlesPaus, false);
+
+		}
+
+		if (this.opcionesCreadas == undefined){
+
+			this.opcionesCreadas = this.scene.add('OpcionesPaus',new OpcionesPaus, false);
+
+		}
+
 
 		var height = game.config.height;
 		var width = game.config.width;
@@ -49,6 +63,7 @@ class MenuPausa extends Phaser.Scene{
 		.on('pointerdown', () => this.controles());
 
 		//BOTON VOLVER
+
 		this.botonAbandonar = this.add.image(x, y*12/8, 'abandonar');
 		this.botonAbandonar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.abandonar());
@@ -56,22 +71,24 @@ class MenuPausa extends Phaser.Scene{
 	}
 
 	reanudar() {
-		this.scene.sendToBack('MenuPausa');
-		this.scene.stop('MenuPausa');
+
+		this.scene.resume('Juego');
 	}
 
 	opciones(){
+
 		this.scene.start('OpcionesPaus');
-		this.scene.add('OpcionesPaus', new OpcionesPaus);
 	}
 
 	controles(){
-		this.scene.add('ControlesPaus', new ControlesPaus);
+
 		this.scene.start('ControlesPaus');
+
 	}
 
 	abandonar(){
-			this.scene.add('MenuPrincipal', new MenuPrincipal);
-			this.scene.start('MenuPrincipal');
+
+		this.scene.start('MenuPrincipal');
+
 	}
 }
