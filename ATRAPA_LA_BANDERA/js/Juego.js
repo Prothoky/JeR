@@ -68,6 +68,8 @@
 
 		create(){
 
+			this.cameras.main.setBackgroundColor(0x000000);
+
 			//MENU de PAUSA
 			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 			this.scene.add('MenuPausa', new MenuPausa); //el false es para que no se ejecute directamente
@@ -712,11 +714,17 @@
 				}
 
 			}
-			if(game.player1.x < this.cameras.main.x-this.cW/2){
+			if(game.player1.x < this.cameras.main.x-this.cW){
 				reenter(game.player1,this.cameras.main.x);
 			}
-			if(game.player1.x > this.cameras.main.x+this.cW/2){
+			if(game.player1.x > this.cameras.main.x+this.cW){
 				reenter(game.player1,this.cameras.main.x);
+			}
+			if(game.player2.x < this.cameras.main.x-this.cW){
+				reenter(game.player2,this.cameras.main.x);
+			}
+			if(game.player2.x > this.cameras.main.x+this.cW){
+				reenter(game.player2,this.cameras.main.x);
 			}
 			if(!game.player1.body.touching.down && game.player1.y > 800){
 				respawn(game.player1);
@@ -736,7 +744,7 @@
 				//Camara sigue a la bandera
 				if(hasTheFlag(game.player1)){
 					this.cameras.main.startFollow(game.player1,false,1,1,0,200);
-					game.HUDbandera.enableBody(true,game.player1.x-350,100,true,true);
+					game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
 					if(game.player1.x < -2040){
 						game.loaded=false;
 						cHangeFaseLeft();
@@ -745,7 +753,7 @@
 				}
 				else if(hasTheFlag(game.player2)){
 					this.cameras.main.startFollow(game.player2,false,1,1,0,200);
-					game.HUDbandera.enableBody(true,game.player2.x+350,100,true,true);
+					game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
 					if(game.player2.x > 2040){
 						game.loaded=false;
 						cHangeFaseRight();
@@ -779,7 +787,7 @@
 	}
 
 	function reenter(player,x){
-		player.x = x;
+		player.x = 0;
 	}
 
 	function hasTheFlag(player){
