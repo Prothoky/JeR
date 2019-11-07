@@ -5,6 +5,7 @@
 
 
 		preload(){
+
 			if(game.onfase==0){
 				//Sprite del fondo
 				this.load.image("fondo","../assets/map/Centro/Fondo0.jpg");
@@ -62,19 +63,26 @@
 			this.load.spritesheet('J2JUMP','../assets/animations/JAAnimations/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
 
 			this.load.audio('musica', '../assets/music/musicaJuego.mp3');
+
+
+			//scene.load.script("MenuPausa", './js/MenuPausa.js');
 }
 
 		create(){
+
+			//MENU de PAUSA
+			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+			this.scene.add('MenuPausa', config, false); //el false es poara que no se ejecute directamente
 
 			//Musica
 			this.sound.pauseOnBlur=false;
 			var mj = this.sound.add('musica');
 			if(!game.playing){
 				mj.play();
+				game.sound.mute=true;
 				game.playing=true;
 			}
 			this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
-
 
 			//Controles por teclado
 			//Controles J1(Rojo)
@@ -549,7 +557,6 @@
 					this.p2posx = game.player2.x;
 				}
 
-
 				//Musica
 				if(this.M.isDown && !game.MPulsed){
 					if(game.sound.mute){
@@ -563,6 +570,22 @@
 				}
 				if(this.M.isUp){
 					game.MPulsed=false;
+				}
+
+				//Menu de Pausa
+				if(this.ESC.isDown){
+
+					console.log("vamos al kitkat");
+					//this.scene.add("MenuPausa", new MenuPausa);
+					//this.scene.add("MenuPausa", new MenuPausa);
+					//this.scene.add('MenuPausa', config, true);
+					this.scene.start('MenuPausa');
+
+				/*	if ( this.menuPausaVar == null) {
+						this.menuPausaVar = this.scene.add("MenuPausa1", new MenuPausa);
+						this.scene.start("MenuPausa1");
+					}*/
+
 				}
 
 
