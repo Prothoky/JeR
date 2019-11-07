@@ -91,7 +91,7 @@
 
 			//Musica
 			this.sound.pauseOnBlur=false;
-			var mj = this.sound.add('musica');
+			var mj = this.sound.add('musica',{loop: true});
 			if(!game.playing){
 				mj.play();
 				game.sound.mute=false;
