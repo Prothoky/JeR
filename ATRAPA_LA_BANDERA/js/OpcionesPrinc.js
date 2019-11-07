@@ -9,9 +9,6 @@ class OpcionesPrinc extends Phaser.Scene {
 	preload(){
 		//MENU OPCIONES
 		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/fondoOpciones.png'); //FONDO
-		this.load.image('cuadroVolumen', 'assets/img/MenuOpciones/cuadroVolumen.png');//CUADRO VOLUMEN
-		this.load.image('options', 'assets/img/MenuOpciones/options.png'); //titulo opciones
-		this.load.image('volumen', 'assets/img/MenuOpciones/volumen.png'); //titulo volumen
 
 		this.load.image('bajarVolumen', 'assets/img/MenuOpciones/bajarVolumen.png');
 		this.load.image('subirVolumen', 'assets/img/MenuOpciones/subirVolumen.png');
@@ -38,10 +35,6 @@ class OpcionesPrinc extends Phaser.Scene {
 		fondoOpcionesPrinc.displayWidth = width;
 		//scale evenly
 		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
-
-		var tituloOpciones = this.tituloOpciones = this.add.image(x, y*3/8, 'options').setScale(0.5);
-		var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen');
-		var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.8);
 
 		this.volumenText = this.add.text(x, y*7/8, '0.5', { fontSize: '32px', fill: '#000' });
 
@@ -98,7 +91,8 @@ class OpcionesPrinc extends Phaser.Scene {
 
 		game.sound.mute = true;
 		game.sound.setVolume(0);
-		
+		this.volumenText.setText('0');
+
 	}
 
 }
