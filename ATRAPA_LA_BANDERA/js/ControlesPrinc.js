@@ -1,9 +1,6 @@
 class ControlesPrinc extends Phaser.Scene {
-
 	constructor(){
-
 		super ({key: "ControlesPrinc"});
-
 	}
 
 	preload(){
@@ -40,8 +37,8 @@ class ControlesPrinc extends Phaser.Scene {
 	}
 
 	volver() {
-
-		//una vez hecho esto, vamo a las instrucciones
-		this.scene.start('MenuPrincipal');
+		this.scene.sendToBack('ControlesPrinc');
+		this.scene.stop('ControlesPrinc');
+		this.scene.resume('MenuPrincipal');
 	}
 }

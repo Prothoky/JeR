@@ -28,20 +28,11 @@ preload(){
     game.onfase=-0;
     game.fasebefore=null;
 
-
-    if (this.MenuPrincCreado == undefined){
-
-			this.MenuPrincCreado = this.scene.add('MenuPrincipal', new MenuPrincipal, false);
-
-		}
-
-
-    //this.scene.add("Juego", new Juego);
+    this.scene.add("MenuPrincipal", new MenuPrincipal);
     this.scene.start("MenuPrincipal");
+    //this.scene.add("Juego", new Juego);
     //this.scene.start("Juego");
 
-    //this.scene.add("MenuPausa", new MenuPausa);
-    //this.scene.start("MenuPausa");
 
   }
 

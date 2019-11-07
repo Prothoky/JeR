@@ -4,6 +4,8 @@
 		}
 
 		preload(){
+			game.exit=false;
+			game.paused=false;
 			if(game.onfase==0){
 				//Sprite del fondo
 				this.load.image("fondo","../assets/map/Centro/Fondo0.jpg");
@@ -65,8 +67,6 @@
 			//Musica del juego
 			this.load.audio('musica', '../assets/music/musicaJuego.mp3');
 
-			//Cargamos el menu de PAUSA
-		//	this.load.script('MenuPausa', "./js/MenuPausa.js");
 }
 
 		create(){
@@ -74,20 +74,12 @@
 			this.cameras.main.setBackgroundColor(0x000000);
 
 			//MENU de PAUSA
-			if (this.menuPausaCreado == undefined){
-
-				this.menuPausaCreado = this.scene.add('MenuPausa', new MenuPausa, false);
-
-			}
-
-			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-/*
 			if(!this.sceneload){
 				this.scene.add('MenuPausa', new MenuPausa);
 				this.sceneload=true;
 			}
 			this.scene.sendToBack('MenuPausa');
-			this.scene.stop('MenuPausa');*/
+			this.scene.stop('MenuPausa');
 
 			//Musica
 			this.sound.pauseOnBlur=false;
@@ -101,6 +93,8 @@
 
 
 			//Controles por teclado
+			//Controles menu PAUSA
+			this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 			//Controles J1(Rojo)
 			this.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
 			this.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -591,6 +585,11 @@
 			if(!game.loaded){
 
 			}
+			if(game.exit){
+					this.scene.sendToBack('Juego');
+					this.scene.stop('Juego');
+					this.scene.resume('MenuPrincipal');
+			}
 			else{
 				if(this.p1posx != game.player1.x){
 					//console.log("Player1 pos: " + game.player1.x);
@@ -617,22 +616,12 @@
 					game.MPulsed=false;
 				}
 
-
-				/*//Menu de Pausa
-				if(this.ESC.isDown){
+				//Menu de Pausa
+				if(this.ESC.isDown && !game.paused){
 					this.scene.run('MenuPausa');
 					this.scene.bringToTop('MenuPausa');
-
-				}*/
-
-				//Menu de Pausa
-				if(this.ESC.isDown){
-
-					console.log("vamos al kitkat");
-
-					this.scene.pause('Juego');
-					this.scene.start('MenuPausa');
-
+					this.scene.pause('MenuPrincipal');
+					game.paused=true;
 				}
 
 				//Para calcular la distancia entre los jugadores
@@ -683,14 +672,6 @@
 					game.player1.anims.play('JUMP',true);
 				}
 			}
-
-/*
-				//Condicionantes del ataque (prueba)
-				if(game.P.isDown && dis<50 || game.O.isDown && dis<50 ){
-					game.player1.x=game.player1.x+100;
-				}
-
-*/
 
 				//Movimiento J2
 				if(game.player2.body.touching.down){
@@ -835,3 +816,6 @@
 		game.fasebefore=game.onfase;
 		game.onfase--;
 	}
+
+function exit(){
+}

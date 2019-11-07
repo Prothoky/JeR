@@ -1,18 +1,13 @@
 class ControlesPaus extends Phaser.Scene {
-
 	constructor(){
-
 		super ({key: "ControlesPaus"});
-
 	}
 
-	preload (){
-
+	preload(){
+		//MENU CONTROLES
 		this.load.image('fondoControles', 'assets/img/MenuControles/fondoControles.png'); //FONDO
 		this.load.image('volverControles', 'assets/img/MenuControles/volver.png', {frameHeight:347,frameWidth: 295}); //BOTON VOLVER
-		//this.load.image('la imagen con los controples de mierda')
 	}
-
 	create(){
 
 		var height = game.config.height;
@@ -42,8 +37,8 @@ class ControlesPaus extends Phaser.Scene {
 	}
 
 	volver() {
-
-		//una vez hecho esto, vamo a las instrucciones
-		this.scene.start('MenuPausa');
+		this.scene.sendToBack('ControlesPaus');
+		this.scene.stop('ControlesPaus');
+		this.scene.resume('MenuPausa');
 	}
 }
