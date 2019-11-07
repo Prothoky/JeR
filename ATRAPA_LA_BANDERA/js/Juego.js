@@ -207,8 +207,6 @@
 				frameRate:24
 			});
 
-<<<<<<< HEAD
-=======
 			//Anim golpe abajo (funciona)
 			this.anims.create({
 				key: 'HIT_DOWN',
@@ -227,7 +225,6 @@
 				frameRate:24
 			});
 
->>>>>>> 2c66d4c1c15dbd21efe35341aa538782d5832758
 			//Anim salto (no funciona)
 			 this.anims.create({
 			 		key: 'JUMP',
