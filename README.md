@@ -57,6 +57,47 @@ Diego Pérez Pérez         d.perezp.2017@alumnos.urjc.es   diegoperezp2@gmail.c
 ## 1. Cambios  
 Cambios con respecto a versiones anteriores del documento.  
 * __Revisión 0:__ Versión 0 del documento; sin cambios.
+* __Revisión 1:__ Versión 1 del documento, fase 2. 
+Hemos realizado varios cambios al hacer la implementación del código, como por ejemplo hemos cambiado algunos controles de teclas y hemos añadido nuevas funcionalidades para que los menús a parte de funcionar con el cursor funcionen con el teclado. También hemos decidido simplificar los mapas a uno con varios niveles, ya que era lo más asequible debido al tiempo. Por último, lospersonajes en lugar de hacerlos tipo stickman, como habíamos pensado en un principio, los hemos evolucionado a personajes más humanoides y con animaciones como personas reales, para darle más verosimilitud.
+
+Los nuevos controles son: 
+
+__JUGADOR 1__
+* __tecla izq:__ Mover Jugador 1 a la izquierda.
+* __tecla dcha:__ Mover Jugador 1 a la derecha.
+* __tecla arriba:__ Salto Jugador 1.
+* __P:__ Jugador 1 apunta abajo.
+* __O:__ Jugador 1 apunta arriba.
+* __L:__ Jugador 1 golpe abajo.
+* __K:__ Jugador 1 golpe arriba.
+
+__JUGADOR 2__
+* __A:__ Mover Jugador 2 a la izquierda.
+* __D:__ Mover Jugador 2 a la derecha.
+* __W:__ Salto Jugador 2.
+* __T:__ Jugador 2 apunta abajo.
+* __Y:__ Jugador 2 apunta arriba.
+* __G:__ Jugador 2 golpe abajo.
+* __H:__ Jugador 2 golpe arriba.
+
+__MENÚ PRINCIPAL__
+* __O:__ Opciones
+* __J:__ Jugar
+* __C:__ Controles
+
+__MENÚ PAUSA__
+* __1:__ Volver
+* __2:__ Opciones
+* __3:__ Controles
+* __3:__ Abadonar
+
+__JUEGO__
+* __M:__ Mutar música
+* __ESC:__ Menú de Pausa
+
+__CONTROLES y OPCIONES__
+* __0:__ Volver
+
 
 
 
