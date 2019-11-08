@@ -1,22 +1,15 @@
 
 class FinNivelW2 extends Phaser.Scene {
 	constructor(){
-
 		super ({key: "FinNivelW2"});
-
 	}
 
 	preload(){
 
-		//el fondo del fin de nivel
-		//this.load.image('fondoFin', 'assets/img/FinNivel/fondoFin.png');
-		//cargamos el logo arriba
-		//this.load.image('logo', 'assets/img/FinNivel/logo.png');g');
-		//boton de salir
-		//this.load.image('salir', 'assets/img/FinNivel/salir.png');
-
-		var texto;
-
+    this.load.image('fondoFin','../assets/img/MenuPrincipal/fondoMP.jpg')
+		this.load.image('abandonar', 'assets/icons/BOTON_SALIR.png');
+    this.scene.backgroundColor = "#FFFFF";
+		//this.texto = this.add.text(500, 500, 'Ganador: JUGADOR 2\nPerdedor: JUGADOR 1', { fontSize: '48px', fill: '#FF0000' });
 	}
 
 	create(){
@@ -27,30 +20,31 @@ class FinNivelW2 extends Phaser.Scene {
 		var x = width/2 ;
 		var y = height/2;
 
-		var fondoFin = this.add.sprite (x, y, 'fondoFin');
+		var fondoFin = this.add.sprite(x, y, "fondoFin");
+
 
 		fondoFin.displayWidth = width;
+
 		fondoFin.scaleX = fondoFin.scaleY;
 
-		texto = this.add.text(16, 16, 'Ganador: \n Perdedor:', { fontSize: '32px', fill: '#000' });
+		this.texto = this.add.text(x/2, 600, 'Ganador: JUGADOR 2\nPerdedor: JUGADOR 1', { fontSize: '48px', fill: '#FFFF00' });
 
-/*
 		this.botonSalir = this.add.image(x, y*12/8, 'abandonar');
 		this.botonSalir.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => this.salir());
-*/
+		.on('pointerdown', () => salir());
 
-		/*if(j1 == winner){
-			texto.setText('Ganador: JUGADOR 1\n Perdedor:JUGADOR 2');
-		}else{
-			texto.setText('Ganador: JUGADOR 2\n Perdedor:JUGADOR 1');
-		}*/
+		this.texto.setText('Ganador: JUGADOR 2\nPerdedor: JUGADOR 1');
+
 	}
 
-	salir (){
-		this.scene.sendToBack('FinNivelW2');
-		this.scene.stop('FinNivelW2');
-		this.scene.resume('MenuPrincipal');
+}
+
+function salir(){
+			game.scene.remove('Juego');
+			game.scene.start('MenuPrincipal');
+			game.scene.bringToTop('MenuPrincipal');
 	}
 
+function reload(){
+	this.scene.restart();
 }

@@ -7,6 +7,12 @@ class MenuPrincipal extends Phaser.Scene{
 
 	preload(){
 
+		//Variables de reinicio de Juego
+		game.loaded=false;
+		game.onfase=-0;
+		game.fasebefore=null;
+		game.FinNivelloaded=false;
+
     //MENU PRINCIPAL
     this.load.image('fondoMenuPrinc', 'assets/img/MenuPrincipal/fondoMP.jpg'); //FONDO
     this.load.image('botonJugar', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
@@ -84,7 +90,7 @@ class MenuPrincipal extends Phaser.Scene{
 	iniciarJuego(){
 			this.scene.run('Juego');
 			this.scene.bringToTop('Juego');
-			this.scene.pause('MenuPrincipal');
+			this.scene.stop('MenuPrincipal');
 	}
 
 	verControles(){

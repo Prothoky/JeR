@@ -7,6 +7,7 @@
 			game.loaded=false;
 			game.exit=false;
 			game.paused=false;
+
 			if(game.onfase==0){
 				//Sprite del fondo
 				this.load.image("fondo","../assets/map/Centro/Fondo0.jpg");
@@ -67,6 +68,12 @@
 
 			//Musica del juego
 			this.load.audio('musica', '../assets/music/Spread the Wings (Rock Howard) - Garou Mark of the Wolves - OST.mp3');
+
+			if(!game.FinNivelloaded){
+				this.scene.add('FinNivelW1', new FinNivelW1);
+				this.scene.add('FinNivelW2',new FinNivelW2);
+				game.FinNivelloaded=true;
+			}
 
 		}
 
@@ -302,14 +309,14 @@
 				game.sobrefondo.scaleX = game.sobrefondo.scaleY;
 
 				if(game.fasebefore==-1){
-					game.bandera.x = -2240;
-					game.player2.x = -2240;
-					game.player1.x = -2000;
+					game.bandera.x = -2000;
+					game.player2.x = -2000;
+					game.player1.x = -1800;
 				}
 				if(game.fasebefore == 1){
-					game.bandera.x = 2240;
-					game.player1.x = 2240;
-					game.player2.x = 2000;
+					game.bandera.x = 2000;
+					game.player1.x = 2000;
+					game.player2.x = 1800;
 
 				}
 			}
@@ -367,14 +374,14 @@
 				game.sobrefondo.scaleX = game.sobrefondo.scaleY;
 
 				if(game.fasebefore ==  0 ){
-					game.bandera.x = 2240;
-					game.player1.x = 2240;
-					game.player2.x = 1800;
+					game.bandera.x = 2000;
+					game.player2.x = 2000;
+					game.player1.x = 1800;
 				}
 				if(game.fasebefore == -2 ){
-					game.bandera.x = -2240;
-					game.player1.x = -1800;
-					game.player2.x=-2240;
+					game.bandera.x = -2000;
+					game.player1.x = -2000;
+					game.player2.x = -1800;
 				}
 			}
 
@@ -426,13 +433,13 @@
 				game.sobrefondo.displayHeigth = this.cH*2;
 				game.sobrefondo.scaleX = game.sobrefondo.scaleY;
 
-				game.bandera.x = 2240;
+				game.bandera.x = 2000;
 				game.bandera.y = 350;
 
-				game.player1.x = 2240;
+				game.player1.x = 2000;
 				game.player1.y = 350;
 
-				game.player2.x = 2000;
+				game.player2.x = 1800;
 				game.player2.y = 350;
 
 			}
@@ -469,7 +476,7 @@
 				//Creacion de los jugadores
 
 				//Jugador 1
-				game.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
+				game.player1 = this.physics.add.sprite(-400,450,'maniqui',2);
 				game.player1.flipX=false;
 				game.player1.setCollideWorldBounds(false);
 				//game.player1.setBounce(0.3);
@@ -477,7 +484,7 @@
 				game.player1.ownBandera=false;
 
 				//Jugador 2
-				game.player2 = this.physics.add.sprite(420,450,'maniqui',2);
+				game.player2 = this.physics.add.sprite(400,450,'maniqui',2);
 				game.player2.flipX=true;
 				game.player2.setCollideWorldBounds(false);
 				//game.player2.setBounce(0.3);
@@ -490,15 +497,15 @@
 				game.sobrefondo.scaleX = game.sobrefondo.scaleY;
 
 				if(game.fasebefore ==  0 ){
-					game.bandera.x = -2240;
-					game.player2.x = -2240;
-					game.player1.x = -2000;
+					game.bandera.x = -2100;
+					game.player2.x = -2100;
+					game.player1.x = -1800;
 
 				}
 				if(game.fasebefore == 2 ){
-					game.bandera.x = 2240;
-					game.player1.x = 2240;
-					game.player2.x = 2000;
+					game.bandera.x = 2100;
+					game.player1.x = 2100;
+					game.player2.x = 1800;
 				}
 
 			}
@@ -508,9 +515,9 @@
 				//Crear plataforma
 
 				game.platforms = this.physics.add.staticGroup();
-				game.platforms.create(1470, 600, 'pltf').setScale(4,0.5).refreshBody();
 				game.platforms.create(300, 450, 'pltf').setScale(0.05,0.5).refreshBody();
 				game.platforms.create(-1120, 385, 'pltf').setScale(5.27,0.5).refreshBody();
+				game.platforms.create(1470, 600, 'pltf').setScale(3.75,0.5).refreshBody();
 
 				//Creación del fondo del juego
 
@@ -551,13 +558,13 @@
 				game.sobrefondo.displayHeigth = this.cH*2;
 				game.sobrefondo.scaleX = game.sobrefondo.scaleY;
 
-				game.bandera.x = -2240;
+				game.bandera.x = -2000;
 				game.bandera.y = 350;
 
-				game.player2.x = -2240;
+				game.player2.x = -2000;
 				game.player2.y = 350;
 
-				game.player1.x = -2000;
+				game.player1.x = -1800;
 				game.player1.y = 350;
 
 			}
@@ -582,250 +589,267 @@
 		}
 
 		update(time, delta){
-
 			if(!game.loaded){
 
-			}
-			if(game.exit){
-				this.scene.sendToBack('Juego');
-				this.scene.stop('Juego');
-				this.scene.resume('MenuPrincipal');
-				this.mj.stop();
-				game.playing=false;
-			}
-			else{
-
-				//Musica
-				if(this.M.isDown && !game.MPulsed){
-					if(game.sound.mute){
-						game.sound.mute=false;
-						game.MPulsed=true;
-					}
-					else if(!game.sound.mute){
-						game.sound.mute=true;
-						game.MPulsed=true;
-					}
+			}else{
+				if(game.player1.x != game.posx1){
+					console.log("P1_pos: "+game.player1.x);
+					game.posx1 =game.player1.x;
 				}
-				if(this.M.isUp){
-					game.MPulsed=false;
+				if(game.player2.x != game.posx2){
+					console.log("P2_pos: "+game.player2.x);
+					game.posx2 =game.player2.x;
 				}
 
-				//Menu de Pausa
-				if(this.ESC.isDown && !game.paused){
-					this.scene.run('MenuPausa');
-					this.scene.bringToTop('MenuPausa');
-					this.scene.pause('MenuPrincipal');
-					game.paused=true;
+
+				if(game.exit){
+					this.scene.sendToBack('Juego');
+					this.scene.stop('Juego');
+					this.scene.resume('MenuPausa');
+					this.mj.stop();
+					game.playing=false;
 				}
-
-				//Para calcular la distancia entre los jugadores
-				game.dis = Math.abs(game.player2.x - game.player1.x);
-
-				//Movimiento J1
-				if(game.player1.body.touching.down){
-					if (this.cursor.up.isDown)
-					{
-						game.player1.setVelocityY(-450);
-					}
-					else if(this.cursor.left.isDown){
-						game.player1.setVelocityX(-550);
-						game.player1.flipX=false;
-						game.player1.anims.play('RUN',true);
-						game.player1.status = "RUN";
-					}else if(this.cursor.right.isDown){
-						game.player1.setVelocityX(550);
-						game.player1.flipX=true;
-						game.player1.anims.play('RUN',true);
-						game.player1.status = "RUN";
-					}else
-					{
-						game.player1.setVelocityX(0);
-						if(this.L.isDown){
-							console.log("Apuntar abajo");
-							game.player1.anims.play('SCOPE_DOWN',true);
-							game.player1.status = "SCOPE_DOWN";
-						}else if(this.P.isDown){
-							console.log("Apuntar arriba");
-							game.player1.anims.play('SCOPE_UP',true);
-							game.player1.status = "SCOPE_UP";
-						}else if(this.O.isDown){
-							console.log("Golpe arriba");
-							game.player1.anims.play('HIT_UP',true);
-							game.player1.status = "HIT_UP";
-						}else if(this.K.isDown){
-							console.log("Golpe abajo");
-							game.player1.anims.play('HIT_DOWN',true);
-							game.player1.status = "HIT_DOWN";
-						}else
-						game.player1.anims.play('IDLE',true);
-							game.player1.status = "IDLE";
-					}
-				}else{
-					if(this.cursor.left.isDown){
-						game.player1.setVelocityX(-550);
-						game.player1.flipX=false;
-						game.player1.anims.play('JUMP',true);
-							game.player1.status = "JUMP";
-					}else if(this.cursor.right.isDown){
-						game.player1.setVelocityX(550);
-						game.player1.flipX=true;
-						game.player1.anims.play('JUMP',true);
-							game.player1.status = "JUMP";
-					}else{
-						game.player1.anims.play('JUMP',true);
-							game.player1.status = "JUMP";
-					}
-				}
-
-				//Movimiento J2
-				if(game.player2.body.touching.down){
-					if (this.W.isDown )
-					{
-						game.player2.setVelocityY(-450);
-					}
-					else if(this.A.isDown){
-						game.player2.setVelocityX(-550)
-						game.player2.flipX=false;
-						game.player2.anims.play('RUN2',true);
-						game.player2.status="RUN";
-					}else if(this.D.isDown){
-						game.player2.setVelocityX(550)
-						game.player2.flipX=true;
-						game.player2.anims.play('RUN2',true);
-						game.player2.status="RUN";
-					}else
-					{
-						game.player2.setVelocityX(0);
-						if(this.G.isDown){
-							console.log("Apuntar abajo");
-							game.player2.anims.play('SCOPE_DOWN2',true);
-							game.player2.status="SCOPE_DOWN";
-						}else if(this.T.isDown){
-							console.log("Apuntar arriba");
-							game.player2.anims.play('SCOPE_UP2',true);
-							game.player2.status="SCOPE_UP";
-						}else if(this.Y.isDown){
-							console.log("Golpe arriba");
-							game.player2.anims.play('HIT_UP2',true);
-							game.player2.status="HIT_UP";
-						}else if(this.H.isDown){
-							console.log("Golpe abajo");
-							game.player2.anims.play('HIT_DOWN2',true);
-							game.player2.status="HIT_DOWN";
-						}else
-						game.player2.anims.play('IDLE2',true);
-						game.player2.status="IDLE";
-					}
-				}else{
-
-					if(this.A.isDown){
-						game.player2.setVelocityX(-550);
-						game.player2.flipX=false;
-						game.player2.anims.play('JUMP2',true);
-						game.player2.status="JUMP";
-					}else if(this.D.isDown){
-						game.player2.setVelocityX(550);
-						game.player2.flipX=true;
-						game.player2.anims.play('JUMP2',true);
-						game.player2.status="JUMP";
-					}else{
-						game.player2.anims.play('JUMP2',true);
-						game.player2.status="JUMP";
-					}
-
-				}
-
-				if(game.bandera.y > 720){
-					game.bandera.y = 150;
-					game.bandera.x += 100;
-				}
-				if(game.player1.y < 200){
-					game.player1.y = 250;
-				}
-				if(game.player2.y < 200){
-					game.player2.y = 250;
-				}
-
-				if(game.player2.x< -2040){
-					game.player2.x = -2000;
-				}
-				if(game.player2.x> 2040){
-					game.player2.x = 2000;
-				}
-				if(game.player1.x> 2040){
-					game.player1.x = 2000;
-				}
-				if(game.player1.x< -2040){
-					game.player1.x = -2000;
-				}
-
-				if(!game.player1.body.touching.down && game.player1.y > 800){
-					respawn(game.player1);
-				}
-				if(!game.player2.body.touching.down && game.player2.y > 800){
-					respawn(game.player2);
-				}
-
-				//Personaje coje la bandera
-				this.physics.add.overlap([game.player1,game.player2], game.bandera, collectBandera, null, this);
-
-				this.physics.add.overlap(game.player1, game.player2, checkatacks, null, this);
-
-				//Camara sigue a la bandera
-				if(hasTheFlag(game.player1)){
-
-					this.cameras.main.startFollow(game.player1,true,1,1,0,200);
-					game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
-					if(game.player1.x < -2000){
-						if(game.onfase==-2){
-							this.scene.add('FinNivelW1',FinNivelW1);
-							this.scene.sendToBack('Juego');
-							this.scene.stop('Juego');
-							this.scene.start('FinNivelW2');
-						}
-						game.loaded=false;
-						cHangeFaseLeft();
-						this.scene.restart();
-					}
-				}
-				else if(hasTheFlag(game.player2)){
-
-					this.cameras.main.startFollow(game.player2,true,1,1,0,200);
-					game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
-					if(game.player2.x > 2000){
-						game.loaded=false;
-						if(game.onfase==2){
-							this.scene.add('FinNivelW2',FinNivelW2);
-							this.scene.sendToBack('Juego');
-							this.scene.stop('Juego');
-							this.scene.start('FinNivelW2');
-						}
-						cHangeFaseRight();
-						this.scene.restart();
-					}
-
-				}
-
 				else{
 
-					this.cameras.main.startFollow(game.bandera,true,1,1,0,200);
-					game.HUDbandera.disableBody(true,true);
+					//Musica
+					if(this.M.isDown && !game.MPulsed){
+						if(game.sound.mute){
+							game.sound.mute=false;
+							game.MPulsed=true;
+						}
+						else if(!game.sound.mute){
+							game.sound.mute=true;
+							game.MPulsed=true;
+						}
+					}
+					if(this.M.isUp){
+						game.MPulsed=false;
+					}
+
+					//Menu de Pausa
+					if(this.ESC.isDown && !game.paused){
+						this.scene.run('MenuPausa');
+						this.scene.bringToTop('MenuPausa');
+						this.scene.stop('MenuPausa');
+						game.paused=true;
+					}
+
+					//Para calcular la distancia entre los jugadores
+					game.dis = Math.abs(game.player2.x - game.player1.x);
+
+					//Movimiento J1
+					if(game.player1.body.touching.down){
+						if (this.cursor.up.isDown)
+						{
+							game.player1.setVelocityY(-450);
+						}
+						else if(this.cursor.left.isDown){
+							game.player1.setVelocityX(-550);
+							game.player1.flipX=false;
+							game.player1.anims.play('RUN',true);
+							game.player1.status = "RUN";
+						}else if(this.cursor.right.isDown){
+							game.player1.setVelocityX(550);
+							game.player1.flipX=true;
+							game.player1.anims.play('RUN',true);
+							game.player1.status = "RUN";
+						}else
+						{
+							game.player1.setVelocityX(0);
+							if(this.L.isDown){
+								console.log("Apuntar abajo");
+								game.player1.anims.play('SCOPE_DOWN',true);
+								game.player1.status = "SCOPE_DOWN";
+							}else if(this.P.isDown){
+								console.log("Apuntar arriba");
+								game.player1.anims.play('SCOPE_UP',true);
+								game.player1.status = "SCOPE_UP";
+							}else if(this.O.isDown){
+								console.log("Golpe arriba");
+								game.player1.anims.play('HIT_UP',true);
+								game.player1.status = "HIT_UP";
+							}else if(this.K.isDown){
+								console.log("Golpe abajo");
+								game.player1.anims.play('HIT_DOWN',true);
+								game.player1.status = "HIT_DOWN";
+							}else
+							game.player1.anims.play('IDLE',true);
+							game.player1.status = "IDLE";
+						}
+					}else{
+						if(this.cursor.left.isDown){
+							game.player1.setVelocityX(-550);
+							game.player1.flipX=false;
+							game.player1.anims.play('JUMP',true);
+							game.player1.status = "JUMP";
+						}else if(this.cursor.right.isDown){
+							game.player1.setVelocityX(550);
+							game.player1.flipX=true;
+							game.player1.anims.play('JUMP',true);
+							game.player1.status = "JUMP";
+						}else{
+							game.player1.anims.play('JUMP',true);
+							game.player1.status = "JUMP";
+						}
+					}
+
+					//Movimiento J2
+					if(game.player2.body.touching.down){
+						if (this.W.isDown )
+						{
+							game.player2.setVelocityY(-450);
+						}
+						else if(this.A.isDown){
+							game.player2.setVelocityX(-550)
+							game.player2.flipX=false;
+							game.player2.anims.play('RUN2',true);
+							game.player2.status="RUN";
+						}else if(this.D.isDown){
+							game.player2.setVelocityX(550)
+							game.player2.flipX=true;
+							game.player2.anims.play('RUN2',true);
+							game.player2.status="RUN";
+						}else
+						{
+							game.player2.setVelocityX(0);
+							if(this.G.isDown){
+								console.log("Apuntar abajo");
+								game.player2.anims.play('SCOPE_DOWN2',true);
+								game.player2.status="SCOPE_DOWN";
+							}else if(this.T.isDown){
+								console.log("Apuntar arriba");
+								game.player2.anims.play('SCOPE_UP2',true);
+								game.player2.status="SCOPE_UP";
+							}else if(this.Y.isDown){
+								console.log("Golpe arriba");
+								game.player2.anims.play('HIT_UP2',true);
+								game.player2.status="HIT_UP";
+							}else if(this.H.isDown){
+								console.log("Golpe abajo");
+								game.player2.anims.play('HIT_DOWN2',true);
+								game.player2.status="HIT_DOWN";
+							}else
+							game.player2.anims.play('IDLE2',true);
+							game.player2.status="IDLE";
+						}
+					}else{
+
+						if(this.A.isDown){
+							game.player2.setVelocityX(-550);
+							game.player2.flipX=false;
+							game.player2.anims.play('JUMP2',true);
+							game.player2.status="JUMP";
+						}else if(this.D.isDown){
+							game.player2.setVelocityX(550);
+							game.player2.flipX=true;
+							game.player2.anims.play('JUMP2',true);
+							game.player2.status="JUMP";
+						}else{
+							game.player2.anims.play('JUMP2',true);
+							game.player2.status="JUMP";
+						}
+
+					}
+
+					if(game.bandera.y > 720){
+						game.bandera.y = 150;
+						game.bandera.x += 100;
+					}
+					if(game.player1.y < 200){
+						game.player1.y = 250;
+					}
+					if(game.player2.y < 200){
+						game.player2.y = 250;
+					}
+
+					if(game.player2.x< -2040){
+						game.player2.x = -2000;
+					}
+					if(game.player2.x> 2040){
+						game.player2.x = 2000;
+					}
+					if(game.player1.x< -2040){
+						game.player1.x = -2000;
+					}
+					if(game.player1.x> 2040){
+						game.player1.x = 2000;
+					}
+
+					if(!game.player1.body.touching.down && game.player1.y > 800){
+						respawn(game.player1);
+					}
+					if(!game.player2.body.touching.down && game.player2.y > 800){
+						respawn(game.player2);
+					}
+
+					//Personaje coje la bandera
+					this.physics.add.overlap([game.player1,game.player2], game.bandera, collectBandera, null, this);
+
+					this.physics.add.overlap(game.player1, game.player2, checkatacks, null, this);
+
+					//Camara sigue a la bandera
+					if(hasTheFlag(game.player1)){
+
+						this.cameras.main.startFollow(game.player1,true,1,1,0,200);
+						game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
+						if(game.player1.x < -2000){
+							game.loaded=false;
+							cHangeFaseLeft();
+							if(game.onfase==-3){
+								this.scene.sendToBack('Juego');
+								this.scene.start('FinNivelW1');
+								this.scene.remove	('MenuPrincipal');
+								this.scene.remove('FinNivelW2');
+								this.scene.remove('Juego');
+							}
+							else{
+								this.scene.restart();
+								this.scene.bringToTop('Juego');
+							}
+						}
+					}
+					else if(hasTheFlag(game.player2)){
+
+						this.cameras.main.startFollow(game.player2,true,1,1,0,200);
+						game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
+						if(game.player2.x > 2000){
+							game.loaded=false;
+							cHangeFaseRight();
+							if(game.onfase == 3){
+								this.scene.sendToBack('Juego');
+								this.scene.start('FinNivelW2');
+								this.scene.remove('FinNivelW1');
+								this.scene.remove('Juego');
+								this.scene.remove('MenuPrincipal');
+							}
+							else{
+								this.scene.restart();
+								this.scene.bringToTop('Juego');
+							}
+						}
+
+					}
+
+					else{
+
+						this.cameras.main.startFollow(game.bandera,true,1,1,0,200);
+						game.HUDbandera.disableBody(true,true);
+					}
+				}
+				if(game.player1.x < (this.cameras.main.scrollX-this.cW+600)){
+					reenter(game.player1,this.cameras.main.scrollX+this.cW*2);
+				}
+				if(game.player1.x > (this.cameras.main.scrollX+this.cW+600)){
+					reenter(game.player1,this.cameras.main.scrollX+100);
+				}
+				if(game.player2.x < (this.cameras.main.scrollX-this.cW+600)){
+					reenter(game.player2,this.cameras.main.scrollX+this.cW*2);
+				}
+				if(game.player2.x > (this.cameras.main.scrollX+this.cW+600)){
+					reenter(game.player2,this.cameras.main.scrollX+100);
 				}
 			}
-			if(game.player1.x < (this.cameras.main.scrollX-this.cW+600)){
-				reenter(game.player1,this.cameras.main.scrollX+this.cW*2);
-			}
-			if(game.player1.x > (this.cameras.main.scrollX+this.cW+600)){
-				reenter(game.player1,this.cameras.main.scrollX+50);
-			}
-			if(game.player2.x < (this.cameras.main.scrollX-this.cW+600)){
-				reenter(game.player2,this.cameras.main.scrollX+this.cW*2);
-			}
-			if(game.player2.x > (this.cameras.main.scrollX+this.cW+600)){
-				reenter(game.player2,this.cameras.main.scrollX+50);
-			}
 		}
-
 	}
 
 	function collectBandera (player)
@@ -854,37 +878,37 @@
 	}
 
 	function cHangeFaseRight(){
-		game.player1.destroy(true);
-		game.player2.destroy(true);
-		game.bandera.destroy(true);
+		//game.player1.destroy(true);
+		//game.player2.destroy(true);
+		//game.bandera.destroy(true);
 		game.fasebefore=game.onfase;
 		game.onfase++;
 	}
 
 	function cHangeFaseLeft(){
-		game.player1.destroy(true);
-		game.player2.destroy(true);
-		game.bandera.destroy(true);
+		//game.player1.destroy(true);
+		//game.player2.destroy(true);
+		//game.bandera.destroy(true);
 		game.fasebefore=game.onfase;
 		game.onfase--;
 	}
 
-function checkpulsed(key){
-	if(key.isDown)key.pulsed=true;
-	if(key.isUp)key.pulsed=false;
-}
+	function checkpulsed(key){
+		if(key.isDown)key.pulsed=true;
+		if(key.isUp)key.pulsed=false;
+	}
 
-function checkatacks(){
-	if(this.O.isDown && !(this.T.isDown|| this.Y.isDown) && game.dis <75){
-		respawn(game.player2,game.player1.x);
+	function checkatacks(){
+		if(this.O.isDown && !(this.T.isDown|| this.Y.isDown) && game.dis <75){
+			respawn(game.player2,game.player1.x);
+		}
+		else if(this.K.isDown && !(this.G.isDown|| this.H.isDown)&& game.dis <75){
+			respawn(game.player2,game.player1.x);
+		}
+		else if(this.Y.isDown&& !(this.T.isDown || this.O.isDown)&& game.dis <75){
+			respawn(game.player1,game.player2.x);
+		}
+		else if(this.H.isDown && !(this.G.isDown || this.K.isDown)&& game.dis <75){
+			respawn(game.player1,game.player2.x);
+		}
 	}
-	else if(this.K.isDown && !(this.G.isDown|| this.H.isDown)&& game.dis <75){
-		respawn(game.player2,game.player1.x);
-	}
-	else if(this.Y.isDown&& !(this.T.isDown || this.O.isDown)&& game.dis <75){
-		respawn(game.player1,game.player2.x);
-	}
-	else if(this.H.isDown && !(this.G.isDown || this.K.isDown)&& game.dis <75){
-		respawn(game.player1,game.player2.x);
-	}
-}
