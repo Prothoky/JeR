@@ -5,7 +5,7 @@ class FinNivelW1 extends Phaser.Scene {
 	}
 
 	preload(){
-		this.scene.add("MenuPrincipal")
+		//this.scene.add("MenuPrincipal")
         this.load.image('fondoFin','../assets/img/MenuPrincipal/fondoMP.jpg')
 		this.load.image('abandonar', 'assets/icons/BOTON_SALIR.png');
         this.scene.backgroundColor = "#FFFFF";
