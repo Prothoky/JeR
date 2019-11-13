@@ -7,12 +7,6 @@ class MenuPrincipal extends Phaser.Scene{
 
 	preload(){
 
-		//Variables de reinicio de Juego
-		game.loaded=false;
-		game.onfase=-0;
-		game.fasebefore=null;
-		game.FinNivelloaded=false;
-
     //MENU PRINCIPAL
     this.load.image('fondoMenuPrinc', 'assets/img/MenuPrincipal/fondoMP.jpg'); //FONDO
     this.load.image('botonJugar', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
@@ -30,17 +24,20 @@ class MenuPrincipal extends Phaser.Scene{
 
 		this.cameras.main.setBackgroundColor(0x000000);
 
-		this.scene.add('ControlesPrinc', new ControlesPrinc);
-		this.scene.sendToBack('ControlesPrinc');
-		this.scene.stop('ControlesPrinc');
+		if(!game.SubMainMenuloaded){
+			game.scene.add('ControlesPrinc', new ControlesPrinc);
+			game.scene.add('OpcionesPrinc',new OpcionesPrinc);
+			game.scene.add('Juego',new Juego);
+			game.SubMainMenuloaded=true;
+		}
+		game.scene.sendToBack('ControlesPrinc');
+		game.scene.stop('ControlesPrinc');
 
-		this.scene.add('OpcionesPrinc',new OpcionesPrinc);
-		this.scene.sendToBack('OpcionesPrinc');
-		this.scene.stop('OpcionesPrinc');
+		game.scene.sendToBack('OpcionesPrinc');
+		game.scene.stop('OpcionesPrinc');
 
-		this.scene.add('Juego',new Juego);
-		this.scene.sendToBack('Juego');
-		this.scene.stop('Juego');
+		game.scene.sendToBack('Juego');
+		game.scene.stop('Juego');
 
 		var height = game.config.height;
 		var width = game.config.width;
@@ -88,19 +85,19 @@ class MenuPrincipal extends Phaser.Scene{
 	}
 
 	iniciarJuego(){
-			this.scene.run('Juego');
-			this.scene.bringToTop('Juego');
-			this.scene.stop('MenuPrincipal');
+			game.scene.run('Juego');
+			game.scene.bringToTop('Juego');
+			game.scene.stop('MenuPrincipal');
 	}
 
 	verControles(){
-		this.scene.run('ControlesPrinc');
-		this.scene.bringToTop('ControlesPrinc');
+		game.scene.run('ControlesPrinc');
+		game.scene.bringToTop('ControlesPrinc');
 	}
 
 	verOpciones(){
-			this.scene.run('OpcionesPrinc');
-			this.scene.bringToTop('OpcionesPrinc');
+			game.scene.run('OpcionesPrinc');
+			game.scene.bringToTop('OpcionesPrinc');
 	}
 
 

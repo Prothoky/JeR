@@ -47,6 +47,6 @@ class Precarga extends Phaser.Scene{
 
 		create(){
 			//Cuando se haya cargado todo, iremos al Menu Principal
-			this.scene.add('MenuPrincipal');
+			game.scene.add('MenuPrincipal');
 		}
 }

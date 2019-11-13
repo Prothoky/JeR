@@ -47,8 +47,8 @@ class ControlesPaus extends Phaser.Scene {
 	}
 
 	volver() {
-		this.scene.sendToBack('ControlesPaus');
-		this.scene.stop('ControlesPaus');
-		this.scene.resume('MenuPausa');
+		game.scene.sendToBack('ControlesPaus');
+		game.scene.stop('ControlesPaus');
+		game.scene.resume('MenuPausa');
 	}
 }

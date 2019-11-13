@@ -82,9 +82,9 @@ class OpcionesPaus extends Phaser.Scene {
 
 	volver() {
 
-		this.scene.sendToBack('OpcionesPaus');
-		this.scene.stop('OpcionesPaus');
-		this.scene.resume('MenuPausa');
+		game.scene.sendToBack('OpcionesPaus');
+		game.scene.stop('OpcionesPaus');
+		game.scene.resume('MenuPausa');
 
 	}
 

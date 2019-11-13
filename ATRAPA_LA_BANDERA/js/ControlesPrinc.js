@@ -47,8 +47,8 @@ class ControlesPrinc extends Phaser.Scene {
 	}
 
 	volver() {
-		this.scene.sendToBack('ControlesPrinc');
-		this.scene.stop('ControlesPrinc');
-		this.scene.resume('MenuPrincipal');
+		game.scene.sendToBack('ControlesPrinc');
+		game.scene.stop('ControlesPrinc');
+		game.scene.resume('MenuPrincipal');
 	}
 }

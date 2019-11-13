@@ -8,7 +8,8 @@ class FinNivelW2 extends Phaser.Scene {
 
     this.load.image('fondoFin','../assets/img/MenuPrincipal/fondoMP.jpg')
 		this.load.image('abandonar', 'assets/icons/BOTON_SALIR.png');
-    this.scene.backgroundColor = "#FFFFF";
+    game.scene.backgroundColor = "#FFFFF";
+		//game.scene.add('MenuPrincipal');
 		//this.texto = this.add.text(500, 500, 'Ganador: JUGADOR 2\nPerdedor: JUGADOR 1', { fontSize: '48px', fill: '#FF0000' });
 	}
 
@@ -40,11 +41,11 @@ class FinNivelW2 extends Phaser.Scene {
 }
 
 function salir(){
-			game.scene.remove('Juego');
 			game.scene.start('MenuPrincipal');
+			game.scene.remove('FinNivelW2');
 			game.scene.bringToTop('MenuPrincipal');
 	}
 
 function reload(){
-	this.scene.restart();
+	game.scene.restart();
 }

@@ -82,9 +82,9 @@ class OpcionesPrinc extends Phaser.Scene {
 	}
 
 	volver() {
-		this.scene.sendToBack('OpcionesPrinc');
-		this.scene.stop('OpcionesPrinc');
-		this.scene.resume('MenuPrincipal');
+		game.scene.sendToBack('OpcionesPrinc');
+		game.scene.stop('OpcionesPrinc');
+		game.scene.resume('MenuPrincipal');
 
 	}
 

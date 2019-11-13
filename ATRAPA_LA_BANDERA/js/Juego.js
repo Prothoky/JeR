@@ -70,8 +70,8 @@
 			this.load.audio('musica', '../assets/music/Spread the Wings (Rock Howard) - Garou Mark of the Wolves - OST.mp3');
 
 			if(!game.FinNivelloaded){
-				this.scene.add('FinNivelW1', new FinNivelW1);
-				this.scene.add('FinNivelW2',new FinNivelW2);
+				game.scene.add('FinNivelW1', new FinNivelW1);
+				game.scene.add('FinNivelW2',new FinNivelW2);
 				game.FinNivelloaded=true;
 			}
 
@@ -82,12 +82,12 @@
 			this.cameras.main.setBackgroundColor(0x000000);
 
 			//MENU de PAUSA
-			if(!this.sceneload){
-				this.scene.add('MenuPausa', new MenuPausa);
-				this.sceneload=true;
+			if(!game.sceneload){
+				game.scene.add('MenuPausa', new MenuPausa);
+				game.sceneload=true;
 			}
-			this.scene.sendToBack('MenuPausa');
-			this.scene.stop('MenuPausa');
+			game.scene.sendToBack('MenuPausa');
+			game.scene.stop('MenuPausa');
 
 			//Musica
 			this.sound.pauseOnBlur=false;
@@ -603,9 +603,9 @@
 
 
 				if(game.exit){
-					this.scene.sendToBack('Juego');
-					this.scene.stop('Juego');
-					this.scene.resume('MenuPausa');
+					game.scene.sendToBack('Juego');
+					game.scene.stop('Juego');
+					game.scene.resume('MenuPausa');
 					this.mj.stop();
 					game.playing=false;
 				}
@@ -628,10 +628,9 @@
 
 					//Menu de Pausa
 					if(this.ESC.isDown && !game.paused){
-						this.scene.run('MenuPausa');
-						this.scene.bringToTop('MenuPausa');
-						this.scene.stop('MenuPausa');
-						game.paused=true;
+							game.scene.start('MenuPausa');
+							game.scene.bringToTop('MenuPausa');
+							game.paused=true;
 					}
 
 					//Para calcular la distancia entre los jugadores
@@ -796,15 +795,13 @@
 							game.loaded=false;
 							cHangeFaseLeft();
 							if(game.onfase==-3){
-								this.scene.sendToBack('Juego');
-								this.scene.start('FinNivelW1');
-								this.scene.remove	('MenuPrincipal');
-								this.scene.remove('FinNivelW2');
-								this.scene.remove('Juego');
+								game.scene.sendToBack('Juego');
+								game.scene.start('FinNivelW1');
+								game.scene.remove('FinNivelW2');
 							}
 							else{
 								this.scene.restart();
-								this.scene.bringToTop('Juego');
+								game.scene.bringToTop('Juego');
 							}
 						}
 					}
@@ -816,15 +813,13 @@
 							game.loaded=false;
 							cHangeFaseRight();
 							if(game.onfase == 3){
-								this.scene.sendToBack('Juego');
-								this.scene.start('FinNivelW2');
-								this.scene.remove('FinNivelW1');
-								this.scene.remove('Juego');
-								this.scene.remove('MenuPrincipal');
+								game.scene.sendToBack('Juego');
+								game.scene.start('FinNivelW2');
+								game.scene.remove('FinNivelW1');
 							}
 							else{
 								this.scene.restart();
-								this.scene.bringToTop('Juego');
+								game.scene.bringToTop('Juego');
 							}
 						}
 

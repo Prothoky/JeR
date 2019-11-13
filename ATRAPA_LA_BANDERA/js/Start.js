@@ -24,10 +24,17 @@ preload(){
     //scale evenly
     //fondoGenerico.scaleY = fondoGenerico.scaleX;
 
+    //Variables de reinicio de Juego
+		game.loaded=false;
+		game.onfase=-0;
+		game.fasebefore=null;
+		game.FinNivelloaded=false;
+    game.SubMainMenuloaded=false;
+
     game.scene.add("MenuPrincipal", new MenuPrincipal);
     game.scene.start("MenuPrincipal");
-    //this.scene.add("Juego", new Juego);
-    //this.scene.start("Juego");
+    //game.scene.add("Juego", new Juego);
+    //game.scene.start("Juego");
 
 
   }
