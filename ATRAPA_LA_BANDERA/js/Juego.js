@@ -74,6 +74,7 @@
 				game.scene.add('FinNivelW2',new FinNivelW2);
 				game.FinNivelloaded=true;
 			}
+			console.log("PRELOAD FINISH");
 
 		}
 
@@ -584,7 +585,6 @@
 			this.physics.add.collider(game.bandera, game.platforms);
 
 			console.log("Fase " + game.onfase + " CREATE");
-
 			game.loaded=true;
 		}
 
@@ -592,14 +592,14 @@
 			if(!game.loaded){
 
 			}else{
-				if(game.player1.x != game.posx1){
-					console.log("P1_pos: "+game.player1.x);
-					game.posx1 =game.player1.x;
-				}
-				if(game.player2.x != game.posx2){
-					console.log("P2_pos: "+game.player2.x);
-					game.posx2 =game.player2.x;
-				}
+				// if(game.player1.x != game.posx1){
+				// 	console.log("P1_pos: "+game.player1.x);
+				// 	game.posx1 =game.player1.x;
+				// }
+				// if(game.player2.x != game.posx2){
+				// 	console.log("P2_pos: "+game.player2.x);
+				// 	game.posx2 =game.player2.x;
+				// }
 
 
 				if(game.exit){
@@ -786,6 +786,20 @@
 
 					this.physics.add.overlap(game.player1, game.player2, checkatacks, null, this);
 
+
+					if(game.player1.x < (this.cameras.main.scrollX-this.cW+600)){
+						reenter(game.player1,this.cameras.main.scrollX+this.cW*2);
+					}
+					if(game.player1.x > (this.cameras.main.scrollX+this.cW+600)){
+						reenter(game.player1,this.cameras.main.scrollX+100);
+					}
+					if(game.player2.x < (this.cameras.main.scrollX-this.cW+600)){
+						reenter(game.player2,this.cameras.main.scrollX+this.cW*2);
+					}
+					if(game.player2.x > (this.cameras.main.scrollX+this.cW+600)){
+						reenter(game.player2,this.cameras.main.scrollX+100);
+					}
+
 					//Camara sigue a la bandera
 					if(hasTheFlag(game.player1)){
 
@@ -795,9 +809,10 @@
 							game.loaded=false;
 							cHangeFaseLeft();
 							if(game.onfase==-3){
-								game.scene.sendToBack('Juego');
+								game.fasebefore=game.onfase;
 								game.scene.start('FinNivelW1');
-								game.scene.remove('FinNivelW2');
+								game.scene.stop('Juego');
+								game.scene.sendToBack('Juego');
 							}
 							else{
 								this.scene.restart();
@@ -813,16 +828,16 @@
 							game.loaded=false;
 							cHangeFaseRight();
 							if(game.onfase == 3){
-								game.scene.sendToBack('Juego');
+								game.fasebefore=game.onfase;
 								game.scene.start('FinNivelW2');
-								game.scene.remove('FinNivelW1');
+								game.scene.stop('Juego');
+								game.scene.sendToBack('Juego');
 							}
 							else{
 								this.scene.restart();
 								game.scene.bringToTop('Juego');
 							}
 						}
-
 					}
 
 					else{
@@ -831,18 +846,7 @@
 						game.HUDbandera.disableBody(true,true);
 					}
 				}
-				if(game.player1.x < (this.cameras.main.scrollX-this.cW+600)){
-					reenter(game.player1,this.cameras.main.scrollX+this.cW*2);
-				}
-				if(game.player1.x > (this.cameras.main.scrollX+this.cW+600)){
-					reenter(game.player1,this.cameras.main.scrollX+100);
-				}
-				if(game.player2.x < (this.cameras.main.scrollX-this.cW+600)){
-					reenter(game.player2,this.cameras.main.scrollX+this.cW*2);
-				}
-				if(game.player2.x > (this.cameras.main.scrollX+this.cW+600)){
-					reenter(game.player2,this.cameras.main.scrollX+100);
-				}
+
 			}
 		}
 	}
@@ -873,17 +877,11 @@
 	}
 
 	function cHangeFaseRight(){
-		//game.player1.destroy(true);
-		//game.player2.destroy(true);
-		//game.bandera.destroy(true);
 		game.fasebefore=game.onfase;
 		game.onfase++;
 	}
 
 	function cHangeFaseLeft(){
-		//game.player1.destroy(true);
-		//game.player2.destroy(true);
-		//game.bandera.destroy(true);
 		game.fasebefore=game.onfase;
 		game.onfase--;
 	}

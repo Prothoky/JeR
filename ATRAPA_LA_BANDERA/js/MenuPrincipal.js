@@ -85,7 +85,11 @@ class MenuPrincipal extends Phaser.Scene{
 	}
 
 	iniciarJuego(){
-			game.scene.run('Juego');
+		if(game.fasebefore==3 || game.fasebefore==-3){
+			game.loaded=false;
+			game.onfase = 0;
+		}
+			game.scene.start('Juego');
 			game.scene.bringToTop('Juego');
 			game.scene.stop('MenuPrincipal');
 	}
