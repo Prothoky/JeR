@@ -89,9 +89,10 @@ class OpcionesPrinc extends Phaser.Scene {
 	}
 
 	subir(){
-
-		game.sound.setVolume(1);
-		this.volumenText.setText('1');
+		if(game.sound.volume!=1){
+			game.sound.setVolume(game.sound.volume+0.1);
+			this.volumenText.setText(game.sound.volume+0.1);
+		}
 
 	}
 
