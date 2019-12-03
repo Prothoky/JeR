@@ -31,8 +31,11 @@ preload(){
 		game.FinNivelloaded=false;
     game.SubMainMenuloaded=false;
 
-    game.scene.add("MenuPrincipal", new MenuPrincipal);
-    game.scene.start("MenuPrincipal");
+    game.scene.add("Nickname", new Nickname);
+    game.scene.start("Nickname");
+
+    //game.scene.add("MenuPrincipal", new MenuPrincipal);
+    //game.scene.start("MenuPrincipal");
     //game.scene.add("Juego", new Juego);
     //game.scene.start("Juego");
 
