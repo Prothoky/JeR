@@ -57,9 +57,10 @@ preload(){
 	.on('pointerdown', () => this.irAMenu());
 
 
-	let text = this.add.bitmapText(130, 50, 'arcade', 'Nickname\n\n');
+	let text = this.add.bitmapText(x*6.3/8, y*2/8, 'arcade', 'Nickname\n\n');
 
-	this.playerText = this.add.bitmapText(180, 150, 'arcade', '').setTint(0xff0000);
+//VAIABLE QUE CONTIENE EL NICKNAME
+	this.nicknamePlayer = this.add.bitmapText(x*6.7/8, y*5/8, 'arcade', '').setTint(0xffcc00);
 
         text.setLetterSpacing(20);
         text.setInteractive();
@@ -83,12 +84,12 @@ preload(){
 
 	updateName (name)
     {
-        this.playerText.setText(name);
+        this.nicknamePlayer.setText(name);
     }
 
   irAMenu(){
 
-	  	game.scene.bringToTop('MenuPrincipal');
+	  game.scene.bringToTop('MenuPrincipal');
 		game.scene.start('MenuPrincipal');
 		game.scene.stop('Nickname');
 
