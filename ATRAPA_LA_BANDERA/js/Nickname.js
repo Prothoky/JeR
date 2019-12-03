@@ -57,7 +57,7 @@ preload(){
 	.on('pointerdown', () => this.irAMenu());
 
 
-	let text = this.add.bitmapText(x*6.3/8, y*2/8, 'arcade', 'Nickname\n\n');
+	let text = this.add.bitmapText(x*6.3/8, y*2/8, 'arcade', 'Nickname: \n\n');
 
 //VAIABLE QUE CONTIENE EL NICKNAME
 	this.nicknamePlayer = this.add.bitmapText(x*6.7/8, y*5/8, 'arcade', '').setTint(0xffcc00);
