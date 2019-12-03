@@ -157,6 +157,22 @@
 				repeat:-1,
 				frameRate:24
 			})
+			this.anims.create({
+				key: 'RUNB',
+				frames: this.anims.generateFrameNumbers('J1RUN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+				}),
+				repeat:-1,
+				frameRate:24
+			})
+			this.anims.create({
+				key: 'RUN2B',
+				frames: this.anims.generateFrameNumbers('J2RUN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+				}),
+				repeat:-1,
+				frameRate:24
+			})
 
 			//Anim parado (funciona)
 			this.anims.create({
@@ -183,6 +199,30 @@
 				repeat:1,
 				frameRate:24
 			});
+			this.anims.create({
+				key: 'IDLEB',
+				frames: this.anims.generateFrameNumbers('J1IDLE',{
+					frames: [0,1,2,3,4,5,6,7,8,9]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'IDLE2B',
+				frames: this.anims.generateFrameNumbers('J2IDLE',{
+					frames: [0,1,2,3,4,5,6,7,8,9]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'IDLE2B',
+				frames: this.anims.generateFrameNumbers('J2IDLE',{
+					frames: [0,1,2,3,4,5,6,7,8,9]
+				}),
+				repeat:1,
+				frameRate:24
+			});
 
 
 			//Anim apuntando arriba
@@ -196,6 +236,22 @@
 			});
 			this.anims.create({
 				key: 'SCOPE_DOWN2',
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'SCOPE_DOWNB',
+				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'SCOPE_DOWN2B',
 				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
@@ -220,6 +276,22 @@
 				repeat:1,
 				frameRate:24
 			});
+			this.anims.create({
+				key: 'SCOPE_UPB',
+				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_UP',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+				}),
+				repeat:1,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'SCOPE_UP2B',
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_UP',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
+				}),
+				repeat:1,
+				frameRate:24
+			});
 
 			//Anim golpe arriba (funciona)
 			this.anims.create({
@@ -232,6 +304,22 @@
 			});
 			this.anims.create({
 				key: 'HIT_UP2',
+				frames: this.anims.generateFrameNumbers('J2HIT_UP',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+				}),
+				repeat:0,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'HIT_UPB',
+				frames: this.anims.generateFrameNumbers('J1HIT_UP',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+				}),
+				repeat:0,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'HIT_UP2B',
 				frames: this.anims.generateFrameNumbers('J2HIT_UP',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
@@ -256,6 +344,22 @@
 				repeat:0,
 				frameRate:24
 			});
+			this.anims.create({
+				key: 'HIT_DOWNB',
+				frames: this.anims.generateFrameNumbers('J1HIT_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+				}),
+				repeat:0,
+				frameRate:24
+			});
+			this.anims.create({
+				key: 'HIT_DOWN2B',
+				frames: this.anims.generateFrameNumbers('J2HIT_DOWN',{
+					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+				}),
+				repeat:0,
+				frameRate:24
+			});
 
 			//Anim salto (no funciona)
 			this.anims.create({
@@ -274,6 +378,24 @@
 				repeat:1,
 				frameRate:11
 			});
+			this.anims.create({
+				key: 'JUMPB',
+				frames: this.anims.generateFrameNumbers('J1JUMP',{
+					frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+				}),
+				repeat:1,
+				frameRate:11
+			});
+			this.anims.create({
+				key: 'JUMP2B',
+				frames: this.anims.generateFrameNumbers('J2JUMP',{
+					frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+				}),
+				repeat:1,
+				frameRate:11
+			});
+			//Fin animaciones
+
 
 			if(game.onfase == 0){
 
