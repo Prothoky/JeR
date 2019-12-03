@@ -44,27 +44,39 @@
 			this.load.image("bandera","../assets/icons/bandera.png")
 
 			//sprites de movimientos
-			//this.load.spritesheet('J1SCOPE_DOWN','../assets/animations/JRAniamtions/APUNTAR_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
-			//this.load.spritesheet('J1SCOPE_UP','../assets/animations/JRAniamtions/APUNTAR_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
+			//Sin bandera
 			this.load.spritesheet('J1RUN','../assets/animations/JRAnimations/CORRER_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1HIT_UP','../assets/animations/JRAnimations/GOLPE_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1HIT_DOWN','../assets/animations/JRAnimations/GOLPE_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
-			//this.load.spritesheet('J1HIT_DOWN','../assets/animations/JRAniamtions/GOLPE_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1IDLE','../assets/animations/JRAnimations/PARADO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1IDLE_SCOPE_UP','../assets/animations/JRAnimations/PARADO_APUNTADO_ARRIBA_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1IDLE_SCOPE_DOWN','../assets/animations/JRAnimations/PARADO_APUNTADO_ABAJO_ROJO.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J1JUMP','../assets/animations/JRAnimations/SALTO_ROJO.png',{frameHeight: 240, frameWidth:250});
+			//Con bandera
+			this.load.spritesheet('J1RUN','../assets/animations/JRAnimations/CORRER_ROJO_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1HIT_UP','../assets/animations/JRAnimations/GOLPE_ARRIBA_ROJO_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1HIT_DOWN','../assets/animations/JRAnimations/GOLPE_ABAJO_ROJO_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1IDLE','../assets/animations/JRAnimations/PARADO_ROJO_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1IDLE_SCOPE_UP','../assets/animations/JRAnimations/PARADO_APUNTADO_ARRIBA_ROJO_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1IDLE_SCOPE_DOWN','../assets/animations/JRAnimations/PARADO_APUNTADO_ABAJO_ROJO_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J1JUMP','../assets/animations/JRAnimations/SALTO_ROJO_BANDERA.png',{frameHeight: 240, frameWidth:250});
 
-			//this.load.spritesheet('J2SCOPE_DOWN','../assets/animations/JAAnimations/APUNTAR_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
-			//this.load.spritesheet('J2SCOPE_UP','../assets/animations/JAAnimations/APUNTAR_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
+			//Sin bandera
 			this.load.spritesheet('J2RUN','../assets/animations/JAAnimations/CORRER_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2HIT_UP','../assets/animations/JAAnimations/GOLPE_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2HIT_DOWN','../assets/animations/JAAnimations/GOLPE_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
-			//this.load.spritesheet('J2HIT_DOWN','../assets/animations/JAAnimations/GOLPE_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE','../assets/animations/JAAnimations/PARADO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE_SCOPE_UP','../assets/animations/JAAnimations/PARADO_APUNTADO_ARRIBA_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2IDLE_SCOPE_DOWN','../assets/animations/JAAnimations/PARADO_APUNTADO_ABAJO_AZUL.png',{frameHeight: 240, frameWidth:250});
 			this.load.spritesheet('J2JUMP','../assets/animations/JAAnimations/SALTO_AZUL.png',{frameHeight: 240, frameWidth:250});
+			//Con bandera
+			this.load.spritesheet('J2RUN','../assets/animations/JAAnimations/CORRER_AZUL_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2HIT_UP','../assets/animations/JAAnimations/GOLPE_ARRIBA_AZUL_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2HIT_DOWN','../assets/animations/JAAnimations/GOLPE_ABAJO_AZUL_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2IDLE','../assets/animations/JAAnimations/PARADO_AZUL_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2IDLE_SCOPE_UP','../assets/animations/JAAnimations/PARADO_APUNTADO_ARRIBA_AZUL_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2IDLE_SCOPE_DOWN','../assets/animations/JAAnimations/PARADO_APUNTADO_ABAJO_AZUL_BANDERA.png',{frameHeight: 240, frameWidth:250});
+			this.load.spritesheet('J2JUMP','../assets/animations/JAAnimations/SALTO_AZUL_BANDERA.png',{frameHeight: 240, frameWidth:250});
 
 			//Musica del juego
 			this.load.audio('musica', '../assets/music/Spread the Wings (Rock Howard) - Garou Mark of the Wolves - OST.mp3');
