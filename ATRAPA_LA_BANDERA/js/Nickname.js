@@ -79,7 +79,6 @@ preload(){
 
   update (time, delta){
 
-		 }
   }
 
 	updateName (name)
