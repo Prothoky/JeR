@@ -57,9 +57,9 @@ preload(){
 	.on('pointerdown', () => this.irAMenu());
 
 
-	let text = this.add.bitmapText(130, 50, 'arcade', 'Nickname\n\n');
+	let text = this.add.bitmapText(x*6.3/8, y*2/8, 'arcade', 'Nickname\n\n');
 
-	this.playerText = this.add.bitmapText(180, 150, 'arcade', '').setTint(0xff0000);
+	this.playerText = this.add.bitmapText(x*6.5/8, y*5/8, 'arcade', '').setTint(0xff0000);
 
         text.setLetterSpacing(20);
         text.setInteractive();
@@ -82,6 +82,7 @@ preload(){
 		 if(this.M.isDown){
 		 	this.verOpciones();
 		 }
+
   }
 
 	updateName (name)
@@ -91,7 +92,7 @@ preload(){
 
   irAMenu(){
 
-	  	game.scene.bringToTop('MenuPrincipal');
+	  game.scene.bringToTop('MenuPrincipal');
 		game.scene.start('MenuPrincipal');
 		game.scene.stop('Nickname');
 
