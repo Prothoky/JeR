@@ -79,8 +79,6 @@ preload(){
 
   update (time, delta){
 
-		 if(this.M.isDown){
-		 	this.verOpciones();
 		 }
   }
 
