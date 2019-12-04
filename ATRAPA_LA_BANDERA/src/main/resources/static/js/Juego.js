@@ -438,7 +438,7 @@
 				game.player2.setBounce(-0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -503,7 +503,7 @@
 				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo1left");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -563,7 +563,7 @@
 				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo2left");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -626,7 +626,7 @@
 				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo1right");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -688,7 +688,7 @@
 				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo2right");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -772,6 +772,7 @@
 					game.dis = Math.abs(game.player2.x - game.player1.x);
 
 					//Movimiento J1
+					if(game.player1.ownBandera==false){
 					if(game.player1.body.touching.down){
 						if (this.cursor.up.isDown)
 						{
@@ -826,9 +827,68 @@
 							game.player1.status = "JUMP";
 						}
 					}
+				}else{
+					if(game.player1.body.touching.down){
+						if (this.cursor.up.isDown)
+						{
+							game.player1.setVelocityY(-450);
+						}
+						else if(this.cursor.left.isDown){
+							game.player1.setVelocityX(-550);
+							game.player1.flipX=false;
+							game.player1.anims.play('RUNB',true);
+							game.player1.status = "RUN";
+						}else if(this.cursor.right.isDown){
+							game.player1.setVelocityX(550);
+							game.player1.flipX=true;
+							game.player1.anims.play('RUNB',true);
+							game.player1.status = "RUN";
+						}else
+						{
+							game.player1.setVelocityX(0);
+								if(this.L.isDown){
+									console.log("Apuntar abajo BANDERA");
+									game.player1.anims.play('SCOPE_DOWNB',true);
+									game.player1.status = "SCOPE_DOWN";
+								}else if(this.P.isDown){
+									console.log("Apuntar arriba");
+									game.player1.anims.play('SCOPE_UPB',true);
+									game.player1.status = "SCOPE_UP";
+								}else if(this.O.isDown){
+									console.log("Golpe arriba");
+									game.player1.anims.play('HIT_UPB',true);
+									game.player1.status = "HIT_UP";
+								}else if(this.K.isDown){
+									console.log("Golpe abajo");
+									game.player1.anims.play('HIT_DOWNB',true);
+									game.player1.status = "HIT_DOWN";
+								}else
+								game.player1.anims.play('IDLEB',true);
+								game.player1.status = "IDLE";
+							}
+						}else{
+							if(this.cursor.left.isDown){
+								game.player1.setVelocityX(-550);
+								game.player1.flipX=false;
+								game.player1.anims.play('JUMPB',true);
+								game.player1.status = "JUMP";
+							}else if(this.cursor.right.isDown){
+								game.player1.setVelocityX(550);
+								game.player1.flipX=true;
+								game.player1.anims.play('JUMPB',true);
+								game.player1.status = "JUMP";
+							}else{
+								game.player1.anims.play('JUMPB',true);
+								game.player1.status = "JUMP";
+							}
+						}
+					}
 
 					//Movimiento J2
+				if(game.player2.ownBandera==false){
+
 					if(game.player2.body.touching.down){
+
 						if (this.W.isDown )
 						{
 							game.player2.setVelocityY(-450);
@@ -882,7 +942,64 @@
 							game.player2.anims.play('JUMP2',true);
 							game.player2.status="JUMP";
 						}
+					}
+					}else{
+						if(game.player2.body.touching.down){
+							if (this.W.isDown )
+							{
+								game.player2.setVelocityY(-450);
+							}
+							else if(this.A.isDown){
+								game.player2.setVelocityX(-550)
+								game.player2.flipX=false;
+								game.player2.anims.play('RUN2B',true);
+								game.player2.status="RUN";
+							}else if(this.D.isDown){
+								game.player2.setVelocityX(550)
+								game.player2.flipX=true;
+								game.player2.anims.play('RUN2B',true);
+								game.player2.status="RUN";
+							}else
+							{
+								game.player2.setVelocityX(0);
+								if(this.G.isDown){
+									console.log("Apuntar abajo");
+									game.player2.anims.play('SCOPE_DOWN2B',true);
+									game.player2.status="SCOPE_DOWN";
+								}else if(this.T.isDown){
+									console.log("Apuntar arriba");
+									game.player2.anims.play('SCOPE_UP2B',true);
+									game.player2.status="SCOPE_UP";
+								}else if(this.Y.isDown){
+									console.log("Golpe arriba");
+									game.player2.anims.play('HIT_UP2B',true);
+									game.player2.status="HIT_UP";
+								}else if(this.H.isDown){
+									console.log("Golpe abajo");
+									game.player2.anims.play('HIT_DOWN2B',true);
+									game.player2.status="HIT_DOWN";
+								}else
+								game.player2.anims.play('IDLE2B',true);
+								game.player2.status="IDLE";
+							}
+						}else{
 
+							if(this.A.isDown){
+								game.player2.setVelocityX(-550);
+								game.player2.flipX=false;
+								game.player2.anims.play('JUMP2B',true);
+								game.player2.status="JUMP";
+							}else if(this.D.isDown){
+								game.player2.setVelocityX(550);
+								game.player2.flipX=true;
+								game.player2.anims.play('JUMP2B',true);
+								game.player2.status="JUMP";
+							}else{
+								game.player2.anims.play('JUMP2B',true);
+								game.player2.status="JUMP";
+							}
+
+						}
 					}
 
 					if(game.bandera.y > 720){
