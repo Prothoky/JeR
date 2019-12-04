@@ -43,7 +43,9 @@ class OpcionesPrinc extends Phaser.Scene {
 
 		this.volumenText = this.add.bitmapText(x*7.7/8, y*7.3/8, 'arcade', '0.5: ').setTint(0x003333);
 		this.volumenText.setScale(0.7);
-
+		var level = Math.round((game.sound.volume)*10)/10;
+		this.volumenText.setText(level*10);
+		
 		//BOTONES DE VOLUMEN
 		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
 		this.subirVolumen.setInteractive({ useHandCursor: true  } )

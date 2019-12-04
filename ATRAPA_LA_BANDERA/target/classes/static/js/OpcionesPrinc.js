@@ -43,7 +43,9 @@ class OpcionesPrinc extends Phaser.Scene {
 
 		this.volumenText = this.add.bitmapText(x*7.7/8, y*7.3/8, 'arcade', '0.5: ').setTint(0x003333);
 		this.volumenText.setScale(0.7);
-
+		var level = Math.round((game.sound.volume)*10)/10;
+		this.volumenText.setText(level*10);
+		
 		//BOTONES DE VOLUMEN
 		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
 		this.subirVolumen.setInteractive({ useHandCursor: true  } )
@@ -89,31 +91,32 @@ class OpcionesPrinc extends Phaser.Scene {
 		game.scene.resume('MenuPrincipal');
 
 	}
-
 	subir(){
 		if(game.sound.volume<1){
-			var level = Math.round10(game.sound.volume+0.1)
+			var level = Math.round((game.sound.volume+0.1)*10)/10;
 			game.sound.setVolume(level);
 			this.volumenText.setText(level*10);
 		}
-
+		else{
+			game.sound.setVolume(1);
+			this.volumenText.setText(10);
+		}
 	}
 
 	bajar(){
 		if(game.sound.volume>0){
-			var level = Math.round10(game.sound.volume-0.1)
+			var level = Math.round((game.sound.volume-0.1)*10)/10;
 			game.sound.setVolume(level);
-			this.volumenText.setText(level);
+			this.volumenText.setText(level*10);
 		}
-
+		else{
+			game.sound.setVolume(0);
+			this.volumenText.setText(0);
+		}
 	}
 
 	quitar(){
-
 		game.sound.mute = true;
-		game.sound.setVolume(0);
 		this.volumenText.setText('0');
-
 	}
-
 }
