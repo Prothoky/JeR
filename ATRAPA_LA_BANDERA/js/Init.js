@@ -3,7 +3,9 @@ var config={
   width: window.innerWidth-300,
   height: 720,
   parent:'game',
-  
+  dom: {
+        createContainer: true
+    },
   scene: [Start],
   physics: {
     default: 'arcade',

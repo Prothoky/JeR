@@ -30,8 +30,6 @@ preload(){
 }
   create(){
 
-	  this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
-
 	  if(!this.nicknameMenu){
 			game.scene.add('MenuPrincipal', new MenuPrincipal);
 			game.scene.sendToBack('MenuPrincipal');
