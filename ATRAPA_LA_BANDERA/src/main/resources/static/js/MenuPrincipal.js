@@ -16,7 +16,7 @@ class MenuPrincipal extends Phaser.Scene{
 	}
 
 	create(){
-
+		game.polling = this.time.addEvent({ delay: 1000, callback: Alive, loop: true});
 		//declaramos las variables para controlar los botones por teclado
 		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
 		this.C = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
@@ -67,7 +67,6 @@ class MenuPrincipal extends Phaser.Scene{
 		this.botonOpciones = this.add.image(x, y*11/8, 'botonOpciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
-
 	}
 
 	update (time, delta){

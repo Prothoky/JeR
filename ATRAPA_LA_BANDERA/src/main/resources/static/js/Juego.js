@@ -10,7 +10,7 @@
 
 			if(game.onfase==0){
 				//Sprite del fondo
-				this.load.image("fondo","../assets/map/Centro/Fondo0.jpg");
+				this.load.image("fondocenter","../assets/map/Centro/Fondo0.jpg");
 				this.load.image("sobrefondo","../assets/map/Centro/SobreFondo0.png");
 			}
 			if(game.onfase==-1){
@@ -91,6 +91,7 @@
 		}
 
 		create(){
+			game.polling = this.time.addEvent({ delay: 1000, callback: Alive, loop: true});
 			game.loaded=false;
 			this.cameras.main.setBackgroundColor(0x000000);
 
@@ -406,7 +407,7 @@
 				game.platforms.create(1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
 
 				//Creación del fondo del juego
-				game.fondo = this.add.image(0,this.cH,"fondo");
+				game.fondo = this.add.image(0,this.cH,"fondocenter");
 				//set the width of the sprite
 				game.fondo.displayHeigth = this.cH*2;
 				//scale evenly

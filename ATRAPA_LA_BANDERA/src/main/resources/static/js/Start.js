@@ -16,14 +16,6 @@ preload(){
     var x = width/2 ;
     var y = height/2;
 
-    //var fondoGenerico = this.add.sprite(x, y, "fondoGenerico");
-
-    //set the width of the sprite
-    //fondoGenerico.displayWidth = width;
-    //fondoGenerico.displayHeigth = height;
-    //scale evenly
-    //fondoGenerico.scaleY = fondoGenerico.scaleX;
-
     //Variables de reinicio de Juego
 		game.loaded=false;
 		game.onfase=-0;
@@ -33,12 +25,6 @@ preload(){
 
     game.scene.add("Nickname3", new Nickname3);
     game.scene.start("Nickname3");
-
-    //game.scene.add("MenuPrincipal", new MenuPrincipal);
-    //game.scene.start("MenuPrincipal");
-    //game.scene.add("Juego", new Juego);
-    //game.scene.start("Juego");
-
 
   }
 

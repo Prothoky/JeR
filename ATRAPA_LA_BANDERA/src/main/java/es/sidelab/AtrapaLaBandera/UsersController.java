@@ -32,7 +32,7 @@ public class UsersController {
 	}
 	
 	public void TakeInfo(){
-		try (FileReader file = new FileReader("C:\\Users\\Proth\\Documents\\STS_WorkSpace\\ALB\\data.json")){
+		try (FileReader file = new FileReader(".\\src\\main\\resources\\data.json")){
 			Gson gson = new Gson();
 			User usuarios[] = gson.fromJson(file,User[].class);
 			if(usuarios !=null ) {
@@ -80,23 +80,27 @@ public class UsersController {
 	public ResponseEntity<User> UpdateUser(@PathVariable String name, @RequestBody User userUpdated) {
 
 		User savedUser = users.get(name);
-
 		if (savedUser != null) {
-			if(name!=userUpdated.getName()) {
-				if(!users.containsKey(savedUser.getName())) {
+			if(!name.contentEquals(userUpdated.getName())) {
+				if(!users.containsKey(userUpdated.getName())) {
 					users.remove(name);
 					users.put(userUpdated.getName(), userUpdated);
 					userlist.remove(name);
 					userlist.add(userUpdated.getName());
+					System.out.println("Nuevo nombre de usuario");
+					System.out.println("Usuario: " + name + " a partir de ahora sera: " + userUpdated.getName());
 				}else {
 					return new ResponseEntity<User>(HttpStatus.CONFLICT);
 				}
-			}else {
-				users.put(userUpdated.getName(), userUpdated);
 			}
+			else {
+				users.put(userUpdated.getName(), userUpdated);				
+			}
+			System.out.println("Usuario actualizado correctamente");
 			SaveInfo();
 			return new ResponseEntity<User>(userUpdated, HttpStatus.OK);
 		}else {
+			System.out.println("Usuario no encontrado");
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
 	}

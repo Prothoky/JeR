@@ -1,7 +1,5 @@
 'use strict'
 
-var url = String(window.location+'users');
-
 class Nickname3 extends Phaser.Scene{
 
   constructor(){
@@ -52,21 +50,51 @@ class Nickname3 extends Phaser.Scene{
 
              $.ajax({
                method: "POST",
-               url:url,
+               url:game.url,
                data: JSON.stringify(data),
                processData: false,
                dataType: 'json',
                contentType: 'application/json',
-             }).done(function(value){
-
-             }).fail(function (value) {
+             }).done(function (){
+               console.log("Register success");
+               game.name = game.inputNickname1.value;
+               game.scene.bringToTop('MenuPrincipal');
+               game.scene.start('MenuPrincipal');
+               game.scene.stop('Nickname3');
+           }).fail(function (value) {
                if(value.status == 201){
+                 console.log("Register success");
+                 game.name=game.inputNickname1.value;
                    game.scene.bringToTop('MenuPrincipal');
                    game.scene.start('MenuPrincipal');
                    game.scene.stop('Nickname3');
                }
                else{
-                 text.text = "El usuario ya existe";
+                 //text.text = "El usuario ya existe";
+                 var url = game.url+'/'+game.inputNickname1.value;
+                 $.ajax({
+                 method: "GET",
+                 url:url,
+                 }).done(function(value){
+                   console.log("Login");
+                   game.name = game.inputNickname1.value;
+                   game.scene.bringToTop('MenuPrincipal');
+                   game.scene.start('MenuPrincipal');
+                   game.scene.stop('Nickname3');
+                 }).fail(function (value) {
+                   if(value.status == 200){
+                     console.log("Login");
+                     game.name = game.inputNickname1.value;
+                     game.scene.bringToTop('MenuPrincipal');
+                     game.scene.start('MenuPrincipal');
+                     game.scene.stop('Nickname3');
+                   }else if(value.status == 0){
+                    console.log("Servidor caido");
+                  }else{
+                    console.log("Fallo no contemplado");
+                  }
+                 });
+
                }
            });
        }

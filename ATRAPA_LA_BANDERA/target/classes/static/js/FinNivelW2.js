@@ -14,7 +14,7 @@ class FinNivelW2 extends Phaser.Scene {
 	}
 
 	create(){
-
+		game.polling = this.time.addEvent({ delay: 1000, callback: Alive, loop: true});
 		var height = game.config.height;
 		var width = game.config.width;
 
@@ -35,6 +35,50 @@ class FinNivelW2 extends Phaser.Scene {
 		.on('pointerdown', () => salir());
 
 		this.texto.setText('Ganador: Guest \nPerdedor: ' + game.inputNickname1.value);
+
+		let data =null;
+		var url = game.url+'/'+game.name;
+		$.ajax({
+		method: "GET",
+		url:url,
+		}).done(function(value){
+				data=value;
+		}).fail(function (value) {
+			if(value.status == 200){
+				data=value;
+			}else if(value.status == 0){
+			 console.log("Servidor caido");
+		 }else{
+			 console.log("Fallo de conexion con el servidor");
+		 }
+		});
+		if(data!=null){
+			var user = JSON.parse(String(data));
+			user.score = Math.floor((Math.random()*2000)+1);
+			user.lastconection = Date.now();
+
+			$.ajax({
+				method: "PUT",
+	 		 url:url,
+	 		 data: JSON.stringify(user),
+	 		 processData: false,
+	 		 dataType: 'json',
+	 		 contentType: 'application/json',
+			}).done(function(value){
+				console.log("Score Update");
+			}).fail(function (value) {
+				if(value.status == 200){
+					console.log("Score Update");
+				}else if(value.status == 0){
+				 console.log("Servidor caido");
+			 }else{
+				 console.log("Fallo de conexion con el servidor");
+			 }
+			});
+		}
+		else{
+			console.log("Algo ha fallado");
+		}
 
 	}
 
