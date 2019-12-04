@@ -35,51 +35,56 @@ class FinNivelW1 extends Phaser.Scene {
 
 		this.texto.setText('Ganador: '+ game.inputNickname1.value+ '\nPerdedor: Guest');
 
-		let data =null;
+		jQuery.ajaxSetup({async:false});
+
+		var data =null;
 		var url = game.url+'/'+game.name;
 		$.ajax({
-		method: "GET",
-		url:url,
+			method: "GET",
+			url:url,
 		}).done(function(value){
-				data=value;
+			data=value;
 		}).fail(function (value) {
 			if(value.status == 200){
 				data=value;
 			}else if(value.status == 0){
-			 console.log("Servidor caido");
-		 }else{
-			 console.log("Fallo de conexion con el servidor");
-		 }
+				console.log("Servidor caido");
+			}else{
+				console.log("Fallo de conexion con el servidor");
+			}
 		});
+		console.log(data);
 		if(data!=null){
-			var user = JSON.parse(String(data));
-			user.score = Math.floor((Math.random()*2000)+1);
-			user.lastconection = Date.now();
-
-			$.ajax({
-				method: "PUT",
-	 		 url:url,
-	 		 data: JSON.stringify(user),
-	 		 processData: false,
-	 		 dataType: 'json',
-	 		 contentType: 'application/json',
-			}).done(function(value){
-				console.log("Score Update");
-			}).fail(function (value) {
-				if(value.status == 200){
+			var newscore = Math.floor((Math.random()*(2000+data.score)+100)+1);
+			data.lastconection = Date.now();
+			if(data.score < newscore){
+				$.ajax({
+					method: "PUT",
+					url:url,
+					data: JSON.stringify(data),
+					processData: false,
+					dataType: 'json',
+					contentType: 'application/json',
+				}).done(function(value){
 					console.log("Score Update");
-				}else if(value.status == 0){
-				 console.log("Servidor caido");
-			 }else{
-				 console.log("Fallo de conexion con el servidor");
-			 }
-			});
+				}).fail(function (value) {
+					if(value.status == 200){
+						console.log("Score Update");
+					}else if(value.status == 0){
+						console.log("Servidor caido");
+					}else{
+						console.log("Fallo de conexion con el servidor");
+					}
+				});
+			}
 		}
 		else{
 			console.log("Algo ha fallado");
 		}
+		jQuery.ajaxSetup({async:true});
 	}
 }
+
 
 function salir(){
 			game.scene.start('MenuPrincipal');

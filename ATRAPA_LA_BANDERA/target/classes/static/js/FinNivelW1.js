@@ -35,22 +35,25 @@ class FinNivelW1 extends Phaser.Scene {
 
 		this.texto.setText('Ganador: '+ game.inputNickname1.value+ '\nPerdedor: Guest');
 
-		let data =null;
+		var data =null;
 		var url = game.url+'/'+game.name;
 		$.ajax({
 		method: "GET",
 		url:url,
 		}).done(function(value){
-				data=value;
+				console.log(value);
+				data=String(value);
 		}).fail(function (value) {
 			if(value.status == 200){
-				data=value;
+					console.log(value);
+					data=String(value);
 			}else if(value.status == 0){
 			 console.log("Servidor caido");
 		 }else{
 			 console.log("Fallo de conexion con el servidor");
 		 }
 		});
+		console.log(data);
 		if(data!=null){
 			var user = JSON.parse(String(data));
 			user.score = Math.floor((Math.random()*2000)+1);
