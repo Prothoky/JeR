@@ -2,7 +2,7 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	constructor(){
 
-		super({key: "OpcionesPrinc"});
+		super({key: "OpcionesPrinc", active:true});
 
 	}
 
