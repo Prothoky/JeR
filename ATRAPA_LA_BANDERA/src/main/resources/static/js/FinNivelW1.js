@@ -37,31 +37,31 @@ class FinNivelW1 extends Phaser.Scene {
 
 		jQuery.ajaxSetup({async:false});
 
-		var data =null;
+		var user=null;
 		var url = game.url+'/'+game.name;
 		$.ajax({
 			method: "GET",
 			url:url,
 		}).done(function(value){
-			data=value;
+			user=value;
 		}).fail(function (value) {
 			if(value.status == 200){
-				data=value;
+				user=value;
 			}else if(value.status == 0){
 				console.log("Servidor caido");
 			}else{
 				console.log("Fallo de conexion con el servidor");
 			}
 		});
-		console.log(data);
-		if(data!=null){
-			var newscore = Math.floor((Math.random()*(2000+data.score)+100)+1);
-			data.lastconection = Date.now();
-			if(data.score < newscore){
+		console.log(user);
+		if(user!=null){
+			var newscore = Math.floor((Math.random()*(2000+user.score)+100)+1);
+			user.lastconection = Date.now();
+			if(user.score < newscore){
 				$.ajax({
 					method: "PUT",
 					url:url,
-					data: JSON.stringify(data),
+					data: JSON.stringify(user),
 					processData: false,
 					dataType: 'json',
 					contentType: 'application/json',

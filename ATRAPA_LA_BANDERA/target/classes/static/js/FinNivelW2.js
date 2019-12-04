@@ -36,55 +36,54 @@ class FinNivelW2 extends Phaser.Scene {
 
 		this.texto.setText('Ganador: Guest \nPerdedor: ' + game.inputNickname1.value);
 
-		var data =null;
+		jQuery.ajaxSetup({async:false});
+
+		var user=null;
 		var url = game.url+'/'+game.name;
 		$.ajax({
-		method: "GET",
-		url:url,
+			method: "GET",
+			url:url,
 		}).done(function(value){
-			console.log(value);
-				data=String(value);
+			user=value;
 		}).fail(function (value) {
 			if(value.status == 200){
-				console.log(value);
-				data=String(value);
+				user=value;
 			}else if(value.status == 0){
-			 console.log("Servidor caido");
-		 }else{
-			 console.log("Fallo de conexion con el servidor");
-		 }
+				console.log("Servidor caido");
+			}else{
+				console.log("Fallo de conexion con el servidor");
+			}
 		});
-		console.log(data);
-		if(data!=null){
-			var user = JSON.parse(String(data));
-			user.score = Math.floor((Math.random()*2000)+1);
+		console.log(user);
+		if(user!=null){
+			var newscore = Math.floor((Math.random()*(2000+user.score)+100)+1);
 			user.lastconection = Date.now();
-
-			$.ajax({
-				method: "PUT",
-	 		 url:url,
-	 		 data: JSON.stringify(user),
-	 		 processData: false,
-	 		 dataType: 'json',
-	 		 contentType: 'application/json',
-			}).done(function(value){
-				console.log("Score Update");
-			}).fail(function (value) {
-				if(value.status == 200){
+			if(user.score < newscore){
+				$.ajax({
+					method: "PUT",
+					url:url,
+					data: JSON.stringify(user),
+					processData: false,
+					dataType: 'json',
+					contentType: 'application/json',
+				}).done(function(value){
 					console.log("Score Update");
-				}else if(value.status == 0){
-				 console.log("Servidor caido");
-			 }else{
-				 console.log("Fallo de conexion con el servidor");
-			 }
-			});
+				}).fail(function (value) {
+					if(value.status == 200){
+						console.log("Score Update");
+					}else if(value.status == 0){
+						console.log("Servidor caido");
+					}else{
+						console.log("Fallo de conexion con el servidor");
+					}
+				});
+			}
 		}
 		else{
 			console.log("Algo ha fallado");
 		}
-
+		jQuery.ajaxSetup({async:true});
 	}
-
 }
 
 function salir(){
