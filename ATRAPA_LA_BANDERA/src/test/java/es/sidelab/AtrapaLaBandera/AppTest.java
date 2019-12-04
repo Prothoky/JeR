@@ -1,4 +1,4 @@
-package es.sidelab.ALB;
+package es.sidelab.AtrapaLaBandera;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

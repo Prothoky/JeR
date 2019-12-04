@@ -1,4 +1,4 @@
-package es.sidelab.ALB;
+package es.sidelab.AtrapaLaBandera;
 
 import java.util.Date;
 

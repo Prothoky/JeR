@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: ALB
+Implementation-Title: AtrapaLaBandera
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: Proth
 Implementation-Vendor-Id: es.sidelab

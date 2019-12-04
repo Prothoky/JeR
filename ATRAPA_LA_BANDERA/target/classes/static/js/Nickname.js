@@ -30,8 +30,6 @@ preload(){
 }
   create(){
 
-	  this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
-
 	  if(!this.nicknameMenu){
 			game.scene.add('MenuPrincipal', new MenuPrincipal);
 			game.scene.sendToBack('MenuPrincipal');
@@ -74,21 +72,12 @@ preload(){
 
         panel.events.on('updateName', this.updateName, this);
 
-        game.time.events.repeat(Phaser.Timer.SECOND * 2, 10, httpGet(window.location.href), this);
+
   }
 
-  httpGet(){
-		// Create a request variable and assign a new XMLHttpRequest object to it.
-		  var request = new XMLHttpRequest()
-	      request.open( "GET", theUrl, false ); // false for synchronous request
-		  request.send( null );
-		  Debug.log("HTTPGET DONE");
-		  return request.responseText;
-	  }
 
   update (time, delta){
 
-	  var htp = new HTTPRequest;
   }
 
 	updateName (name)

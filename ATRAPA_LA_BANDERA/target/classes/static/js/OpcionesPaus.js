@@ -15,6 +15,8 @@ class OpcionesPaus extends Phaser.Scene {
 		this.load.image('quitarVolumen', 'assets/img/MenuOpciones/quitarVolumen.png');
 		this.load.image('volverOpciones', 'assets/img/MenuOpciones/volver.png');
 
+		this.load.bitmapFont('arcade', 'assets/fonts/bitmap/arcade.png', 'assets/fonts/bitmap/arcade.xml');
+
 		this.load.audio('musica', './js/Juego.js');
 	}
 
@@ -39,7 +41,9 @@ class OpcionesPaus extends Phaser.Scene {
 		//scale evenly
 		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
 
-		this.volumenText = this.add.text(x, y*7/8, '0.5', { fontSize: '32px', fill: '#000' });
+		//this.volumenText = this.add.text(x, y*7/8, '0.5', { fontSize: '32px', fill: '#000' });
+		this.volumenText = this.add.bitmapText(x, y*7/8, 'arcade', '0.5: ').setTint(0xffcc00);
+
 
 		//BOTONES DE VOLUMEN
 		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);

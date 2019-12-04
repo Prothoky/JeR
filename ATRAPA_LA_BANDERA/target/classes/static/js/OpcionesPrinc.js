@@ -15,6 +15,8 @@ class OpcionesPrinc extends Phaser.Scene {
 		this.load.image('quitarVolumen', 'assets/img/MenuOpciones/quitarVolumen.png');
 		this.load.image('volverOpciones', 'assets/img/MenuOpciones/volver.png');
 
+		this.load.bitmapFont('arcade', 'assets/fonts/bitmap/arcade.png', 'assets/fonts/bitmap/arcade.xml');
+
 		this.load.audio('musica', './js/Juego.js');
 	}
 
@@ -39,8 +41,8 @@ class OpcionesPrinc extends Phaser.Scene {
 		//scale evenly
 		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
 
-		this.volumenText = this.add.text(x, y*7/8, '0.5', { fontSize: '32px', fill: '#000' });
-
+		this.volumenText = this.add.bitmapText(x*7.7/8, y*7.3/8, 'arcade', '0.5: ').setTint(0x003333);
+		this.volumenText.setScale(0.7);
 
 		//BOTONES DE VOLUMEN
 		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
@@ -55,7 +57,7 @@ class OpcionesPrinc extends Phaser.Scene {
 		this.quitarVolumen.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.quitar());
 
-				//BOTON VOLVER
+		//BOTON VOLVER
 		this.volverOpciones = this.add.image(x, y*14/8, 'volverOpciones').setScale(0.4);
 		this.volverOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.volver());
@@ -89,7 +91,7 @@ class OpcionesPrinc extends Phaser.Scene {
 	}
 
 	subir(){
-		if(game.sound.volume!=1){
+		if(game.sound.volume<1){
 			game.sound.setVolume(game.sound.volume+0.1);
 			this.volumenText.setText(game.sound.volume+0.1);
 		}
@@ -98,8 +100,10 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	bajar(){
 
-		game.sound.setVolume(0);
-		this.volumenText.setText('0');
+		if(game.sound.volume>0){
+			game.sound.setVolume(game.sound.volume-0.1);
+			this.volumenText.setText(game.sound.volume-0.1);
+		}
 
 	}
 

@@ -1,4 +1,4 @@
-package es.sidelab.ALB;
+package es.sidelab.AtrapaLaBandera;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
