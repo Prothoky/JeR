@@ -92,17 +92,18 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	subir(){
 		if(game.sound.volume<1){
-			game.sound.setVolume(game.sound.volume+0.1);
-			this.volumenText.setText(game.sound.volume+0.1);
+			var level = Math.round10(game.sound.volume+0.1)
+			game.sound.setVolume(level);
+			this.volumenText.setText(level*10);
 		}
 
 	}
 
 	bajar(){
-
 		if(game.sound.volume>0){
-			game.sound.setVolume(game.sound.volume-0.1);
-			this.volumenText.setText(game.sound.volume-0.1);
+			var level = Math.round10(game.sound.volume-0.1)
+			game.sound.setVolume(level);
+			this.volumenText.setText(level);
 		}
 
 	}

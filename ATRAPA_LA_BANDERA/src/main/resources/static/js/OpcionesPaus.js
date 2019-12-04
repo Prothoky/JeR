@@ -91,27 +91,32 @@ class OpcionesPaus extends Phaser.Scene {
 		game.scene.resume('MenuPausa');
 
 	}
-
 	subir(){
-
-		game.sound.setVolume(1);
-		this.volumenText.setText('1');
-
+		if(game.sound.volume<1){
+			var level = Math.round((game.sound.volume+0.1)*10)/10;
+			game.sound.setVolume(level);
+			this.volumenText.setText(level*10);
+		}
+		else{
+			game.sound.setVolume(1);
+			this.volumenText.setText(10);
+		}
 	}
 
 	bajar(){
-
-		game.sound.setVolume(0);
-		this.volumenText.setText('0');
-
+		if(game.sound.volume>0){
+			var level = Math.round((game.sound.volume-0.1)*10)/10;
+			game.sound.setVolume(level);
+			this.volumenText.setText(level*10);
+		}
+		else{
+			game.sound.setVolume(0);
+			this.volumenText.setText(0);
+		}
 	}
 
 	quitar(){
-
 		game.sound.mute = true;
-		game.sound.setVolume(0);
 		this.volumenText.setText('0');
-
 	}
-
 }

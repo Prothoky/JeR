@@ -89,30 +89,32 @@ class OpcionesPrinc extends Phaser.Scene {
 		game.scene.resume('MenuPrincipal');
 
 	}
-
 	subir(){
 		if(game.sound.volume<1){
-			game.sound.setVolume(game.sound.volume+0.1);
-			this.volumenText.setText(game.sound.volume+0.1);
+			var level = Math.round((game.sound.volume+0.1)*10)/10;
+			game.sound.setVolume(level);
+			this.volumenText.setText(level*10);
 		}
-
+		else{
+			game.sound.setVolume(1);
+			this.volumenText.setText(10);
+		}
 	}
 
 	bajar(){
-
 		if(game.sound.volume>0){
-			game.sound.setVolume(game.sound.volume-0.1);
-			this.volumenText.setText(game.sound.volume-0.1);
+			var level = Math.round((game.sound.volume-0.1)*10)/10;
+			game.sound.setVolume(level);
+			this.volumenText.setText(level*10);
 		}
-
+		else{
+			game.sound.setVolume(0);
+			this.volumenText.setText(0);
+		}
 	}
 
 	quitar(){
-
 		game.sound.mute = true;
-		game.sound.setVolume(0);
 		this.volumenText.setText('0');
-
 	}
-
 }
