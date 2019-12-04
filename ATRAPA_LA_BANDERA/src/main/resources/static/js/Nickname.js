@@ -1,146 +1,148 @@
+'use strict'
+
 class Nickname extends Phaser.Scene{
 
   constructor(){
     super({key: 'Nickname'})
-
-			this.chars = [
-            [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' ],
-            [ 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T' ],
-            [ 'U', 'V', 'W', 'X', 'Y', 'Z', '.', '-', '<', '>' ]
-        	];
-
-        this.cursor = new Phaser.Math.Vector2();
-
-        this.text;
-
-        this.name = '';
-        this.charLimit = 10;
-
-        //scene: [Highscore, Nickname ]
-
-		this.playerText;
-
   }
 
-preload(){
-
-	this.load.image('botonMP', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
-	this.load.bitmapFont('arcade', 'assets/fonts/bitmap/arcade.png', 'assets/fonts/bitmap/arcade.xml');
-
+ preload ()
+{
+    this.load.html('nameform', 'assets/text/loginform2.html');
+    this.load.image('botonMP', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
+    this.load.image('fondo', 'assets/img/MenuPrincipal/fondoMP.jpg'); //FONDO
 }
-  create(){
 
-	  if(!this.nicknameMenu){
-			game.scene.add('MenuPrincipal', new MenuPrincipal);
-			game.scene.sendToBack('MenuPrincipal');
-			game.scene.stop('MenuPrincipal');
-			this.nicknameMenu=true;
-		}
-
-
-	var height = game.config.height;
+ create ()
+{
+    var height = game.config.height;
     var width = game.config.width;
 
     var x = width/2 ;
     var y = height/2;
 
-    //var fondoMenu = this.add.sprite(x, y, "fondoMenu");
-    //fondoMenuPrinc.displayWidth = width;
+    this.scene.background =this.add.image(x,720/2,"fondo");
+    this.scene.background.displayHeigth = 720;
+    this.scene.background.scaleX = this.scene.background.scaleY;
 
-	//fondoMenuPrinc.scaleX = fondoMenuPrinc.scaleY;
-
-	//BOTON JUGAR
-	this.botonMP = this.add.image(x, y*(12/8), 'botonMP');
-	this.botonMP.setInteractive({ useHandCursor: true  } )
-	.on('pointerdown', () => this.irAMenu());
-
-
-	let text = this.add.bitmapText(x*6.3/8, y*2/8, 'arcade', 'Nickname: \n\n');
-
-//VAIABLE QUE CONTIENE EL NICKNAME
-	this.nicknamePlayer = this.add.bitmapText(x*6.7/8, y*5/8, 'arcade', '').setTint(0xffcc00);
-
-        text.setLetterSpacing(20);
-        text.setInteractive();
-
-        this.text = text;
-
-        this.input.keyboard.on('keyup', this.anyKey, this);
-
-
-        let panel = this.scene.get('Nickname');
-
-        panel.events.on('updateName', this.updateName, this);
-
-
-  }
-
-
-  update (time, delta){
-
-  }
-
-	updateName (name)
-    {
-        this.nicknamePlayer.setText(name);
+    if(!this.nicknameMenu3){
+      game.scene.add('MenuPrincipal', new MenuPrincipal);
+      game.scene.sendToBack('MenuPrincipal');
+      game.scene.stop('MenuPrincipal');
+      this.nicknameMenu3=true;
     }
+
+
+	//var style = { font: "16px Arial", fill: "#000000" };
+    var text = this.add.text(x*6.95/8, y*7/8, 'Introduzca su Nickname',{fontSize:16, color: '#ffcc00', backgroundColor:'#000000',align:'center'});
+
+    var element = this.add.dom(x*9.5/8, y).createFromCache('nameform');
+
+    element.addListener('click');
+
+    element.on('click', function (event) {
+
+       if (event.target.name === 'loginButton')
+       {
+           game.inputNickname1 = this.getChildByName('nickname');
+
+           if (game.inputNickname1.value !== '' && game.inputNickname1.value !== 'Guest')
+           {
+             let data = {ip: '', name: game.inputNickname1.value, score:0, online:false, lastconection : Date.now()};
+
+             $.ajax({
+               method: "POST",
+               url:game.url,
+               data: JSON.stringify(data),
+               processData: false,
+               dataType: 'json',
+               contentType: 'application/json',
+             }).done(function (){
+               console.log("Register success");
+               game.name = game.inputNickname1.value;
+               game.scene.bringToTop('MenuPrincipal');
+               game.scene.start('MenuPrincipal');
+               game.scene.stop('Nickname');
+           }).fail(function (value) {
+               if(value.status == 201){
+                 console.log("Register success");
+                 game.name=game.inputNickname1.value;
+                   game.scene.bringToTop('MenuPrincipal');
+                   game.scene.start('MenuPrincipal');
+                   game.scene.stop('Nickname');
+               }
+               else{
+                 //text.text = "El usuario ya existe";
+                 var url = game.url+'/'+game.inputNickname1.value;
+                 $.ajax({
+                 method: "GET",
+                 url:url,
+                 }).done(function(value){
+                   console.log("Login");
+                   game.name = game.inputNickname1.value;
+                   game.scene.bringToTop('MenuPrincipal');
+                   game.scene.start('MenuPrincipal');
+                   game.scene.stop('Nickname');
+                 }).fail(function (value) {
+                   if(value.status == 200){
+                     console.log("Login");
+                     game.name = game.inputNickname1.value;
+                     game.scene.bringToTop('MenuPrincipal');
+                     game.scene.start('MenuPrincipal');
+                     game.scene.stop('Nickname');
+                   }else if(value.status == 0){
+                    console.log("Servidor caido");
+                  }else{
+                    console.log("Fallo no contemplado");
+                  }
+                 });
+
+               }
+           });
+       }
+       else
+       {
+         text.text = "Tienes que introducir un nombre de usuario";
+       }
+     }
+
+   });
+
+
+    this.tweens.add({
+        targets: element,
+        y: 300,
+        duration: 3000,
+        ease: 'Power3'
+    });
+  }
+
+
 
   irAMenu(){
 
-	  game.scene.bringToTop('MenuPrincipal');
-		game.scene.start('MenuPrincipal');
-		game.scene.stop('Nickname');
+    game.scene.bringToTop('MenuPrincipal');
+    game.scene.start('MenuPrincipal');
+    game.scene.stop('Nickname');
 
   }
 
-  anyKey (event)
-    {
-        //  Only allow A-Z . and -
+}
 
-        let code = event.keyCode;
-
-
-        if (code === Phaser.Input.Keyboard.KeyCodes.BACKSPACE || code === Phaser.Input.Keyboard.KeyCodes.DELETE)
-        {
-            this.cursor.set(8, 2);
-            this.pressKey();
-        }
-        else if (code >= Phaser.Input.Keyboard.KeyCodes.A && code <= Phaser.Input.Keyboard.KeyCodes.Z)
-        {
-            code -= 65;
-
-            let y = Math.floor(code / 10);
-            let x = code - (y * 10);
-
-            this.cursor.set(x, y);
-            this.pressKey();
-        }
-    }
-
-    pressKey ()
-    {
-        let x = this.cursor.x;
-        let y = this.cursor.y;
-        let nameLength = this.name.length;
-
-        if (x === 9 && y === 2 && nameLength > 0)
-        {
-            //  Submit
-            this.events.emit('submitName', this.name);
-        }
-        else if (x === 8 && y === 2 && nameLength > 0)
-        {
-            //  Rub
-            this.name = this.name.substr(0, nameLength - 1);
-
-            this.events.emit('updateName', this.name);
-        }
-        else if (this.name.length < this.charLimit)
-        {
-            //  Add
-            this.name = this.name.concat(this.chars[y][x]);
-
-            this.events.emit('updateName', this.name);
-        }
-    }
+function register(url, data){
+  var j;
+  $.ajax({
+     method: "POST",
+     url:url,
+     data: JSON.stringify(data),
+     processData: false,
+     dataType: 'json',
+     contentType: 'application/json',
+    }).done(function () {
+        j = true;
+    }).fail(function () {
+        j = false;
+    });
+    console.log(j);
+    return j;
 }
