@@ -7,7 +7,7 @@ class Nickname3 extends Phaser.Scene{
  preload ()
 {
     this.load.html('nameform', 'assets/text/loginform.html');
-    //this.load.image('botonMP', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
+    this.load.image('botonMP', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
 
     //this.load.image('pic', 'assets/pics/turkey-1985086.jpg'); //FONDO
 }
@@ -33,6 +33,10 @@ class Nickname3 extends Phaser.Scene{
     var text = this.add.text(x*5.5/8, y*2/8, 'Introduzcan su Nickname');
 
     var element = this.add.dom(x, y).createFromCache('nameform');
+
+    /*this.botonMP = this.add.sprite(x, y*(12/8), 'botonMP');
+      this.botonMP.setInteractive({ useHandCursor: true  } )
+      .on('pointerdown', () => this.irAMenu());*/
 
     //element.setPerspective(0);
 

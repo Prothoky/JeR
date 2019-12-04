@@ -2,7 +2,7 @@ class OpcionesPaus extends Phaser.Scene {
 
 	constructor(){
 
-		super({key: "OpcionesPaus", active: true});
+		super({key: "OpcionesPaus"});
 
 	}
 

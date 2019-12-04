@@ -2,7 +2,7 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	constructor(){
 
-		super({key: "OpcionesPrinc", active:true});
+		super({key: "OpcionesPrinc"});
 
 	}
 
@@ -14,6 +14,8 @@ class OpcionesPrinc extends Phaser.Scene {
 		this.load.image('subirVolumen', 'assets/img/MenuOpciones/subirVolumen.png');
 		this.load.image('quitarVolumen', 'assets/img/MenuOpciones/quitarVolumen.png');
 		this.load.image('volverOpciones', 'assets/img/MenuOpciones/volver.png');
+
+		this.load.bitmapFont('arcade', 'assets/fonts/bitmap/arcade.png', 'assets/fonts/bitmap/arcade.xml');
 
 		this.load.audio('musica', './js/Juego.js');
 	}
