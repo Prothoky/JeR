@@ -1,3 +1,7 @@
+'use strict'
+
+var url = String(window.location+'users');
+
 class Nickname3 extends Phaser.Scene{
 
   constructor(){
@@ -8,13 +12,20 @@ class Nickname3 extends Phaser.Scene{
 {
     this.load.html('nameform', 'assets/text/loginform.html');
     this.load.image('botonMP', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
-
-    this.load.image('pic', 'assets/img/Fondo.jpg'); //FONDO
+    this.load.image('fondo', 'assets/img/MenuPrincipal/fondoMP.jpg'); //FONDO
 }
 
  create ()
 {
-    //this.add.image(400, 300, 'pic'); //FONDO bru
+    var height = game.config.height;
+    var width = game.config.width;
+
+    var x = width/2 ;
+    var y = height/2;
+
+    this.scene.background =this.add.image(x,720/2,"fondo");
+    this.scene.background.displayHeigth = 720;
+    this.scene.background.scaleX = this.scene.background.scaleY;
 
     if(!this.nicknameMenu3){
       game.scene.add('MenuPrincipal', new MenuPrincipal);
@@ -23,68 +34,50 @@ class Nickname3 extends Phaser.Scene{
       this.nicknameMenu3=true;
     }
 
-      var height = game.config.height;
-      var width = game.config.width;
-
-      var x = width/2 ;
-      var y = height/2;
-
-
-    var text = this.add.text(x*5.5/8, y*2/8, 'Introduzcan su Nickname');
+    var text = this.add.text(x*5.5/8, y*4.5/8, 'Introduzca su Nickname',{fontSize:33, color: '#ff0000', backgroundColor:'#FFFFFF',align:'center',fontStyle:'bold'});
 
     var element = this.add.dom(x, y).createFromCache('nameform');
-
-    /*this.botonMP = this.add.sprite(x, y*(12/8), 'botonMP');
-      this.botonMP.setInteractive({ useHandCursor: true  } )
-      .on('pointerdown', () => this.irAMenu());*/
-
-    //element.setPerspective(0);
 
     element.addListener('click');
 
     element.on('click', function (event) {
 
-        if (event.target.name === 'loginButton')
-        {
-            game.inputNickname1 = this.getChildByName('nickname1');
-            game.inputNickname2 = this.getChildByName('nickname2');
+       if (event.target.name === 'loginButton')
+       {
+           game.inputNickname1 = this.getChildByName('nickname1');
 
-            //  Have they entered anything?
-            if (game.inputNickname1.value !== '' && game.inputNickname2.value !== '' && game.inputNickname1.value !== game.inputNickname2.value)
-            {
-                //  Turn off the click events
-                this.removeListener('click');
+           if (game.inputNickname1.value !== '' && game.inputNickname1.value !== 'Guest')
+           {
+             let data = {ip: '', name: game.inputNickname1.value, score:0, online:false, lastconection : Date.now()};
 
-                //  Tween the login form out
-                this.scene.tweens.add({ targets: element.rotate3d, x: 1, w: 90, duration: 3000, ease: 'Power3' });
+             $.ajax({
+               method: "POST",
+               url:url,
+               data: JSON.stringify(data),
+               processData: false,
+               dataType: 'json',
+               contentType: 'application/json',
+             }).done(function(value){
 
-                this.scene.tweens.add({ targets: element, scaleX: 2, scaleY: 2, y: 700, duration: 3000, ease: 'Power3',
-                    onComplete: function ()
-                    {
-                        element.setVisible(false);
-                    }
-                });
+             }).fail(function (value) {
+               if(value.status == 201){
+                   game.scene.bringToTop('MenuPrincipal');
+                   game.scene.start('MenuPrincipal');
+                   game.scene.stop('Nickname3');
+               }
+               else{
+                 text.text = "El usuario ya existe";
+               }
+           });
+       }
+       else
+       {
+         text.text = "Tienes que introducir un nombre de usuario";
+       }
+     }
 
-                //  Populate the text with whatever they typed in as the username!
-                text.setText('Bienvenidos ' + game.inputNickname1.value + ' y ' + game.inputNickname2.value);
+   });
 
-              /*  this.botonMP = this.add.sprite(x, y*(12/8), 'botonMP');
-              	this.botonMP.setInteractive({ useHandCursor: true  } )
-              	.on('pointerdown', () => this.irAMenu());*/
-
-                game.scene.bringToTop('MenuPrincipal');
-                game.scene.start('MenuPrincipal');
-                game.scene.stop('Nickname3');
-
-            }
-            else
-            {
-                //  Flash the prompt
-                this.scene.tweens.add({ targets: text, alpha: 0.1, duration: 200, ease: 'Power3', yoyo: true });
-            }
-        }
-
-    });
 
     this.tweens.add({
         targets: element,
@@ -92,14 +85,34 @@ class Nickname3 extends Phaser.Scene{
         duration: 3000,
         ease: 'Power3'
     });
+  }
+
+
+
+  irAMenu(){
+
+    game.scene.bringToTop('MenuPrincipal');
+    game.scene.start('MenuPrincipal');
+    game.scene.stop('Nickname');
+
+  }
+
 }
 
-irAMenu(){
-
-  game.scene.bringToTop('MenuPrincipal');
-  game.scene.start('MenuPrincipal');
-  game.scene.stop('Nickname');
-
-}
-
+function register(url, data){
+  var j;
+  $.ajax({
+     method: "POST",
+     url:url,
+     data: JSON.stringify(data),
+     processData: false,
+     dataType: 'json',
+     contentType: 'application/json',
+    }).done(function () {
+        j = true;
+    }).fail(function () {
+        j = false;
+    });
+    console.log(j);
+    return j;
 }

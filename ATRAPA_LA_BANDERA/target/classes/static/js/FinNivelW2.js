@@ -34,7 +34,7 @@ class FinNivelW2 extends Phaser.Scene {
 		this.botonSalir.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => salir());
 
-		this.texto.setText('Ganador: '+ game.inputNickname2.value + '\nPerdedor: ' + game.inputNickname1.value);
+		this.texto.setText('Ganador: Guest \nPerdedor: ' + game.inputNickname1.value);
 
 	}
 

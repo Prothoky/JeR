@@ -37,6 +37,7 @@ public class UsersController {
 			User usuarios[] = gson.fromJson(file,User[].class);
 			if(usuarios !=null ) {
 				for (User user : usuarios) {
+					System.out.println(user.toString());
 					String name = user.getName();
 					users.put(name, user);
 					userlist.add(name);
@@ -44,7 +45,6 @@ public class UsersController {
 			}
         }catch(FileNotFoundException e ) {
         	System.out.println("File not found");
-        	
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,12 +61,14 @@ public class UsersController {
 	public ResponseEntity<String> newUser(@RequestBody User usuario,HttpServletRequest request) {
 		String ip = getIP(request);
 		String name = usuario.getName();
+		Date time = new Date();
 		if(!users.containsKey(name)) {
 			usuario.setIp(ip);
+			usuario.setTime(time);
 			users.put(name, usuario);
 			userlist.add(name);
 			SaveInfo();
-			return ResponseEntity.status(HttpStatus.OK).body(usuario.toString());
+			return ResponseEntity.status(HttpStatus.CREATED).body(usuario.toString());
 		}
 		else {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("The user "+ usuario.getName() + " con ip " + ip + " has already been created");
@@ -115,9 +117,9 @@ public class UsersController {
 	}
 
 	@DeleteMapping("/{name}")
-	public ResponseEntity<User> borraUser(@PathVariable String id) {
+	public ResponseEntity<User> borraUser(@PathVariable String name) {
 
-		User savedUser = users.get(id);
+		User savedUser = users.get(name);
 		if (savedUser != null) {
 			users.remove(savedUser.getName());
 			userlist.remove(savedUser.getName());
@@ -155,6 +157,7 @@ public class UsersController {
 			for (String name : userlist) {
 				User user = users.get(name);
 				if(user.getOnline()) {
+					System.out.println(user.toString());
 					if(new Date().getTime() - user.getTime().getTime() >= 10000) {
 						user.SetOnline(false);
 						users.put(user.getName(), user);

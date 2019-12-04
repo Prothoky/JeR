@@ -53,4 +53,7 @@ public class User {
 		this.lastconection = time;
 	}
 
+	public String toString() {
+		return "User [ip: " + ip + ", name: " + name + ", score: " + score + ", date: " + lastconection + ", online: "+ online+" ]";
+	}
 }
