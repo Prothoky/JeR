@@ -160,7 +160,7 @@
 			})
 			this.anims.create({
 				key: 'RUNB',
-				frames: this.anims.generateFrameNumbers('J1RUN',{
+				frames: this.anims.generateFrameNumbers('J1RUNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 				}),
 				repeat:-1,
@@ -168,7 +168,7 @@
 			})
 			this.anims.create({
 				key: 'RUN2B',
-				frames: this.anims.generateFrameNumbers('J2RUN',{
+				frames: this.anims.generateFrameNumbers('J2RUNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 				}),
 				repeat:-1,
@@ -202,7 +202,7 @@
 			});
 			this.anims.create({
 				key: 'IDLEB',
-				frames: this.anims.generateFrameNumbers('J1IDLE',{
+				frames: this.anims.generateFrameNumbers('J1IDLEB',{
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -210,7 +210,7 @@
 			});
 			this.anims.create({
 				key: 'IDLE2B',
-				frames: this.anims.generateFrameNumbers('J2IDLE',{
+				frames: this.anims.generateFrameNumbers('J2IDLEB',{
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -218,7 +218,7 @@
 			});
 			this.anims.create({
 				key: 'IDLE2B',
-				frames: this.anims.generateFrameNumbers('J2IDLE',{
+				frames: this.anims.generateFrameNumbers('J2IDLEB',{
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -245,7 +245,7 @@
 			});
 			this.anims.create({
 				key: 'SCOPE_DOWNB',
-				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_DOWN',{
+				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_DOWNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -253,7 +253,7 @@
 			});
 			this.anims.create({
 				key: 'SCOPE_DOWN2B',
-				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -279,7 +279,7 @@
 			});
 			this.anims.create({
 				key: 'SCOPE_UPB',
-				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_UP',{
+				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_UPB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -287,7 +287,7 @@
 			});
 			this.anims.create({
 				key: 'SCOPE_UP2B',
-				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_UP',{
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_UPB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -313,7 +313,7 @@
 			});
 			this.anims.create({
 				key: 'HIT_UPB',
-				frames: this.anims.generateFrameNumbers('J1HIT_UP',{
+				frames: this.anims.generateFrameNumbers('J1HIT_UPB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
 				repeat:0,
@@ -321,7 +321,7 @@
 			});
 			this.anims.create({
 				key: 'HIT_UP2B',
-				frames: this.anims.generateFrameNumbers('J2HIT_UP',{
+				frames: this.anims.generateFrameNumbers('J2HIT_UPB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
 				repeat:0,
@@ -347,7 +347,7 @@
 			});
 			this.anims.create({
 				key: 'HIT_DOWNB',
-				frames: this.anims.generateFrameNumbers('J1HIT_DOWN',{
+				frames: this.anims.generateFrameNumbers('J1HIT_DOWNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
 				repeat:0,
@@ -355,14 +355,14 @@
 			});
 			this.anims.create({
 				key: 'HIT_DOWN2B',
-				frames: this.anims.generateFrameNumbers('J2HIT_DOWN',{
+				frames: this.anims.generateFrameNumbers('J2HIT_DOWNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
 				repeat:0,
 				frameRate:24
 			});
 
-			//Anim salto (no funciona)
+			//Anim salto (funciona)
 			this.anims.create({
 				key: 'JUMP',
 				frames: this.anims.generateFrameNumbers('J1JUMP',{
@@ -381,7 +381,7 @@
 			});
 			this.anims.create({
 				key: 'JUMPB',
-				frames: this.anims.generateFrameNumbers('J1JUMP',{
+				frames: this.anims.generateFrameNumbers('J1JUMPB',{
 					frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
 				}),
 				repeat:1,
@@ -389,7 +389,7 @@
 			});
 			this.anims.create({
 				key: 'JUMP2B',
-				frames: this.anims.generateFrameNumbers('J2JUMP',{
+				frames: this.anims.generateFrameNumbers('J2JUMPB',{
 					frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
 				}),
 				repeat:1,
