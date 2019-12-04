@@ -9,7 +9,7 @@ class Nickname3 extends Phaser.Scene{
     this.load.html('nameform', 'assets/text/loginform.html');
     this.load.image('botonMP', 'assets/img/MenuPrincipal/botonJugar.png');//BOTON JUGAR
 
-    //this.load.image('pic', 'assets/pics/turkey-1985086.jpg'); //FONDO
+    this.load.image('pic', 'assets/img/Fondo.jpg'); //FONDO
 }
 
  create ()
@@ -46,11 +46,11 @@ class Nickname3 extends Phaser.Scene{
 
         if (event.target.name === 'loginButton')
         {
-            var inputNickname1 = this.getChildByName('nickname1');
-            var inputNickname2 = this.getChildByName('nickname2');
+            game.inputNickname1 = this.getChildByName('nickname1');
+            game.inputNickname2 = this.getChildByName('nickname2');
 
             //  Have they entered anything?
-            if (inputNickname1.value !== '' && inputNickname2.value !== '' && inputNickname1.value !==inputNickname2.value)
+            if (game.inputNickname1.value !== '' && game.inputNickname2.value !== '' && game.inputNickname1.value !== game.inputNickname2.value)
             {
                 //  Turn off the click events
                 this.removeListener('click');
@@ -66,7 +66,7 @@ class Nickname3 extends Phaser.Scene{
                 });
 
                 //  Populate the text with whatever they typed in as the username!
-                text.setText('Bienvenidos ' + inputNickname1.value + ' y ' + inputNickname2.value);
+                text.setText('Bienvenidos ' + game.inputNickname1.value + ' y ' + game.inputNickname2.value);
 
               /*  this.botonMP = this.add.sprite(x, y*(12/8), 'botonMP');
               	this.botonMP.setInteractive({ useHandCursor: true  } )

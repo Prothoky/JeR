@@ -28,13 +28,13 @@ class FinNivelW2 extends Phaser.Scene {
 
 		fondoFin.scaleX = fondoFin.scaleY;
 
-		this.texto = this.add.text(x/2, 600, 'Ganador: JUGADOR 2\nPerdedor: JUGADOR 1', { fontSize: '48px', fill: '#FFFF00' });
+		this.texto = this.add.text(x/2, 600, 'Ganador: '+ game.inputNickname2 + ' 2\nPerdedor:'+ game.inputNickname1, { fontSize: '48px', fill: '#FFFF00' });
 
 		this.botonSalir = this.add.image(x, y*12/8, 'abandonar');
 		this.botonSalir.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => salir());
 
-		this.texto.setText('Ganador: JUGADOR 2\nPerdedor: JUGADOR 1');
+		this.texto.setText('Ganador: '+ game.inputNickname2.value + '\nPerdedor: ' + game.inputNickname1.value);
 
 	}
 

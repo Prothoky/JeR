@@ -13,7 +13,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.tomcat.jni.Time;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,6 +24,7 @@ import com.google.gson.*;
 @RequestMapping("/users")
 public class UsersController {
 	
+	//Constructor inicial (cojemos usuarios ya creados)
 	private static Map<String,User> users  = new ConcurrentHashMap<String, User>();
 	private List<String> userlist = new ArrayList<String>();
 	public UsersController(){
@@ -80,13 +80,21 @@ public class UsersController {
 		User savedUser = users.get(name);
 
 		if (savedUser != null) {
-			users.remove(name);
-			users.put(userUpdated.getName(), userUpdated);
-			userlist.remove(name);
-			userlist.add(userUpdated.getName());
+			if(name!=userUpdated.getName()) {
+				if(!users.containsKey(savedUser.getName())) {
+					users.remove(name);
+					users.put(userUpdated.getName(), userUpdated);
+					userlist.remove(name);
+					userlist.add(userUpdated.getName());
+				}else {
+					return new ResponseEntity<User>(HttpStatus.CONFLICT);
+				}
+			}else {
+				users.put(userUpdated.getName(), userUpdated);
+			}
 			SaveInfo();
 			return new ResponseEntity<User>(userUpdated, HttpStatus.OK);
-		} else {
+		}else {
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
 	}
@@ -105,21 +113,21 @@ public class UsersController {
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
 	}
-/*
-	@DeleteMapping("/{id}")
+
+	@DeleteMapping("/{name}")
 	public ResponseEntity<User> borraUser(@PathVariable String id) {
 
 		User savedUser = users.get(id);
-
 		if (savedUser != null) {
-			users.remove(savedUser.getId());
+			users.remove(savedUser.getName());
+			userlist.remove(savedUser.getName());
 			SaveInfo();
 			return new ResponseEntity<User>(savedUser, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
 	}
-*/
+
 	public String getIP(HttpServletRequest request) {
 		String remoteAddr=null;
 		if (request != null) {
