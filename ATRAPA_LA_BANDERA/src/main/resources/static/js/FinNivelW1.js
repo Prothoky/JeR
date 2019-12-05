@@ -4,7 +4,7 @@ class FinNivelW1 extends Phaser.Scene {
 	}
 
 	preload(){
-    this.load.image('fondoFin','../assets/img/PantallaFinal/VICTORIA_ROJO.jpg')
+    this.load.image('fondoFin','../assets/img/PantallaFinal/victoriaRojo.jpg')
 		this.load.image('abandonar', 'assets/icons/BOTON_SALIR.png');
     game.scene.backgroundColor = "#FFFFF";
 	}
