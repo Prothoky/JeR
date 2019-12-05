@@ -30,8 +30,8 @@ function create(){
   game.url = String(window.location+'users');
   game.name = null;
 
-  game.scene.add("Nickname", new Nickname);
-  game.scene.start("Nickname");
+  game.scene.add("MenuPrincipal", new MenuPrincipal);
+  game.scene.start("MenuPrincipal");
 }
 
 function Alive(){

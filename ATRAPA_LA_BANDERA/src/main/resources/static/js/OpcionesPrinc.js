@@ -8,7 +8,7 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	preload(){
 		//MENU OPCIONES
-		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/FONDO MENU OPCIONES.png'); //FONDO
+		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/fondoMO.png'); //FONDO
 
 		this.load.image('bajarVolumen', 'assets/img/MenuOpciones/bajarVolumen.png');
 		this.load.image('subirVolumen', 'assets/img/MenuOpciones/subirVolumen.png');
