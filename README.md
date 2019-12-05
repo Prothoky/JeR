@@ -100,6 +100,7 @@ __CONTROLES y OPCIONES__
 * __7:__ Bajar Volumen
 * __8:__ Quitar Volumen
 * __9:__ Subir Volumen
+
 * __Revisión 2:__ Versión 2 del documento, fase 3. Se han resuelto fallos del juego como el paso de una pantalla a otra (el cual no se podia realizar en la fase anterior). Asi mismo, se ha mejorado la visibilidad de la bandera a la hora de ser recogida por uno de los jugadorex (mostrandose ahora sobre la cabeza del juegador que la lleva y no como un objeto flotante alejado del jugador). La posición de la bandera tambien ha sido corregida a la hora de ser soltada por el jugaor que la lleva, apareciendo ahora en un lugar concreto y no cayendo en bucle como la anterior entrega. En cuanto a los menus, se ha mejorado la estética de estos para que sean acordes con el diseño del titulo del juego y se ha implementado una nueva pantalla final para mostrar el resultado final de la partida.
 
 ## 2. Introducción
