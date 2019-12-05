@@ -8,7 +8,7 @@ class OpcionesPrinc extends Phaser.Scene {
 
 	preload(){
 		//MENU OPCIONES
-		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/fondoOpciones.png'); //FONDO
+		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/FONDO MENU OPCIONES.png'); //FONDO
 
 		this.load.image('bajarVolumen', 'assets/img/MenuOpciones/bajarVolumen.png');
 		this.load.image('subirVolumen', 'assets/img/MenuOpciones/subirVolumen.png');
@@ -41,7 +41,7 @@ class OpcionesPrinc extends Phaser.Scene {
 		//scale evenly
 		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
 
-		this.volumenText = this.add.bitmapText(x*7.7/8, y*7.3/8, 'arcade', '0.5: ').setTint(0x003333);
+		this.volumenText = this.add.bitmapText(x*7.9/8, y*7.1/8, 'arcade', '0.5: ').setTint(0xffcc00);
 		this.volumenText.setScale(0.7);
 		var level = Math.round((game.sound.volume)*10)/10;
 		this.volumenText.setText(level*10);
