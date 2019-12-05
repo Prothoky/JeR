@@ -28,7 +28,7 @@ class OpcionesPrinc extends Phaser.Scene {
 		this.NINE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NINE);
 
 		var height = game.config.height;
-		var width = game.config.width;
+		var width = window.innerWidth-300;
 
 		//get center of the canvas
 		var x = width/2 ;
@@ -45,7 +45,7 @@ class OpcionesPrinc extends Phaser.Scene {
 		this.volumenText.setScale(0.7);
 		var level = Math.round((game.sound.volume)*10)/10;
 		this.volumenText.setText(level*10);
-		
+
 		//BOTONES DE VOLUMEN
 		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
 		this.subirVolumen.setInteractive({ useHandCursor: true  } )

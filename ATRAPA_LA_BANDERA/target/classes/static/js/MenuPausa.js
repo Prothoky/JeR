@@ -22,7 +22,7 @@ class MenuPausa extends Phaser.Scene{
 		this.FOUR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR);
 
 		var height = game.config.height;
-		var width = game.config.width;
+		var width = window.innerWidth-300;
 
 		var x = width/2 ;
 		var y = height/2;

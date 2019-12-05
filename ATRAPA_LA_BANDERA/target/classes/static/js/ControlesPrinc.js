@@ -13,7 +13,7 @@ class ControlesPrinc extends Phaser.Scene {
 		this.ZERO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
 
 		var height = game.config.height;
-		var width = game.config.width;
+		var width = window.innerWidth-300;
 
 		//get center of the canvas
 		var x = width/2 ;

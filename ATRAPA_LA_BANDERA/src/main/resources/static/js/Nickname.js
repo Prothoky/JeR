@@ -16,13 +16,13 @@ class Nickname extends Phaser.Scene{
  create ()
 {
     var height = game.config.height;
-    var width = window.innerWidth;
+    var width = window.innerWidth-300;
 
     var y = height/2;
     var x = width/2 ;
 
-    this.scene.background =this.add.image(x,720/2,"fondo");
-    this.scene.background.displayHeigth = 720;
+    this.scene.background =this.add.image(x,y,"fondo");
+    this.scene.background.displayHeigth = y;
     this.scene.background.scaleX = this.scene.background.scaleY;
 
     if(!this.nicknameMenu3){
@@ -36,7 +36,7 @@ class Nickname extends Phaser.Scene{
 	//var style = { font: "16px Arial", fill: "#000000" };
     var text = this.add.text(x, y*6/8, 'Introduzca su Nickname',{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
 
-    var element = this.add.dom(x*9.5/8, y).createFromCache('nameform');
+    var element = this.add.dom(x, y).createFromCache('nameform');
 
     element.addListener('click');
 

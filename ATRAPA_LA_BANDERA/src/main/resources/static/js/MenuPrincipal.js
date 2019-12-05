@@ -40,7 +40,7 @@ class MenuPrincipal extends Phaser.Scene{
 		game.scene.stop('Juego');
 
 		var height = game.config.height;
-		var width = game.config.width;
+		var width = window.innerWidth-300;
 
 		//get center of the canvas
 		var x = width/2 ;
