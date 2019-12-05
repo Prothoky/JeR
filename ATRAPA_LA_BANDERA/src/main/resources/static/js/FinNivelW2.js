@@ -84,7 +84,7 @@ class FinNivelW2 extends Phaser.Scene {
 
 
 
-		this.botonSalir = this.add.image(x, y*13/8, 'abandonar');
+		this.botonSalir = this.add.image(x, y*14/8, 'abandonar');
 		this.botonSalir.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => salir());
 

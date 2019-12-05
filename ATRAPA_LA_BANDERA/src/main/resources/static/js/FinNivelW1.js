@@ -82,7 +82,7 @@ class FinNivelW1 extends Phaser.Scene {
 		this.textoScore = this.add.text(x*3.7/8, y*12/8, 'Puntuacion: ' + newscore,{fontFamily: "Maiandra GD",fontSize:35, color: '#ff0000', stroke:'#000000', strokeThickness: 5,align:'center'});
 
 
-		this.botonSalir = this.add.image(x, y*13/8, 'abandonar');
+		this.botonSalir = this.add.image(x, y*14/8, 'abandonar');
 		this.botonSalir.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => salir());
 
