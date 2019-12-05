@@ -1056,7 +1056,7 @@
 					if(hasTheFlag(game.player1)){
 
 						this.cameras.main.startFollow(game.player1,true,1,1,0,200);
-						game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
+						//game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
 						if(game.player1.x < -2000){
 							game.loaded=false;
 							cHangeFaseLeft();
@@ -1075,7 +1075,7 @@
 					else if(hasTheFlag(game.player2)){
 
 						this.cameras.main.startFollow(game.player2,true,1,1,0,200);
-						game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
+						//game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
 						if(game.player2.x > 2000){
 							game.loaded=false;
 							cHangeFaseRight();
@@ -1095,7 +1095,7 @@
 					else{
 
 						this.cameras.main.startFollow(game.bandera,true,1,1,0,200);
-						game.HUDbandera.disableBody(true,true);
+						//game.HUDbandera.disableBody(true,true);
 					}
 				}
 
