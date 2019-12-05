@@ -5,8 +5,8 @@ class ControlesPrinc extends Phaser.Scene {
 
 	preload(){
 		//MENU CONTROLES
-		this.load.image('fondoControles', 'assets/img/MenuControles/FONDO MENÚ CONTROLES.png'); //FONDO
-		this.load.image('volverControles', 'assets/img/MenuControles/volver.png');//, {frameHeight:347,frameWidth: 295}); //BOTON VOLVER
+		this.load.image('fondoControles', 'assets/img/MenuControles/fondoControles.png'); //FONDO
+		this.load.image('volverControles', 'assets/img/MenuControles/volver.png', {frameHeight:347,frameWidth: 295}); //BOTON VOLVER
 	}
 	create(){
 
@@ -26,13 +26,13 @@ class ControlesPrinc extends Phaser.Scene {
 		//scale evenly
 		fondoControlesPaus.scaleX = fondoControlesPaus.scaleY;
 
-		//var tituloControles = this.tituloControles = this.add.image(x, y*2/8, 'opciones').setScale(0.5);
+		var tituloControles = this.tituloControles = this.add.image(x, y*2/8, 'opciones').setScale(0.5);
 		//var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen').setScale(0.5);
 		//var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.5);
 
 
 		//BOTON VOLVER
-		this.volverControles = this.add.image(x, y*13/8, 'volverControles');
+		this.volverControles = this.add.image(x, y*14/8, 'volverControles').setScale(0.4);
 		this.volverControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.volver());
 
