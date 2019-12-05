@@ -6,7 +6,7 @@ var config={
   dom: {
         createContainer: true
     },
-  scene: [Start],
+  scene: {create:create},
   physics: {
     default: 'arcade',
     arcade: {
@@ -14,11 +14,26 @@ var config={
       debug: false
       }
     }
-}
+};
 
 var game = new Phaser.Game(config);
-game.url = String(window.location+'users');
-game.name = null;
+
+function create(){
+
+  //Variables de reinicio de Juego
+  game.loaded=false;
+  game.onfase=-0;
+  game.fasebefore=null;
+  game.FinNivelloaded=false;
+  game.SubMainMenuloaded=false;
+  game.sound.volume = 0.5;
+  game.url = String(window.location+'users');
+  game.name = null;
+
+  game.scene.add("Nickname", new Nickname);
+  game.scene.start("Nickname");
+
+}
 
 function Alive(){
   var url = game.url+'/'+game.name;

@@ -160,7 +160,7 @@
 			})
 			this.anims.create({
 				key: 'RUNB',
-				frames: this.anims.generateFrameNumbers('J1RUN',{
+				frames: this.anims.generateFrameNumbers('J1RUNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 				}),
 				repeat:-1,
@@ -168,7 +168,7 @@
 			})
 			this.anims.create({
 				key: 'RUN2B',
-				frames: this.anims.generateFrameNumbers('J2RUN',{
+				frames: this.anims.generateFrameNumbers('J2RUNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 				}),
 				repeat:-1,
@@ -202,7 +202,7 @@
 			});
 			this.anims.create({
 				key: 'IDLEB',
-				frames: this.anims.generateFrameNumbers('J1IDLE',{
+				frames: this.anims.generateFrameNumbers('J1IDLEB',{
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -210,7 +210,7 @@
 			});
 			this.anims.create({
 				key: 'IDLE2B',
-				frames: this.anims.generateFrameNumbers('J2IDLE',{
+				frames: this.anims.generateFrameNumbers('J2IDLEB',{
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -218,7 +218,7 @@
 			});
 			this.anims.create({
 				key: 'IDLE2B',
-				frames: this.anims.generateFrameNumbers('J2IDLE',{
+				frames: this.anims.generateFrameNumbers('J2IDLEB',{
 					frames: [0,1,2,3,4,5,6,7,8,9]
 				}),
 				repeat:1,
@@ -245,7 +245,7 @@
 			});
 			this.anims.create({
 				key: 'SCOPE_DOWNB',
-				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_DOWN',{
+				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_DOWNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -253,7 +253,7 @@
 			});
 			this.anims.create({
 				key: 'SCOPE_DOWN2B',
-				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWN',{
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_DOWNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -279,7 +279,7 @@
 			});
 			this.anims.create({
 				key: 'SCOPE_UPB',
-				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_UP',{
+				frames: this.anims.generateFrameNumbers('J1IDLE_SCOPE_UPB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -287,7 +287,7 @@
 			});
 			this.anims.create({
 				key: 'SCOPE_UP2B',
-				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_UP',{
+				frames: this.anims.generateFrameNumbers('J2IDLE_SCOPE_UPB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11]
 				}),
 				repeat:1,
@@ -313,7 +313,7 @@
 			});
 			this.anims.create({
 				key: 'HIT_UPB',
-				frames: this.anims.generateFrameNumbers('J1HIT_UP',{
+				frames: this.anims.generateFrameNumbers('J1HIT_UPB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
 				repeat:0,
@@ -321,7 +321,7 @@
 			});
 			this.anims.create({
 				key: 'HIT_UP2B',
-				frames: this.anims.generateFrameNumbers('J2HIT_UP',{
+				frames: this.anims.generateFrameNumbers('J2HIT_UPB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
 				repeat:0,
@@ -347,7 +347,7 @@
 			});
 			this.anims.create({
 				key: 'HIT_DOWNB',
-				frames: this.anims.generateFrameNumbers('J1HIT_DOWN',{
+				frames: this.anims.generateFrameNumbers('J1HIT_DOWNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
 				repeat:0,
@@ -355,14 +355,14 @@
 			});
 			this.anims.create({
 				key: 'HIT_DOWN2B',
-				frames: this.anims.generateFrameNumbers('J2HIT_DOWN',{
+				frames: this.anims.generateFrameNumbers('J2HIT_DOWNB',{
 					frames: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 				}),
 				repeat:0,
 				frameRate:24
 			});
 
-			//Anim salto (no funciona)
+			//Anim salto (funciona)
 			this.anims.create({
 				key: 'JUMP',
 				frames: this.anims.generateFrameNumbers('J1JUMP',{
@@ -381,7 +381,7 @@
 			});
 			this.anims.create({
 				key: 'JUMPB',
-				frames: this.anims.generateFrameNumbers('J1JUMP',{
+				frames: this.anims.generateFrameNumbers('J1JUMPB',{
 					frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
 				}),
 				repeat:1,
@@ -389,7 +389,7 @@
 			});
 			this.anims.create({
 				key: 'JUMP2B',
-				frames: this.anims.generateFrameNumbers('J2JUMP',{
+				frames: this.anims.generateFrameNumbers('J2JUMPB',{
 					frames: [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
 				}),
 				repeat:1,
@@ -438,7 +438,7 @@
 				game.player2.setBounce(-0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -503,7 +503,7 @@
 				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo1left");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -563,7 +563,7 @@
 				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo2left");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -626,7 +626,7 @@
 				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo1right");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -688,7 +688,7 @@
 				//game.player2.setBounce(0.3);
 				game.player2.setOrigin(0.5,1);
 				game.player2.ownBandera=false;
-				game.player2.setTint(0x4400ff);
+				//game.player2.setTint(0x4400ff);
 
 				game.sobrefondo = this.add.image(0,this.cH,"sobrefondo2right");
 				game.sobrefondo.displayHeigth = this.cH*2;
@@ -772,6 +772,7 @@
 					game.dis = Math.abs(game.player2.x - game.player1.x);
 
 					//Movimiento J1
+					if(game.player1.ownBandera==false){
 					if(game.player1.body.touching.down){
 						if (this.cursor.up.isDown)
 						{
@@ -826,9 +827,68 @@
 							game.player1.status = "JUMP";
 						}
 					}
+				}else{
+					if(game.player1.body.touching.down){
+						if (this.cursor.up.isDown)
+						{
+							game.player1.setVelocityY(-450);
+						}
+						else if(this.cursor.left.isDown){
+							game.player1.setVelocityX(-550);
+							game.player1.flipX=false;
+							game.player1.anims.play('RUNB',true);
+							game.player1.status = "RUN";
+						}else if(this.cursor.right.isDown){
+							game.player1.setVelocityX(550);
+							game.player1.flipX=true;
+							game.player1.anims.play('RUNB',true);
+							game.player1.status = "RUN";
+						}else
+						{
+							game.player1.setVelocityX(0);
+								if(this.L.isDown){
+									console.log("Apuntar abajo BANDERA");
+									game.player1.anims.play('SCOPE_DOWNB',true);
+									game.player1.status = "SCOPE_DOWN";
+								}else if(this.P.isDown){
+									console.log("Apuntar arriba");
+									game.player1.anims.play('SCOPE_UPB',true);
+									game.player1.status = "SCOPE_UP";
+								}else if(this.O.isDown){
+									console.log("Golpe arriba");
+									game.player1.anims.play('HIT_UPB',true);
+									game.player1.status = "HIT_UP";
+								}else if(this.K.isDown){
+									console.log("Golpe abajo");
+									game.player1.anims.play('HIT_DOWNB',true);
+									game.player1.status = "HIT_DOWN";
+								}else
+								game.player1.anims.play('IDLEB',true);
+								game.player1.status = "IDLE";
+							}
+						}else{
+							if(this.cursor.left.isDown){
+								game.player1.setVelocityX(-550);
+								game.player1.flipX=false;
+								game.player1.anims.play('JUMPB',true);
+								game.player1.status = "JUMP";
+							}else if(this.cursor.right.isDown){
+								game.player1.setVelocityX(550);
+								game.player1.flipX=true;
+								game.player1.anims.play('JUMPB',true);
+								game.player1.status = "JUMP";
+							}else{
+								game.player1.anims.play('JUMPB',true);
+								game.player1.status = "JUMP";
+							}
+						}
+					}
 
 					//Movimiento J2
+				if(game.player2.ownBandera==false){
+
 					if(game.player2.body.touching.down){
+
 						if (this.W.isDown )
 						{
 							game.player2.setVelocityY(-450);
@@ -882,7 +942,64 @@
 							game.player2.anims.play('JUMP2',true);
 							game.player2.status="JUMP";
 						}
+					}
+					}else{
+						if(game.player2.body.touching.down){
+							if (this.W.isDown )
+							{
+								game.player2.setVelocityY(-450);
+							}
+							else if(this.A.isDown){
+								game.player2.setVelocityX(-550)
+								game.player2.flipX=false;
+								game.player2.anims.play('RUN2B',true);
+								game.player2.status="RUN";
+							}else if(this.D.isDown){
+								game.player2.setVelocityX(550)
+								game.player2.flipX=true;
+								game.player2.anims.play('RUN2B',true);
+								game.player2.status="RUN";
+							}else
+							{
+								game.player2.setVelocityX(0);
+								if(this.G.isDown){
+									console.log("Apuntar abajo");
+									game.player2.anims.play('SCOPE_DOWN2B',true);
+									game.player2.status="SCOPE_DOWN";
+								}else if(this.T.isDown){
+									console.log("Apuntar arriba");
+									game.player2.anims.play('SCOPE_UP2B',true);
+									game.player2.status="SCOPE_UP";
+								}else if(this.Y.isDown){
+									console.log("Golpe arriba");
+									game.player2.anims.play('HIT_UP2B',true);
+									game.player2.status="HIT_UP";
+								}else if(this.H.isDown){
+									console.log("Golpe abajo");
+									game.player2.anims.play('HIT_DOWN2B',true);
+									game.player2.status="HIT_DOWN";
+								}else
+								game.player2.anims.play('IDLE2B',true);
+								game.player2.status="IDLE";
+							}
+						}else{
 
+							if(this.A.isDown){
+								game.player2.setVelocityX(-550);
+								game.player2.flipX=false;
+								game.player2.anims.play('JUMP2B',true);
+								game.player2.status="JUMP";
+							}else if(this.D.isDown){
+								game.player2.setVelocityX(550);
+								game.player2.flipX=true;
+								game.player2.anims.play('JUMP2B',true);
+								game.player2.status="JUMP";
+							}else{
+								game.player2.anims.play('JUMP2B',true);
+								game.player2.status="JUMP";
+							}
+
+						}
 					}
 
 					if(game.bandera.y > 720){
@@ -939,7 +1056,7 @@
 					if(hasTheFlag(game.player1)){
 
 						this.cameras.main.startFollow(game.player1,true,1,1,0,200);
-						game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
+						//game.HUDbandera.enableBody(true,game.player1.x+350,100,true,true);
 						if(game.player1.x < -2000){
 							game.loaded=false;
 							cHangeFaseLeft();
@@ -958,7 +1075,7 @@
 					else if(hasTheFlag(game.player2)){
 
 						this.cameras.main.startFollow(game.player2,true,1,1,0,200);
-						game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
+						//game.HUDbandera.enableBody(true,game.player2.x-350,100,true,true);
 						if(game.player2.x > 2000){
 							game.loaded=false;
 							cHangeFaseRight();
@@ -978,7 +1095,7 @@
 					else{
 
 						this.cameras.main.startFollow(game.bandera,true,1,1,0,200);
-						game.HUDbandera.disableBody(true,true);
+						//game.HUDbandera.disableBody(true,true);
 					}
 				}
 
