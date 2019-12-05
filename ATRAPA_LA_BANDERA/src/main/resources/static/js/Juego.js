@@ -41,7 +41,7 @@
 			this.load.image("pltf","../assets/icons/plt.png");
 
 			//Sprite de BANDERA
-			this.load.image("bandera","../assets/icons/bandera.png")
+			this.load.image("bandera","../assets/icons/Bandera.png")
 
 			//sprites de movimientos
 			//Sin bandera
