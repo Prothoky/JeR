@@ -5,7 +5,7 @@ class MenuPausa extends Phaser.Scene{
 
 	preload(){
 
-	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
+	this.load.image('fondoPausa', 'assets/img/MenuPausa/MENÚ PAUSA.png');
 
 	this.load.image('reanudar', 'assets/img/MenuPausa/reanudar.png');
 	this.load.image('opciones', 'assets/img/MenuPausa/opciones.png');
