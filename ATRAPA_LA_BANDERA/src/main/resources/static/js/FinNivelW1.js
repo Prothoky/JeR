@@ -1,15 +1,12 @@
-
 class FinNivelW1 extends Phaser.Scene {
 	constructor(){
 		super ({key: "FinNivelW1"});
 	}
 
 	preload(){
-		//game.scene.add("MenuPrincipal")
-        this.load.image('fondoFin','../assets/img/PantallaFinal/VICTORIA_ROJO.jpg')
+    this.load.image('fondoFin','../assets/img/PantallaFinal/VICTORIA_ROJO.jpg')
 		this.load.image('abandonar', 'assets/icons/BOTON_SALIR.png');
-        game.scene.backgroundColor = "#FFFFF";
-		//this.texto = this.add.text(500, 500, 'Ganador: JUGADOR 1\nPerdedor: JUGADOR 2', { fontSize: '48px', fill: '#FF0000' });
+    game.scene.backgroundColor = "#FFFFF";
 	}
 
 	create(){
@@ -22,7 +19,6 @@ class FinNivelW1 extends Phaser.Scene {
 		var y = height/2;
 
 		var fondoFin = this.add.sprite(x, y, "fondoFin");
-
 
 		fondoFin.displayWidth = width;
 
@@ -81,19 +77,16 @@ class FinNivelW1 extends Phaser.Scene {
 		this.textoLooser = this.add.text(x*7/8, y*7/8, 'Jugador Rojo',{fontFamily: "Maiandra GD",fontSize:40, color: '#ff0000', stroke:'#000000', strokeThickness: 5,align:'center'});
 		this.textoScore = this.add.text(x*3.7/8, y*12/8, 'Puntuacion: ' + newscore,{fontFamily: "Maiandra GD",fontSize:35, color: '#ff0000', stroke:'#000000', strokeThickness: 5,align:'center'});
 
-
 		this.botonSalir = this.add.image(x, y*14/8, 'abandonar');
 		this.botonSalir.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => salir());
-
 	}
-
 }
-
-
 function salir(){
 			game.scene.start('MenuPrincipal');
 			game.scene.remove('FinNivelW1');
 			game.scene.bringToTop('MenuPrincipal');
-
+	}
+	function reload(){
+		game.scene.restart();
 	}
