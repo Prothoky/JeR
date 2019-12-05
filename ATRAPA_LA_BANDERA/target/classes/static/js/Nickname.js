@@ -32,9 +32,9 @@ class Nickname extends Phaser.Scene{
       this.nicknameMenu3=true;
     }
 
-    var text = this.add.text(x*6/8, y*6/8, 'Introduzca su Nickname',{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+    var text = this.add.text(x*5/8, y*13.75/8, 'Introduzca su Nickname',{fontFamily: "Maiandra GD",fontSize:55, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'left'});
 
-    var element = this.add.dom(x, y).createFromCache('nameform');
+    var element = this.add.dom(x*9.45/8, y*12/8).createFromCache('nameform');
 
     element.addListener('click');
 
