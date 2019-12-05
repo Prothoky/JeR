@@ -1093,9 +1093,8 @@
 					}
 
 					else{
-
 						this.cameras.main.startFollow(game.bandera,true,1,1,0,200);
-						//game.HUDbandera.disableBody(true,true);
+						game.HUDbandera.disableBody(true,true);
 					}
 				}
 
