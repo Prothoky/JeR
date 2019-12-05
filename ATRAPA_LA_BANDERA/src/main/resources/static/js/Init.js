@@ -33,6 +33,10 @@ function create(){
   game.scene.add("Nickname", new Nickname);
   game.scene.start("Nickname");
 
+
+  //game.scene.add("ControlesPrinc", new ControlesPrinc);
+//  game.scene.start("ControlesPrinc");
+
   //game.scene.add("ControlesPaus", new ControlesPaus);
   //game.scene.start("ControlesPaus");
 
