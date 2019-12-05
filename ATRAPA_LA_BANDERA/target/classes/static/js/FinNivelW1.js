@@ -14,8 +14,9 @@ class FinNivelW1 extends Phaser.Scene {
 
 	create(){
 		game.polling = this.time.addEvent({ delay: 1000, callback: Alive, loop: true});
+
 		var height = game.config.height;
-		var width = game.config.width;
+    var width = window.innerWidth-300;
 
 		var x = width/2 ;
 		var y = height/2;
@@ -27,17 +28,10 @@ class FinNivelW1 extends Phaser.Scene {
 
 		fondoFin.scaleX = fondoFin.scaleY;
 
-		this.texto = this.add.text(x/2, 600, 'Ganador: '+ game.inputNickname1 + ' 2\nPerdedor:'+ game.inputNickname2, { fontSize: '48px', fill: '#FFFF00' });
-
-		this.botonSalir = this.add.image(x, y*12/8, 'abandonar');
-		this.botonSalir.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => salir());
-
-		this.texto.setText('Ganador: '+ game.inputNickname1.value+ '\nPerdedor: Guest');
-
 		jQuery.ajaxSetup({async:false});
 
 		var user=null;
+		var newscore;
 		var url = game.url+'/'+game.name;
 		$.ajax({
 			method: "GET",
@@ -55,7 +49,7 @@ class FinNivelW1 extends Phaser.Scene {
 		});
 		console.log(user);
 		if(user!=null){
-			var newscore = Math.floor((Math.random()*(2000+user.score)+100)+1);
+			newscore = Math.floor((Math.random()*(2000+user.score)+100)+1);
 			user.lastconection = Date.now();
 			if(user.score < newscore){
 				$.ajax({
@@ -82,7 +76,18 @@ class FinNivelW1 extends Phaser.Scene {
 			console.log("Algo ha fallado");
 		}
 		jQuery.ajaxSetup({async:true});
+
+		this.textoWinner = this.add.text(x/2, 600, 'Ganador: '+ game.inputNickname1,{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoLooser = this.add.text(x/2, 600, 'Perdedor: Guest',{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoScore = this.add.text(x/2, 600, 'Puntuacion: ' + newscore,{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+
+
+		this.botonSalir = this.add.image(x, y*12/8, 'abandonar');
+		this.botonSalir.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => salir());
+
 	}
+
 }
 
 

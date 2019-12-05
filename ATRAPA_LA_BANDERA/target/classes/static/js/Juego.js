@@ -510,7 +510,7 @@
 				game.sobrefondo.scaleX = game.sobrefondo.scaleY;
 
 				if(game.fasebefore ==  0 ){
-					game.bandera.x = 2000;
+					game.bandera.x = 1800;
 					game.player2.x = 2000;
 					game.player1.x = 1800;
 				}
@@ -1093,9 +1093,8 @@
 					}
 
 					else{
-
 						this.cameras.main.startFollow(game.bandera,true,1,1,0,200);
-						//game.HUDbandera.disableBody(true,true);
+						game.HUDbandera.disableBody(true,true);
 					}
 				}
 

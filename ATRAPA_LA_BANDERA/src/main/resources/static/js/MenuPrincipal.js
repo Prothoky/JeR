@@ -40,14 +40,13 @@ class MenuPrincipal extends Phaser.Scene{
 		game.scene.stop('Juego');
 
 		var height = game.config.height;
-		var width = game.config.width;
+		var width = window.innerWidth-300;
 
 		//get center of the canvas
 		var x = width/2 ;
 		var y = height/2;
 
 		var fondoMenuPrinc = this.add.sprite(x, y, "fondoMenuPrinc");
-
 
 		fondoMenuPrinc.displayWidth = width;
 
