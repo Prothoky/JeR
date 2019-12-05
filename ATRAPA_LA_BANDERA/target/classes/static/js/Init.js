@@ -33,6 +33,9 @@ function create(){
   game.scene.add("Nickname", new Nickname);
   game.scene.start("Nickname");
 
+  //game.scene.add("FinNivelW2", new FinNivelW2);
+  //game.scene.start("FinNivelW2");
+
 }
 
 function Alive(){

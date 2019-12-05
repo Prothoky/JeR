@@ -6,7 +6,7 @@ class FinNivelW1 extends Phaser.Scene {
 
 	preload(){
 		//game.scene.add("MenuPrincipal")
-        this.load.image('fondoFin','../assets/img/MenuPrincipal/fondoMP.jpg')
+        this.load.image('fondoFin','../assets/img/PantallaFinal/VICTORIA_ROJO.jpg')
 		this.load.image('abandonar', 'assets/icons/BOTON_SALIR.png');
         game.scene.backgroundColor = "#FFFFF";
 		//this.texto = this.add.text(500, 500, 'Ganador: JUGADOR 1\nPerdedor: JUGADOR 2', { fontSize: '48px', fill: '#FF0000' });
@@ -77,12 +77,12 @@ class FinNivelW1 extends Phaser.Scene {
 		}
 		jQuery.ajaxSetup({async:true});
 
-		this.textoWinner = this.add.text(x/2, 600, 'Ganador: '+ game.inputNickname1,{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
-		this.textoLooser = this.add.text(x/2, 600, 'Perdedor: Guest',{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
-		this.textoScore = this.add.text(x/2, 600, 'Puntuacion: ' + newscore,{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoWinner = this.add.text(x*7.2/8, y*5/8, 'Ganador: ',{fontFamily: "Maiandra GD",fontSize:45, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoLooser = this.add.text(x*7/8, y*7/8, 'Jugador Rojo',{fontFamily: "Maiandra GD",fontSize:40, color: '#ff0000', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoScore = this.add.text(x*3.7/8, y*12/8, 'Puntuacion: ' + newscore,{fontFamily: "Maiandra GD",fontSize:35, color: '#ff0000', stroke:'#000000', strokeThickness: 5,align:'center'});
 
 
-		this.botonSalir = this.add.image(x, y*12/8, 'abandonar');
+		this.botonSalir = this.add.image(x, y*14/8, 'abandonar');
 		this.botonSalir.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => salir());
 
