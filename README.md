@@ -58,7 +58,7 @@ Diego Pérez Pérez         d.perezp.2017@alumnos.urjc.es   diegoperezp2@gmail.c
 Cambios con respecto a versiones anteriores del documento.  
 * __Revisión 0:__ Versión 0 del documento; sin cambios.
 * __Revisión 1:__ Versión 1 del documento, fase 2. 
-Hemos realizado varios cambios al hacer la implementación del código, como por ejemplo hemos cambiado algunos controles de teclas y hemos añadido nuevas funcionalidades para que los menús a parte de funcionar con el cursor funcionen con el teclado. También hemos decidido simplificar los mapas a uno con varios niveles, ya que era lo más asequible debido al tiempo. Por último, lospersonajes en lugar de hacerlos tipo stickman, como habíamos pensado en un principio, los hemos evolucionado a personajes más humanoides y con animaciones como personas reales, para darle más verosimilitud.
+Hemos realizado varios cambios al hacer la implementación del código, como por ejemplo hemos cambiado algunos controles de teclas y hemos añadido nuevas funcionalidades para que los menús a parte de funcionar con el cursor funcionen con el teclado. También hemos decidido simplificar los mapas a uno con varios niveles, ya que era lo más asequible debido al tiempo. Por último, los personajes en lugar de hacerlos tipo stickman, como habíamos pensado en un principio, los hemos evolucionado a personajes más humanoides y con animaciones como personas reales, para darle más verosimilitud.
 
 Los nuevos controles son: 
 
@@ -101,7 +101,7 @@ __CONTROLES y OPCIONES__
 * __8:__ Quitar Volumen
 * __9:__ Subir Volumen
 
-* __Revisión 2:__ Versión 2 del documento, fase 3. Se han resuelto fallos del juego como el paso de una pantalla a otra (el cual no se podia realizar en la fase anterior). Asi mismo, se ha mejorado la visibilidad de la bandera a la hora de ser recogida por uno de los jugadorex (mostrandose ahora sobre la cabeza del juegador que la lleva y no como un objeto flotante alejado del jugador). La posición de la bandera tambien ha sido corregida a la hora de ser soltada por el jugaor que la lleva, apareciendo ahora en un lugar concreto y no cayendo en bucle como la anterior entrega. En cuanto a los menus, se ha mejorado la estética de estos para que sean acordes con el diseño del titulo del juego y se ha implementado una nueva pantalla final para mostrar el resultado final de la partida.
+* __Revisión 2:__ Versión 2 del documento, fase 3. Se han resuelto fallos del juego como el paso de una pantalla a otra (el cual no se podia realizar en la fase anterior). Asi mismo, se ha mejorado la visibilidad de la bandera a la hora de ser recogida por uno de los jugadorex (mostrandose ahora sobre la cabeza del jugador que la lleva y no como un objeto flotante alejado del personaje). La posición de la bandera tambien ha sido corregida a la hora de ser soltada por el jugaor que la lleva, apareciendo ahora en un lugar concreto y no cayendo en bucle como la anterior entrega. En cuanto a los menus, se ha mejorado la estética de estos para que sean acordes con el diseño del titulo del juego y se ha implementado una nueva pantalla final para mostrar el resultado final de la partida.
 
 ## 2. Introducción
 Este es el documento de diseño del juego titulado “Atrapa la bandera”. La wiki en español sobre el desarrollo de videojuegos en 3D utilizando ‘X’ como motor de renderizado.
