@@ -6,7 +6,7 @@ class FinNivelW2 extends Phaser.Scene {
 
 	preload(){
 
-    this.load.image('fondoFin','../assets/img/MenuPrincipal/fondoMP.jpg')
+    this.load.image('fondoFin','../assets/img/PantallaFinal/VICTORIA_AZUL.jpg')
 		this.load.image('abandonar', 'assets/icons/BOTON_SALIR.png');
     game.scene.backgroundColor = "#FFFFF";
 		//game.scene.add('MenuPrincipal');
@@ -28,7 +28,7 @@ class FinNivelW2 extends Phaser.Scene {
 
 		fondoFin.scaleX = fondoFin.scaleY;
 
-		this.texto.setText('Ganador: Guest \nPerdedor: ' + game.inputNickname1.value);
+		//this.texto.setText('Ganador: Guest \nPerdedor: ' + game.inputNickname1.value);
 
 		jQuery.ajaxSetup({async:false});
 
@@ -78,12 +78,13 @@ class FinNivelW2 extends Phaser.Scene {
 		}
 		jQuery.ajaxSetup({async:true});
 
-		this.textoWinner = this.add.text(x/2, 600, 'Ganador: '+ game.inputNickname1,{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
-		this.textoLooser = this.add.text(x/2, 600, 'Perdedor: Guest',{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
-		this.textoScore = this.add.text(x/2, 600, 'Puntuacion: ' + newscore,{fontFamily: "Maiandra GD",fontSize:35, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoWinner = this.add.text(x*7.2/8, y*5/8, 'Ganador: ',{fontFamily: "Maiandra GD",fontSize:45, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoLooser = this.add.text(x*7/8, y*7/8, 'Jugador Azul',{fontFamily: "Maiandra GD",fontSize:40, color: '#0066ff', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoScore = this.add.text(x*9.5/8, y*12/8, 'Puntuacion: ' + newscore,{fontFamily: "Maiandra GD",fontSize:35, color: '#0066ff', stroke:'#000000', strokeThickness: 5,align:'center'});
 
 
-		this.botonSalir = this.add.image(x, y*12/8, 'abandonar');
+
+		this.botonSalir = this.add.image(x, y*13/8, 'abandonar');
 		this.botonSalir.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => salir());
 
