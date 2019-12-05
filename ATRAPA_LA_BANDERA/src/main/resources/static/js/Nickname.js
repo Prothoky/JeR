@@ -38,73 +38,7 @@ class Nickname extends Phaser.Scene{
 
     element.addListener('click');
 
-    element.on('click', function (event) {
-
-       if (event.target.name === 'loginButton')
-       {
-           game.inputNickname1 = this.getChildByName('nickname');
-
-           if (game.inputNickname1.value !== '' && game.inputNickname1.value !== 'Guest')
-           {
-             let data = {ip: '', name: game.inputNickname1.value, score:0, online:false, lastconection : Date.now()};
-
-             $.ajax({
-               method: "POST",
-               url:game.url,
-               data: JSON.stringify(data),
-               processData: false,
-               dataType: 'json',
-               contentType: 'application/json',
-             }).done(function (){
-               console.log("Register success");
-               game.name = game.inputNickname1.value;
-               game.scene.bringToTop('MenuPrincipal');
-               game.scene.start('MenuPrincipal');
-               game.scene.stop('Nickname');
-           }).fail(function (value) {
-               if(value.status == 201){
-                 console.log("Register success");
-                 game.name=game.inputNickname1.value;
-                   game.scene.bringToTop('MenuPrincipal');
-                   game.scene.start('MenuPrincipal');
-                   game.scene.stop('Nickname');
-               }
-               else{
-                 //text.text = "El usuario ya existe";
-                 var url = game.url+'/'+game.inputNickname1.value;
-                 $.ajax({
-                 method: "GET",
-                 url:url,
-                 }).done(function(value){
-                   console.log("Login");
-                   game.name = game.inputNickname1.value;
-                   game.scene.bringToTop('MenuPrincipal');
-                   game.scene.start('MenuPrincipal');
-                   game.scene.stop('Nickname');
-                 }).fail(function (value) {
-                   if(value.status == 200){
-                     console.log("Login");
-                     game.name = game.inputNickname1.value;
-                     game.scene.bringToTop('MenuPrincipal');
-                     game.scene.start('MenuPrincipal');
-                     game.scene.stop('Nickname');
-                   }else if(value.status == 0){
-                    console.log("Servidor caido");
-                  }else{
-                    console.log("Fallo no contemplado");
-                  }
-                 });
-
-               }
-           });
-       }
-       else
-       {
-         text.text = "Tienes que introducir un nombre de usuario";
-       }
-     }
-
-   });
+    element.on('click', check(event));
 
 
     this.tweens.add({
@@ -124,6 +58,74 @@ class Nickname extends Phaser.Scene{
     game.scene.stop('Nickname');
 
   }
+
+}
+
+function check(event) {
+
+   if (event.target.name === 'loginButton')
+   {
+       game.inputNickname1 = this.getChildByName('nickname');
+
+       if (game.inputNickname1.value !== '' && game.inputNickname1.value !== 'Guest')
+       {
+         let data = {ip: '', name: game.inputNickname1.value, score:0, online:false, lastconection : Date.now()};
+
+         $.ajax({
+           method: "POST",
+           url:game.url,
+           data: JSON.stringify(data),
+           processData: false,
+           dataType: 'json',
+           contentType: 'application/json',
+         }).done(function (){
+           console.log("Register success");
+           game.name = game.inputNickname1.value;
+           game.scene.bringToTop('MenuPrincipal');
+           game.scene.start('MenuPrincipal');
+           game.scene.stop('Nickname');
+       }).fail(function (value) {
+           if(value.status == 201){
+             console.log("Register success");
+             game.name=game.inputNickname1.value;
+               game.scene.bringToTop('MenuPrincipal');
+               game.scene.start('MenuPrincipal');
+               game.scene.stop('Nickname');
+           }
+           else{
+             //text.text = "El usuario ya existe";
+             var url = game.url+'/'+game.inputNickname1.value;
+             $.ajax({
+             method: "GET",
+             url:url,
+             }).done(function(value){
+               console.log("Login");
+               game.name = game.inputNickname1.value;
+               game.scene.bringToTop('MenuPrincipal');
+               game.scene.start('MenuPrincipal');
+               game.scene.stop('Nickname');
+             }).fail(function (value) {
+               if(value.status == 200){
+                 console.log("Login");
+                 game.name = game.inputNickname1.value;
+                 game.scene.bringToTop('MenuPrincipal');
+                 game.scene.start('MenuPrincipal');
+                 game.scene.stop('Nickname');
+               }else if(value.status == 0){
+                console.log("Servidor caido");
+              }else{
+                console.log("Fallo no contemplado");
+              }
+             });
+
+           }
+       });
+   }
+   else
+   {
+     text.text = "Tienes que introducir un nombre de usuario";
+   }
+ }
 
 }
 
