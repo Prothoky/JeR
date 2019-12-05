@@ -100,7 +100,7 @@ class Nickname extends Phaser.Scene{
        }
        else
        {
-         text.text = "Tienes que introducir un nombre de usuario";
+         text.text = ("Tienes que introducir un nombre de usuario");
        }
      }
 
