@@ -48,7 +48,6 @@ class MenuPrincipal extends Phaser.Scene{
 
 		var fondoMenuPrinc = this.add.sprite(x, y, "fondoMenuPrinc");
 
-
 		fondoMenuPrinc.displayWidth = width;
 
 		fondoMenuPrinc.scaleX = fondoMenuPrinc.scaleY;
