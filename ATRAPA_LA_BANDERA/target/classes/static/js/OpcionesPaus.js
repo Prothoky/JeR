@@ -8,7 +8,7 @@ class OpcionesPaus extends Phaser.Scene {
 
 	preload(){
 		//MENU OPCIONES
-		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/FONDO MENU OPCIONES.png'); //FONDO
+		this.load.image('fondoOpciones', 'assets/img/MenuOpciones/fondoMO.png'); //FONDO
 
 		this.load.image('bajarVolumen', 'assets/img/MenuOpciones/bajarVolumen.png');
 		this.load.image('subirVolumen', 'assets/img/MenuOpciones/subirVolumen.png');
@@ -61,7 +61,7 @@ class OpcionesPaus extends Phaser.Scene {
 		.on('pointerdown', () => this.quitar());
 
 				//BOTON VOLVER
-		this.volverOpciones = this.add.image(x, y*14/8, 'volverOpciones').setScale(0.4);
+		this.volverOpciones = this.add.image(x, y*13.5/8, 'volverOpciones');
 		this.volverOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.volver());
 	}
