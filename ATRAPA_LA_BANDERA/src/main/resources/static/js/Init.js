@@ -30,11 +30,11 @@ function create(){
   game.url = String(window.location+'users');
   game.name = null;
 
-//  game.scene.add("Nickname", new Nickname);
-  //game.scene.start("Nickname");
+  game.scene.add("Nickname", new Nickname);
+  game.scene.start("Nickname");
 
-  game.scene.add("OpcionesPaus", new OpcionesPaus);
-  game.scene.start("OpcionesPaus");
+  //game.scene.add("ControlesPaus", new ControlesPaus);
+  //game.scene.start("ControlesPaus");
 
 }
 
