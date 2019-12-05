@@ -61,7 +61,7 @@ class OpcionesPaus extends Phaser.Scene {
 		.on('pointerdown', () => this.quitar());
 
 				//BOTON VOLVER
-		this.volverOpciones = this.add.image(x, y*14/8, 'volverOpciones').setScale(0.4);
+		this.volverOpciones = this.add.image(x, y*13.5/8, 'volverOpciones');
 		this.volverOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.volver());
 	}
