@@ -1,5 +1,6 @@
 package es.sidelab.AtrapaLaBandera;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -32,7 +33,7 @@ public class UsersController {
 	}
 	
 	public void TakeInfo(){
-		try (FileReader file = new FileReader(".\\src\\main\\resources\\data.json")){
+		try (FileReader file = new FileReader(".\\src\\main\\java\\data.json")){
 			Gson gson = new Gson();
 			User usuarios[] = gson.fromJson(file,User[].class);
 			if(usuarios !=null ) {
@@ -146,9 +147,11 @@ public class UsersController {
 	}
 
 	public void SaveInfo() {
-		try (FileWriter file = new FileWriter("C:\\Users\\Proth\\Documents\\STS_WorkSpace\\ALB\\data.json")) {
+		try (FileWriter file = new FileWriter(".\\src\\main\\java\\data.json")) {
 			Gson gson = new Gson();
-			gson.toJson(users.values(), file);			
+			gson.toJson(users.values(), file);
+			file.close();
+		}catch(FileNotFoundException e) {
         } catch (IOException e) {
             e.printStackTrace();
         }
