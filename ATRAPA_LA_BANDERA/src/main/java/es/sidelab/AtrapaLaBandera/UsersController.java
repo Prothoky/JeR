@@ -1,5 +1,6 @@
 package es.sidelab.AtrapaLaBandera;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -33,7 +34,7 @@ public class UsersController {
 	}
 	
 	public void TakeInfo(){
-		try (FileReader file = new FileReader(".\\src\\main\\java\\data.json")){
+		try (FileReader file = new FileReader("data.json")){
 			Gson gson = new Gson();
 			User usuarios[] = gson.fromJson(file,User[].class);
 			if(usuarios !=null ) {
@@ -44,8 +45,18 @@ public class UsersController {
 					userlist.add(name);
 				}
 			}
-        }catch(FileNotFoundException e ) {
-        	System.out.println("File not found");
+        }catch(FileNotFoundException e) {
+			File createfile = new File("data.json");
+			FileWriter fw;
+			try {
+				fw = new FileWriter(createfile);
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write("[{\"ip\":\"0:0:0:0:0:0:0:1\",\"name\":\"Prothoky\",\"score\":0,\"online\":false,\"lastconection\":\"Dec 11, 2019 11:25:54 PM\"}]");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			System.out.println(createfile.exists());
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +106,9 @@ public class UsersController {
 				}
 			}
 			else {
-				users.put(userUpdated.getName(), userUpdated);				
+				System.out.println(userUpdated.getScore());
+				users.put(name, userUpdated);		
+				System.out.println("User " + name + "actualizado");
 			}
 			System.out.println("Usuario actualizado correctamente");
 			SaveInfo();
@@ -147,12 +160,12 @@ public class UsersController {
 	}
 
 	public void SaveInfo() {
-		try (FileWriter file = new FileWriter(".\\src\\main\\java\\data.json")) {
+		try (FileWriter file = new FileWriter("data.json")) {
 			Gson gson = new Gson();
 			gson.toJson(users.values(), file);
 			file.close();
-		}catch(FileNotFoundException e) {
-        } catch (IOException e) {
+			System.out.println("Saved");
+		}catch (IOException e) {
             e.printStackTrace();
         }
 	}

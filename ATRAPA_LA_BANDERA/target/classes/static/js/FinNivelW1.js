@@ -4,7 +4,7 @@ class FinNivelW1 extends Phaser.Scene {
 	}
 
 	preload(){
-    this.load.image('fondoFin','../assets/img/PantallaFinal/VICTORIA_ROJO.jpg')
+    this.load.image('fondoFin','../assets/img/PantallaFinal/victoriaRojo.jpg')
 		this.load.image('abandonar', 'assets/icons/BOTON_SALIR.png');
     game.scene.backgroundColor = "#FFFFF";
 	}
@@ -47,7 +47,7 @@ class FinNivelW1 extends Phaser.Scene {
 		if(user!=null){
 			newscore = Math.floor((Math.random()*(2000+user.score)+100)+1);
 			user.lastconection = Date.now();
-			if(user.score < newscore){
+			
 				$.ajax({
 					method: "PUT",
 					url:url,
@@ -66,7 +66,7 @@ class FinNivelW1 extends Phaser.Scene {
 						console.log("Fallo de conexion con el servidor");
 					}
 				});
-			}
+			
 		}
 		else{
 			console.log("Algo ha fallado");

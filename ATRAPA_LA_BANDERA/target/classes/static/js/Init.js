@@ -50,4 +50,26 @@ function Alive(){
      console.log("Fallo de conexion con el servidor");
    }
   });
+
+  var url = game.url;
+  $.ajax({
+	  method: "GET",
+	  url:url,
+	  }).done(function(value){
+      getonline(value);
+	  }).fail(function (value) {
+	    if(value.status == 200){
+	      getonline(value);
+	    }else{
+	     console.log("ERROR");
+	   }
+	  });
+}
+
+function getonline(value){
+  for(var i=0 ; i<value.length;i++){
+    if(value[i].online){
+      console.log(value[i].name +" is online");
+    }
+  }
 }

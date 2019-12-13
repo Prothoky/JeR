@@ -47,7 +47,7 @@ class FinNivelW2 extends Phaser.Scene {
 		if(user!=null){
 			newscore = Math.floor((Math.random()*(2000+user.score)+100)+1);
 			user.lastconection = Date.now();
-			if(user.score < newscore){
+			
 				$.ajax({
 					method: "PUT",
 					url:url,
@@ -66,7 +66,7 @@ class FinNivelW2 extends Phaser.Scene {
 						console.log("Fallo de conexion con el servidor");
 					}
 				});
-			}
+			
 		}
 		else{
 			console.log("Algo ha fallado");
