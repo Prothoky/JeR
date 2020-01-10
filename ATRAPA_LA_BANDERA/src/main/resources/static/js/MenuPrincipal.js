@@ -13,6 +13,8 @@ class MenuPrincipal extends Phaser.Scene{
     this.load.image('botonControles', 'assets/img/MenuPrincipal/botonControles.png'); //BOTON CONTROLES
     this.load.image('botonOpciones', 'assets/img/MenuPrincipal/botonOpciones.png'); //BOTON OPCIONES
     this.load.image('botonSalir', 'assets/img/MenuPrincipal/botonSalir.png'); //BOTON SALIR
+
+		this.load.image('botonUsuarios', 'assets/img/MenuPrincipal/botonOpciones.png');//provisional
 	}
 
 	create(){
@@ -27,6 +29,7 @@ class MenuPrincipal extends Phaser.Scene{
 		if(!game.SubMainMenuloaded){
 			game.scene.add('ControlesPrinc', new ControlesPrinc);
 			game.scene.add('OpcionesPrinc',new OpcionesPrinc);
+			game.scene.add('UsuariosConectados',new UsuariosConectados);
 			game.scene.add('Juego',new Juego);
 			game.SubMainMenuloaded=true;
 		}
@@ -35,6 +38,9 @@ class MenuPrincipal extends Phaser.Scene{
 
 		game.scene.sendToBack('OpcionesPrinc');
 		game.scene.stop('OpcionesPrinc');
+
+		game.scene.sendToBack('UsuariosConectados');
+		game.scene.stop('UsuariosConectados');
 
 		game.scene.sendToBack('Juego');
 		game.scene.stop('Juego');
@@ -66,6 +72,11 @@ class MenuPrincipal extends Phaser.Scene{
 		this.botonOpciones = this.add.image(x, y*11/8, 'botonOpciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
+
+		//BOTON USUARIOS
+		this.botonUsuarios = this.add.image(x*4/8, y*11/8, 'botonUsuarios');
+		this.botonUsuarios.setInteractive({ useHandCursor: true  } )
+		.on('pointerdown', () => this.verUsuarios());
 	}
 
 	update (time, delta){
@@ -100,6 +111,11 @@ class MenuPrincipal extends Phaser.Scene{
 	verOpciones(){
 			game.scene.run('OpcionesPrinc');
 			game.scene.bringToTop('OpcionesPrinc');
+	}
+
+	verUsuarios(){
+			game.scene.run('UsuariosConectados');
+			game.scene.bringToTop('UsuariosConectados');
 	}
 
 
