@@ -29,6 +29,7 @@ public class UsersController {
 	//Constructor inicial (cojemos usuarios ya creados)
 	private static Map<String,User> users  = new ConcurrentHashMap<String, User>();
 	private List<String> userlist = new ArrayList<String>();
+	private int usersconected;
 	public UsersController(){
 		TakeInfo();
 	}
@@ -127,6 +128,7 @@ public class UsersController {
 		if(savedUser!=null) {
 			savedUser.SetOnline(true);
 			savedUser.setTime(time);
+			savedUser.setUsersOnline(usersconected);
 			users.put(name, savedUser);
 			return new ResponseEntity<User>(savedUser, HttpStatus.OK);
 		} else {
@@ -192,5 +194,6 @@ public class UsersController {
 			}
 		}
 		System.out.println("Hay " + num + " usuarios conectados");
+		usersconected = num;
 	}
 }

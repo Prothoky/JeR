@@ -9,6 +9,7 @@ public class User {
 	private long score;
 	private boolean online;
 	private Date lastconection;
+	private int usersonline;
 
 	public User() {
 	}
@@ -55,5 +56,11 @@ public class User {
 
 	public String toString() {
 		return "User [ip: " + ip + ", name: " + name + ", score: " + score + ", date: " + lastconection + ", online: "+ online+" ]";
+	}
+	public void setUsersOnline(int i) {
+		this.usersonline =i;
+	}
+	public int getUsersOnline() {
+		return this.usersonline;
 	}
 }

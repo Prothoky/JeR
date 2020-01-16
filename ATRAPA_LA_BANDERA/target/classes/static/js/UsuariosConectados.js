@@ -48,8 +48,6 @@ class UsuariosConectados extends Phaser.Scene{
 			  });
 		*/
 		var totalUsuarios = 0;
-		var usersconected = 0;
-
 
 		//TEXTOS
 		this.Titulo = this.add.text(x*4/8, y*2/8, 'USUARIOS CONECTADOS: ',{fontFamily: "Maiandra GD",fontSize:45, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
@@ -90,33 +88,6 @@ function getonline(value){
       ctx.canvas.width  = window.innerWidth;
       ctx.canvas.height = window.innerHeight;
     }
-
-		function ActualizarUsuariosConectados(){
-		  var url = game.url+'/'+game.name;
-		  var url = game.url;
-		  $.ajax({
-			  method: "GET",
-			  url:url,
-			  }).done(function(value){
-		        usersconected = getusersonline(value);
-			  }).fail(function (value) {
-			    if(value.status == 200){
-			      usersconected = getusersonline(value);
-			    }else{
-			     console.log("ERROR");
-			   }
-			  });
-		}
-
-		function string getusersonline(value){
-		  for(var i=0 ; i<value.length;i++){
-		    if(value[i].usersonline){
-		      return value[i].name;
-		    }
-		  }
-		}
-
-
   </script>
 
 //areas de texto

@@ -118,7 +118,20 @@ class OpcionesPaus extends Phaser.Scene {
 	}
 
 	quitar(){
-		game.sound.mute = true;
-		this.volumenText.setText('0');
+		var volumen = Math.round((game.sound.volume)*10);
+
+ 		if (game.sound.mute == true){
+
+	 		game.sound.mute = false;
+	 		this.volumenText.setText(volumen);
+
+ 		}else{
+
+	 		game.sound.mute = true;
+	 		this.volumenText.setText('0');
+ 		}
+
 	}
+
+	
 }
