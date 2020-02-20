@@ -1,7 +1,9 @@
+'use strict'
+
 var config={
   type: Phaser.GAME,
-  width: window.innerWidth-300,
-  height: 720,
+  width: window.innerWidth,
+  height: window.innerHeight,
   parent:'game',
   dom: {
         createContainer: true
@@ -11,27 +13,31 @@ var config={
     default: 'arcade',
     arcade: {
       gravity: { y: 500 },
-      debug: false
+      debug: true
       }
+    },
+    scale:{
+      parent: 'game',
+      mode: Phaser.Scale.CENTER_BOTH,
     }
 };
 
 var game = new Phaser.Game(config);
 
 function create(){
-
   //Variables de reinicio de Juego
   game.loaded=false;
   game.onfase=-0;
   game.fasebefore=null;
   game.FinNivelloaded=false;
-  game.SubMainMenuloaded=false;
+  game.MainMenuloaded=false;
   game.sound.volume = 0.5;
   game.url = String(window.location+'users');
   game.name = null;
 
   game.scene.add("Nickname", new Nickname);
   game.scene.start("Nickname");
+
 }
 
 function Alive(){

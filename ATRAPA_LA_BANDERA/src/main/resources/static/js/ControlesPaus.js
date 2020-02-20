@@ -1,3 +1,4 @@
+'use strict'
 class ControlesPaus extends Phaser.Scene {
 	constructor(){
 		super ({key: "ControlesPaus"});

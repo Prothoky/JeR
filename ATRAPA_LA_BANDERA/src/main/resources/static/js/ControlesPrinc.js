@@ -1,3 +1,4 @@
+'use strict'
 class ControlesPrinc extends Phaser.Scene {
 	constructor(){
 		super ({key: "ControlesPrinc"});
@@ -10,19 +11,9 @@ class ControlesPrinc extends Phaser.Scene {
 	}
 	create(){
 
-		this.ZERO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
-
-		var height = game.config.height;
-		var width = window.innerWidth-300;
-
-		//get center of the canvas
-		var x = width/2 ;
-		var y = height/2;
-
-		var fondoControlesPaus = this.add.sprite(x, y, "fondoControles");
-
+		var fondoControlesPaus = this.add.sprite(game.centerX, game.centerY, "fondoControles");
 		//set the width of the sprite
-		fondoControlesPaus.displayWidth = width;
+		fondoControlesPaus.displayWidth = game.centerX;
 		//scale evenly
 		fondoControlesPaus.scaleX = fondoControlesPaus.scaleY;
 
@@ -32,17 +23,13 @@ class ControlesPrinc extends Phaser.Scene {
 
 
 		//BOTON VOLVER
-		this.volverControles = this.add.image(x, y*13/8, 'volverControles');
+		this.volverControles = this.add.image(game.centerX, game.centerY*13/8, 'volverControles');
 		this.volverControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.volver());
 
 	}
 
 	update(time, delta){
-
-		if(this.ZERO.isDown){
-			this.volver();
-		}
 
 	}
 

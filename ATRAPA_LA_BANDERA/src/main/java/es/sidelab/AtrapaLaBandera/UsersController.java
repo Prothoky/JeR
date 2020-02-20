@@ -53,6 +53,7 @@ public class UsersController {
 				fw = new FileWriter(createfile);
 				BufferedWriter bw = new BufferedWriter(fw);
 				bw.write("[{\"ip\":\"0:0:0:0:0:0:0:1\",\"name\":\"Prothoky\",\"score\":0,\"online\":false,\"lastconection\":\"Dec 11, 2019 11:25:54 PM\"}]");
+				bw.close();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

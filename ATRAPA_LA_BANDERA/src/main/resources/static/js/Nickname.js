@@ -1,5 +1,4 @@
 'use strict'
-
 class Nickname extends Phaser.Scene{
 
   constructor(){
@@ -15,55 +14,56 @@ class Nickname extends Phaser.Scene{
 
  create ()
 {
-    var height = game.config.height;
-    var width = window.innerWidth-300;
+    //Variables for center position
+    game.centerY = game.config.height*0.5;
+    game.centerX = game.config.width*0.5;
 
-    var y = height/2;
-    var x = width/2 ;
+    //background imgae and rescale
+    this.scene.background =this.add.image(game.centerX,game.centerY,"fondo");
+    this.scene.background.displayHeight = game.height;
+    this.scene.background.scaleY = this.scene.background.scaleX;
 
-    this.scene.background =this.add.image(x,y,"fondo");
-    this.scene.background.displayHeigth = y;
-    this.scene.background.scaleX = this.scene.background.scaleY;
+    //Font style for leters
+    var style = {fontFamily: "Maiandra GD",fontSize:55, color: '#ffcc00', boundsAlignH: "center", boundsAlignV: "middle", stroke:'#000000', strokeThickness: 5};
 
-    if(!this.nicknameMenu3){
-      game.scene.add('MenuPrincipal', new MenuPrincipal);
-      game.scene.sendToBack('MenuPrincipal');
-      game.scene.stop('MenuPrincipal');
-      this.nicknameMenu3=true;
-    }
+    //+ to check center
+    //game.scene.text = this.add.text(game.centerX,game.centerY,'+',style);
 
-    game.scene.text = this.add.text(x*5/8, y*13.75/8, 'Introduzca su Nickname',{fontFamily: "Maiandra GD",fontSize:55, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+    game.scene.text = this.add.text(game.centerX*0.6, game.centerY*1.75, 'Introduzca su Nickname',style);
 
-    this.element = this.add.dom(x*9.45/8, y*12/8).createFromCache('nameform');
+    //Animation for input name and loginButton
+    this.element = this.add.dom(game.centerX, game.centerY+500).createFromCache('nameform');
 
     this.tweens.add({
         targets: this.element,
-        y: 300,
+        y: game.centerY*0.8,
         duration: 3000,
         ease: 'Power3'
     });
-  }
 
-  irAMenu(){
+    game.scene.add('MenuPrincipal', new MenuPrincipal);
 
-    game.scene.bringToTop('MenuPrincipal');
-    game.scene.start('MenuPrincipal');
-    game.scene.stop('Nickname');
+    this.checking=false;
+    console.log('CREATE FINISH');
 
   }
 
   update(){
-    if(!this.checking){
-      this.cheking=true;
       jQuery.ajaxSetup({async:false});
       this.element.addListener('click');
       this.element.on('click', function (event) {
          if (event.target.name === 'loginButton')
          {
-             game.inputNickname1 = this.getChildByName('nickname');
-             if (game.inputNickname1.value != '')
+           if(!this.chekcing){
+           console.log('CLICK EVENT ACTIVATE');
+           this.chekcing=true;
+           //-------------------------------------------------------DEBUG-----------------------------------------------------------
+           document.getElementById('nickname').value = "Prothoky";
+           //-------------------------------------------------------DEBUG-----------------------------------------------------------
+           game.nick = document.getElementById('nickname');
+             if (game.nick.value != '')
              {
-               let data = {ip: '', name: game.inputNickname1.value, score:0, online:false, lastconection : Date.now()};
+               let data = {ip: '', name: game.nick.value, score:0, online:false, lastconection : Date.now()};
 
                $.ajax({
                  method: "POST",
@@ -75,42 +75,36 @@ class Nickname extends Phaser.Scene{
                  contentType: 'application/json',
                }).done(function (){
                  console.log("Register success");
-                 game.name = game.inputNickname1.value;
-                 game.scene.bringToTop('MenuPrincipal');
-                 game.scene.start('MenuPrincipal');
-                 game.scene.stop('Nickname');
+                 game.name = game.nick.value;
+                 goMenuPrincipal();
              }).fail(function (value) {
                  if(value.status == 201){
                    console.log("Register success");
-                   game.name=game.inputNickname1.value;
-                     game.scene.bringToTop('MenuPrincipal');
-                     game.scene.start('MenuPrincipal');
-                     game.scene.stop('Nickname');
+                   game.name=game.nick.value;
+                   goMenuPrincipal();
                  }
                  else{
                    //text.text = "El usuario ya existe";
-                   var url = game.url+'/'+game.inputNickname1.value;
+                   var url = game.url+'/'+game.nick.value;
                    $.ajax({
                    method: "GET",
                    async:false,
                    url:url,
                    }).done(function(value){
                      console.log("Login");
-                     game.name = game.inputNickname1.value;
-                     game.scene.bringToTop('MenuPrincipal');
-                     game.scene.start('MenuPrincipal');
-                     game.scene.stop('Nickname');
+                     game.name = game.nick.value;
+                     goMenuPrincipal();
                    }).fail(function (value) {
                      if(value.status == 200){
                        console.log("Login");
-                       game.name = game.inputNickname1.value;
-                       game.scene.bringToTop('MenuPrincipal');
-                       game.scene.start('MenuPrincipal');
-                       game.scene.stop('Nickname');
+                       game.name = game.nick.value;
+                       goMenuPrincipal();
                      }else if(value.status == 0){
                       console.log("Servidor caido");
+                      this.chekcing=false;
                     }else{
                       console.log("Fallo no contemplado");
+                      this.chekcing=false;
                     }
                    });
 
@@ -120,15 +114,25 @@ class Nickname extends Phaser.Scene{
          else
          {
            game.scene.text.setText("Tienes que introducir un nombre de usuario");
+           game.scene.text.setFontSize(50);
+           game.scene.text.setPosition(game.config.width*0.2,game.config.height*0.9);
+           this.chekcing=false;
          }
+
        }
 
+       }
      });
-     this.cheking = false;
      jQuery.ajaxSetup({async:true});
-    }
+
 
   }
+
+}
+
+function goMenuPrincipal(){
+  game.scene.start('MenuPrincipal');
+  game.scene.stop('Nickname');
 
 }
 

@@ -88,23 +88,17 @@
   background-color: darkgray;
 }
 
-aside {
-  color:white;
-  background-image: url(../assets/img/asus01.png);
-}
 body {
-  width:  100%;
+  position: relative;
+  margin: 0px;
+  width: 100%;
   height: 100%;
-  margin: 0;
   background-color: black;
 }
-h1{
-  color:white;
-}
-label{
-  color:white;
-}
 canvas{
+  max-width: 100%;
+  height: 75%;
+  width: auto\9;
   display: block;
   margin: 0 auto;
 }

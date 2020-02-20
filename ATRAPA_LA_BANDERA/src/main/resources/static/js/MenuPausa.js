@@ -1,3 +1,4 @@
+'use strict'
 class MenuPausa extends Phaser.Scene{
 	constructor(){
 		super ({key: "MenuPausa"});

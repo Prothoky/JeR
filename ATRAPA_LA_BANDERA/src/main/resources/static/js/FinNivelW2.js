@@ -1,3 +1,4 @@
+'use strict'
 class FinNivelW2 extends Phaser.Scene {
 	constructor(){
 		super ({key: "FinNivelW2"});
@@ -47,7 +48,7 @@ class FinNivelW2 extends Phaser.Scene {
 		if(user!=null){
 			newscore = Math.floor((Math.random()*(2000+user.score)+100)+1);
 			user.lastconection = Date.now();
-			
+
 				$.ajax({
 					method: "PUT",
 					url:url,
@@ -66,7 +67,7 @@ class FinNivelW2 extends Phaser.Scene {
 						console.log("Fallo de conexion con el servidor");
 					}
 				});
-			
+
 		}
 		else{
 			console.log("Algo ha fallado");
@@ -83,6 +84,8 @@ class FinNivelW2 extends Phaser.Scene {
 	}
 }
 function salir(){
+			game.onfase=0;
+			game.fasebefore=0;
 			game.scene.start('MenuPrincipal');
 			game.scene.remove('FinNivelW2');
 			game.scene.bringToTop('MenuPrincipal');

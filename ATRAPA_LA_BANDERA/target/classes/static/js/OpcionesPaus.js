@@ -1,3 +1,4 @@
+'use strict'
 class OpcionesPaus extends Phaser.Scene {
 
 	constructor(){
@@ -27,41 +28,34 @@ class OpcionesPaus extends Phaser.Scene {
 		this.EIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.EIGHT);
 		this.NINE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NINE);
 
-		var height = game.config.height;
-		var width = window.innerWidth-300;
-
-		//get center of the canvas
-		var x = width/2 ;
-		var y = height/2;
-
-		var fondoOpcionesPrinc = this.add.sprite(x, y, "fondoOpciones");
+		var fondoOpcionesPrinc = this.add.sprite(game.centerX, game.centerY, "fondoOpciones");
 
 		//set the width of the sprite
 		fondoOpcionesPrinc.displayWidth = width;
 		//scale evenly
 		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
 
-		//this.volumenText = this.add.text(x, y*7/8, '0.5', { fontSize: '32px', fill: '#000' });
-		this.volumenText = this.add.bitmapText(x*7.9/8, y*7.1/8, 'arcade', '0.5: ').setTint(0xffcc00);
+		//this.volumenText = this.add.text(game.centerX game.centerY*7/8, '0.5', { fontSize: '32px', fill: '#000' });
+		this.volumenText = this.add.bitmapText(game.centerX*7.9/8, game.centerY*7.1/8, 'arcade', '0.5: ').setTint(0xffcc00);
 		this.volumenText.setScale(0.7);
 		var level = Math.round((game.sound.volume)*10)/10;
 		this.volumenText.setText(level*10);
 
 		//BOTONES DE VOLUMEN
-		this.subirVolumen = this.add.image(x*6/8, y*9/8, 'subirVolumen').setScale(0.5);
+		this.subirVolumen = this.add.image(game.centerX*6/8, game.centerY*9/8, 'subirVolumen').setScale(0.5);
 		this.subirVolumen.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.subir());
 
-		this.bajarVolumen = this.add.image(x*10/8, y*9/8, 'bajarVolumen').setScale(0.5);
+		this.bajarVolumen = this.add.image(game.centerX*10/8, game.centerY*9/8, 'bajarVolumen').setScale(0.5);
 		this.bajarVolumen.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.bajar());
 
-		this.quitarVolumen = this.add.image(x, y*9/8, 'quitarVolumen').setScale(0.5);
+		this.quitarVolumen = this.add.image(game.centerX, game.centerY*9/8, 'quitarVolumen').setScale(0.5);
 		this.quitarVolumen.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.quitar());
 
 				//BOTON VOLVER
-		this.volverOpciones = this.add.image(x, y*13.5/8, 'volverOpciones');
+		this.volverOpciones = this.add.image(game.centerX, game.centerY*13.5/8, 'volverOpciones');
 		this.volverOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.volver());
 	}
@@ -133,5 +127,5 @@ class OpcionesPaus extends Phaser.Scene {
 
 	}
 
-	
+
 }

@@ -1,3 +1,4 @@
+'use strict'
 class MenuPrincipal extends Phaser.Scene{
 
 	constructor(){
@@ -26,12 +27,12 @@ class MenuPrincipal extends Phaser.Scene{
 
 		this.cameras.main.setBackgroundColor(0x000000);
 
-		if(!game.SubMainMenuloaded){
+		if(!game.MainMenuloaded){
 			game.scene.add('ControlesPrinc', new ControlesPrinc);
 			game.scene.add('OpcionesPrinc',new OpcionesPrinc);
-			game.scene.add('UsuariosConectados',new UsuariosConectados);
+			//game.scene.add('UsuariosConectados',new UsuariosConectados);
 			game.scene.add('Juego',new Juego);
-			game.SubMainMenuloaded=true;
+			game.MainMenuloaded=true;
 		}
 		game.scene.sendToBack('ControlesPrinc');
 		game.scene.stop('ControlesPrinc');
@@ -39,44 +40,36 @@ class MenuPrincipal extends Phaser.Scene{
 		game.scene.sendToBack('OpcionesPrinc');
 		game.scene.stop('OpcionesPrinc');
 
-		game.scene.sendToBack('UsuariosConectados');
-		game.scene.stop('UsuariosConectados');
+		//game.scene.sendToBack('UsuariosConectados');
+		//game.scene.stop('UsuariosConectados');
 
 		game.scene.sendToBack('Juego');
 		game.scene.stop('Juego');
 
-		var height = game.config.height;
-		var width = window.innerWidth-300;
-
-		//get center of the canvas
-		var x = width/2 ;
-		var y = height/2;
-
-		var fondoMenuPrinc = this.add.sprite(x, y, "fondoMenuPrinc");
-
-		fondoMenuPrinc.displayWidth = width;
-
-		fondoMenuPrinc.scaleX = fondoMenuPrinc.scaleY;
+		var fondoMenuPrinc = this.add.image(game.centerX,game.centerY, "fondoMenuPrinc");
+		fondoMenuPrinc.displayWidth = game.centerX*2;
+    fondoMenuPrinc.scaleY = fondoMenuPrinc.scaleX;
 
 		//BOTON JUGAR
-		this.botonJugar = this.add.image(x, y, 'botonJugar');
+		this.botonJugar = this.add.image(game.centerX, game.centerY*0.85, 'botonJugar');
 		this.botonJugar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.iniciarJuego());
 
 		//BOTON CONTROLES
-		this.botonControles = this.add.image(x, y*10/8, 'botonControles');
+		this.botonControles = this.add.image(game.centerX, game.centerY*1.05 , 'botonControles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verControles());
 
 		//BOTON OPCIONES
-		this.botonOpciones = this.add.image(x, y*11/8, 'botonOpciones');
+		this.botonOpciones = this.add.image(game.centerX, game.centerY*1.2, 'botonOpciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
 
 		//BOTON USUARIOS
-		this.botonUsuarios = this.add.image(x*4/8, y*11/8, 'botonUsuarios');
+		this.botonUsuarios = this.add.image(game.centerX, game.centerY*1.35, 'botonUsuarios');
 		this.botonUsuarios.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verUsuarios());
+
 	}
 
 	update (time, delta){
@@ -114,8 +107,8 @@ class MenuPrincipal extends Phaser.Scene{
 	}
 
 	verUsuarios(){
-			game.scene.run('UsuariosConectados');
-			game.scene.bringToTop('UsuariosConectados');
+			//game.scene.run('UsuariosConectados');
+			//game.scene.bringToTop('UsuariosConectados');
 	}
 
 
