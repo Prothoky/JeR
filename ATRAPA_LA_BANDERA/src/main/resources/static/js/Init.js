@@ -37,6 +37,8 @@ function create(){
 
   game.scene.add("Nickname", new Nickname);
   game.scene.start("Nickname");
+  //game.scene.add("Juego", new Juego);
+  //game.scene.start("Juego");
 
 }
 

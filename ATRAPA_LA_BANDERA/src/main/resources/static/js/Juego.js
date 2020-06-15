@@ -118,10 +118,10 @@ class Juego extends Phaser.Scene{
 		this.load.image("maniqui","../assets/icons/Jugador-rojo.png");
 
 		//Plataforma
-		this.load.image("pltf","../assets/icons/plt.png");
+		this.load.image("pltf","../assets/icons/plt.png"); 
 
 		//Sprite de BANDERA
-		this.load.image("bandera","../assets/icons/Bandera.png")
+		this.load.image("bandera","../assets/icons/Bandera.png");
 	}
 
 	preloadSprites(){
@@ -503,6 +503,7 @@ class Juego extends Phaser.Scene{
 	}
 
 	preload(){
+		
 		console.log("PRELOAD STARTED");
 
 		game.loaded=false;
@@ -523,6 +524,7 @@ class Juego extends Phaser.Scene{
 	}
 
 	create(){
+		
 		console.log("CREATE STARTED");
 
 		game.polling = this.time.addEvent({ delay: 1000, callback: Alive, loop: true});
@@ -545,21 +547,24 @@ class Juego extends Phaser.Scene{
 			game.sound.mute=true;
 			game.playing=true;
 		}
+		
+		//CONTROLES TECLADO
 		this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
-		//Controles por teclado
 		//Controles menu PAUSA
 		this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-		//Controles J1(Rojo)
+		//JUGADOR 1 (Rojo)
+		//Movimiento
 		this.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
 		this.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 		this.W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-		//Defensa y ataque J1
+		//Defensa y ataque
 		this.T = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
 		this.Y = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Y);
 		this.G = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.G);
 		this.H = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H);
 
-		//Controles J2(Azul)
+		//JUGADOR 2 (Azul)
+		//Movimiento (flechas)
 		this.cursor = this.input.keyboard.createCursorKeys();
 		//Defensa y ataque J2
 		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
@@ -577,9 +582,9 @@ class Juego extends Phaser.Scene{
 
 			//Crear plataforma
 			this.platforms_0 = this.physics.add.staticGroup();
-			this.platforms_0.create(0, 575, 'pltf').setScale(0.5,0.5).refreshBody();
-			this.platforms_0.create(-1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
-			this.platforms_0.create(1320, 575, 'pltf').setScale(4.525,0.5).refreshBody();
+			this.platforms_0.create(-1, 562, 'pltf').setScale(0.8,0.5).refreshBody(); //Plataforma enmedio
+			this.platforms_0.create(-1320, 562, 'pltf').setScale(5.015,0.5).refreshBody(); //Plataforma Izquierda
+			this.platforms_0.create(1310, 562, 'pltf').setScale(5.15,0.5).refreshBody(); //Plataforma Derecha
 
 			//Creación del fondo del juego
 			this.fondo = this.add.image(0,this.cH,"fondocenter");
@@ -590,18 +595,22 @@ class Juego extends Phaser.Scene{
 			//Crear bandera
 			this.bandera = this.physics.add.image(0,450,'bandera');
 			this.bandera.setBounce(0.2);
-			this.bandera.setCollideWorldBounds(true);
+			this.bandera.setCollideWorldBounds(false);
 			this.bandera.setScale(0.75,0.75);
 
-			//Creacion de los jugadores
+			//Creacion de los jugadores ARREGLAR CO
 
 			//Jugador 1
-			this.player1 = this.physics.add.sprite(420,450,'maniqui',2);
-			this.player1.flipX=false;
+			this.player1 = this.physics.add.sprite(420,450,'maniqui', 2);
+			//this.player1.create(100, 100, 'pltf').refreshBody();
+			//this.player1 = this.physics.add.staticGroup();
+			//this.player1.create(1500, 563, 'pltf').setScale(3.5,0.5).refreshBody();
+			//this.player1.setSize(100, 200, true);
+			this.player1.flipX=false;		
 			this.player1.setCollideWorldBounds(false);
 			this.player1.setBounce(-0.3);
 			this.player1.setOrigin(0.5,1);
-			this.player1.ownBandera=false;
+			//this.player1.ownBandera = false;
 
 			//Jugador 2
 			this.player2 = this.physics.add.sprite(-420,450,'maniqui',2);
@@ -609,7 +618,7 @@ class Juego extends Phaser.Scene{
 			this.player2.setCollideWorldBounds(false);
 			this.player2.setBounce(-0.3);
 			this.player2.setOrigin(0.5,1);
-			this.player2.ownBandera=false;
+			//this.player2.ownBandera=false;
 
 			this.sobrefondo = this.add.image(0,this.cH,"sobrefondo");
 			this.sobrefondo.displayHeight = this.cH*2;
@@ -618,13 +627,16 @@ class Juego extends Phaser.Scene{
 			if(game.fasebefore==-1){
 				this.bandera.x = -2000;
 				this.player2.x = -2000;
+				//this.player2.y = 561;
 				this.player1.x = -1800;
+				//this.player1.y = 561;
+				//this.player2.ownBandera = true;
 			}
 			if(game.fasebefore == 1){
 				this.bandera.x = 2000;
 				this.player1.x = 2000;
 				this.player2.x = 1800;
-
+				//this.player1.ownBandera = true;
 			}
 
 			this.physics.add.collider(this.player1, this.platforms_0);
@@ -637,13 +649,13 @@ class Juego extends Phaser.Scene{
 			//Crear plataforma
 
 			this.platforms_minus1 = this.physics.add.staticGroup();
-			this.platforms_minus1.create(1500, 575, 'pltf').setScale(3.5,0.5).refreshBody();
-			this.platforms_minus1.create(475, 440, 'pltf').setScale(0.25,0.5).refreshBody();
-			this.platforms_minus1.create(105, 335, 'pltf').setScale(0.25,0.5).refreshBody();
-			this.platforms_minus1.create(-275, 270, 'pltf').setScale(0.45,0.5).refreshBody();
-			this.platforms_minus1.create(-850, 325, 'pltf').setScale(1.05,0.5).refreshBody();
-			this.platforms_minus1.create(-1325, 260, 'pltf').setScale(0.001,0.5).refreshBody();
-			this.platforms_minus1.create(-1900, 375, 'pltf').setScale(1.35,0.5).refreshBody();
+			this.platforms_minus1.create(1500, 563, 'pltf').setScale(3.8,0.5).refreshBody(); //dcha del todo (1)
+			this.platforms_minus1.create(475.1, 428.3, 'pltf').setScale(0.59,0.5).refreshBody(); //2
+			this.platforms_minus1.create(105, 322.1, 'pltf').setScale(0.65,0.5).refreshBody(); //3
+			this.platforms_minus1.create(-275.1, 257.1, 'pltf').setScale(0.85,0.5).refreshBody(); //4
+			this.platforms_minus1.create(-862.4, 319, 'pltf').setScale(1.45,0.5).refreshBody(); //5
+			this.platforms_minus1.create(-1326.9, 248.2, 'pltf').setScale(0.25,0.5).refreshBody(); //6
+			this.platforms_minus1.create(-1900, 373, 'pltf').setScale(1.94,0.5).refreshBody(); //7
 
 			//Creación del fondo del juego
 
@@ -654,8 +666,7 @@ class Juego extends Phaser.Scene{
 			this.fondo.scaleX = this.fondo.scaleY;
 
 			//Crear bandera
-
-			this.bandera = this.physics.add.sprite(0, 450, 'bandera');
+			this.bandera = this.physics.add.sprite(0, 450,'bandera');
 			this.bandera.setBounce(0.2);
 			this.bandera.setCollideWorldBounds(false);
 			this.bandera.setScale(0.75,0.75);
@@ -668,7 +679,7 @@ class Juego extends Phaser.Scene{
 			this.player1.setCollideWorldBounds(false);
 			//this.player1.setBounce(0.3);
 			this.player1.setOrigin(0.5,1);
-			this.player1.ownBandera=false;
+			//this.player1.ownBandera=false;
 
 			//Jugador 2
 			this.player2 = this.physics.add.sprite(420,450,'maniqui',2);
@@ -676,7 +687,7 @@ class Juego extends Phaser.Scene{
 			this.player2.setCollideWorldBounds(false);
 			//this.player2.setBounce(0.3);
 			this.player2.setOrigin(0.5,1);
-			this.player2.ownBandera=false;
+			//this.player2.ownBandera=false;
 			//this.player2.setTint(0x4400ff);
 
 			this.sobrefondo = this.add.image(0,this.cH,"sobrefondo1left");
@@ -686,12 +697,16 @@ class Juego extends Phaser.Scene{
 			if(game.fasebefore ==  0 ){
 				this.bandera.x = 1800;
 				this.player2.x = 2000;
+				//this.player2.y = 564;
 				this.player1.x = 1800;
+				//this.player1.y = 564;
+				//this.player1.ownBandera=true;
 			}
 			if(game.fasebefore == -2 ){
-				this.bandera.x = -2000;
+				this.bandera.x = -1800;
 				this.player1.x = -2000;
 				this.player2.x = -1800;
+				//this.player2.ownBandera=true;
 			}
 
 			this.physics.add.collider(this.player1, this.platforms_minus1);
@@ -703,9 +718,9 @@ class Juego extends Phaser.Scene{
 
 			//Crear plataforma
 			this.platforms_minus2 = this.physics.add.staticGroup();
-			this.platforms_minus2.create(1120, 385, 'pltf').setScale(5.27,0.5).refreshBody();
-			this.platforms_minus2.create(-300, 450, 'pltf').setScale(0.05,0.5).refreshBody();
-			this.platforms_minus2.create(-1470, 600, 'pltf').setScale(4,0.5).refreshBody();
+			this.platforms_minus2.create(1120, 372.5, 'pltf').setScale(5.52,0.5).refreshBody();
+			this.platforms_minus2.create(-296, 440, 'pltf').setScale(0.45,0.5).refreshBody();
+			this.platforms_minus2.create(-1470, 595, 'pltf').setScale(4.6,0.5).refreshBody();
 
 			//Creación del fondo del juego
 			this.fondo = this.add.image(0,this.cH,"fondo2left");
@@ -714,7 +729,7 @@ class Juego extends Phaser.Scene{
 
 			//Crear bandera
 
-			this.bandera = this.physics.add.sprite(0, 450, 'bandera');
+			this.bandera = this.physics.add.sprite(0, 450,'bandera');
 			this.bandera.setBounce(0.2);
 			this.bandera.setCollideWorldBounds(false);
 			this.bandera.setScale(0.75,0.75);
@@ -727,7 +742,7 @@ class Juego extends Phaser.Scene{
 			this.player1.setCollideWorldBounds(false);
 			//this.player1.setBounce(0.3);
 			this.player1.setOrigin(0.5,1);
-			this.player1.ownBandera=false;
+			this.player1.ownBandera=true;
 
 			//Jugador 2
 			this.player2 = this.physics.add.sprite(420,450,'maniqui',2);
@@ -761,13 +776,13 @@ class Juego extends Phaser.Scene{
 			//Crear plataforma
 
 			this.platforms_plus1 = this.physics.add.staticGroup();
-			this.platforms_plus1.create(1900, 375, 'pltf').setScale(1.35,0.5).refreshBody();
-			this.platforms_plus1.create(1325, 260, 'pltf').setScale(0.001,0.5).refreshBody();
-			this.platforms_plus1.create(850, 325, 'pltf').setScale(1.05,0.5).refreshBody();
-			this.platforms_plus1.create(275, 270, 'pltf').setScale(0.45,0.5).refreshBody();
-			this.platforms_plus1.create(-105, 335, 'pltf').setScale(0.25,0.5).refreshBody();
-			this.platforms_plus1.create(-475, 440, 'pltf').setScale(0.25,0.5).refreshBody();
-			this.platforms_plus1.create(-1500, 575, 'pltf').setScale(3.5,0.5).refreshBody();
+			this.platforms_plus1.create(1900, 373, 'pltf').setScale(1.94,0.5).refreshBody(); //1
+			this.platforms_plus1.create(1325, 248, 'pltf').setScale(0.25,0.5).refreshBody(); //2
+			this.platforms_plus1.create(850, 319, 'pltf').setScale(1.45,0.5).refreshBody(); //3
+			this.platforms_plus1.create(274.9, 257.1, 'pltf').setScale(0.85,0.5).refreshBody(); //4
+			this.platforms_plus1.create(-101, 319.1, 'pltf').setScale(0.65,0.5).refreshBody(); //5
+			this.platforms_plus1.create(-475.1, 429, 'pltf').setScale(0.59,0.5).refreshBody(); //6
+			this.platforms_plus1.create(-1500, 563, 'pltf').setScale(3.8,0.5).refreshBody(); //7
 
 			//Creación del fondo del juego
 
@@ -829,9 +844,9 @@ class Juego extends Phaser.Scene{
 			//Crear plataforma
 
 			this.platforms_plus2 = this.physics.add.staticGroup();
-			this.platforms_plus2.create(300, 450, 'pltf').setScale(0.05,0.5).refreshBody();
-			this.platforms_plus2.create(-1120, 385, 'pltf').setScale(5.27,0.5).refreshBody();
-			this.platforms_plus2.create(1470, 600, 'pltf').setScale(3.75,0.5).refreshBody();
+			this.platforms_plus2.create(-1120, 372.5, 'pltf').setScale(5.52,0.5).refreshBody();
+			this.platforms_plus2.create(296, 440, 'pltf').setScale(0.45,0.5).refreshBody();
+			this.platforms_plus2.create(1470, 595, 'pltf').setScale(4.6,0.5).refreshBody();
 
 			//Creación del fondo del juego
 
