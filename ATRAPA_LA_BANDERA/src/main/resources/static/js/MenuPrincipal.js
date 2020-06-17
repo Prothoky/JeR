@@ -48,7 +48,7 @@ class MenuPrincipal extends Phaser.Scene{
 
 		var fondoMenuPrinc = this.add.image(game.centerX,game.centerY, "fondoMenuPrinc");
 		fondoMenuPrinc.displayWidth = game.centerX*2;
-    fondoMenuPrinc.scaleY = fondoMenuPrinc.scaleX;
+		fondoMenuPrinc.scaleY = fondoMenuPrinc.scaleX;
 
 		//BOTON JUGAR
 		this.botonJugar = this.add.image(game.centerX, game.centerY*0.85, 'botonJugar');

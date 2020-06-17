@@ -9,6 +9,7 @@ class Juego extends Phaser.Scene{
 		this.bandera.disableBody(true,true);
 		player.ownBandera = true;
 	}
+	
 	respawn(player){
 		player.y = 250;
 		player.x += 100;
@@ -552,6 +553,7 @@ class Juego extends Phaser.Scene{
 		this.M = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
 		//Controles menu PAUSA
 		this.ESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+		
 		//JUGADOR 1 (Rojo)
 		//Movimiento
 		this.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -593,10 +595,10 @@ class Juego extends Phaser.Scene{
 			this.fondo.fixedToCamera = true;
 
 			//Crear bandera
-			this.bandera = this.physics.add.image(0,450,'bandera');
+			this.bandera = this.physics.add.image(0,450,'bandera').setScale(0.75,0.75);
 			this.bandera.setBounce(0.2);
 			this.bandera.setCollideWorldBounds(false);
-			this.bandera.setScale(0.75,0.75);
+			//this.bandera.setOrigin(-0.5);
 
 			//Creacion de los jugadores ARREGLAR CO
 
@@ -609,7 +611,7 @@ class Juego extends Phaser.Scene{
 			this.player1.flipX=false;		
 			this.player1.setCollideWorldBounds(false);
 			this.player1.setBounce(-0.3);
-			this.player1.setOrigin(0.5,1);
+			//this.player1.setOrigin(0.5);
 			//this.player1.ownBandera = false;
 
 			//Jugador 2
@@ -617,7 +619,7 @@ class Juego extends Phaser.Scene{
 			this.player2.flipX=true;
 			this.player2.setCollideWorldBounds(false);
 			this.player2.setBounce(-0.3);
-			this.player2.setOrigin(0.5,1);
+			this.player2.setOrigin(0.5,0);
 			//this.player2.ownBandera=false;
 
 			this.sobrefondo = this.add.image(0,this.cH,"sobrefondo");
@@ -674,7 +676,7 @@ class Juego extends Phaser.Scene{
 			//Creacion de los jugadores
 
 			//Jugador 1
-			this.player1 = this.physics.add.sprite(-420,450,'maniqui',2);
+			this.player1 = this.physics.add.sprite(-420,564,'maniqui',2);
 			this.player1.flipX=false;
 			this.player1.setCollideWorldBounds(false);
 			//this.player1.setBounce(0.3);
@@ -682,7 +684,7 @@ class Juego extends Phaser.Scene{
 			//this.player1.ownBandera=false;
 
 			//Jugador 2
-			this.player2 = this.physics.add.sprite(420,450,'maniqui',2);
+			this.player2 = this.physics.add.sprite(420,564,'maniqui',2);
 			this.player2.flipX=true;
 			this.player2.setCollideWorldBounds(false);
 			//this.player2.setBounce(0.3);
@@ -697,18 +699,44 @@ class Juego extends Phaser.Scene{
 			if(game.fasebefore ==  0 ){
 				this.bandera.x = 1800;
 				this.player2.x = 2000;
-				//this.player2.y = 564;
+				this.player2.y = 564;
 				this.player1.x = 1800;
-				//this.player1.y = 564;
+				this.player1.y = 564;
 				//this.player1.ownBandera=true;
 			}
 			if(game.fasebefore == -2 ){
 				this.bandera.x = -1800;
 				this.player1.x = -2000;
+				this.player1.y = 564;
 				this.player2.x = -1800;
+				this.player2.y = 564;
 				//this.player2.ownBandera=true;
 			}
-
+			
+			/*if(game.fasebefore ==  0 ){
+				this.player1 = this.physics.add.sprite(1800,564,'maniqui',2);
+				this.player2 = this.physics.add.sprite(2000,564,'maniqui',2);
+				this.player1.ownBandera=true;
+			}
+			if(game.fasebefore == -2 ){
+				this.player1 = this.physics.add.sprite(-2000,564,'maniqui',2);
+				this.player2 = this.physics.add.sprite(-1800,564,'maniqui',2);
+				this.player2.ownBandera=true;
+			}
+			
+			this.player1.flipX=false;
+			this.player1.setCollideWorldBounds(false);
+			this.player2.setOrigin(0.5,1);
+			
+			this.player2.flipX=true;
+			this.player2.setCollideWorldBounds(false);
+			this.player2.setOrigin(0.5,1);
+			
+			this.sobrefondo = this.add.image(0,this.cH,"sobrefondo1left");
+			this.sobrefondo.displayHeight = this.cH*2;
+			this.sobrefondo.scaleX = this.sobrefondo.scaleY;
+			 */
+			
 			this.physics.add.collider(this.player1, this.platforms_minus1);
 			this.physics.add.collider(this.player2, this.platforms_minus1);
 			this.physics.add.collider(this.bandera, this.platforms_minus1);
@@ -742,7 +770,7 @@ class Juego extends Phaser.Scene{
 			this.player1.setCollideWorldBounds(false);
 			//this.player1.setBounce(0.3);
 			this.player1.setOrigin(0.5,1);
-			this.player1.ownBandera=true;
+			//this.player1.ownBandera=true;
 
 			//Jugador 2
 			this.player2 = this.physics.add.sprite(420,450,'maniqui',2);
@@ -750,7 +778,7 @@ class Juego extends Phaser.Scene{
 			this.player2.setCollideWorldBounds(false);
 			//this.player2.setBounce(0.3);
 			this.player2.setOrigin(0.5,1);
-			this.player2.ownBandera=false;
+			//this.player2.ownBandera=false;
 			//this.player2.setTint(0x4400ff);
 
 			this.sobrefondo = this.add.image(0,this.cH,"sobrefondo2left");
@@ -758,13 +786,13 @@ class Juego extends Phaser.Scene{
 			this.sobrefondo.scaleX = this.sobrefondo.scaleY;
 
 			this.bandera.x = 2000;
-			this.bandera.y = 350;
+			this.bandera.y = 596;
 
 			this.player1.x = 2000;
-			this.player1.y = 350;
+			this.player1.y = 596;
 
 			this.player2.x = 1800;
-			this.player2.y = 350;
+			this.player2.y = 596;
 
 			this.physics.add.collider(this.player1, this.platforms_minus2);
 			this.physics.add.collider(this.player2, this.platforms_minus2);
@@ -858,10 +886,9 @@ class Juego extends Phaser.Scene{
 
 			//Crear bandera
 
-			this.bandera = this.physics.add.sprite(0, 450, 'bandera');
+			this.bandera = this.physics.add.sprite(0, 450, 'bandera').setScale(0.75,0.75);
 			this.bandera.setBounce(0.2);
 			this.bandera.setCollideWorldBounds(false);
-			this.bandera.setScale(0.75,0.75);
 
 			//Creacion de los jugadores
 
@@ -887,13 +914,13 @@ class Juego extends Phaser.Scene{
 			this.sobrefondo.scaleX = this.sobrefondo.scaleY;
 
 			this.bandera.x = -2000;
-			this.bandera.y = 350;
+			this.bandera.y = 375;
 
 			this.player2.x = -2000;
-			this.player2.y = 350;
+			this.player2.y = 375;
 
 			this.player1.x = -1800;
-			this.player1.y = 350;
+			this.player1.y = 375;
 
 			this.physics.add.collider(this.player1, this.platforms_plus2);
 			this.physics.add.collider(this.player2, this.platforms_plus2);
@@ -907,12 +934,14 @@ class Juego extends Phaser.Scene{
 		this.camera.setBackgroundColor(0x000000);
 		this.camera.scrollY=0;
 
-		this.player1.body.setSize(125,225,true);
-		this.player2.body.setSize(125,225,true);
+		//this.player1.body.setSize(100,225,true); Da error al llegar el jug 2 a la meta
+		//this.player2.body.setSize(100,225,true); x la cara
+		this.bandera.body.setSize(5, 175, false);
 
 		console.log("Fase " + game.onfase + " CREATE");
+		//console.log("Fase anterior " + game.fasebefore);
 
-		game.loaded=true;
+		game.loaded = true;
 	}
 
 	update(time, delta){
@@ -1126,12 +1155,12 @@ class Juego extends Phaser.Scene{
 
 					if(this.bandera.y > 720){
 						this.bandera.y = 150;
-						this.bandera.x += 100;
+						this.bandera.x = 0;
 					}
-					if(this.player1.y < 200){
+					if(this.player1.y < 200){//esto que hgace
 						this.player1.y = 250;
 					}
-					if(this.player2.y < 200){
+					if(this.player2.y < 200){//y esto lol
 						this.player2.y = 250;
 					}
 					if(this.player2.x< -2040){
@@ -1156,6 +1185,7 @@ class Juego extends Phaser.Scene{
 
 					//Personaje coge la bandera
 					this.physics.add.overlap([this.player1,this.player2], this.bandera, this.collectBandera, null, this);
+					
 					//Personajes se pegan
 					this.physics.add.overlap(this.player1, this.player2, this.checkatacks, null, this);
 

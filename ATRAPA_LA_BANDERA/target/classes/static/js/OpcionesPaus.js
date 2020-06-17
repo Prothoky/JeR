@@ -28,12 +28,12 @@ class OpcionesPaus extends Phaser.Scene {
 		this.EIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.EIGHT);
 		this.NINE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NINE);
 
-		var fondoOpcionesPrinc = this.add.sprite(game.centerX, game.centerY, "fondoOpciones");
+		var fondoOpcionesPaus = this.add.sprite(game.centerX, game.centerY, "fondoOpciones");
 
 		//set the width of the sprite
-		fondoOpcionesPrinc.displayWidth = width;
+		fondoOpcionesPaus.displayWidth = game.centerX; //En el inspector no se pq no se cambia pero me come un webo
 		//scale evenly
-		fondoOpcionesPrinc.scaleX = fondoOpcionesPrinc.scaleY;
+		fondoOpcionesPaus.scaleX = fondoOpcionesPaus.scaleY;
 
 		//this.volumenText = this.add.text(game.centerX game.centerY*7/8, '0.5', { fontSize: '32px', fill: '#000' });
 		this.volumenText = this.add.bitmapText(game.centerX*7.9/8, game.centerY*7.1/8, 'arcade', '0.5: ').setTint(0xffcc00);
