@@ -13,7 +13,7 @@ class FinNivelW2 extends Phaser.Scene {
 	create(){
 		game.polling = this.time.addEvent({ delay: 1000, callback: Alive, loop: true});
 
-		/*var height = game.config.height;
+		var height = game.config.height;
 		var width = window.innerWidth-300;
 
 		var x = width/2;
@@ -23,11 +23,11 @@ class FinNivelW2 extends Phaser.Scene {
 
 		fondoFin.displayWidth = width;
 
-		fondoFin.scaleX = fondoFin.scaleY;*/
+		fondoFin.scaleX = fondoFin.scaleY;
 		
-		var fondoFin = this.add.sprite(game.centerX,game.centerY, "fondoFin");
+		/*var fondoFin = this.add.sprite(game.centerX,game.centerY, "fondoFin");
 		fondoFin.displayWidth = game.centerX*2;
-		fondoFin.scaleY = fondoFin.scaleX;
+		fondoFin.scaleY = fondoFin.scaleX;*/
 
 		jQuery.ajaxSetup({async:false});
 

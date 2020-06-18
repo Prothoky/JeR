@@ -936,7 +936,7 @@ class Juego extends Phaser.Scene{
 
 		//this.player1.body.setSize(100,225,true); Da error al llegar el jug 2 a la meta
 		//this.player2.body.setSize(100,225,true); x la cara
-		this.bandera.body.setSize(5, 175, false);
+		//this.bandera.body.setSize(5, 175, false);
 
 		console.log("Fase " + game.onfase + " CREATE");
 		//console.log("Fase anterior " + game.fasebefore);
