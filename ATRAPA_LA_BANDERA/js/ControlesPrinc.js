@@ -1,3 +1,4 @@
+'use strict'
 class ControlesPrinc extends Phaser.Scene {
 	constructor(){
 		super ({key: "ControlesPrinc"});
@@ -5,34 +6,19 @@ class ControlesPrinc extends Phaser.Scene {
 
 	preload(){
 		//MENU CONTROLES
-		this.load.image('fondoControles', 'assets/img/MenuControles/fondoControles.png'); //FONDO
-		this.load.image('volverControles', 'assets/img/MenuControles/volver.png', {frameHeight:347,frameWidth: 295}); //BOTON VOLVER
+		this.load.image('fondoControles', 'assets/img/MenuControles/fondoMC.png'); //FONDO
+		this.load.image('volverControles', 'assets/img/MenuControles/volver.png');//, {frameHeight:347,frameWidth: 295}); //BOTON VOLVER
 	}
 	create(){
 
-		this.ZERO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
-
-		var height = game.config.height;
-		var width = game.config.width;
-
-		//get center of the canvas
-		var x = width/2 ;
-		var y = height/2;
-
-		var fondoControlesPaus = this.add.sprite(x, y, "fondoControles");
-
+		var fondoControlesPaus = this.add.sprite(game.centerX, game.centerY, "fondoControles");
 		//set the width of the sprite
-		fondoControlesPaus.displayWidth = width;
+		fondoControlesPaus.displayWidth = game.centerX;
 		//scale evenly
 		fondoControlesPaus.scaleX = fondoControlesPaus.scaleY;
 
-		var tituloControles = this.tituloControles = this.add.image(x, y*2/8, 'opciones').setScale(0.5);
-		//var cuadroVolumen = this.tituloVolumen = this.add.image(x, y, 'cuadroVolumen').setScale(0.5);
-		//var tituloVolumen = this.tituloVolumen = this.add.image(x, y*6/8, 'volumen').setScale(0.5);
-
-
 		//BOTON VOLVER
-		this.volverControles = this.add.image(x, y*14/8, 'volverControles').setScale(0.4);
+		this.volverControles = this.add.image(game.centerX, game.centerY*13/8, 'volverControles');
 		this.volverControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.volver());
 
@@ -40,15 +26,11 @@ class ControlesPrinc extends Phaser.Scene {
 
 	update(time, delta){
 
-		if(this.ZERO.isDown){
-			this.volver();
-		}
-
 	}
 
 	volver() {
-		this.scene.sendToBack('ControlesPrinc');
-		this.scene.stop('ControlesPrinc');
-		this.scene.resume('MenuPrincipal');
+		game.scene.sendToBack('ControlesPrinc');
+		game.scene.stop('ControlesPrinc');
+		game.scene.resume('MenuPrincipal');
 	}
 }

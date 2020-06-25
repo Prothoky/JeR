@@ -1,3 +1,4 @@
+'use strict'
 class MenuPausa extends Phaser.Scene{
 	constructor(){
 		super ({key: "MenuPausa"});
@@ -5,7 +6,7 @@ class MenuPausa extends Phaser.Scene{
 
 	preload(){
 
-	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMPausa.png');
+	this.load.image('fondoPausa', 'assets/img/MenuPausa/fondoMP.png');
 
 	this.load.image('reanudar', 'assets/img/MenuPausa/reanudar.png');
 	this.load.image('opciones', 'assets/img/MenuPausa/opciones.png');
@@ -22,7 +23,7 @@ class MenuPausa extends Phaser.Scene{
 		this.FOUR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR);
 
 		var height = game.config.height;
-		var width = game.config.width;
+		var width = window.innerWidth-300;
 
 		var x = width/2 ;
 		var y = height/2;
@@ -53,12 +54,12 @@ class MenuPausa extends Phaser.Scene{
 		.on('pointerdown', () => this.abandonar());
 
 		if(!this.controlpaus){
-			this.scene.add('ControlesPaus', new ControlesPaus);
-			this.scene.add('OpcionesPaus',new OpcionesPaus);
-			this.scene.sendToBack('ControlesPaus');
-			this.scene.stop('ControlesPaus');
-			this.scene.sendToBack('OpcionesPaus');
-			this.scene.stop('OpcionesPaus');
+			game.scene.add('ControlesPaus', new ControlesPaus);
+			game.scene.add('OpcionesPaus',new OpcionesPaus);
+			game.scene.sendToBack('ControlesPaus');
+			game.scene.stop('ControlesPaus');
+			game.scene.sendToBack('OpcionesPaus');
+			game.scene.stop('OpcionesPaus');
 			this.controlpaus=true;
 		}
 	}
@@ -81,27 +82,28 @@ class MenuPausa extends Phaser.Scene{
 	}
 
 	reanudar() {
-		this.scene.sendToBack('MenuPausa');
-		this.scene.stop('MenuPausa');
-		this.scene.resume('Juego');
+		game.scene.sendToBack('MenuPausa');
+		game.scene.stop('MenuPausa');
+		game.scene.resume('Juego');
 		game.paused=false;
 	}
 
 	opciones(){
-		this.scene.run('OpcionesPaus');
-		this.scene.bringToTop('OpcionesPaus');
-		//this.scene.pause('MenuPausa');
+		game.scene.run('OpcionesPaus');
+		game.scene.bringToTop('OpcionesPaus');
+		//game.scene.pause('MenuPausa');
 	}
 
 	controles(){
-			this.scene.run('ControlesPaus');
-			this.scene.bringToTop('ControlesPaus');
-			//this.scene.pause('MenuPausa');
+			game.scene.run('ControlesPaus');
+			game.scene.bringToTop('ControlesPaus');
+			//game.scene.pause('MenuPausa');
 	}
 
 	abandonar(){
-		this.scene.bringToTop('MenuPrincipal');
-		this.scene.resume('MenuPrincipal');
+		game.scene.bringToTop('MenuPrincipal');
+		game.scene.start('MenuPrincipal');
+		game.scene.stop('Juego');
 		game.exit=true;
 	}
 }

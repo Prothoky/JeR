@@ -1,56 +1,41 @@
-
+'use strict'
 class FinNivelW1 extends Phaser.Scene {
 	constructor(){
-
 		super ({key: "FinNivelW1"});
-
 	}
 
 	preload(){
-
-		//el fondo del fin de nivel
-		//this.load.image('fondoFin', 'assets/img/FinNivel/fondoFin.png');
-		//cargamos el logo arriba
-		//this.load.image('logo', 'assets/img/FinNivel/logo.png');g');
-		//boton de salir
-		//this.load.image('salir', 'assets/img/FinNivel/salir.png');
-
-		var texto;
-
+		this.load.image('fondoFin','../assets/img/PantallaFinal/victoriaRojo.jpg')
+		this.load.image('abandonar', 'assets/icons/BOTON_SALIR.png');
+    	game.scene.backgroundColor = "#FFFFF";
 	}
 
 	create(){
 
-		var height = game.config.height;
-		var width = game.config.width;
+		var fondoFin = this.add.sprite(game.centerX,game.centerY, "fondoFin");
+		fondoFin.displayWidth = game.centerX*2;
+		fondoFin.scaleY = fondoFin.scaleX;		
 
-		var x = width/2 ;
-		var y = height/2;
+		var puntuation = Phaser.Math.Between(200, 1000);
+		
+		this.textoWinner = this.add.text(game.centerX*7.2/8, game.centerY*5/8, 'Ganador: ',{fontFamily: "Maiandra GD",fontSize:45, color: '#ffcc00', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoLooser = this.add.text(game.centerX*7/8, game.centerY*7/8, 'Jugador Rojo',{fontFamily: "Maiandra GD",fontSize:40, color: '#ff0000', stroke:'#000000', strokeThickness: 5,align:'center'});
+		this.textoScore = this.add.text(game.centerX*3.7/8, game.centerY*12/8, 'Puntuacion: ' + puntuation,{fontFamily: "Maiandra GD",fontSize:35, color: '#ff0000', stroke:'#000000', strokeThickness: 5,align:'center'});
 
-		var fondoFin = this.add.sprite (x, y, 'fondoFin');
-
-		fondoFin.displayWidth = width;
-		fondoFin.scaleX = fondoFin.scaleY;
-
-		texto = this.add.text(16, 16, 'Ganador: \n Perdedor:', { fontSize: '32px', fill: '#000' });
-
-/*
-		this.botonSalir = this.add.image(x, y*12/8, 'abandonar');
+		this.botonSalir = this.add.image(game.centerX, game.centerY*14/8, 'abandonar');
 		this.botonSalir.setInteractive({ useHandCursor: true  } )
-		.on('pointerdown', () => this.salir());
-*/
-
-		/*if(j1 == winner){
-			texto.setText('Ganador: JUGADOR 1\n Perdedor:JUGADOR 2');
-		}else{
-			texto.setText('Ganador: JUGADOR 2\n Perdedor:JUGADOR 1');
-		}*/
+		.on('pointerdown', () => salir());
 	}
+}
 
-	salir (){
-		this.scene.sendToBack('FinNivelW1');
-		this.scene.stop('FinNivelW1');
-		this.scene.resume('MenuPrincipal');
-	}
-
+function salir(){
+		game.fase=0;
+		game.fasebefore=0;
+		game.scene.start('MenuPrincipal');
+		game.scene.remove('FinNivelW1');
+		game.scene.bringToTop('MenuPrincipal');
+}
+	
+function reload(){
+	game.scene.restart();
 }

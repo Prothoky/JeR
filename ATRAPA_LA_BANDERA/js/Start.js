@@ -30,9 +30,6 @@ preload(){
 
     this.scene.add("MenuPrincipal", new MenuPrincipal);
     this.scene.start("MenuPrincipal");
-    //this.scene.add("Juego", new Juego);
-    //this.scene.start("Juego");
-
 
   }
 

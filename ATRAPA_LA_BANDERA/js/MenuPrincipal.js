@@ -1,7 +1,7 @@
+'use strict'
 class MenuPrincipal extends Phaser.Scene{
 
 	constructor(){
-
 		super ({key: "MenuPrincipal"});
 	}
 
@@ -13,10 +13,11 @@ class MenuPrincipal extends Phaser.Scene{
     this.load.image('botonControles', 'assets/img/MenuPrincipal/botonControles.png'); //BOTON CONTROLES
     this.load.image('botonOpciones', 'assets/img/MenuPrincipal/botonOpciones.png'); //BOTON OPCIONES
     this.load.image('botonSalir', 'assets/img/MenuPrincipal/botonSalir.png'); //BOTON SALIR
+
+		this.load.audio('musica', '../assets/music/MusicaMenu.mp3');
 	}
 
 	create(){
-
 		//declaramos las variables para controlar los botones por teclado
 		this.O = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
 		this.C = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
@@ -24,44 +25,43 @@ class MenuPrincipal extends Phaser.Scene{
 
 		this.cameras.main.setBackgroundColor(0x000000);
 
-		this.scene.add('ControlesPrinc', new ControlesPrinc);
-		this.scene.sendToBack('ControlesPrinc');
-		this.scene.stop('ControlesPrinc');
+		if(!game.MainMenuloaded){
+			game.scene.add('ControlesPrinc', new ControlesPrinc);
+			game.scene.add('OpcionesPrinc',new OpcionesPrinc);
+			game.scene.add('Juego',new Juego);
+			game.MainMenuloaded=true;
+		}
 
-		this.scene.add('OpcionesPrinc',new OpcionesPrinc);
-		this.scene.sendToBack('OpcionesPrinc');
-		this.scene.stop('OpcionesPrinc');
+		game.scene.sendToBack('ControlesPrinc');
+		game.scene.stop('ControlesPrinc');
 
-		this.scene.add('Juego',new Juego);
-		this.scene.sendToBack('Juego');
-		this.scene.stop('Juego');
+		game.scene.sendToBack('OpcionesPrinc');
+		game.scene.stop('OpcionesPrinc');
 
-		var height = game.config.height;
-		var width = game.config.width;
+		game.scene.sendToBack('Juego');
+		game.scene.stop('Juego');
 
-		//get center of the canvas
-		var x = width/2 ;
-		var y = height/2;
+		//this.sound.pauseOnBlur=false;
+		this.music = this.sound.add('musica');
+		//this.music = game.add.audio('musica');
+		this.music.play();
 
-		var fondoMenuPrinc = this.add.sprite(x, y, "fondoMenuPrinc");
-
-
-		fondoMenuPrinc.displayWidth = width;
-
-		fondoMenuPrinc.scaleX = fondoMenuPrinc.scaleY;
+		var fondoMenuPrinc = this.add.image(game.centerX,game.centerY, "fondoMenuPrinc");
+		fondoMenuPrinc.displayWidth = game.centerX*2;
+		fondoMenuPrinc.scaleY = fondoMenuPrinc.scaleX;
 
 		//BOTON JUGAR
-		this.botonJugar = this.add.image(x, y, 'botonJugar');
+		this.botonJugar = this.add.image(game.centerX, game.centerY*0.85, 'botonJugar');
 		this.botonJugar.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.iniciarJuego());
 
 		//BOTON CONTROLES
-		this.botonControles = this.add.image(x, y*10/8, 'botonControles');
+		this.botonControles = this.add.image(game.centerX, game.centerY*1.05 , 'botonControles');
 		this.botonControles.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verControles());
 
 		//BOTON OPCIONES
-		this.botonOpciones = this.add.image(x, y*11/8, 'botonOpciones');
+		this.botonOpciones = this.add.image(game.centerX, game.centerY*1.2, 'botonOpciones');
 		this.botonOpciones.setInteractive({ useHandCursor: true  } )
 		.on('pointerdown', () => this.verOpciones());
 
@@ -82,19 +82,23 @@ class MenuPrincipal extends Phaser.Scene{
 	}
 
 	iniciarJuego(){
-			this.scene.run('Juego');
-			this.scene.bringToTop('Juego');
-			this.scene.pause('MenuPrincipal');
+		if(game.fasebefore==3 || game.fasebefore==-3){
+			game.loaded=false;
+			game.onfase = 0;
+		}
+			game.scene.start('Juego');
+			game.scene.bringToTop('Juego');
+			game.scene.stop('MenuPrincipal');
 	}
 
 	verControles(){
-		this.scene.run('ControlesPrinc');
-		this.scene.bringToTop('ControlesPrinc');
+		game.scene.run('ControlesPrinc');
+		game.scene.bringToTop('ControlesPrinc');
 	}
 
 	verOpciones(){
-			this.scene.run('OpcionesPrinc');
-			this.scene.bringToTop('OpcionesPrinc');
+			game.scene.run('OpcionesPrinc');
+			game.scene.bringToTop('OpcionesPrinc');
 	}
 
 
