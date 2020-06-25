@@ -24,10 +24,6 @@ class ControlesPrinc extends Phaser.Scene {
 
 	}
 
-	update(time, delta){
-
-	}
-
 	volver() {
 		game.scene.sendToBack('ControlesPrinc');
 		game.scene.stop('ControlesPrinc');
